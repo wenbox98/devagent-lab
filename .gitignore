@@ -1,0 +1,11 @@
+.venv/
+.local/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+java-task-service/target/
