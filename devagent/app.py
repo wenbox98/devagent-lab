@@ -1,15 +1,53 @@
-"""L00练习起点。按02实现，不从网上安装名为devagent的包。"""
+"""L00: validate input, call once, then validate the response."""
+from pathlib import Path
 from uuid import uuid4
 
-from .models import RunResult
+from .models import ModelRequest, RunResult
+from .trace import DEFAULT_TRACE_PATH, TraceWriter
 
-def run_task(task: str, client) -> RunResult:
+
+def run_task(task: str, client, *, trace_path: str | Path = DEFAULT_TRACE_PATH,
+             max_chars: int = 5000) -> RunResult:
+    if type(max_chars) is not int or max_chars < 1:
+        raise ValueError('max_chars must be a positive integer')
+    run_id = str(uuid4())
+    trace = TraceWriter(trace_path, run_id)
+
+    def emit(event, **fields):
+        # Catch I/O only at the trace boundary, not client-side OSError.
+        try:
+            trace.emit(event, **fields)
+        except OSError:
+            return False
+        return True
+
+    def trace_failure():
+        return RunResult(run_id, 'failed', None, 'trace_io', 5)
+
+    def finish(output=None, error_code=None, exit_code=0):
+        status = 'succeeded' if error_code is None else 'failed'
+        if not emit('run_finished', status=status, error_code=error_code, exit_code=exit_code):
+            return trace_failure()
+        return RunResult(run_id, status, output, error_code, exit_code)
+
+    if not emit('run_started', status='started'):
+        return trace_failure()
     if not isinstance(task, str) or not task.strip():
-        return RunResult(
-            run_id=str(uuid4()),
-            status="failed",
-            output=None,
-            error_code="invalid_input",
-            exit_code=2,
-        )
-    raise NotImplementedError('L00尚未实现；请按docs/course/lessons/L00/02-交给AI.md增量完成')
+        return finish(error_code='invalid_input', exit_code=2)
+    request = ModelRequest(task=task.strip())
+    if len(request.task) > max_chars:
+        return finish(error_code='input_too_long', exit_code=2)
+    if not emit('model_started', status='started', task_chars=len(request.task)):
+        return trace_failure()
+    try:
+        response = client.complete(request)
+    except TimeoutError:
+        if not emit('model_finished', status='failed', error_code='model_timeout'):
+            return trace_failure()
+        return finish(error_code='model_timeout', exit_code=3)
+    if not emit('model_finished', status='succeeded'):
+        return trace_failure()
+    # ModelResponse is the current client contract; other types are a learner exercise.
+    if not response.text.strip():
+        return finish(error_code='invalid_response', exit_code=4)
+    return finish(output=response.text)

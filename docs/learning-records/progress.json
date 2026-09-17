@@ -1,4 +1,15 @@
 {
   "schema_version": 1,
-  "completed": {}
+  "completed": {},
+  "current_lesson": "L01",
+  "assisted_completion": {
+    "L00": {
+      "date": "2026-09-17",
+      "status": "基础学习阶段结束，可进入L01；独立迁移待复测",
+      "learner_work": "正常及超时运行记录；诊断作答；示例响应长度限制",
+      "ai_assistance": "应用基础实现；按用户要求补齐输入长度限制和边界测试",
+      "independent_transfer": "未独立验收",
+      "delayed_review": "待复测"
+    }
+  }
 }

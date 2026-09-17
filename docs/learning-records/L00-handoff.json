@@ -1,0 +1,100 @@
+{
+  "index_only_removals": [
+    ".idea/.gitignore",
+    ".idea/devagent-study.iml",
+    ".idea/devagent-study@1.iml",
+    ".idea/inspectionProfiles/profiles_settings.xml",
+    ".idea/modules.xml",
+    ".idea/vcs.xml"
+  ],
+  "changed_files": [
+    ".gitignore",
+    "README.md",
+    "devagent/app.py",
+    "devagent/__main__.py",
+    "devagent/fake_model.py",
+    "devagent/trace.py",
+    "devagent/demos/__init__.py",
+    "devagent/demos/l00.py",
+    "tests/test_l00.py",
+    "docs/learning-records/L00.md",
+    "docs/learning-records/L00-handoff.json"
+  ],
+  "lesson": "L00",
+  "git_commit_policy": "User authorized separate local commits for application and existing course repository; inspect git log for commit ids. No push.",
+  "learning_status": "L00 assisted learning stage complete; proceed to L01. Learner response-length exercise observed; input-length implementation delegated to AI. Independent transfer and delayed review remain unverified.",
+  "resolved_environment_issue": "Initial sandbox tests failed on temporary-directory access; same tests passed after authorized outside-sandbox execution.",
+  "next_prerequisites": [
+    "Learner explains one normal and one failure path",
+    "Independent transfer to be checked in a later review; input-length exercise completed with AI assistance",
+    "Learner answers prediction questions and records actual learning progress",
+    "L01 must preserve the existing domain contracts and regression tests"
+  ],
+  "source_head": "545195090b3089301edc4d192dc1cf414872bf56",
+  "interface_changes": [
+    "run_task(task, client, *, trace_path=DEFAULT_TRACE_PATH, max_chars=5000); cleaned input above limit rejected with input_too_long/2 before model call",
+    "ModelRequest/ModelResponse/RunResult fields unchanged",
+    "FakeModelClient.complete: success/timeout/bad_response and call_count",
+    "CLI --task --mode --trace-path; business exit codes 0/2/3/4/5",
+    "python -m devagent.demos.l00 --case or --list-cases; checked result exit 0/1/2"
+  ],
+  "blocked": [
+    {
+      "scope": "real model / embedding / persistent recovery / Java and database integration",
+      "reason": "not implemented or verified in L00; no paid API invoked",
+      "blocks_l00": false
+    }
+  ],
+  "commands": [
+    {
+      "test_count": 13,
+      "result": "passed",
+      "exit_code": 0,
+      "environment": "Windows 11 / Python 3.14.7 / approved outside sandbox",
+      "command": "python -B -m unittest discover -s tests -v"
+    },
+    {
+      "environment": "Windows 11 / Python 3.14.7 / approved outside sandbox",
+      "exit_code": 0,
+      "exit_code_basis": "verified=true maps to exit 0 in the executed demo; batch final exit 0",
+      "command": "python -B -m devagent.demos.l00 --case success",
+      "result": "verified=true; all checks true",
+      "test_count": null
+    },
+    {
+      "environment": "Windows 11 / Python 3.14.7 / approved outside sandbox",
+      "exit_code": 0,
+      "exit_code_basis": "verified=true maps to exit 0 in the executed demo; batch final exit 0",
+      "command": "python -B -m devagent.demos.l00 --case timeout",
+      "result": "verified=true; all checks true",
+      "test_count": null
+    },
+    {
+      "environment": "Windows 11 / Python 3.14.7 / approved outside sandbox",
+      "exit_code": 0,
+      "exit_code_basis": "verified=true maps to exit 0 in the executed demo; batch final exit 0",
+      "command": "python -B -m devagent.demos.l00 --case empty-response",
+      "result": "verified=true; all checks true",
+      "test_count": null
+    },
+    {
+      "environment": "Windows 11 / Python 3.14.7 / approved outside sandbox",
+      "exit_code": 0,
+      "exit_code_basis": "verified=true maps to exit 0 in the executed demo; batch final exit 0",
+      "command": "python -B -m devagent.demos.l00 --case empty-task",
+      "result": "verified=true; all checks true",
+      "test_count": null
+    },
+    {
+      "environment": "Windows 11 / Python 3.14.7 / approved outside sandbox",
+      "exit_code": 0,
+      "exit_code_basis": "verified=true maps to exit 0 in the executed demo; batch final exit 0",
+      "command": "python -B -m devagent.demos.l00 --case trace-append",
+      "result": "verified=true; all checks true",
+      "test_count": null
+    }
+  ],
+  "original_untracked_preserved": [
+    "docs/course/"
+  ]
+}

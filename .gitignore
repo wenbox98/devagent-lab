@@ -9,3 +9,21 @@ __pycache__/
 *.sqlite-shm
 *.sqlite-wal
 java-task-service/target/
+
+# IDE project metadata
+.idea/
+*.iml
+.vscode/
+
+# Python tooling and build outputs
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# Java compiler outputs
+*.class
+target/
