@@ -1,0 +1,1435 @@
+{
+  "version": "4.2.0",
+  "source": "devagent-course-v4.zip",
+  "changes": [
+    {
+      "lesson": "L00",
+      "path": "lessons/L00/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "b631fd13420bfd680e86f8e2daef6a4a0a9b52fc75923036873c54c80ecea106"
+    },
+    {
+      "lesson": "L00",
+      "path": "lessons/L00/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "d905c1b39b1314c90d3195f1e4ab59df9cd00dbfcfe6989cff56143a2ada7202",
+      "new_sha256": "5e886c90641a8fa480ffc67221aec03a10ca63bc595b35f6d95cf6906fc9b499"
+    },
+    {
+      "lesson": "L00",
+      "path": "lessons/L00/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "6d0110e7923c632f2df525db296cac71a15e82f1e4b78ba6581d3ad3796a0f2b",
+      "new_sha256": "a23f3df94b5208db9b70fe08997e921fd34dceabba3bbdc3db54009103db0f22"
+    },
+    {
+      "lesson": "L00",
+      "path": "lessons/L00/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "7c3135f73737204cab5d6d74a596f894b0e7493da295412f3e39e9c70aa9fbdf",
+      "new_sha256": "10c3e6e82b85b9a4d7b9a482862313b269da18e5f45051cfa37e31498d1f7377"
+    },
+    {
+      "lesson": "L00",
+      "path": "lessons/L00/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "43e52c72dc721d957ba5f5068d45db36254e1dc1c6acdfc4fe6819d2a7b1c90d",
+      "new_sha256": "d9175ddc375acaeefca1e53f519a182d2316d87e263e114b8bf900f4848fd717"
+    },
+    {
+      "lesson": "L00",
+      "path": "lessons/L00/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "5935134745afa789237ca624ab114fd1ab6e85a097b9d7461b92f17ff224f570",
+      "new_sha256": "0f1c0f22dc001b86df22486f40a5ee88b4e6e55043cac78ee34060edd32d818f"
+    },
+    {
+      "lesson": "L01",
+      "path": "lessons/L01/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "ec1b7f5579c176be2ae28d05d3ce37bb44f15750892f6bf692b567e68315095f"
+    },
+    {
+      "lesson": "L01",
+      "path": "lessons/L01/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "04da9d96a97d3a7111b625db4ddeb6a8b64e738f1f578ab2280a7cca19eb678b",
+      "new_sha256": "786a1b3da7048b8a650c783c8b589a45888fb02de0a006ce9a5cdd3d0640a8b6"
+    },
+    {
+      "lesson": "L01",
+      "path": "lessons/L01/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "90276dfcef7f60e36108987625c164bb083afe87bcb523e4c09f4cc61de844be",
+      "new_sha256": "f14b3ed1ff5311112b3b7875c22299d662d3173a368bf114a8250553dadf052d"
+    },
+    {
+      "lesson": "L01",
+      "path": "lessons/L01/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "b3f84113f55d2011cb6e8aa771a970e59939ed900c4f0596a89d8ed3b4af74d3",
+      "new_sha256": "41912324cc176852f30a3a03297478adda892e5f4b8e7697fc1f6af952f267e4"
+    },
+    {
+      "lesson": "L01",
+      "path": "lessons/L01/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "e6d45cbe9defb2c9582f5d3f0cfe2e0752ffca67f65df722316ae17be941d8e9",
+      "new_sha256": "e3a2ad643d51393be6b696b1ac993e97992c1951477f01ba286cf3e7aca88df4"
+    },
+    {
+      "lesson": "L01",
+      "path": "lessons/L01/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "aebfc04aec63c057c4c7e7751a3b3a0331dec6bf0e17ea2f90d9241410c3899a",
+      "new_sha256": "48facd7cea94555dabb43a206787cfff4f57fedd61d86aeba8906cc9edd68601"
+    },
+    {
+      "lesson": "L02",
+      "path": "lessons/L02/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "a3e6cb36f42189c74c1f7390a9012f54be66aea47187f760c4b5526c69706c8a"
+    },
+    {
+      "lesson": "L02",
+      "path": "lessons/L02/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "8929a39508c9b80ea27d598fd90650601e0ecbddbf257a7e1b6fb7f776628058",
+      "new_sha256": "0c052bcce8c4bc2de1702964874051d28a8acc288f8c535b7f15d0dd7c3b8b31"
+    },
+    {
+      "lesson": "L02",
+      "path": "lessons/L02/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "4ad6f91c518863fa801bd5d01f79b91963822080bdd6c7a82b5160b929928163",
+      "new_sha256": "c603d75648fab22396daf17a66803b479ae261efa6f297504624f646eaf7a87a"
+    },
+    {
+      "lesson": "L02",
+      "path": "lessons/L02/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "e322a72ef42c7c4acaf6d10787501ad2770eaf48f14a225e7ee4e3455223a6a2",
+      "new_sha256": "b09fb604e77143a41dfc1a48a72241c0148d49b9196ed42e2e72a389c905b55d"
+    },
+    {
+      "lesson": "L02",
+      "path": "lessons/L02/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "bdb3bcadfc983f9f5a58dd724db30847b9e73a12e00affc6db39fa0c241c5c80",
+      "new_sha256": "2b0420ceffce5ab8b97c7078f50fc9a2e923ca92e728c71ff544d57fd2aa5e73"
+    },
+    {
+      "lesson": "L02",
+      "path": "lessons/L02/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "2d18d601961b8445dc486b038d78b9fcc36f5dfc73dc58e6b336ee501c7a9a5c",
+      "new_sha256": "2a1118c2a0b5ddc9b1b744a8b481b94dc407ee52376bba545e43288af5727926"
+    },
+    {
+      "lesson": "L03",
+      "path": "lessons/L03/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "d030764c54995a0dc933bbaceccf5e8b98a3906221f54765116ec1525be5f4f6"
+    },
+    {
+      "lesson": "L03",
+      "path": "lessons/L03/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "ceac613e3e8c702884196b5f6c509ca8fa3f8f8e4ddad61951a34e0cabcbf074",
+      "new_sha256": "3589a9e66ad5017a8ff89058391d36ec0e7e323cb33fc72b65c887819c3297d7"
+    },
+    {
+      "lesson": "L03",
+      "path": "lessons/L03/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "64bc6e188b7df371dc8c508549b9f6ce4ab434aec5c452722a3305c8425efb41",
+      "new_sha256": "dc115830ad6a9bc725aa5e54a44db4a9de5a1fd025d75749ec687e3304e47ff9"
+    },
+    {
+      "lesson": "L03",
+      "path": "lessons/L03/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "87eaf2bfb907b2e6571d07585df97e9b4a31a8534e9b0e864a4db03b709be381",
+      "new_sha256": "60f22d2ea27c6b2a6793ff59408cb788f0c5f78ccb177ffbc4f4f40d383450f6"
+    },
+    {
+      "lesson": "L03",
+      "path": "lessons/L03/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "f4f146a3f90d4230bff004f95f3e8787bad4e431f8f26c1d0aa4da18e4092b94",
+      "new_sha256": "9a47a28aec4b91d9eae2df0563ef041acab00d45d13a4e5ebc9981973d9fdce1"
+    },
+    {
+      "lesson": "L03",
+      "path": "lessons/L03/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "daa4d9def0fe560abd77b6bce66a9aa954591904d7ee50d82d11a2cc1dd5ea4d",
+      "new_sha256": "38b580b9d469aa23bfaeeee475dfec8f4aa14fd759989075ea49efdc08ab139a"
+    },
+    {
+      "lesson": "L04",
+      "path": "lessons/L04/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "6ff2db0dc1698b9310d4eb12e3dacdd350f5501317ee3ddd3bdbbb4a8b9b4fe5"
+    },
+    {
+      "lesson": "L04",
+      "path": "lessons/L04/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "2b9a175ca1a9893d1c5fd29335ba95d00a05c057150b00b7f60d47ecdcf0affd",
+      "new_sha256": "c492f5fc6c2d6417099c3269f3bcb18d9bca73207d51b7f8a3f2eb4b3801ba7c"
+    },
+    {
+      "lesson": "L04",
+      "path": "lessons/L04/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "14b97364d793df9da351358cff8109866e72f7cf978aac43bb9c48dcbaa9eca4",
+      "new_sha256": "3078b1b0d9cda89474088f2f66888c769f8ad94f852184ab4b00744bcdf0672d"
+    },
+    {
+      "lesson": "L04",
+      "path": "lessons/L04/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "25160ef196f36d8919e3a5c3cd2e2bc4b5d4832097b725d12be666d730cc64f7",
+      "new_sha256": "22cc263fefeb2f306d4141b07d68b0e43fe2abc6c84e4bfe4e7f3a785a8ce51a"
+    },
+    {
+      "lesson": "L04",
+      "path": "lessons/L04/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "40b9fd2493e29a68960184e6be2cc34a3a7ebfd4b4a0ab058b11ccbdfe1d4685",
+      "new_sha256": "4370d7d02e33dd265bb4e6ac7f55ee7ac76758b3876d7cc62a902f526503a054"
+    },
+    {
+      "lesson": "L04",
+      "path": "lessons/L04/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "6d7984edb2d5652ab405a3717c43f93f457d0df11511529d3ab6ced94184129d",
+      "new_sha256": "fa4da4bf96edc167ae773efabc13af0955742ca0da92103d00297c9af9dcc968"
+    },
+    {
+      "lesson": "L05",
+      "path": "lessons/L05/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "15c66a7f9f77edf8232635265b135f4ad2dcf38406a99debf18c7079d08b2d3e"
+    },
+    {
+      "lesson": "L05",
+      "path": "lessons/L05/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "89ef7ab8b9aaf68c49af3e904a25981be7b937c617e9803c32c0cdd19bc177b3",
+      "new_sha256": "525335dbcc5cbfa52f15915ba67abca1f1ecc56b376c12931535062bb6ea7535"
+    },
+    {
+      "lesson": "L05",
+      "path": "lessons/L05/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "672c738aa66dd19f85ba6cc844f5d80e8aea8f119dca4a5b27c5c0bb1cdc1418",
+      "new_sha256": "b2b0c759b2ad0381d7f22eed64a73534db0d83d3820d7bb46fdabd35bfa821dc"
+    },
+    {
+      "lesson": "L05",
+      "path": "lessons/L05/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "628b6e0746faeb6bc357be88b3b4c87bfcc55c3e590e267ee6b03bad8c300106",
+      "new_sha256": "793b49cd10885754843d4d78b5b69c0003ba6a4766b06db68276012b7e900612"
+    },
+    {
+      "lesson": "L05",
+      "path": "lessons/L05/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "7999ce9aefee9cc547be29ffab8f227774cb40d257db6b694aca2cc30d909555",
+      "new_sha256": "68d320166ce7a2836813ee0c7e60a35eec4e079034862a87ffa35cfe01ee1aa4"
+    },
+    {
+      "lesson": "L05",
+      "path": "lessons/L05/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "aeab1ba77e9cb31ca508b327a9c3d2d0b8277228f965d6c5f84d5ad785664d8b",
+      "new_sha256": "a7231b6cb3e0ac296120e8b18227db3f8447fee1df0991ff2bda08bc71bcef65"
+    },
+    {
+      "lesson": "L06",
+      "path": "lessons/L06/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "d1479b28b419d7ad267bb5754a762289515b716a4904a47a6b8145539c646571"
+    },
+    {
+      "lesson": "L06",
+      "path": "lessons/L06/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "38cda197ffa3e100d791f32a59fdf3c21809316aab73cc90c51f34a015659728",
+      "new_sha256": "5194e88708f7d234cab9b9512f0e8229c6467b24cc5776ea0462071865ca3b28"
+    },
+    {
+      "lesson": "L06",
+      "path": "lessons/L06/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "a29e3ab850b18a7716d168d75e1b932b9345680ed06467371460b1b5cdc5d6e9",
+      "new_sha256": "e04abb36d5aa3d2d17ba8f15d54704685a8e96161919c6504d652b7bdf8007bc"
+    },
+    {
+      "lesson": "L06",
+      "path": "lessons/L06/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "84bd4044c41a2ce54680198bb3d4ea873c82b57e3abb0fe247ba8eed4b77aec8",
+      "new_sha256": "c806abffbea1c9d71d578c11bebbd9024b371f978ab09fca47f0eda9b45d7db7"
+    },
+    {
+      "lesson": "L06",
+      "path": "lessons/L06/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "4c28ec6272a3ecd3ab444a1341569e2ae7bbdc1492ce7398e6bd1ee7d98c2add",
+      "new_sha256": "fb376c5c64a7803a4cbede309d312297c98ebca296081832c33ff2bdda85e27b"
+    },
+    {
+      "lesson": "L06",
+      "path": "lessons/L06/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "34ca5e1fdb600993900a7a43a366bcf86cb7ee741bfe0cb9c25d64eaa1f9e14f",
+      "new_sha256": "537481d9f0a66e0d357ca12f46b2e7ea7a8af9f6886542e2fb39a39683436872"
+    },
+    {
+      "lesson": "L07",
+      "path": "lessons/L07/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "39ea71e52466a4da1f5836c8f7e07e6c3a17fd89fafa0281957ad1098bcd11a6"
+    },
+    {
+      "lesson": "L07",
+      "path": "lessons/L07/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "8048d2eba6a5399e239095d96181283baae8ae34b502cc7b797f416a19bb4993",
+      "new_sha256": "2b621b37946d09a20dec6f021cd273d3d17f0f419978ee43ac0f1d427b073009"
+    },
+    {
+      "lesson": "L07",
+      "path": "lessons/L07/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "9665579148a0f69ddc18d1d8746ffa7180a354e4a41723fac7ebcca5612eb9b0",
+      "new_sha256": "872f152153203cff66b2d5a99d3dcd77f3bc45bea9a5e4ada26d7ef39c8fabd4"
+    },
+    {
+      "lesson": "L07",
+      "path": "lessons/L07/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "e01d07fe8165d6586cdee2744be74f4948d00c5ffe1cd4a08ea287b27a3480e0",
+      "new_sha256": "8bed42e45e0e85e6e3499df03db57929dd07653bc4fd871dc30954c573f4854d"
+    },
+    {
+      "lesson": "L07",
+      "path": "lessons/L07/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "1f3a87be383045fbc67768faa253acf74758710d59d7d1565e70ece46de125d0",
+      "new_sha256": "4c840b1ea8b33033de487be1a4a57c7a5f3d3d20d75bd6daac97aca5c5d798ba"
+    },
+    {
+      "lesson": "L07",
+      "path": "lessons/L07/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "c9532ba43e4f1699b66fd85752dd9696def4105afdf1688abd96437f39331f7a",
+      "new_sha256": "47ec30a13c3ab7f37ef3a6ae25c7d8cf60e77849a5ea5d8ba2e8205d98f6927c"
+    },
+    {
+      "lesson": "L08",
+      "path": "lessons/L08/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "a750cae1dbc8e9066b3f81b4b1c6e7df64c977e2239d1600ccf76bf60030900f"
+    },
+    {
+      "lesson": "L08",
+      "path": "lessons/L08/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "0a93975865870524bcdb874841ea17959ea247ad47badbbcc578d7fbfc06fbaa",
+      "new_sha256": "774ddefea941f71cc94a83e8c8e19807a12474d7965d8fe1d90a470cdbdcd45e"
+    },
+    {
+      "lesson": "L08",
+      "path": "lessons/L08/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "e9f9adcb4bee518d5efae86f0735ac8e4b975f3d8a9ff83a3379211dec65e492",
+      "new_sha256": "1bb8af3cab954905571008a4e8cc3c93840478908c7d0ff7001bb2a1dd2829c3"
+    },
+    {
+      "lesson": "L08",
+      "path": "lessons/L08/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "19b2480844aa7cd19aca793b33d4644fca7b865c181f93e5535218e61662be53",
+      "new_sha256": "b3a155718ab7c038cb773cfcf49104658fbba8a4b3915465fe890cef49e886be"
+    },
+    {
+      "lesson": "L08",
+      "path": "lessons/L08/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "16d5bf0cd1d7f3d5cfbb22f44b6ab3e73c538b7c0f0209d7c53a6f9562c4ead3",
+      "new_sha256": "99bdbb7dc84c5b2ae58c1f0b5253bf45443d25654466133d4f614e5b919ad3ce"
+    },
+    {
+      "lesson": "L08",
+      "path": "lessons/L08/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "cafc8f9e78b4693885a5e37822c0dad16e3f105d4756d200c039f621e738eeff",
+      "new_sha256": "d232961aa86d69ad0b9b76ff009e0f009efdcc480ef4ec89a2d9404671775655"
+    },
+    {
+      "lesson": "L09",
+      "path": "lessons/L09/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "b3e06642ae49b771b6f0599cf470cd975749aa6faab810d38a269861cb2137f6"
+    },
+    {
+      "lesson": "L09",
+      "path": "lessons/L09/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "d20a134de523e3edeab8a635e8d8eb50f30dfdc7b906a470ce68e83469175396",
+      "new_sha256": "15bcaaba32976e4c89ae31bacaa6d609f3c7553574e9b6b6e14505dc3aa6d174"
+    },
+    {
+      "lesson": "L09",
+      "path": "lessons/L09/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "ee2e117756750102d8d02454d988411ae7aff457db24fff3df1d8b4ec25fe36a",
+      "new_sha256": "f406365ea462f6b7ffcf5f72c54a2eaefe0ba181e6b20c3984cc69b28502e357"
+    },
+    {
+      "lesson": "L09",
+      "path": "lessons/L09/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "c13425f4e9f8dee74c6853e5719c3fb69a060e1b5b9f47b9057f05a116738548",
+      "new_sha256": "271071d5bf67cef3309bbd7f091d1deb91c5c5e914f59b352d66bfa9dfc806c2"
+    },
+    {
+      "lesson": "L09",
+      "path": "lessons/L09/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "0e3d59c05d684284df30ca533e0a99f2fe918370d9d41809714047b4bc76c926",
+      "new_sha256": "874b88448b27ecc99c9b608f40aebe56f0e91b16b64d2399eed1647c54275122"
+    },
+    {
+      "lesson": "L09",
+      "path": "lessons/L09/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "085dfa860ff373713099667050019f48a1162e06e9aee686a8d508107cd54492",
+      "new_sha256": "2a246f4eb063aeace2886b3979f059a1e6ca3617a38cbbe2fce4899e698f7258"
+    },
+    {
+      "lesson": "L10",
+      "path": "lessons/L10/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "597c3c09663a1188c858265568c62e764095c664ae15a5d8c8cc6ca6741574e1"
+    },
+    {
+      "lesson": "L10",
+      "path": "lessons/L10/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "d57f956d4ac17b3cafbc5143adfbbf2da95f96a5e7f20e68dc700f204451a86a",
+      "new_sha256": "57e234e2d9fe823fd1c463f32cc3753e771b38572c222339ff8493b55dd025d3"
+    },
+    {
+      "lesson": "L10",
+      "path": "lessons/L10/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "077390d954ecb39b72a63be9449911b66192e950840f33ab1ec8edf218555c24",
+      "new_sha256": "7f36c57cb8b5ac5f3aee82057fbf81b7e3942efe6829848d04f78804c424fd11"
+    },
+    {
+      "lesson": "L10",
+      "path": "lessons/L10/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "133bcaa6842fbbf2da820c3b5e9cf355576a13ac64011dc108a25353eaa3ed09",
+      "new_sha256": "9a09eb444a39539f1e5af70546c59a3c95dd18e95bf23cf79a74365b1a0ff97f"
+    },
+    {
+      "lesson": "L10",
+      "path": "lessons/L10/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "e5136ea4a5cd8e770a8fda6a131fd82dfdad779c391bed8e38e7192548e4e61e",
+      "new_sha256": "5560f19864ba5a891821493c8fcbb6bd48eb460d54362cb27f933a2004641ce9"
+    },
+    {
+      "lesson": "L10",
+      "path": "lessons/L10/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "dd4504c18f65711a5e9ea758310a5eee32cd7958f7f88ee3d59a447e5d2f93c7",
+      "new_sha256": "0458ed41fa645f8ace22e8073677111930bafae1955b800f0fd49396a77cd754"
+    },
+    {
+      "lesson": "L11",
+      "path": "lessons/L11/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "8d00fde73def669a3425ebc402e47151ce2e39f1111ef38621fc7b48ccce51d3"
+    },
+    {
+      "lesson": "L11",
+      "path": "lessons/L11/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "c4e2367516d2d20a569ca34b11243be5b0fe08a21c5c4bdb8fa38ad65a0bfc19",
+      "new_sha256": "758c80f1116e6e925e0255f92209bd74909bfd1aec0f981d466ba65ee0a03d1b"
+    },
+    {
+      "lesson": "L11",
+      "path": "lessons/L11/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "630cb7b860432ced848f0ef61f3053fa2478776eec6475f976063ac0a1bc16df",
+      "new_sha256": "beef587c2573dcf44164a6c03c549429ee9afb27d1c04d0ccd547481c9918181"
+    },
+    {
+      "lesson": "L11",
+      "path": "lessons/L11/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "024e1e446e844121455d6e202b0aaef5c87d2ec0e1fde857edffddf5b766347d",
+      "new_sha256": "1e08229f043552f8aaf4c20786d61fcfa1bfe02b45aac3279b03f699b3ab63aa"
+    },
+    {
+      "lesson": "L11",
+      "path": "lessons/L11/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "258f2e0d1fbbae7acc93bc92de04e6343241cc978c876e65e201b812fde8c6e7",
+      "new_sha256": "cf7a739e1f0a0d918b40dd9ac08422f961990947dde61a2a3ad0397166b9f56b"
+    },
+    {
+      "lesson": "L11",
+      "path": "lessons/L11/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "d71a35be4edda8ae058116b19837478949cb67aba38e0ea8b06c218e44021cf4",
+      "new_sha256": "44c00b87d29fc5a08fcfb98bc66f3b00fc1b933caa3ba40d74bf506b1d7d120e"
+    },
+    {
+      "lesson": "L12",
+      "path": "lessons/L12/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "4419b6ff3765f2580107cd0c847ca706be739f7ded62766cbe653d3dae0b7464"
+    },
+    {
+      "lesson": "L12",
+      "path": "lessons/L12/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "672c9b1a14060e44e9b36b2829fc9ac14501fdae72371db347f53bfab0c1f87c",
+      "new_sha256": "e5d7641177726bb43718e5152b73e476f1fcc09b14a093965fb8e46e48ab2dfb"
+    },
+    {
+      "lesson": "L12",
+      "path": "lessons/L12/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "ac3ade97d89b8fa6cc2634ee1c883bf090d89c70b1167a6f51bf534b91796af4",
+      "new_sha256": "c60c6bada1967968cc64eda885e15a3ec5789dae7057185d1502093aca8da993"
+    },
+    {
+      "lesson": "L12",
+      "path": "lessons/L12/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "62b7ab98d74a2667a6eec4e68f3c8795b99e5f2c6230b8530585089a3ab85bb6",
+      "new_sha256": "fa8849928c09bc29b29dbc11f0b1b57bef28ef0375c302f0f1ccf967f34b88e5"
+    },
+    {
+      "lesson": "L12",
+      "path": "lessons/L12/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "1e0e4e8feb4a3be555eaa72816ec22733cde5cbe5eef4e658bd1154f1df778c3",
+      "new_sha256": "c05f59e1d15e443b9a656297f376706e9dc1e9bcde1d11a9fdef8ac301b6ea9f"
+    },
+    {
+      "lesson": "L12",
+      "path": "lessons/L12/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "55b53aa489ced63a7477aba86fba3bb8887755115891f5655171d491dff6efb7",
+      "new_sha256": "2468058be41532e8295e6a39f1aa4f332010335966cbbee820013301d5286cee"
+    },
+    {
+      "lesson": "F01",
+      "path": "lessons/F01/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "45bb583dd1d3b1ce6c5123828f13a8fa12d5e758f528fe9628c65791aaec3ccd"
+    },
+    {
+      "lesson": "F01",
+      "path": "lessons/F01/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "42fb4b1660d0c164069ee569c919660bf93c1b9a057cd7f110911714a61435cc",
+      "new_sha256": "04aa0318295cc117e55f347e566fca0f796f95bb56fcf3bf05247f23c7424f3d"
+    },
+    {
+      "lesson": "F01",
+      "path": "lessons/F01/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "fdd9bac94a8591f05348c76c2112d5a47e236b7340662676d63a4bf8210a4bca",
+      "new_sha256": "addf02554d8a755b8b73c937a3c17bb3e3cc7a8137299f1efba91ff37fc9047f"
+    },
+    {
+      "lesson": "F01",
+      "path": "lessons/F01/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "ba35a85fadbab91f1056b997e6993c12f14782ae5b55aff16603567549eb90f5",
+      "new_sha256": "393db07940c00741865a56d71ae925e195fcc876bdcdf98f8031e0305a97f3a5"
+    },
+    {
+      "lesson": "F01",
+      "path": "lessons/F01/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "7a5e9b323b19adf921f2b7920c3572a36444e5b8a024628e37e4654cd9c01986",
+      "new_sha256": "a0332b3d83c8780c8f4ee8ea8d427f03e629d42a837d8dfe27b12a104e4390b2"
+    },
+    {
+      "lesson": "F01",
+      "path": "lessons/F01/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "a7a1df00a3595123ff881f4385af49fbb8ee1827364acb78d6b6de90df546cfb",
+      "new_sha256": "0eb1860de28402fb22113dab36e5bbf8f9f833e3489c857878efae106feb0d6c"
+    },
+    {
+      "lesson": "F02",
+      "path": "lessons/F02/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "b2c3e1ca90c934179d5b9c2817e98f5b160fe2e731d74ca39b7ef430674f1eec"
+    },
+    {
+      "lesson": "F02",
+      "path": "lessons/F02/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "b34b89e634518c103002dee43fc271ddb6d4dbf7671f6db8f0a404070583658a",
+      "new_sha256": "9bba98145158b52d20d98e54ddeddc14400f7d9a91c01b1b56f30376d8db1b4a"
+    },
+    {
+      "lesson": "F02",
+      "path": "lessons/F02/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "de6ec0fd7c94b0fce3bb84592b83bdce12a8168d0ca17e677b2a1df680ddfa36",
+      "new_sha256": "2e02069e5064fccc64e5240087e24786bd269a3d319a0eee2caa53d318964b75"
+    },
+    {
+      "lesson": "F02",
+      "path": "lessons/F02/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "c216cc4e8f488b262c309411d363c2a0461442cf3b22ce69782d016c2c09fab0",
+      "new_sha256": "86b8e68abff7f7734c3cc35d7c57754b538b4336b2447fdbb06cbc0404f7613c"
+    },
+    {
+      "lesson": "F02",
+      "path": "lessons/F02/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "510a1bd0d89d7d7da77cf5cbca106b7b18b8449fc0eb0054f9d931fcc21aa04b",
+      "new_sha256": "10b5da0785767e715efde1b86499e7b62e7127cea05f74f4f35146c5a58a57ce"
+    },
+    {
+      "lesson": "F02",
+      "path": "lessons/F02/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "6f71b04367039b5e5d2b4a4df910b7b19b9bd19c9a234774ebd9496fc0112298",
+      "new_sha256": "2a72fb1a9d2a925565982868e30bce7cefaef89ff478e97608f7b18d825d0253"
+    },
+    {
+      "lesson": "L13",
+      "path": "lessons/L13/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "c5e60e6f315ab0d67a9e0b6e796dd82f583f864cd21d2497db820a70ee904cbe"
+    },
+    {
+      "lesson": "L13",
+      "path": "lessons/L13/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "7a0b8ced4d92247a94b8f7f0b0ce298c22324ec090658de7616340f5afba5505",
+      "new_sha256": "9c87181fef0c039686a81ff2cbd59ccd6d9ced9a5b78ac5b45c88538b822e480"
+    },
+    {
+      "lesson": "L13",
+      "path": "lessons/L13/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "8cf9ef086000b861db82a944f4cd8c2e6bbed05218214fb516e2d3870a2149bb",
+      "new_sha256": "a436e523dbb93216d5cc8fa4665c2c1f3e27a4a6506a52ca7a05f15130357a06"
+    },
+    {
+      "lesson": "L13",
+      "path": "lessons/L13/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "eb6ba8dc0c339a109f4d86d878fa94a85401b1adf8501c2fbfb22658af54671e",
+      "new_sha256": "58e60519db8d663ed409874b10067b1d5bbd1610a3018257fbb49ce4803f768c"
+    },
+    {
+      "lesson": "L13",
+      "path": "lessons/L13/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "940a207f5ef1745f76e2289c4138b548857ad5af61c94cdd23410bc5225aec81",
+      "new_sha256": "352ff810e33d4fb1e3af60df8ecc66691fbf0c3b3c607a95fda368d3f95949f1"
+    },
+    {
+      "lesson": "L13",
+      "path": "lessons/L13/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "2eb226af051087b1d3a13d35167b36da59eacaa5fa0cf57235153c482e1738a1",
+      "new_sha256": "ee48e6b0586c9282ee0220a959f319d91bd176d24aa39d529b7c8b102aed1b4d"
+    },
+    {
+      "lesson": "L14",
+      "path": "lessons/L14/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "a4220f47e3ae62afe95b8e964066161b72e68737a464b0dd6527b8f223a3615d"
+    },
+    {
+      "lesson": "L14",
+      "path": "lessons/L14/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "f07c67657a25b3f8d486dc18524589986726ae5af34f7f18f9a708538e49ed18",
+      "new_sha256": "a76ab4c64303c7bcdd6ab40fdc74c6b3df19905b26f92928bfa591ba8a097ffa"
+    },
+    {
+      "lesson": "L14",
+      "path": "lessons/L14/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "03de1f02fe02540ad18c3658e3a60cfcc1e54f9237e457129ab3d2a422d87cde",
+      "new_sha256": "1a2081dbde5f1eff09fa4578da5b2a73bb682691209d4e5443770d82f5e98a09"
+    },
+    {
+      "lesson": "L14",
+      "path": "lessons/L14/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "21a5b276e7ae816e8c7337c6f0637299b09bba66d624cabcd286aba895d5fd62",
+      "new_sha256": "7cfa4af9c21fb261e7fcb327d34829258a07788d385256fa490a7a0c80c7a76b"
+    },
+    {
+      "lesson": "L14",
+      "path": "lessons/L14/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "0887c765b17910d00095fa0ca1be8f1fb43ad8589988c376428d9f8f6fbd842f",
+      "new_sha256": "517fbd256fc9e5a413c80c943da345a25921ec79fa8c53377d3438cea17eb1d4"
+    },
+    {
+      "lesson": "L14",
+      "path": "lessons/L14/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "568c515a46113fe8d46e461b8fef1b9a597acd487df0180c2b7435f89d9399c0",
+      "new_sha256": "311dabb308230d5eb294d3ed47718474fa52b29398d7a0f0a31b04a75b3e4930"
+    },
+    {
+      "lesson": "L15",
+      "path": "lessons/L15/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "668ebe12fda997bec681f4c3d1a2540e00d32208bd29a6403877a0d2bf4f056f"
+    },
+    {
+      "lesson": "L15",
+      "path": "lessons/L15/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "046ec01bfaa32f855844520d2f1cc69e9fd745d94132ee02beda934d4c86d376",
+      "new_sha256": "238fdeacad3facb55dfb73c79ccb053fa75826b00bf7161c22f5b6623b3cfd72"
+    },
+    {
+      "lesson": "L15",
+      "path": "lessons/L15/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "217c36f25fbea10720150a6095a4a4ae605af7a0938c7f676888314dfe87e51f",
+      "new_sha256": "922528ddcf18d655eea4c3739b007a78e6c80f3423754bf5f984ac5a900d8efa"
+    },
+    {
+      "lesson": "L15",
+      "path": "lessons/L15/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "0c24aea4d2728150a03b3d24e8b5f0b203e5ef8b32e4fc098cc622659752cff8",
+      "new_sha256": "734e969a6d80d51d3b19b41b808814f73227b16ac871a8845642301516ba57d4"
+    },
+    {
+      "lesson": "L15",
+      "path": "lessons/L15/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "27e6437d8c0010e49d8aea68a1c04b2d29e1abdd06a83a6164e89a7367db4471",
+      "new_sha256": "9e7970689783904ecdd2665eb6fa92eed1a4f76e5a0fb6e7600c81664f9b1898"
+    },
+    {
+      "lesson": "L15",
+      "path": "lessons/L15/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "b166ad61d598b632182a0f82c5f3b4717dd7663ca0f4a22adbc9994ac5c4e303",
+      "new_sha256": "ffa141f75d25993ccf723d1e1bcb9f8a6b31df0dc6bc1efde041a6d081788ecb"
+    },
+    {
+      "lesson": "L16",
+      "path": "lessons/L16/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "b2bbb8eef86a62fa76a819b7cd765a1908602e0da78e44af8a9345f80246e51a"
+    },
+    {
+      "lesson": "L16",
+      "path": "lessons/L16/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "d50045a0fc115af030aae61d29e685799c0bf84c4726b09d2ac8073e4d9ce8a4",
+      "new_sha256": "98ce4a766bc51ca37ec795693cd6db130a5fe90b886bfcd4f698f97ddfca65bf"
+    },
+    {
+      "lesson": "L16",
+      "path": "lessons/L16/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "fb4ea4dcdece3db4ebf3cb63079dafed67942fa050c7e5ed9be3ea3842ecd219",
+      "new_sha256": "31fe5d3ad51a4a2ecf6d137b95bd60ebc4e981c6795328b858fd92746b263c3e"
+    },
+    {
+      "lesson": "L16",
+      "path": "lessons/L16/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "17f8d08022b3e60a391776792198d2f8336e1751f10b2848c3d08678c00bcd59",
+      "new_sha256": "a980c33f2be7f2ef791e66839d4d4960f0b8547dc67709d9345c5be0088c8e84"
+    },
+    {
+      "lesson": "L16",
+      "path": "lessons/L16/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "92d71cc59a6dc334ca99dbed9addecb64067e50bd4dbe4a91d3c2f44976c93b1",
+      "new_sha256": "a3cab2f899d99615526995e7ecc30e3683073274aaaa382f543c3635ce2953d9"
+    },
+    {
+      "lesson": "L16",
+      "path": "lessons/L16/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "3baaa437a065c8d13a526cb09214757d415ca723f12222b5024f73c8aec1eb44",
+      "new_sha256": "c389b43e04cf1d1a64effe0ea6478094419c028b5cf78f36293aff5854ab7fee"
+    },
+    {
+      "lesson": "L17",
+      "path": "lessons/L17/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "62b4a112cdac8deb7d3e0e4572329ee56f639277e8849566047eaebe2359b32f"
+    },
+    {
+      "lesson": "L17",
+      "path": "lessons/L17/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "4f4e45c0af9f05d55af91b612e3a8ae264f06556a7251027d52c199620cdf6b4",
+      "new_sha256": "31748cad12262466a43cc06bed4aa6ab45735b2f7b644ed48e34e6efd78ef9b7"
+    },
+    {
+      "lesson": "L17",
+      "path": "lessons/L17/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "93faba8115afceb89f51df7ba6c72b1d9d2baaa0f25531f723d56833058da625",
+      "new_sha256": "481a97d21f7a0ba54f287a640e536370079b3e309bfd278d88888a1eb2155fcd"
+    },
+    {
+      "lesson": "L17",
+      "path": "lessons/L17/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "03548b9a79a934c29dc79bd2083643e8274064d97124f1f5723865da53f828a3",
+      "new_sha256": "115d4806e571d8877d9080905b89ff34ca21a42ad40ed109670812ad954ba050"
+    },
+    {
+      "lesson": "L17",
+      "path": "lessons/L17/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "2a8bb2a5e8aad2166f4edf3958fa0b60524af786f1f919819696e1f1365984a1",
+      "new_sha256": "8b4ca9b724f05536dc22490b522b16f436582e0117a46b23b4fa014d65cdc2aa"
+    },
+    {
+      "lesson": "L17",
+      "path": "lessons/L17/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "cd3af8c6ef145facef940822142b606767b7f3a14b8cc81225f60862a7143dcc",
+      "new_sha256": "9af8c1cf1b288f5ff4cb45a08973cf5169e11715d559f046c8df6482f1920b0d"
+    },
+    {
+      "lesson": "L18",
+      "path": "lessons/L18/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "75d8088e4f479917eaabd9a29fc3aaeb3ffdbc8cd3a80aab58bd8d0df700fdd6"
+    },
+    {
+      "lesson": "L18",
+      "path": "lessons/L18/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "58686fee010ed2f3c647ef749694e7b66a905562984721ea3e3551a69d29bc57",
+      "new_sha256": "4842c8663079c858954e8c9b031d6bb77277acd128ba9383ca716c366a0ef2e8"
+    },
+    {
+      "lesson": "L18",
+      "path": "lessons/L18/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "0bff4c08deaf43206fb67ac162a7378b1e7baf7e11127dddb68dcc24b3a4d108",
+      "new_sha256": "a908780bd2bbae3b34d39ea77714819be80e3935976f8e36f7d9efb27e762443"
+    },
+    {
+      "lesson": "L18",
+      "path": "lessons/L18/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "d716cf295f86dacb4120321705eccb45fc0d12a8b376a1221e2d2948b9077fdc",
+      "new_sha256": "f32ae474ffe2900670fde8247c65f1437754f09d1b1148636420e265a1fcb655"
+    },
+    {
+      "lesson": "L18",
+      "path": "lessons/L18/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "ca49d1dc9f358716ed2a7ccda2aa911a76642791bb28132c47ba81cc9af03d52",
+      "new_sha256": "ebfe0b29bc0e8d892a0471928e9442eb613b4095035f57abfca978a49c339e95"
+    },
+    {
+      "lesson": "L18",
+      "path": "lessons/L18/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "3ed8b4cb74c128e9b2969c7db86a3db10a2fdee19b13557dfaddf686cfa4a424",
+      "new_sha256": "64ef36ddf65ce4597c36dc418797f88949940329ad7a358631b018dd014600b9"
+    },
+    {
+      "lesson": "F03",
+      "path": "lessons/F03/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "873cde6f3a5e168813d1d64a7374bc092d5479ad6914ba52e6b32d2d989a4f83"
+    },
+    {
+      "lesson": "F03",
+      "path": "lessons/F03/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "c021d2fe5ce25d2ed2d186a3491b2cf5b326cac4e5f7fd3a26974b803c7f8cc8",
+      "new_sha256": "3fb57afffa037f2c3a3f05a53a81dc878a223a222320ecf59ec5464c5d72e4e6"
+    },
+    {
+      "lesson": "F03",
+      "path": "lessons/F03/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "f5977a65d4a83e41f62770b77c0d7b6007732597af0517c4bf5eac3966cf1234",
+      "new_sha256": "bf6ebf2d1cca67bfa9c79d00be916209b4a1913a9c5416b7e3597cd315db04b0"
+    },
+    {
+      "lesson": "F03",
+      "path": "lessons/F03/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "16d2da5a94a9603323136f6ccdab36fa7948900dbc10a099da4dab49b36881d1",
+      "new_sha256": "fae6e464d641111f3d09c38bc3c4eca73fab1645283a24367531f1108664e94c"
+    },
+    {
+      "lesson": "F03",
+      "path": "lessons/F03/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "8afaab6f2ba9a990e174fdb44d238689bda03c05db9d1fe1fc993ad9eef00daa",
+      "new_sha256": "ef13017a0a6c39b1a1764d7883e3cb4df3d6ad6ffd862c2ada66881b9ca88c01"
+    },
+    {
+      "lesson": "F03",
+      "path": "lessons/F03/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "85e58e86b8df2ced104089cf1c375dfd91ed55ecada20b42a14c97d2d679fd5e",
+      "new_sha256": "897d28a1cb9db9233e88b5e7bb8c9b178fd4db9b2207caadfb1138c02403c6db"
+    },
+    {
+      "lesson": "F04",
+      "path": "lessons/F04/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "4e4370ba7c4230466a4c898f7cdf97feb56ee96d842efee4887494d9a61ecb93"
+    },
+    {
+      "lesson": "F04",
+      "path": "lessons/F04/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "8722fc85d91557c955802ad0e5232a5acb78f1dc374c2786cc8521222c3e89d6",
+      "new_sha256": "c023d6f352bab0490799c77b07159ff810e791fd1ff071485b3b5c67924d18d2"
+    },
+    {
+      "lesson": "F04",
+      "path": "lessons/F04/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "f0a5c30d8fdad5981e854ac4e7b8c137f0d08607feb25a7197d3ad9b9dc41f90",
+      "new_sha256": "d3817e1d43b1568ada9d4a98c5840d20ce4d32583b68ecf2580b58db31d53905"
+    },
+    {
+      "lesson": "F04",
+      "path": "lessons/F04/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "0938c62faf16947b77e0c3dcd437297cf838fdeba84ecfe5f83a79e392de1015",
+      "new_sha256": "d7bcfee2dead59d3e3e70ced56f7172b3982d5532c289769628b8539c64b8cb1"
+    },
+    {
+      "lesson": "F04",
+      "path": "lessons/F04/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "ad28ef096e4342e56cd8c0c27224903e06c5c9122b38b367997bf83f9553d078",
+      "new_sha256": "36fd651129b5864c840135e88cc10c1f937749f1ca266eb8dc5e65a8ed1a6789"
+    },
+    {
+      "lesson": "F04",
+      "path": "lessons/F04/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "702133fcdf3b4d42efc7ab29beeaac344bcbdbda0726916c68ed3127424a45b5",
+      "new_sha256": "4c1b0f72bc4fcd51ef9b27bfba7cbaea027cfe398211b254b9fd4a3456221cd1"
+    },
+    {
+      "lesson": "F05",
+      "path": "lessons/F05/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "d23dc09762713ff61dbd4fc4ebd101bef169369757fc46f1e5ce39744a1d16ca"
+    },
+    {
+      "lesson": "F05",
+      "path": "lessons/F05/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "3cca47bc60364c77891be85dd3d7a71e7d010f6dd5cd061f550bbe2d1b1f1c60",
+      "new_sha256": "d9052adf8302c85c9260cb973a2375dca6719ec42a7e7b951e51b9fae8cc64d4"
+    },
+    {
+      "lesson": "F05",
+      "path": "lessons/F05/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "82cd9f9e65f470d1bd267f0a1426bf49ef2c771cdb6145d632499d4718ac816b",
+      "new_sha256": "696b9c00d9f98d2f8950846d8242daf083ee6f4a136b9f32d5bec43b9f7ba9ab"
+    },
+    {
+      "lesson": "F05",
+      "path": "lessons/F05/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "da087d79353883e6ef3acc72cd927d6f8a36a0ed300678a5e06d2bf8f38a4c5d",
+      "new_sha256": "c0d44fc4bed083c5e601b26f09f70c5ad5da11194beb1cf218c61ccd863a8989"
+    },
+    {
+      "lesson": "F05",
+      "path": "lessons/F05/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "fead1e01bd4ed3933f0702181342876800e006db6f5714b68bc5bcf8a2d48510",
+      "new_sha256": "7cdb41d27dc5db8fcb9a62dbc44d202a0056ab54c3f9039c1e7dbc7002e48e56"
+    },
+    {
+      "lesson": "F05",
+      "path": "lessons/F05/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "f2ea9e08739128cdbb881565c46302979977ac441c1a271e7472e1ddb6aabb67",
+      "new_sha256": "df9a63699663c55449d1671c7affaddb96a234152c79783bf315418d8e6514eb"
+    },
+    {
+      "lesson": "F06",
+      "path": "lessons/F06/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "c2119360534083a2aaf6f47838194edb2939f932219080389c5ceceba183fe95"
+    },
+    {
+      "lesson": "F06",
+      "path": "lessons/F06/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "f9762d0947528d76678b2e5fdb54bb72b5b2f4abe6a3b809d86198cc36e12c91",
+      "new_sha256": "b4f24abcd4223ac814954fe71a111f53fa8aa12b6b02527abef3727c98dc05e6"
+    },
+    {
+      "lesson": "F06",
+      "path": "lessons/F06/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "33ca214988ab022a0c67ec72e116c73fdfb669c1e17f4b5fb5070ef902b4b6dd",
+      "new_sha256": "27b520c8ae8cb80721cbc144012734ee6cf934c68d162bf35146c9e6ca563a5e"
+    },
+    {
+      "lesson": "F06",
+      "path": "lessons/F06/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "74b8413bb2aca0d85d4799dcbf66293f68caea0af9f107b8d0871d9c1443cb30",
+      "new_sha256": "ff9fc6380b8dd3fecfd8848675f62af037850317e65db13a5dd89c7d15cc8ea2"
+    },
+    {
+      "lesson": "F06",
+      "path": "lessons/F06/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "1d9425ce02930425a4c1e43609ef30945c9fa0b2ac6f9d125acc4040597813dd",
+      "new_sha256": "99142fa685b77f99d0070cdf7db63fd7eb4dd60be524d293dc586df943524b08"
+    },
+    {
+      "lesson": "F06",
+      "path": "lessons/F06/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "a43a051f19e52bf3babc91279fd1c7ed12f8c415284ce6f5b119af6027a141a9",
+      "new_sha256": "528945a22068901645805a067593875079b0f79262c146dc376de88d2149ebaa"
+    },
+    {
+      "lesson": "R01",
+      "path": "lessons/R01/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "7a5fcbcc572a7f0f509fee8afa690d6f0da7b0131162059f57362738082d6d8a"
+    },
+    {
+      "lesson": "R01",
+      "path": "lessons/R01/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "a80bde84becda52d262d13c4d6a78a22e02253f70869f83cd1e29ca8dc32db75",
+      "new_sha256": "ca35d9aed56c92de020a984b4713ef6711fee751f9f1dc0298f55d97742cdeca"
+    },
+    {
+      "lesson": "R01",
+      "path": "lessons/R01/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "0d2f814d69a5d21d0a121711f5fb69133f0976c1e69c168096129ea635533539",
+      "new_sha256": "364b432eb2f507eba6268e60e825814f9e3c97e41713a63c958094af77a008bc"
+    },
+    {
+      "lesson": "R01",
+      "path": "lessons/R01/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "487d282d4fa6fccccc00ee5a8121e29f7d981efb93864c417c5eedf350014e7f",
+      "new_sha256": "281926b4c7096a059ae4553c484180df9a6a57f428f1ec15ee6f172f3fa4d9f9"
+    },
+    {
+      "lesson": "R01",
+      "path": "lessons/R01/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "eb9d7cf9c8f4e7057642527063cb7d94fc21606f614d93d99f98b413edcac5fc",
+      "new_sha256": "55e6c20fa6eefda116cb957be2e2a194f49ab9f3ed21104e95a72c06001f2da4"
+    },
+    {
+      "lesson": "R01",
+      "path": "lessons/R01/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "493cb4a9a1c5122d9e16a151a84a1620d07b28db367410697bada9fc4c779c23",
+      "new_sha256": "39141b74c98f8693f47420ec5c9907f72e789ca7d676e3717f187c3826e74021"
+    },
+    {
+      "lesson": "R02",
+      "path": "lessons/R02/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "bb37e63fe3e973bc0749d4e1ed17fe8631d1d9a037ff6da69fd2c9e3c23956ba"
+    },
+    {
+      "lesson": "R02",
+      "path": "lessons/R02/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "2bff9079d31776909aa8dbdfade28bae119583d018c94c5d524bc1496aed283a",
+      "new_sha256": "addbb35ed84e976941c2a384de7ff588acb303e1bfd98eca39ad9554973d880a"
+    },
+    {
+      "lesson": "R02",
+      "path": "lessons/R02/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "58128d99fb6cb4d6c83b00982b15f3f210be3901b6d1d66c3d313c4c01d09e72",
+      "new_sha256": "9c6a32923a9e622270f5fc5ca0e88df945554d12494bf4bc1e4a1e1c8d72033a"
+    },
+    {
+      "lesson": "R02",
+      "path": "lessons/R02/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "7549546b0c50078975979b3cd658b65f9406f92d3a5ebc8c7c9ab9aaf37893cf",
+      "new_sha256": "244bd36d8d413578db2c3e1e67fcace229c47494836f74272a3d74f3d38eb1d4"
+    },
+    {
+      "lesson": "R02",
+      "path": "lessons/R02/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "816507960e38db132bb36a9069ba3c34a29f3f1835ffcae3d143a4b13b57ef59",
+      "new_sha256": "7e93e9e1c8457714d309830eb85d557148a84f147056d5b61d43e7b87f5e7e21"
+    },
+    {
+      "lesson": "R02",
+      "path": "lessons/R02/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "8290634825358e5c390d82fd1c5dec319f23ad2c32a79a2bcf585ad01af23b79",
+      "new_sha256": "9796b8602d1dbdd3c2d9af64d46fa5f2b0c05a9d1383017df46c5d5cb5e4eb44"
+    },
+    {
+      "lesson": "L19",
+      "path": "lessons/L19/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "119d5a5e723908438fed5f8c3b2a9079f7d3d25c84888299083c919e0c39a6ad"
+    },
+    {
+      "lesson": "L19",
+      "path": "lessons/L19/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "665fa35b25f5d577c772e3deaed41da3894000f1402e7661a4f663c6969485d8",
+      "new_sha256": "70c4d5cbe2838b5c748fd7b6dfbdd0096f09f85f232fea475b35d01a5aa62867"
+    },
+    {
+      "lesson": "L19",
+      "path": "lessons/L19/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "ec9a137de7bb8c1a19b1515771c0afe968db6e68e0acf369ab550a3c83a4f7aa",
+      "new_sha256": "03c2e7078ffe36d2c37c8da24d1f6c9a78481f2dc310fc7148c5248cfcd09951"
+    },
+    {
+      "lesson": "L19",
+      "path": "lessons/L19/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "6fde42007fb9e78313b591bcb316a57dadc5453892c88c2d70898d10f006ea32",
+      "new_sha256": "595614de41c3680dce273a138307a5c4f9493223e9195f723c013429cad22f15"
+    },
+    {
+      "lesson": "L19",
+      "path": "lessons/L19/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "aacf15545245ce5350723bd7b761b1a177306de84cfb94de88cfe1ec7386ce6e",
+      "new_sha256": "c55f2cd84b83b1ae66be03e0414dac58e7e2176ac8aea9c30939e1efd5e89a66"
+    },
+    {
+      "lesson": "L19",
+      "path": "lessons/L19/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "7cc77760e9225074167b5a1475811cdd6f3188bf7103d6de95f9316b2a1efe9d",
+      "new_sha256": "6dd8df9b933e20ca66145eee5ada45e71da3d8ef3f2fd00a59093446d869f723"
+    },
+    {
+      "lesson": "L20",
+      "path": "lessons/L20/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "c8bfdf4fd6c8def15b3d925bd006dc84a4d27a025ed33bd1f9d67846cc5e3d65"
+    },
+    {
+      "lesson": "L20",
+      "path": "lessons/L20/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "d02bd9b7d0381c9d0a1f995827fa9d73761c9c63ac5cb17f783ce178138c8b21",
+      "new_sha256": "a379f9cde264dd8e2e22fc96e2d35297e7b75065ccfd7ce290708f7f3d441ad0"
+    },
+    {
+      "lesson": "L20",
+      "path": "lessons/L20/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "860c2628a22ea85b0fd134a852e801169149b8a57895ccc0387aaa318108699c",
+      "new_sha256": "de6ec7ae73e0bd890165f67130798f05702564f2da913b31f41c3cd43c18f1ae"
+    },
+    {
+      "lesson": "L20",
+      "path": "lessons/L20/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "bf3dfd8c82ac09d90f882c0e467983850210fe7e96b568946b05ad7c4c015d7f",
+      "new_sha256": "475e83e6cb88333665399a48cb78b1c0a10d0068b26eb2f8e516b5b13154c8fe"
+    },
+    {
+      "lesson": "L20",
+      "path": "lessons/L20/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "35eb41bcecb1bedd1fabfeeab299d071298701858c3dd2b92509ca59af73ad61",
+      "new_sha256": "e0ff45280223c353e6cf5dabdc232db6d77a60b3f422534158727b0c83c2d3e3"
+    },
+    {
+      "lesson": "L20",
+      "path": "lessons/L20/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "a5de127b38f3fbd5880aff9b2d711ef5f01afb73ecdbd4995912e46b94222f64",
+      "new_sha256": "a9c208b7e54e0666b0ebda8a48cb66021470e88d78c62f6141528cd53646662e"
+    },
+    {
+      "lesson": "J01",
+      "path": "lessons/J01/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "2286d86166989383ce3da07f36f9fedc04ac856585ed01f79a36e547363e9f3f"
+    },
+    {
+      "lesson": "J01",
+      "path": "lessons/J01/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "cced867bacc105d9b6b5dfb5da01df6c2cccd8b174f1ea06e540ab03f9727acf",
+      "new_sha256": "0536216e632d5f28e1fca9e5f4071a713e3506219a31a72fd4f92ba6bc0dc52b"
+    },
+    {
+      "lesson": "J01",
+      "path": "lessons/J01/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "f36cb83f4a942e4db9d1a8a340d9502d4097e8d75da3a73476154a522bfc31f9",
+      "new_sha256": "8d0fd80d43630b25e972eb06fe8b800ebc3f7955cc482197b46781117e06d1fa"
+    },
+    {
+      "lesson": "J01",
+      "path": "lessons/J01/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "579b9382cc80129670a2d155f9518a696e4c2f305e11c8219dbf0ca33fe10722",
+      "new_sha256": "efd3bd653b4236baf2015d52fab98c29ce96266bc26bc209efc42ef09e317be6"
+    },
+    {
+      "lesson": "J01",
+      "path": "lessons/J01/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "d4d6b9fafe86a98fdfa10aae80228b8e958d97ac5f3cc404c0bf3ec953c120e3",
+      "new_sha256": "a85f747bb4cef9f17dbd58686347beaebcd95bf89102c219676a07213873abbe"
+    },
+    {
+      "lesson": "J01",
+      "path": "lessons/J01/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "05b529ac37d29aa420cfecddeab9b549857080fc4107ce362ace8e2f2f475fcc",
+      "new_sha256": "bdac208a8a3597a8b18126a43fd52241f1e63a6cbf093a5804b2c4e4806a2bfe"
+    },
+    {
+      "lesson": "J02",
+      "path": "lessons/J02/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "54a4e4ac7c0ef5cc13346473cc686f876e434af99ab83548eeab58bd729f2313"
+    },
+    {
+      "lesson": "J02",
+      "path": "lessons/J02/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "33341613ede50506b724a9190e913f8237c4b33370d21c640153aa3c55a4e663",
+      "new_sha256": "68f769d6d94c47471de825af2ee697be1ab0f93cbc224b45dec9e40123bc7366"
+    },
+    {
+      "lesson": "J02",
+      "path": "lessons/J02/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "7630b7027a1b9809d92014e1683ecfb80b51a6a821cc51c24ef5842ad9b9a6c3",
+      "new_sha256": "fcefe17aa0e32374083e38d3650cf144fe6bc12a7ac35c8a3e5c3791060b4e02"
+    },
+    {
+      "lesson": "J02",
+      "path": "lessons/J02/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "ca8071364b457c082d35ef2d2bad51a82dda75a191af57122a07247e0a09c2d3",
+      "new_sha256": "b807236556ce0ec46f2127b6fad00a7df64939c5c10153caf2a300285acec133"
+    },
+    {
+      "lesson": "J02",
+      "path": "lessons/J02/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "40610727547c27550c3368927fd7bdb7448d9e70b053ee2dd1eb33d9e2de6e56",
+      "new_sha256": "a73317545cd94c931ce2f267fb08935d49206fb5c0be62ef066db39de122fafe"
+    },
+    {
+      "lesson": "J02",
+      "path": "lessons/J02/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "f8d9e956debe512edf5bd8b25ebacdb776b20d54cc1857211888163b67cb34a4",
+      "new_sha256": "ee72cce8d703f44916e257fb3dcbff946375544487d335a792b55f3d7eefa6de"
+    },
+    {
+      "lesson": "J03",
+      "path": "lessons/J03/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "bdf5b35d1a89baa406e61cf1a7b41ff1c782c2b5f875382f65cb826a5dcf87f2"
+    },
+    {
+      "lesson": "J03",
+      "path": "lessons/J03/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "9fde7590834ff676e4f12c24d5f66420459cd84008b9660f9310069bc3545dee",
+      "new_sha256": "9f45715f621a01c815b87ffa1c43cd486fcf7d4e0c1e95fd67a655657e0b3c2e"
+    },
+    {
+      "lesson": "J03",
+      "path": "lessons/J03/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "b14e1a73eaff9794b19c3b1a19888648185b61aa10b9a2e407b7bcac8f49b170",
+      "new_sha256": "132b094bcc10e417d49f2f0ae2271620ae99d522a8cde7ad2d73fa202f30cc95"
+    },
+    {
+      "lesson": "J03",
+      "path": "lessons/J03/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "ee62b21be94ff92b1e3212e03060e0d907464794acff5859cd9b517e02b4b7ca",
+      "new_sha256": "456d11622934cfb77a1122b002481d67197dc62367f6831b49f50f147e455f90"
+    },
+    {
+      "lesson": "J03",
+      "path": "lessons/J03/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "4e0a37fe5b5576184d3b007e1242e033f3cc41210c29301898eb8eb1f3404544",
+      "new_sha256": "04ff9c388bf7bd6ac96a67d6dc88063789e6e53b3ebdbf230460abd0f63456a4"
+    },
+    {
+      "lesson": "J03",
+      "path": "lessons/J03/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "58a35880392ede1b1104575161cc6f0cf0b696662cf0b8a4d1cd5a0a910eaf21",
+      "new_sha256": "02a9e5221559c3dc4cb42eedd88785d3a92a27b8e03f89a90951dce271326bb0"
+    },
+    {
+      "lesson": "L21",
+      "path": "lessons/L21/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "74bd1a8efc9dc5b3f331fed68cfdf442b6776cf85d95dcb6a0767b9e1adfa833"
+    },
+    {
+      "lesson": "L21",
+      "path": "lessons/L21/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "473d007d9e00fefd65fd7ab13a3e73c9af742797551ebd6a2233d6538e17f456",
+      "new_sha256": "af4734a29cfc15d62d7d7309951f0035db9191bd025085cba2fc3370ee67780c"
+    },
+    {
+      "lesson": "L21",
+      "path": "lessons/L21/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "7451a41237721f65c227947f70ee3556aa8ab4c33b6adab452490bbf591f9065",
+      "new_sha256": "1e2c6c9d5e12f144fdcce099f19b048577c4e092c5b20f712aa90798e8ae295e"
+    },
+    {
+      "lesson": "L21",
+      "path": "lessons/L21/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "e429822f1ca49ed4141b12f9d4bc96aa1736006d8758f18717fa15fb349f5931",
+      "new_sha256": "9c4d64145716c68f4f1104cbb352feccb38def3bcebcb37ffded0fd5e2e82b09"
+    },
+    {
+      "lesson": "L21",
+      "path": "lessons/L21/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "dea2d454a28c9baab056c15add44f9aa19dbd9921a694c4c0a39ed53e3b1c847",
+      "new_sha256": "f2654ad432df8f491f48a475eb40da44f33e046bf3d657e4c0a4638f12839e97"
+    },
+    {
+      "lesson": "L21",
+      "path": "lessons/L21/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "bde71dfd723c6b2091327d45c94386cb1a83aa01eb422376db80b2759e7ed801",
+      "new_sha256": "3af032fa444cdb5936e3fb2235fe44ed4b491ed3e4ca6f1976fb6d1e8a275896"
+    },
+    {
+      "lesson": "L22",
+      "path": "lessons/L22/00-本课目的与文件导航.md",
+      "action": "added",
+      "old_sha256": null,
+      "new_sha256": "93ddda35582ec52c8faba112d725712597bc2ada96740b0c3a9c3b6be43e594c"
+    },
+    {
+      "lesson": "L22",
+      "path": "lessons/L22/01-教程.md",
+      "action": "rewritten",
+      "old_sha256": "d32f93264fc95f4a112c7d8e6e5264f0f4bc95b3a4f534f067b6c42be9837580",
+      "new_sha256": "cb5201794ada60b1c19de0960e757d8b3149e9c73bd369be631392e6bf43816a"
+    },
+    {
+      "lesson": "L22",
+      "path": "lessons/L22/02-交给AI.md",
+      "action": "rewritten",
+      "old_sha256": "1f831d6a20a26afa39dd43d78dc563e02d60614e5aee8a72793ca2dde3631f56",
+      "new_sha256": "2837b15a547eaa7f090caff3f7498f4a950a2830d247091cce60545d11c29fd6"
+    },
+    {
+      "lesson": "L22",
+      "path": "lessons/L22/03-实验与排错.md",
+      "action": "rewritten",
+      "old_sha256": "5248163f34f80a87416b0f66c92a3267f60df0e160f73bb6835a8b795c79fb7a",
+      "new_sha256": "f050478e1e2134c1d37514429ce9f27396b89d96ce73a9413a0299d5d7ee38c4"
+    },
+    {
+      "lesson": "L22",
+      "path": "lessons/L22/05-过关卡与代码地图.md",
+      "action": "rewritten",
+      "old_sha256": "f34106224b0e4ccdeb6fc14b46d23a65c91b861e7d956c002ecb3ba02928af8e",
+      "new_sha256": "c1ba63d5756f2f632ea939dc0b258b8dac19464e0886e4352b1119f7834067d0"
+    },
+    {
+      "lesson": "L22",
+      "path": "lessons/L22/04-复习与迁移答案.md",
+      "action": "rewritten",
+      "old_sha256": "17b83a346e6b080e2b7894a640b6e3ff60d663c9a8ec9e82c2554cc4d349d934",
+      "new_sha256": "768e21b9c43a4ff8bbc77e02a920740b519648518924a10aaf896ed488d202be"
+    }
+  ],
+  "scope": "34课的六份核心Markdown的逐文件修订；工具/根目录/公开测试变更另见17修订说明和release-manifest.json。"
+}

@@ -1,0 +1,23 @@
+{
+  "version": "4.2.0",
+  "date": "2026-09-18",
+  "mode": "same_html_set_content",
+  "actual_windows_execution": false,
+  "errors": [],
+  "browser_version": "144.0.7559.96",
+  "file_url_failure": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///mnt/data/devagent-course-v4.2/00-%E6%89%93%E5%BC%80%E6%95%99%E6%9D%90.html",
+  "l00_entry": "00_purpose_file",
+  "lesson_tabs_clicked": 204,
+  "answer_gates_checked": 34,
+  "exact_codex_copy_fallbacks": 34,
+  "system_clipboard_tested": false,
+  "search_matches_for_new_test": 6,
+  "viewports_checked": [
+    1440,
+    390
+  ],
+  "no_page_horizontal_overflow": true,
+  "embedded_sources_equal_files": 309,
+  "status": "passed",
+  "limitations": "直接file://被环境管理员策略阻止；同一HTML经内存载入测试。不是用户Windows双击实测；系统剪贴板写入未实测，仅验证拒绝后的完整文本复制降级。"
+}

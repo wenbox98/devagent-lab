@@ -1,0 +1,34 @@
+test_delta (test_bug_lab.TestF04.test_delta) ... ok
+test_merge_once (test_bug_lab.TestF04.test_merge_once) ... ok
+test_blank_does_not_call (test_bug_lab.TestL00.test_blank_does_not_call) ... ok
+test_integer_task_is_rejected_before_client (test_bug_lab.TestL00.test_integer_task_is_rejected_before_client) ... ok
+test_non_string_response_is_invalid (test_bug_lab.TestL00.test_non_string_response_is_invalid) ... ok
+test_success_uses_clean_input (test_bug_lab.TestL00.test_success_uses_clean_input) ... ok
+test_timeout_is_separate (test_bug_lab.TestL00.test_timeout_is_separate) ... ok
+test_child_is_allowed (test_bug_lab.TestL02.test_child_is_allowed) ... ok
+test_parent_escape_is_denied (test_bug_lab.TestL02.test_parent_escape_is_denied) ... ok
+test_sibling_is_denied (test_bug_lab.TestL02.test_sibling_is_denied) ... ok
+test_changed_base (test_bug_lab.TestL07.test_changed_base) ... ok
+test_missing_base (test_bug_lab.TestL07.test_missing_base) ... ok
+test_same_base (test_bug_lab.TestL07.test_same_base) ... ok
+test_keys_do_not_collide (test_bug_lab.TestL10.test_keys_do_not_collide) ... ok
+test_same_scope_reuses_key (test_bug_lab.TestL10.test_same_scope_reuses_key) ... ok
+test_tenants_do_not_collide (test_bug_lab.TestL10.test_tenants_do_not_collide) ... ok
+test_claim_is_not_the_grader (test_bug_lab.TestL12.test_claim_is_not_the_grader) ... ok
+test_current_pass (test_bug_lab.TestL12.test_current_pass) ... ok
+test_old_report (test_bug_lab.TestL12.test_old_report) ... ok
+test_wrong_scope (test_bug_lab.TestL12.test_wrong_scope) ... ok
+test_zero_tests (test_bug_lab.TestL12.test_zero_tests) ... ok
+test_denominator_is_all_relevant (test_bug_lab.TestR01.test_denominator_is_all_relevant) ... ok
+test_duplicate_hit_counts_once (test_bug_lab.TestR01.test_duplicate_hit_counts_once) ... ok
+test_miss (test_bug_lab.TestR01.test_miss) ... ok
+test_no_relevance_separate (test_bug_lab.TestR01.test_no_relevance_separate) ... ok
+test_duplicate_does_not_vote_twice (test_bug_lab.TestR02.test_duplicate_does_not_vote_twice) ... ok
+test_empty_backend (test_bug_lab.TestR02.test_empty_backend) ... ok
+test_negative_constant (test_bug_lab.TestR02.test_negative_constant) ... ok
+test_stable_tie (test_bug_lab.TestR02.test_stable_tie) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.001s
+
+OK

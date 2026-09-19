@@ -1,0 +1,510 @@
+{
+  "version": "4.2.0",
+  "date": "2026-09-18",
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "java": {
+      "command": [
+        "java",
+        "-version"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "openjdk version \"21.0.11\" 2026-04-21\nOpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)\n"
+    }
+  },
+  "scope": "course artifacts and supplied controlled examples; not learner progress or completed application",
+  "static": {
+    "status": "passed",
+    "lessons": 34,
+    "lesson_documents": 204,
+    "total_hours": 320,
+    "purpose_bridges_checked": 218,
+    "local_links_checked": 2228,
+    "python_files_syntax_checked": 59,
+    "errors": [],
+    "scope": "static only; not framework runtime or completed app"
+  },
+  "navigation_tools": {
+    "stdout": "",
+    "stderr": "test_cli_does_not_write_map (__main__.TestCodeMap.test_cli_does_not_write_map) ... ok\ntest_invented_anchor_rejected (__main__.TestCodeMap.test_invented_anchor_rejected) ... ok\ntest_invented_symbol_rejected (__main__.TestCodeMap.test_invented_symbol_rejected) ... ok\ntest_inventory_ast_only_no_execution (__main__.TestCodeMap.test_inventory_ast_only_no_execution) ... ok\ntest_malformed_top_level (__main__.TestCodeMap.test_malformed_top_level) ... ok\ntest_missing_roles_not_complete (__main__.TestCodeMap.test_missing_roles_not_complete) ... ok\ntest_modified_file_invalidates_map (__main__.TestCodeMap.test_modified_file_invalidates_map) ... ok\ntest_pack_includes_current_map_not_other_answers (__main__.TestCodeMap.test_pack_includes_current_map_not_other_answers) ... ok\ntest_parent_escape_rejected (__main__.TestCodeMap.test_parent_escape_rejected) ... ok\ntest_planned_is_not_observed (__main__.TestCodeMap.test_planned_is_not_observed) ... ok\ntest_real_references_valid_without_running_code (__main__.TestCodeMap.test_real_references_valid_without_running_code) ... ok\ntest_symlink_file_rejected (__main__.TestCodeMap.test_symlink_file_rejected) ... ok\ntest_symlink_map_rejected (__main__.TestCodeMap.test_symlink_map_rejected) ... ok\ntest_all_34_examples_are_exact_copies (__main__.TestPrepare.test_all_34_examples_are_exact_copies) ... ok\ntest_cli_invalid_lesson_is_structured_error (__main__.TestPrepare.test_cli_invalid_lesson_is_structured_error) ... ok\ntest_course_is_not_application (__main__.TestPrepare.test_course_is_not_application) ... ok\ntest_invalid_lesson (__main__.TestPrepare.test_invalid_lesson) ... ok\ntest_missing_project (__main__.TestPrepare.test_missing_project) ... ok\ntest_no_overwrite_preserves_student_edits (__main__.TestPrepare.test_no_overwrite_preserves_student_edits) ... ok\ntest_symlink_destination_is_refused (__main__.TestPrepare.test_symlink_destination_is_refused) ... ok\ntest_blank_rejected_without_client (__main__.TestProbe.test_blank_rejected_without_client) ... ok\ntest_cannot_probe_missing_copy (__main__.TestProbe.test_cannot_probe_missing_copy) ... ok\ntest_cli_text_has_no_json_quoting_requirement (__main__.TestProbe.test_cli_text_has_no_json_quoting_requirement) ... ok\ntest_empty_response_is_invalid (__main__.TestProbe.test_empty_response_is_invalid) ... ok\ntest_integer_42_is_actual_attribute_error_no_client (__main__.TestProbe.test_integer_42_is_actual_attribute_error_no_client) ... ok\ntest_none_response_records_exception_after_call (__main__.TestProbe.test_none_response_records_exception_after_call) ... ok\ntest_syntax_error_is_not_reported_as_success (__main__.TestProbe.test_syntax_error_is_not_reported_as_success) ... ok\ntest_text_42_succeeds_with_one_call (__main__.TestProbe.test_text_42_succeeds_with_one_call) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 3.168s\n\nOK\n",
+    "status": "passed"
+  },
+  "original_tools": {
+    "stdout": "",
+    "stderr": "test_doctor_no_api (__main__.TestCourseTools.test_doctor_no_api) ... ok\ntest_init_existing_refused (__main__.TestCourseTools.test_init_existing_refused) ... ok\ntest_init_inside_course_refused (__main__.TestCourseTools.test_init_inside_course_refused) ... ok\ntest_init_new_project (__main__.TestCourseTools.test_init_new_project) ... ok\ntest_lab_copy_no_answer (__main__.TestCourseTools.test_lab_copy_no_answer) ... ok\ntest_pack_detects_obvious_key (__main__.TestCourseTools.test_pack_detects_obvious_key) ... ok\ntest_pack_does_not_include_environment (__main__.TestCourseTools.test_pack_does_not_include_environment) ... ok\ntest_pack_excludes_symlink (__main__.TestCourseTools.test_pack_excludes_symlink) ... ok\ntest_pack_never_overwrites (__main__.TestCourseTools.test_pack_never_overwrites) ... ok\ntest_pack_one_instruction_and_hashes (__main__.TestCourseTools.test_pack_one_instruction_and_hashes) ... ok\ntest_review_dates (__main__.TestCourseTools.test_review_dates) ... ok\ntest_review_invalid_date (__main__.TestCourseTools.test_review_invalid_date) ... ok\ntest_starter_expected_red (__main__.TestCourseTools.test_starter_expected_red) ... ok\ntest_unknown_lesson_refused (__main__.TestCourseTools.test_unknown_lesson_refused) ... ok\ntest_extra_file_rejected (__main__.TestFixtureGrader.test_extra_file_rejected) ... ok\ntest_missing_workspace_blocked (__main__.TestFixtureGrader.test_missing_workspace_blocked) ... ok\ntest_original_bug_is_rejected (__main__.TestFixtureGrader.test_original_bug_is_rejected) ... ok\ntest_real_fix_is_accepted (__main__.TestFixtureGrader.test_real_fix_is_accepted) ... ok\ntest_unrelated_file_change_rejected (__main__.TestFixtureGrader.test_unrelated_file_change_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 13.650s\n\nOK\n",
+    "status": "passed"
+  },
+  "workshops": {
+    "student_initial": {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "test_bug_lab",
+        "-v"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "test_delta (test_bug_lab.TestF04.test_delta) ... FAIL\ntest_merge_once (test_bug_lab.TestF04.test_merge_once) ... FAIL\ntest_blank_does_not_call (test_bug_lab.TestL00.test_blank_does_not_call) ... FAIL\ntest_integer_task_is_rejected_before_client (test_bug_lab.TestL00.test_integer_task_is_rejected_before_client) ... FAIL\ntest_non_string_response_is_invalid (test_bug_lab.TestL00.test_non_string_response_is_invalid) ... FAIL\ntest_success_uses_clean_input (test_bug_lab.TestL00.test_success_uses_clean_input) ... FAIL\ntest_timeout_is_separate (test_bug_lab.TestL00.test_timeout_is_separate) ... ERROR\ntest_child_is_allowed (test_bug_lab.TestL02.test_child_is_allowed) ... ok\ntest_parent_escape_is_denied (test_bug_lab.TestL02.test_parent_escape_is_denied) ... ok\ntest_sibling_is_denied (test_bug_lab.TestL02.test_sibling_is_denied) ... FAIL\ntest_changed_base (test_bug_lab.TestL07.test_changed_base) ... FAIL\ntest_missing_base (test_bug_lab.TestL07.test_missing_base) ... ok\ntest_same_base (test_bug_lab.TestL07.test_same_base) ... ok\ntest_keys_do_not_collide (test_bug_lab.TestL10.test_keys_do_not_collide) ... ok\ntest_same_scope_reuses_key (test_bug_lab.TestL10.test_same_scope_reuses_key) ... ok\ntest_tenants_do_not_collide (test_bug_lab.TestL10.test_tenants_do_not_collide) ... FAIL\ntest_claim_is_not_the_grader (test_bug_lab.TestL12.test_claim_is_not_the_grader) ... FAIL\ntest_current_pass (test_bug_lab.TestL12.test_current_pass) ... ok\ntest_old_report (test_bug_lab.TestL12.test_old_report) ... FAIL\ntest_wrong_scope (test_bug_lab.TestL12.test_wrong_scope) ... FAIL\ntest_zero_tests (test_bug_lab.TestL12.test_zero_tests) ... FAIL\ntest_denominator_is_all_relevant (test_bug_lab.TestR01.test_denominator_is_all_relevant) ... FAIL\ntest_duplicate_hit_counts_once (test_bug_lab.TestR01.test_duplicate_hit_counts_once) ... FAIL\ntest_miss (test_bug_lab.TestR01.test_miss) ... ok\ntest_no_relevance_separate (test_bug_lab.TestR01.test_no_relevance_separate) ... FAIL\ntest_duplicate_does_not_vote_twice (test_bug_lab.TestR02.test_duplicate_does_not_vote_twice) ... FAIL\ntest_empty_backend (test_bug_lab.TestR02.test_empty_backend) ... ok\ntest_negative_constant (test_bug_lab.TestR02.test_negative_constant) ... ERROR\ntest_stable_tie (test_bug_lab.TestR02.test_stable_tie) ... ok\n\n======================================================================\nERROR: test_timeout_is_separate (test_bug_lab.TestL00.test_timeout_is_separate)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 25, in test_timeout_is_separate\n    self.assertEqual(s.handle('fix', timeout), 'model_timeout')\n                     ~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/tmp/tmp17_h9oqb/bug_lab/student.py\", line 6, in handle\n    text = client(task)\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 24, in timeout\n    def timeout(x): raise TimeoutError('fixture')\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTimeoutError: fixture\n\n======================================================================\nERROR: test_negative_constant (test_bug_lab.TestR02.test_negative_constant)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 78, in test_negative_constant\n    with self.assertRaises(ValueError): s.rrf([['a']],-1)\n                                        ~~~~~^^^^^^^^^^^^\n  File \"/tmp/tmp17_h9oqb/bug_lab/student.py\", line 41, in rrf\n    score[item] = score.get(item, 0.0) + 1 / (rank_constant + rank)\n                                         ~~^~~~~~~~~~~~~~~~~~~~~~~~\nZeroDivisionError: division by zero\n\n======================================================================\nFAIL: test_delta (test_bug_lab.TestF04.test_delta)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 61, in test_delta\n    def test_delta(self): self.assertEqual(s.evidence_delta({'evidence':['a']},'b'),{'evidence':['b']})\n                          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'evidence': ['a', 'b']} != {'evidence': ['b']}\n- {'evidence': ['a', 'b']}\n?               -----\n\n+ {'evidence': ['b']}\n\n======================================================================\nFAIL: test_merge_once (test_bug_lab.TestF04.test_merge_once)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 64, in test_merge_once\n    self.assertEqual(old+delta['evidence'],['a','b']);self.assertEqual(old,['a'])\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: ['a', 'a', 'b'] != ['a', 'b']\n\nFirst differing element 1:\n'a'\n'b'\n\nFirst list contains 1 additional elements.\nFirst extra element 2:\n'b'\n\n- ['a', 'a', 'b']\n?       -----\n\n+ ['a', 'b']\n\n======================================================================\nFAIL: test_blank_does_not_call (test_bug_lab.TestL00.test_blank_does_not_call)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 17, in test_blank_does_not_call\n    self.assertEqual(s.handle('   ', lambda x: calls.append(x) or 'ok'), 'invalid_input')\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'succeeded' != 'invalid_input'\n- succeeded\n+ invalid_input\n\n\n======================================================================\nFAIL: test_integer_task_is_rejected_before_client (test_bug_lab.TestL00.test_integer_task_is_rejected_before_client)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 13, in test_integer_task_is_rejected_before_client\n    self.assertEqual(s.handle(42, lambda x: calls.append(x) or 'ok'), 'invalid_input')\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'succeeded' != 'invalid_input'\n- succeeded\n+ invalid_input\n\n\n======================================================================\nFAIL: test_non_string_response_is_invalid (test_bug_lab.TestL00.test_non_string_response_is_invalid)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 27, in test_non_string_response_is_invalid\n    self.assertEqual(s.handle('fix', lambda x: 42), 'invalid_response')\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'succeeded' != 'invalid_response'\n- succeeded\n+ invalid_response\n\n\n======================================================================\nFAIL: test_success_uses_clean_input (test_bug_lab.TestL00.test_success_uses_clean_input)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 22, in test_success_uses_clean_input\n    self.assertEqual(calls, ['fix'])\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [' fix '] != ['fix']\n\nFirst differing element 0:\n' fix '\n'fix'\n\n- [' fix ']\n?   -   -\n\n+ ['fix']\n\n======================================================================\nFAIL: test_sibling_is_denied (test_bug_lab.TestL02.test_sibling_is_denied)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 35, in test_sibling_is_denied\n    self.assertFalse(s.is_within(Path(t)/'repo', Path(t)/'repo2'/'a.py'))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: True is not false\n\n======================================================================\nFAIL: test_changed_base (test_bug_lab.TestL07.test_changed_base)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 42, in test_changed_base\n    def test_changed_base(self): self.assertFalse(s.base_matches('b', 'a'))\n                                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: True is not false\n\n======================================================================\nFAIL: test_tenants_do_not_collide (test_bug_lab.TestL10.test_tenants_do_not_collide)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 47, in test_tenants_do_not_collide\n    def test_tenants_do_not_collide(self): self.assertNotEqual(s.operation_key('a','1'),s.operation_key('b','1'))\n                                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: '1' == '1'\n\n======================================================================\nFAIL: test_claim_is_not_the_grader (test_bug_lab.TestL12.test_claim_is_not_the_grader)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 58, in test_claim_is_not_the_grader\n    def test_claim_is_not_the_grader(self): self.assertTrue(s.verified(self.report(claim='failed'),'v2'))\n                                            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n\n======================================================================\nFAIL: test_old_report (test_bug_lab.TestL12.test_old_report)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 56, in test_old_report\n    def test_old_report(self): self.assertFalse(s.verified(self.report(snapshot_hash='v1'),'v2'))\n                               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: True is not false\n\n======================================================================\nFAIL: test_wrong_scope (test_bug_lab.TestL12.test_wrong_scope)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 57, in test_wrong_scope\n    def test_wrong_scope(self): self.assertFalse(s.verified(self.report(scope_ok=False),'v2'))\n                                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: True is not false\n\n======================================================================\nFAIL: test_zero_tests (test_bug_lab.TestL12.test_zero_tests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 55, in test_zero_tests\n    def test_zero_tests(self): self.assertFalse(s.verified(self.report(collected=0,passed=0),'v2'))\n                               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: True is not false\n\n======================================================================\nFAIL: test_denominator_is_all_relevant (test_bug_lab.TestR01.test_denominator_is_all_relevant)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 67, in test_denominator_is_all_relevant\n    def test_denominator_is_all_relevant(self): self.assertAlmostEqual(s.recall_at_k({'a','b'},['a'],1),0.5)\n                                                ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 1.0 != 0.5 within 7 places (0.5 difference)\n\n======================================================================\nFAIL: test_duplicate_hit_counts_once (test_bug_lab.TestR01.test_duplicate_hit_counts_once)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 68, in test_duplicate_hit_counts_once\n    def test_duplicate_hit_counts_once(self): self.assertAlmostEqual(s.recall_at_k({'a','b'},['a','a'],2),0.5)\n                                              ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 1.0 != 0.5 within 7 places (0.5 difference)\n\n======================================================================\nFAIL: test_no_relevance_separate (test_bug_lab.TestR01.test_no_relevance_separate)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 69, in test_no_relevance_separate\n    def test_no_relevance_separate(self): self.assertIsNone(s.recall_at_k(set(),['a'],1))\n                                          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0.0 is not None\n\n======================================================================\nFAIL: test_duplicate_does_not_vote_twice (test_bug_lab.TestR02.test_duplicate_does_not_vote_twice)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py\", line 74, in test_duplicate_does_not_vote_twice\n    self.assertEqual(s.rrf([['b','b','b'],['a']]),['a','b'])\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: ['b', 'a'] != ['a', 'b']\n\nFirst differing element 0:\n'b'\n'a'\n\n- ['b', 'a']\n+ ['a', 'b']\n\n----------------------------------------------------------------------\nRan 29 tests in 0.006s\n\nFAILED (failures=17, errors=2)\n"
+    },
+    "reference": {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "test_bug_lab",
+        "-v"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_delta (test_bug_lab.TestF04.test_delta) ... ok\ntest_merge_once (test_bug_lab.TestF04.test_merge_once) ... ok\ntest_blank_does_not_call (test_bug_lab.TestL00.test_blank_does_not_call) ... ok\ntest_integer_task_is_rejected_before_client (test_bug_lab.TestL00.test_integer_task_is_rejected_before_client) ... ok\ntest_non_string_response_is_invalid (test_bug_lab.TestL00.test_non_string_response_is_invalid) ... ok\ntest_success_uses_clean_input (test_bug_lab.TestL00.test_success_uses_clean_input) ... ok\ntest_timeout_is_separate (test_bug_lab.TestL00.test_timeout_is_separate) ... ok\ntest_child_is_allowed (test_bug_lab.TestL02.test_child_is_allowed) ... ok\ntest_parent_escape_is_denied (test_bug_lab.TestL02.test_parent_escape_is_denied) ... ok\ntest_sibling_is_denied (test_bug_lab.TestL02.test_sibling_is_denied) ... ok\ntest_changed_base (test_bug_lab.TestL07.test_changed_base) ... ok\ntest_missing_base (test_bug_lab.TestL07.test_missing_base) ... ok\ntest_same_base (test_bug_lab.TestL07.test_same_base) ... ok\ntest_keys_do_not_collide (test_bug_lab.TestL10.test_keys_do_not_collide) ... ok\ntest_same_scope_reuses_key (test_bug_lab.TestL10.test_same_scope_reuses_key) ... ok\ntest_tenants_do_not_collide (test_bug_lab.TestL10.test_tenants_do_not_collide) ... ok\ntest_claim_is_not_the_grader (test_bug_lab.TestL12.test_claim_is_not_the_grader) ... ok\ntest_current_pass (test_bug_lab.TestL12.test_current_pass) ... ok\ntest_old_report (test_bug_lab.TestL12.test_old_report) ... ok\ntest_wrong_scope (test_bug_lab.TestL12.test_wrong_scope) ... ok\ntest_zero_tests (test_bug_lab.TestL12.test_zero_tests) ... ok\ntest_denominator_is_all_relevant (test_bug_lab.TestR01.test_denominator_is_all_relevant) ... ok\ntest_duplicate_hit_counts_once (test_bug_lab.TestR01.test_duplicate_hit_counts_once) ... ok\ntest_miss (test_bug_lab.TestR01.test_miss) ... ok\ntest_no_relevance_separate (test_bug_lab.TestR01.test_no_relevance_separate) ... ok\ntest_duplicate_does_not_vote_twice (test_bug_lab.TestR02.test_duplicate_does_not_vote_twice) ... ok\ntest_empty_backend (test_bug_lab.TestR02.test_empty_backend) ... ok\ntest_negative_constant (test_bug_lab.TestR02.test_negative_constant) ... ok\ntest_stable_tie (test_bug_lab.TestR02.test_stable_tie) ... ok\n\n----------------------------------------------------------------------\nRan 29 tests in 0.001s\n\nOK\n"
+    }
+  },
+  "python_examples": [
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/F01/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "{'role': 'user', 'content': 'explain pagination'}\nfixture: explain pagination\ntype_error: rejected before model\n",
+      "stderr": "",
+      "path": "lessons/F01/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/F02/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"content\": \"def page(items): return items\", \"tool_call_id\": \"call-1\"}\nunauthorized\n",
+      "stderr": "",
+      "path": "lessons/F02/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/F03/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "schema_error\nmissing_evidence\nverified_fixture\n",
+      "stderr": "",
+      "path": "lessons/F03/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/F04/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "delta: {'budget': 1, 'evidence': ['read:v1', 'test:failed']}\nfull-history mistake: {'budget': 2, 'evidence': ['read:v1', 'read:v1', 'test:failed']}\n",
+      "stderr": "",
+      "path": "lessons/F04/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/F05/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "created\nreused\nidempotency_conflict\neffect_count: 1\n",
+      "stderr": "",
+      "path": "lessons/F05/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/F06/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "approved\nstale_approval\ncancelled\nunauthorized\n",
+      "stderr": "",
+      "path": "lessons/F06/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L00/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "invalid_input\nmodel_timeout\ninvalid_response\nsucceeded\n",
+      "stderr": "",
+      "path": "lessons/L00/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L01/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "{'text': 'hello', 'input_tokens': None, 'output_tokens': None}\n{'text': 'hello', 'input_tokens': 12, 'output_tokens': 3}\n",
+      "stderr": "",
+      "path": "lessons/L01/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L02/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "True\nTrue\nFalse\n",
+      "stderr": "",
+      "path": "lessons/L02/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L03/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "{'call_id': 'c1', 'ok': True, 'data': 6}\n{'call_id': 'c2', 'ok': False, 'code': 'invalid_args'}\n",
+      "stderr": "",
+      "path": "lessons/L03/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L04/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "done 2\n['tool', 'tool_result', 'final']\n",
+      "stderr": "",
+      "path": "lessons/L04/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L05/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "pagination.py\n{'ok': True, 'matches': []}\n",
+      "stderr": "",
+      "path": "lessons/L05/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L06/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "workflow\nask_metric\nagent\n",
+      "stderr": "",
+      "path": "lessons/L06/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L07/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "False\nconflict\n",
+      "stderr": "",
+      "path": "lessons/L07/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L08/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "b'abcdefghij'\nTrue\n",
+      "stderr": "",
+      "path": "lessons/L08/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L09/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "no_tests\ncollection_error\npassed\n",
+      "stderr": "",
+      "path": "lessons/L09/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L10/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "applied\nreplayed\nconflict\n",
+      "stderr": "",
+      "path": "lessons/L10/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L11/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "continue\ncontinue\nstop\n",
+      "stderr": "",
+      "path": "lessons/L11/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L12/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "True\nFalse\nFalse\nFalse\n",
+      "stderr": "",
+      "path": "lessons/L12/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L13/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "symbol\ntext\nunavailable\n",
+      "stderr": "",
+      "path": "lessons/L13/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L14/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "{'items': ['a', 'b'], 'truncated': True, 'next_offset': 2}\n{'items': [], 'truncated': False, 'next_offset': None}\n",
+      "stderr": "",
+      "path": "lessons/L14/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L15/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "['search_text', 'read_file']\n",
+      "stderr": "",
+      "path": "lessons/L15/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L16/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "['keep public signature']\npagination.py\n",
+      "stderr": "",
+      "path": "lessons/L16/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L17/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "large 0.08 2\nsmall 0.1 5\n",
+      "stderr": "",
+      "path": "lessons/L17/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L18/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "old {'text': (3, 4), 'symbol': (1, 2)}\nnew {'text': (2, 4), 'symbol': (2, 2)}\n",
+      "stderr": "",
+      "path": "lessons/L18/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L19/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "True\nFalse\n",
+      "stderr": "",
+      "path": "lessons/L19/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L20/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "stop_before_next_step\nreconcile\nskip_duplicate_write\n",
+      "stderr": "",
+      "path": "lessons/L20/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L21/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "exec-7\nforbidden\n",
+      "stderr": "",
+      "path": "lessons/L21/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/L22/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "tool_routing supported\ndistributed_ha gap\n",
+      "stderr": "",
+      "path": "lessons/L22/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/R01/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "[('d1', 1.3938), ('d3', 0.5119)]\nno_answer: []\n",
+      "stderr": "",
+      "path": "lessons/R01/00-example.py"
+    },
+    {
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "-B",
+        "/mnt/data/devagent-course-v4.2/lessons/R02/00-example.py"
+      ],
+      "returncode": 0,
+      "stdout": "[('d2', 0.032522), ('d1', 0.016393), ('d3', 0.016129)]\ndedupe_and_acl: passed\nsemantic_rankings: synthetic_fixture_not_model_measurement\n",
+      "stderr": "",
+      "path": "lessons/R02/00-example.py"
+    }
+  ],
+  "java_examples": [
+    {
+      "path": "lessons/J01/Demo.java",
+      "compile": {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/tmp/tmp7tckj1_m",
+          "/mnt/data/devagent-course-v4.2/lessons/J01/Demo.java"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "execute": {
+        "command": [
+          "java",
+          "-cp",
+          "/tmp/tmp7tckj1_m",
+          "Demo"
+        ],
+        "returncode": 0,
+        "stdout": "null\nbodyA\nbodyA\nbodyA\n",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "lessons/J02/Demo.java",
+      "compile": {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/tmp/tmpyhsmpgik",
+          "/mnt/data/devagent-course-v4.2/lessons/J02/Demo.java"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "execute": {
+        "command": [
+          "java",
+          "-cp",
+          "/tmp/tmpyhsmpgik",
+          "Demo"
+        ],
+        "returncode": 0,
+        "stdout": "rejected=1\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "frameworks": {
+    "status": "blocked",
+    "reason": "当前解释器未安装langchain/langgraph；本轮只做文件语法检查，不继承v4的安装失败或运行结果。",
+    "dependencies": {
+      "langchain": false,
+      "langgraph": false
+    },
+    "files": [
+      "lessons/F01/framework-example.py",
+      "lessons/F02/framework-example.py",
+      "lessons/F03/context-framework-example.py",
+      "lessons/F03/framework-example.py",
+      "lessons/F04/framework-example.py",
+      "lessons/F05/framework-example.py",
+      "lessons/F06/framework-example.py",
+      "lessons/R01/vector-framework-example.py"
+    ]
+  },
+  "not_executed": [
+    "SQL/PostgreSQL",
+    "real provider API",
+    "real embedding evaluation",
+    "complete Code Agent",
+    "Java/Python service integration",
+    "learner progress",
+    "Windows native execution"
+  ],
+  "browser_summary": {
+    "status": "passed",
+    "mode": "same_html_set_content",
+    "lesson_tabs_clicked": 204,
+    "answer_gates_checked": 34,
+    "exact_codex_copy_fallbacks": 34,
+    "viewports_checked": [
+      1440,
+      390
+    ],
+    "limitations": "直接file://被环境管理员策略阻止；同一HTML经内存载入测试。不是用户Windows双击实测；系统剪贴板写入未实测，仅验证拒绝后的完整文本复制降级。"
+  },
+  "first_day_commands": {
+    "status": "passed",
+    "steps": 10,
+    "details": "first-day-commands.json"
+  }
+}

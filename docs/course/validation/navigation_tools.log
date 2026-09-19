@@ -1,0 +1,33 @@
+test_cli_does_not_write_map (__main__.TestCodeMap.test_cli_does_not_write_map) ... ok
+test_invented_anchor_rejected (__main__.TestCodeMap.test_invented_anchor_rejected) ... ok
+test_invented_symbol_rejected (__main__.TestCodeMap.test_invented_symbol_rejected) ... ok
+test_inventory_ast_only_no_execution (__main__.TestCodeMap.test_inventory_ast_only_no_execution) ... ok
+test_malformed_top_level (__main__.TestCodeMap.test_malformed_top_level) ... ok
+test_missing_roles_not_complete (__main__.TestCodeMap.test_missing_roles_not_complete) ... ok
+test_modified_file_invalidates_map (__main__.TestCodeMap.test_modified_file_invalidates_map) ... ok
+test_pack_includes_current_map_not_other_answers (__main__.TestCodeMap.test_pack_includes_current_map_not_other_answers) ... ok
+test_parent_escape_rejected (__main__.TestCodeMap.test_parent_escape_rejected) ... ok
+test_planned_is_not_observed (__main__.TestCodeMap.test_planned_is_not_observed) ... ok
+test_real_references_valid_without_running_code (__main__.TestCodeMap.test_real_references_valid_without_running_code) ... ok
+test_symlink_file_rejected (__main__.TestCodeMap.test_symlink_file_rejected) ... ok
+test_symlink_map_rejected (__main__.TestCodeMap.test_symlink_map_rejected) ... ok
+test_all_34_examples_are_exact_copies (__main__.TestPrepare.test_all_34_examples_are_exact_copies) ... ok
+test_cli_invalid_lesson_is_structured_error (__main__.TestPrepare.test_cli_invalid_lesson_is_structured_error) ... ok
+test_course_is_not_application (__main__.TestPrepare.test_course_is_not_application) ... ok
+test_invalid_lesson (__main__.TestPrepare.test_invalid_lesson) ... ok
+test_missing_project (__main__.TestPrepare.test_missing_project) ... ok
+test_no_overwrite_preserves_student_edits (__main__.TestPrepare.test_no_overwrite_preserves_student_edits) ... ok
+test_symlink_destination_is_refused (__main__.TestPrepare.test_symlink_destination_is_refused) ... ok
+test_blank_rejected_without_client (__main__.TestProbe.test_blank_rejected_without_client) ... ok
+test_cannot_probe_missing_copy (__main__.TestProbe.test_cannot_probe_missing_copy) ... ok
+test_cli_text_has_no_json_quoting_requirement (__main__.TestProbe.test_cli_text_has_no_json_quoting_requirement) ... ok
+test_empty_response_is_invalid (__main__.TestProbe.test_empty_response_is_invalid) ... ok
+test_integer_42_is_actual_attribute_error_no_client (__main__.TestProbe.test_integer_42_is_actual_attribute_error_no_client) ... ok
+test_none_response_records_exception_after_call (__main__.TestProbe.test_none_response_records_exception_after_call) ... ok
+test_syntax_error_is_not_reported_as_success (__main__.TestProbe.test_syntax_error_is_not_reported_as_success) ... ok
+test_text_42_succeeds_with_one_call (__main__.TestProbe.test_text_42_succeeds_with_one_call) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 3.168s
+
+OK

@@ -1,0 +1,255 @@
+test_delta (test_bug_lab.TestF04.test_delta) ... FAIL
+test_merge_once (test_bug_lab.TestF04.test_merge_once) ... FAIL
+test_blank_does_not_call (test_bug_lab.TestL00.test_blank_does_not_call) ... FAIL
+test_integer_task_is_rejected_before_client (test_bug_lab.TestL00.test_integer_task_is_rejected_before_client) ... FAIL
+test_non_string_response_is_invalid (test_bug_lab.TestL00.test_non_string_response_is_invalid) ... FAIL
+test_success_uses_clean_input (test_bug_lab.TestL00.test_success_uses_clean_input) ... FAIL
+test_timeout_is_separate (test_bug_lab.TestL00.test_timeout_is_separate) ... ERROR
+test_child_is_allowed (test_bug_lab.TestL02.test_child_is_allowed) ... ok
+test_parent_escape_is_denied (test_bug_lab.TestL02.test_parent_escape_is_denied) ... ok
+test_sibling_is_denied (test_bug_lab.TestL02.test_sibling_is_denied) ... FAIL
+test_changed_base (test_bug_lab.TestL07.test_changed_base) ... FAIL
+test_missing_base (test_bug_lab.TestL07.test_missing_base) ... ok
+test_same_base (test_bug_lab.TestL07.test_same_base) ... ok
+test_keys_do_not_collide (test_bug_lab.TestL10.test_keys_do_not_collide) ... ok
+test_same_scope_reuses_key (test_bug_lab.TestL10.test_same_scope_reuses_key) ... ok
+test_tenants_do_not_collide (test_bug_lab.TestL10.test_tenants_do_not_collide) ... FAIL
+test_claim_is_not_the_grader (test_bug_lab.TestL12.test_claim_is_not_the_grader) ... FAIL
+test_current_pass (test_bug_lab.TestL12.test_current_pass) ... ok
+test_old_report (test_bug_lab.TestL12.test_old_report) ... FAIL
+test_wrong_scope (test_bug_lab.TestL12.test_wrong_scope) ... FAIL
+test_zero_tests (test_bug_lab.TestL12.test_zero_tests) ... FAIL
+test_denominator_is_all_relevant (test_bug_lab.TestR01.test_denominator_is_all_relevant) ... FAIL
+test_duplicate_hit_counts_once (test_bug_lab.TestR01.test_duplicate_hit_counts_once) ... FAIL
+test_miss (test_bug_lab.TestR01.test_miss) ... ok
+test_no_relevance_separate (test_bug_lab.TestR01.test_no_relevance_separate) ... FAIL
+test_duplicate_does_not_vote_twice (test_bug_lab.TestR02.test_duplicate_does_not_vote_twice) ... FAIL
+test_empty_backend (test_bug_lab.TestR02.test_empty_backend) ... ok
+test_negative_constant (test_bug_lab.TestR02.test_negative_constant) ... ERROR
+test_stable_tie (test_bug_lab.TestR02.test_stable_tie) ... ok
+
+======================================================================
+ERROR: test_timeout_is_separate (test_bug_lab.TestL00.test_timeout_is_separate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 25, in test_timeout_is_separate
+    self.assertEqual(s.handle('fix', timeout), 'model_timeout')
+                     ~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/tmp/tmp17_h9oqb/bug_lab/student.py", line 6, in handle
+    text = client(task)
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 24, in timeout
+    def timeout(x): raise TimeoutError('fixture')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: fixture
+
+======================================================================
+ERROR: test_negative_constant (test_bug_lab.TestR02.test_negative_constant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 78, in test_negative_constant
+    with self.assertRaises(ValueError): s.rrf([['a']],-1)
+                                        ~~~~~^^^^^^^^^^^^
+  File "/tmp/tmp17_h9oqb/bug_lab/student.py", line 41, in rrf
+    score[item] = score.get(item, 0.0) + 1 / (rank_constant + rank)
+                                         ~~^~~~~~~~~~~~~~~~~~~~~~~~
+ZeroDivisionError: division by zero
+
+======================================================================
+FAIL: test_delta (test_bug_lab.TestF04.test_delta)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 61, in test_delta
+    def test_delta(self): self.assertEqual(s.evidence_delta({'evidence':['a']},'b'),{'evidence':['b']})
+                          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'evidence': ['a', 'b']} != {'evidence': ['b']}
+- {'evidence': ['a', 'b']}
+?               -----
+
++ {'evidence': ['b']}
+
+======================================================================
+FAIL: test_merge_once (test_bug_lab.TestF04.test_merge_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 64, in test_merge_once
+    self.assertEqual(old+delta['evidence'],['a','b']);self.assertEqual(old,['a'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['a', 'a', 'b'] != ['a', 'b']
+
+First differing element 1:
+'a'
+'b'
+
+First list contains 1 additional elements.
+First extra element 2:
+'b'
+
+- ['a', 'a', 'b']
+?       -----
+
++ ['a', 'b']
+
+======================================================================
+FAIL: test_blank_does_not_call (test_bug_lab.TestL00.test_blank_does_not_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 17, in test_blank_does_not_call
+    self.assertEqual(s.handle('   ', lambda x: calls.append(x) or 'ok'), 'invalid_input')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'succeeded' != 'invalid_input'
+- succeeded
++ invalid_input
+
+
+======================================================================
+FAIL: test_integer_task_is_rejected_before_client (test_bug_lab.TestL00.test_integer_task_is_rejected_before_client)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 13, in test_integer_task_is_rejected_before_client
+    self.assertEqual(s.handle(42, lambda x: calls.append(x) or 'ok'), 'invalid_input')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'succeeded' != 'invalid_input'
+- succeeded
++ invalid_input
+
+
+======================================================================
+FAIL: test_non_string_response_is_invalid (test_bug_lab.TestL00.test_non_string_response_is_invalid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 27, in test_non_string_response_is_invalid
+    self.assertEqual(s.handle('fix', lambda x: 42), 'invalid_response')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'succeeded' != 'invalid_response'
+- succeeded
++ invalid_response
+
+
+======================================================================
+FAIL: test_success_uses_clean_input (test_bug_lab.TestL00.test_success_uses_clean_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 22, in test_success_uses_clean_input
+    self.assertEqual(calls, ['fix'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [' fix '] != ['fix']
+
+First differing element 0:
+' fix '
+'fix'
+
+- [' fix ']
+?   -   -
+
++ ['fix']
+
+======================================================================
+FAIL: test_sibling_is_denied (test_bug_lab.TestL02.test_sibling_is_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 35, in test_sibling_is_denied
+    self.assertFalse(s.is_within(Path(t)/'repo', Path(t)/'repo2'/'a.py'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_changed_base (test_bug_lab.TestL07.test_changed_base)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 42, in test_changed_base
+    def test_changed_base(self): self.assertFalse(s.base_matches('b', 'a'))
+                                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_tenants_do_not_collide (test_bug_lab.TestL10.test_tenants_do_not_collide)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 47, in test_tenants_do_not_collide
+    def test_tenants_do_not_collide(self): self.assertNotEqual(s.operation_key('a','1'),s.operation_key('b','1'))
+                                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '1' == '1'
+
+======================================================================
+FAIL: test_claim_is_not_the_grader (test_bug_lab.TestL12.test_claim_is_not_the_grader)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 58, in test_claim_is_not_the_grader
+    def test_claim_is_not_the_grader(self): self.assertTrue(s.verified(self.report(claim='failed'),'v2'))
+                                            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_old_report (test_bug_lab.TestL12.test_old_report)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 56, in test_old_report
+    def test_old_report(self): self.assertFalse(s.verified(self.report(snapshot_hash='v1'),'v2'))
+                               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_wrong_scope (test_bug_lab.TestL12.test_wrong_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 57, in test_wrong_scope
+    def test_wrong_scope(self): self.assertFalse(s.verified(self.report(scope_ok=False),'v2'))
+                                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_zero_tests (test_bug_lab.TestL12.test_zero_tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 55, in test_zero_tests
+    def test_zero_tests(self): self.assertFalse(s.verified(self.report(collected=0,passed=0),'v2'))
+                               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_denominator_is_all_relevant (test_bug_lab.TestR01.test_denominator_is_all_relevant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 67, in test_denominator_is_all_relevant
+    def test_denominator_is_all_relevant(self): self.assertAlmostEqual(s.recall_at_k({'a','b'},['a'],1),0.5)
+                                                ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1.0 != 0.5 within 7 places (0.5 difference)
+
+======================================================================
+FAIL: test_duplicate_hit_counts_once (test_bug_lab.TestR01.test_duplicate_hit_counts_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 68, in test_duplicate_hit_counts_once
+    def test_duplicate_hit_counts_once(self): self.assertAlmostEqual(s.recall_at_k({'a','b'},['a','a'],2),0.5)
+                                              ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1.0 != 0.5 within 7 places (0.5 difference)
+
+======================================================================
+FAIL: test_no_relevance_separate (test_bug_lab.TestR01.test_no_relevance_separate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 69, in test_no_relevance_separate
+    def test_no_relevance_separate(self): self.assertIsNone(s.recall_at_k(set(),['a'],1))
+                                          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.0 is not None
+
+======================================================================
+FAIL: test_duplicate_does_not_vote_twice (test_bug_lab.TestR02.test_duplicate_does_not_vote_twice)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp17_h9oqb/bug_lab/test_bug_lab.py", line 74, in test_duplicate_does_not_vote_twice
+    self.assertEqual(s.rrf([['b','b','b'],['a']]),['a','b'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['b', 'a'] != ['a', 'b']
+
+First differing element 0:
+'b'
+'a'
+
+- ['b', 'a']
++ ['a', 'b']
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.006s
+
+FAILED (failures=17, errors=2)

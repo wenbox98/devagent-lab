@@ -1,0 +1,27 @@
+{
+  "build": "4.2.0",
+  "date": "2026-09-18",
+  "transcript_scope": "检索到历史背景和已提供反馈；未取得逐字全文",
+  "sources": [
+    {
+      "label": "v3-34-26w",
+      "filename": "devagent-course-v3.zip",
+      "size_bytes": 811260,
+      "sha256": "126af8f975c65140079148a616aecbbdd61b24760ae7a3f454a6801fe64ba29d"
+    },
+    {
+      "label": "v3-32-30w",
+      "filename": "devagent-course-v3.zip",
+      "size_bytes": 1003769,
+      "sha256": "458d49a9ab90c2cd6c7539adb8b6495ff23d04e9d7fe3ce42ea74072d872b121"
+    },
+    {
+      "label": "v4-complete-course",
+      "filename": "devagent-course-v4.zip",
+      "size_bytes": 1472214,
+      "sha256": "e22571c47e1373e07e722b30bd321325a5f6f349ea8e9ebc3ecabb0a0a1cc8c5"
+    }
+  ],
+  "previous_build": "4.0.0",
+  "revision_scope": "用户要求完整教材的目的、上下文、文件指向、Codex分析和练习对象修订；未读取用户实际项目。"
+}

@@ -1,0 +1,1597 @@
+{
+  "version": "4.2.0",
+  "date": "2026-09-18",
+  "scope": "all package files except release-manifest.json itself",
+  "files": [
+    {
+      "path": "00-从这里开始.md",
+      "bytes": 6315,
+      "sha256": "66a838881fe0866ea39927374facf0c3bd6c2cb17c4d11d05c259e3faea760e6"
+    },
+    {
+      "path": "00-打开教材.html",
+      "bytes": 5556383,
+      "sha256": "256d8f99ec46bcdbdbd7593a6cd300eee7529d2ff520b888e330816f1199ac76"
+    },
+    {
+      "path": "01-课程导航.md",
+      "bytes": 15580,
+      "sha256": "5b95032c66f5e1da2c04fa73bee7add0a3bc77aed3ca52eb74fd2d9c0a05baea"
+    },
+    {
+      "path": "02-环境与Python过桥.md",
+      "bytes": 7274,
+      "sha256": "6165a1abbf0a23409bb119cac37d6108088e4654bd8d742c10f6fe49e427117b"
+    },
+    {
+      "path": "03-每次怎么学与怎么提交.md",
+      "bytes": 3931,
+      "sha256": "d2b9c9ca29e8a48b3dcd86c0df903e26809654d363c90a7e42c6514ed04241a6"
+    },
+    {
+      "path": "04-阶段验收与工程问题地图.md",
+      "bytes": 5062,
+      "sha256": "09568f12072b23defe3bf844fa24dd96be73f3741fc9b20287513d5e2f827991"
+    },
+    {
+      "path": "05-学习进度.md",
+      "bytes": 3680,
+      "sha256": "888421fac06aa5b06fb75948bba085a0a177d7f8133b396ae38e3412eb82e611"
+    },
+    {
+      "path": "06-版本说明与验证范围.md",
+      "bytes": 1179,
+      "sha256": "a91de2f18b40849f7c1efc445135e57ab4db2d3e3b53e13924249976a73e74d2"
+    },
+    {
+      "path": "07-对话复盘与需求审计.md",
+      "bytes": 7286,
+      "sha256": "92dc9d55e4ebf0ac1245a5d97a01900feb298109d92dfec81100b061d88ce73a"
+    },
+    {
+      "path": "08-新Chat交接提示词.md",
+      "bytes": 2954,
+      "sha256": "6293426208ca377fdc307926201dc4954acd8b8cdcbfed5b61ecafae9931db13"
+    },
+    {
+      "path": "09-技术版本与官方阅读路径.md",
+      "bytes": 8247,
+      "sha256": "3a6dc6639a5404c86e2135e41b2092edc77c619f0287548b881eb236356b5f92"
+    },
+    {
+      "path": "10-项目契约与框架迁移.md",
+      "bytes": 3391,
+      "sha256": "618cc5a563a30287c54a0e896fd6cd8570ba5312c783023d6ce7f307c3c5e2eb"
+    },
+    {
+      "path": "11-第一周逐小时安排.md",
+      "bytes": 2072,
+      "sha256": "f017ecaefae1aeaeb6aaba3866a3cd1605cc86a0403f87676406704e887a7691"
+    },
+    {
+      "path": "12-入学诊断与回补.md",
+      "bytes": 2604,
+      "sha256": "efaaedf5bbe32f32d5d7b8d0f276a127c50965df1c7d662d8071f501fcce52cb"
+    },
+    {
+      "path": "13-RAG从问题到证据.md",
+      "bytes": 5772,
+      "sha256": "62f34aa4dff14587a35daccdcc243d95d375aa5b677bfb2aef7700792fbfce76"
+    },
+    {
+      "path": "14-遇到工程问题怎么查.md",
+      "bytes": 2263,
+      "sha256": "96e0ff49c1733b53e163c26e4dffaf828b9de850850987b6fbf600b728ce57b3"
+    },
+    {
+      "path": "15-毕业与岗位证据.md",
+      "bytes": 2761,
+      "sha256": "93da19022b03a8194be66d72d968ad6137fb66f2bdc073bab5ee645c9bd742f7"
+    },
+    {
+      "path": "16-文件定位与Codex协作.md",
+      "bytes": 5106,
+      "sha256": "e31252467b92c9a767646ec5ac20642349ff4f05b36c9b8d6240e7cc2d3f947a"
+    },
+    {
+      "path": "17-v4.2修订说明.md",
+      "bytes": 3603,
+      "sha256": "58ac0dcd396859e75135dc3ee9ac5d7a4a7644df510375fb3730ca0305a2d343"
+    },
+    {
+      "path": "README.md",
+      "bytes": 684,
+      "sha256": "56a6aca6c17920fa3aaec337ff7746a1ff38efd6b36e0148578623416aba7632"
+    },
+    {
+      "path": "course-manifest.json",
+      "bytes": 27540,
+      "sha256": "a4d8f79e112d17c8521fb3c0f3b07bc101d157071b0a4e1907fedcbb4e90967a"
+    },
+    {
+      "path": "fixtures/tiny_repo/docs/contract.md",
+      "bytes": 482,
+      "sha256": "614cd9e44bcf5f53f3e85136a2fb1058d8403f091b489674426a95f5fceb6105"
+    },
+    {
+      "path": "fixtures/tiny_repo/pagination.py",
+      "bytes": 373,
+      "sha256": "2ea72369153e8bfd2c675aa534f87297a295544fb1efd66d8f96ff49d6cd9bd3"
+    },
+    {
+      "path": "fixtures/tiny_repo/reporting.py",
+      "bytes": 148,
+      "sha256": "2eec18e8de83d4344acd52717f27a262aa2bd896013a2d4f9434b5d419d08ae4"
+    },
+    {
+      "path": "lesson-intents.json",
+      "bytes": 79349,
+      "sha256": "8a4dbc6d0818dd7ad5f4dc2dcbbe59a92e7b2369bb2aa2b66f0d54c9144afd24"
+    },
+    {
+      "path": "lessons/F01/00-example.py",
+      "bytes": 1007,
+      "sha256": "80a3cc1a58c6c75aa6522f7a2d4b15ba537eb1bdae79cfb9163d652334c54910"
+    },
+    {
+      "path": "lessons/F01/00-本课目的与文件导航.md",
+      "bytes": 6403,
+      "sha256": "45bb583dd1d3b1ce6c5123828f13a8fa12d5e758f528fe9628c65791aaec3ccd"
+    },
+    {
+      "path": "lessons/F01/01-教程.md",
+      "bytes": 11598,
+      "sha256": "04aa0318295cc117e55f347e566fca0f796f95bb56fcf3bf05247f23c7424f3d"
+    },
+    {
+      "path": "lessons/F01/02-交给AI.md",
+      "bytes": 10362,
+      "sha256": "addf02554d8a755b8b73c937a3c17bb3e3cc7a8137299f1efba91ff37fc9047f"
+    },
+    {
+      "path": "lessons/F01/03-实验与排错.md",
+      "bytes": 5403,
+      "sha256": "393db07940c00741865a56d71ae925e195fcc876bdcdf98f8031e0305a97f3a5"
+    },
+    {
+      "path": "lessons/F01/04-复习与迁移答案.md",
+      "bytes": 1786,
+      "sha256": "0eb1860de28402fb22113dab36e5bbf8f9f833e3489c857878efae106feb0d6c"
+    },
+    {
+      "path": "lessons/F01/05-过关卡与代码地图.md",
+      "bytes": 5386,
+      "sha256": "a0332b3d83c8780c8f4ee8ea8d427f03e629d42a837d8dfe27b12a104e4390b2"
+    },
+    {
+      "path": "lessons/F01/framework-example.py",
+      "bytes": 810,
+      "sha256": "9c85748eabef147e74eaa486685a3533cd759e030fc3085d9cfa547dd11e80d2"
+    },
+    {
+      "path": "lessons/F02/00-example.py",
+      "bytes": 904,
+      "sha256": "4b0e55e07a40afbcb3a49d03da3ad7cb6ef5b60627217d406af689bfa443ca3c"
+    },
+    {
+      "path": "lessons/F02/00-本课目的与文件导航.md",
+      "bytes": 6238,
+      "sha256": "b2c3e1ca90c934179d5b9c2817e98f5b160fe2e731d74ca39b7ef430674f1eec"
+    },
+    {
+      "path": "lessons/F02/01-教程.md",
+      "bytes": 11955,
+      "sha256": "9bba98145158b52d20d98e54ddeddc14400f7d9a91c01b1b56f30376d8db1b4a"
+    },
+    {
+      "path": "lessons/F02/02-交给AI.md",
+      "bytes": 10380,
+      "sha256": "2e02069e5064fccc64e5240087e24786bd269a3d319a0eee2caa53d318964b75"
+    },
+    {
+      "path": "lessons/F02/03-实验与排错.md",
+      "bytes": 5338,
+      "sha256": "86b8e68abff7f7734c3cc35d7c57754b538b4336b2447fdbb06cbc0404f7613c"
+    },
+    {
+      "path": "lessons/F02/04-复习与迁移答案.md",
+      "bytes": 1823,
+      "sha256": "2a72fb1a9d2a925565982868e30bce7cefaef89ff478e97608f7b18d825d0253"
+    },
+    {
+      "path": "lessons/F02/05-过关卡与代码地图.md",
+      "bytes": 5370,
+      "sha256": "10b5da0785767e715efde1b86499e7b62e7127cea05f74f4f35146c5a58a57ce"
+    },
+    {
+      "path": "lessons/F02/framework-example.py",
+      "bytes": 1965,
+      "sha256": "87bce9e147bca6fcb5d291b5c626b93ff38a36e749406ec9776477c7a921cba7"
+    },
+    {
+      "path": "lessons/F03/00-example.py",
+      "bytes": 1276,
+      "sha256": "2e6d0ce62ff4b8cc4cc569484827ecbb4adfe63d9b12cb55ccf2cbf0e21992d3"
+    },
+    {
+      "path": "lessons/F03/00-本课目的与文件导航.md",
+      "bytes": 6580,
+      "sha256": "873cde6f3a5e168813d1d64a7374bc092d5479ad6914ba52e6b32d2d989a4f83"
+    },
+    {
+      "path": "lessons/F03/01-教程.md",
+      "bytes": 12384,
+      "sha256": "3fb57afffa037f2c3a3f05a53a81dc878a223a222320ecf59ec5464c5d72e4e6"
+    },
+    {
+      "path": "lessons/F03/02-交给AI.md",
+      "bytes": 10573,
+      "sha256": "bf6ebf2d1cca67bfa9c79d00be916209b4a1913a9c5416b7e3597cd315db04b0"
+    },
+    {
+      "path": "lessons/F03/03-实验与排错.md",
+      "bytes": 5833,
+      "sha256": "fae6e464d641111f3d09c38bc3c4eca73fab1645283a24367531f1108664e94c"
+    },
+    {
+      "path": "lessons/F03/04-复习与迁移答案.md",
+      "bytes": 1831,
+      "sha256": "897d28a1cb9db9233e88b5e7bb8c9b178fd4db9b2207caadfb1138c02403c6db"
+    },
+    {
+      "path": "lessons/F03/05-过关卡与代码地图.md",
+      "bytes": 5591,
+      "sha256": "ef13017a0a6c39b1a1764d7883e3cb4df3d6ad6ffd862c2ada66881b9ca88c01"
+    },
+    {
+      "path": "lessons/F03/context-framework-example.py",
+      "bytes": 2189,
+      "sha256": "ddb0d12b3a1a41b8504251c647d2cdf686db5a185896b7fa284eb5d5d4b10696"
+    },
+    {
+      "path": "lessons/F03/framework-example.py",
+      "bytes": 1711,
+      "sha256": "5156025dc04ef739a60658b8d41b8f99b81412641a74e24ed938db035c921ce6"
+    },
+    {
+      "path": "lessons/F04/00-example.py",
+      "bytes": 718,
+      "sha256": "9575ee791819c8474193f97caf9d324feb23c520c15091cf80869d902043679e"
+    },
+    {
+      "path": "lessons/F04/00-本课目的与文件导航.md",
+      "bytes": 6295,
+      "sha256": "4e4370ba7c4230466a4c898f7cdf97feb56ee96d842efee4887494d9a61ecb93"
+    },
+    {
+      "path": "lessons/F04/01-教程.md",
+      "bytes": 12220,
+      "sha256": "c023d6f352bab0490799c77b07159ff810e791fd1ff071485b3b5c67924d18d2"
+    },
+    {
+      "path": "lessons/F04/02-交给AI.md",
+      "bytes": 10050,
+      "sha256": "d3817e1d43b1568ada9d4a98c5840d20ce4d32583b68ecf2580b58db31d53905"
+    },
+    {
+      "path": "lessons/F04/03-实验与排错.md",
+      "bytes": 6063,
+      "sha256": "d7bcfee2dead59d3e3e70ced56f7172b3982d5532c289769628b8539c64b8cb1"
+    },
+    {
+      "path": "lessons/F04/04-复习与迁移答案.md",
+      "bytes": 1861,
+      "sha256": "4c1b0f72bc4fcd51ef9b27bfba7cbaea027cfe398211b254b9fd4a3456221cd1"
+    },
+    {
+      "path": "lessons/F04/05-过关卡与代码地图.md",
+      "bytes": 5194,
+      "sha256": "36fd651129b5864c840135e88cc10c1f937749f1ca266eb8dc5e65a8ed1a6789"
+    },
+    {
+      "path": "lessons/F04/framework-example.py",
+      "bytes": 1220,
+      "sha256": "6272f09d0698b79fe13ca107d4f94d4e20186cfc1a92b6dba5ad4d82444bd6a6"
+    },
+    {
+      "path": "lessons/F05/00-example.py",
+      "bytes": 1535,
+      "sha256": "f3d8b9c9cc9749dcb947018b5773c58b27a8ac3e0e40ec8e2af6879837bf5ba8"
+    },
+    {
+      "path": "lessons/F05/00-本课目的与文件导航.md",
+      "bytes": 6728,
+      "sha256": "d23dc09762713ff61dbd4fc4ebd101bef169369757fc46f1e5ce39744a1d16ca"
+    },
+    {
+      "path": "lessons/F05/01-教程.md",
+      "bytes": 12191,
+      "sha256": "d9052adf8302c85c9260cb973a2375dca6719ec42a7e7b951e51b9fae8cc64d4"
+    },
+    {
+      "path": "lessons/F05/02-交给AI.md",
+      "bytes": 10561,
+      "sha256": "696b9c00d9f98d2f8950846d8242daf083ee6f4a136b9f32d5bec43b9f7ba9ab"
+    },
+    {
+      "path": "lessons/F05/03-实验与排错.md",
+      "bytes": 5417,
+      "sha256": "c0d44fc4bed083c5e601b26f09f70c5ad5da11194beb1cf218c61ccd863a8989"
+    },
+    {
+      "path": "lessons/F05/04-复习与迁移答案.md",
+      "bytes": 1820,
+      "sha256": "df9a63699663c55449d1671c7affaddb96a234152c79783bf315418d8e6514eb"
+    },
+    {
+      "path": "lessons/F05/05-过关卡与代码地图.md",
+      "bytes": 5564,
+      "sha256": "7cdb41d27dc5db8fcb9a62dbc44d202a0056ab54c3f9039c1e7dbc7002e48e56"
+    },
+    {
+      "path": "lessons/F05/framework-example.py",
+      "bytes": 2414,
+      "sha256": "0dc129963286646d9e0def648f2a3a966679974bd28a21dbb03b3670f0054f6a"
+    },
+    {
+      "path": "lessons/F06/00-example.py",
+      "bytes": 1094,
+      "sha256": "5faf48e92d98890d87a655f8c0cbfb7e1713ab83696a81f2dc05001e0dc07832"
+    },
+    {
+      "path": "lessons/F06/00-本课目的与文件导航.md",
+      "bytes": 6402,
+      "sha256": "c2119360534083a2aaf6f47838194edb2939f932219080389c5ceceba183fe95"
+    },
+    {
+      "path": "lessons/F06/01-教程.md",
+      "bytes": 10370,
+      "sha256": "b4f24abcd4223ac814954fe71a111f53fa8aa12b6b02527abef3727c98dc05e6"
+    },
+    {
+      "path": "lessons/F06/02-交给AI.md",
+      "bytes": 10254,
+      "sha256": "27b520c8ae8cb80721cbc144012734ee6cf934c68d162bf35146c9e6ca563a5e"
+    },
+    {
+      "path": "lessons/F06/03-实验与排错.md",
+      "bytes": 5297,
+      "sha256": "ff9fc6380b8dd3fecfd8848675f62af037850317e65db13a5dd89c7d15cc8ea2"
+    },
+    {
+      "path": "lessons/F06/04-复习与迁移答案.md",
+      "bytes": 1747,
+      "sha256": "528945a22068901645805a067593875079b0f79262c146dc376de88d2149ebaa"
+    },
+    {
+      "path": "lessons/F06/05-过关卡与代码地图.md",
+      "bytes": 5355,
+      "sha256": "99142fa685b77f99d0070cdf7db63fd7eb4dd60be524d293dc586df943524b08"
+    },
+    {
+      "path": "lessons/F06/framework-example.py",
+      "bytes": 1362,
+      "sha256": "ace9c4a21c51363d4ac59a4a95a36d7288263a1343fee833d0ba601fa5fbea47"
+    },
+    {
+      "path": "lessons/J01/00-本课目的与文件导航.md",
+      "bytes": 6559,
+      "sha256": "2286d86166989383ce3da07f36f9fedc04ac856585ed01f79a36e547363e9f3f"
+    },
+    {
+      "path": "lessons/J01/01-教程.md",
+      "bytes": 14877,
+      "sha256": "0536216e632d5f28e1fca9e5f4071a713e3506219a31a72fd4f92ba6bc0dc52b"
+    },
+    {
+      "path": "lessons/J01/02-交给AI.md",
+      "bytes": 10711,
+      "sha256": "8d0fd80d43630b25e972eb06fe8b800ebc3f7955cc482197b46781117e06d1fa"
+    },
+    {
+      "path": "lessons/J01/03-实验与排错.md",
+      "bytes": 11014,
+      "sha256": "efd3bd653b4236baf2015d52fab98c29ce96266bc26bc209efc42ef09e317be6"
+    },
+    {
+      "path": "lessons/J01/04-复习与迁移答案.md",
+      "bytes": 4430,
+      "sha256": "bdac208a8a3597a8b18126a43fd52241f1e63a6cbf093a5804b2c4e4806a2bfe"
+    },
+    {
+      "path": "lessons/J01/05-过关卡与代码地图.md",
+      "bytes": 5453,
+      "sha256": "a85f747bb4cef9f17dbd58686347beaebcd95bf89102c219676a07213873abbe"
+    },
+    {
+      "path": "lessons/J01/Demo.java",
+      "bytes": 460,
+      "sha256": "8bc81485298b7005ce6b389a69c1adb3a6af0dd362403ec955ef213660ebf7dd"
+    },
+    {
+      "path": "lessons/J02/00-本课目的与文件导航.md",
+      "bytes": 6610,
+      "sha256": "54a4e4ac7c0ef5cc13346473cc686f876e434af99ab83548eeab58bd729f2313"
+    },
+    {
+      "path": "lessons/J02/01-教程.md",
+      "bytes": 14959,
+      "sha256": "68f769d6d94c47471de825af2ee697be1ab0f93cbc224b45dec9e40123bc7366"
+    },
+    {
+      "path": "lessons/J02/02-交给AI.md",
+      "bytes": 10559,
+      "sha256": "fcefe17aa0e32374083e38d3650cf144fe6bc12a7ac35c8a3e5c3791060b4e02"
+    },
+    {
+      "path": "lessons/J02/03-实验与排错.md",
+      "bytes": 11137,
+      "sha256": "b807236556ce0ec46f2127b6fad00a7df64939c5c10153caf2a300285acec133"
+    },
+    {
+      "path": "lessons/J02/04-复习与迁移答案.md",
+      "bytes": 4488,
+      "sha256": "ee72cce8d703f44916e257fb3dcbff946375544487d335a792b55f3d7eefa6de"
+    },
+    {
+      "path": "lessons/J02/05-过关卡与代码地图.md",
+      "bytes": 5471,
+      "sha256": "a73317545cd94c931ce2f267fb08935d49206fb5c0be62ef066db39de122fafe"
+    },
+    {
+      "path": "lessons/J02/Demo.java",
+      "bytes": 887,
+      "sha256": "54efb1c5048ed64f9052d4e481a85eb9c520f66783175efb727c8f5eb9539fdb"
+    },
+    {
+      "path": "lessons/J03/00-example.sql",
+      "bytes": 304,
+      "sha256": "c3f3754090adacd54b99ea4cf5f3e0da2c00145f111b2db9fafcb84a6d2d0634"
+    },
+    {
+      "path": "lessons/J03/00-本课目的与文件导航.md",
+      "bytes": 6714,
+      "sha256": "bdf5b35d1a89baa406e61cf1a7b41ff1c782c2b5f875382f65cb826a5dcf87f2"
+    },
+    {
+      "path": "lessons/J03/01-教程.md",
+      "bytes": 14595,
+      "sha256": "9f45715f621a01c815b87ffa1c43cd486fcf7d4e0c1e95fd67a655657e0b3c2e"
+    },
+    {
+      "path": "lessons/J03/02-交给AI.md",
+      "bytes": 10687,
+      "sha256": "132b094bcc10e417d49f2f0ae2271620ae99d522a8cde7ad2d73fa202f30cc95"
+    },
+    {
+      "path": "lessons/J03/03-实验与排错.md",
+      "bytes": 11245,
+      "sha256": "456d11622934cfb77a1122b002481d67197dc62367f6831b49f50f147e455f90"
+    },
+    {
+      "path": "lessons/J03/04-复习与迁移答案.md",
+      "bytes": 4572,
+      "sha256": "02a9e5221559c3dc4cb42eedd88785d3a92a27b8e03f89a90951dce271326bb0"
+    },
+    {
+      "path": "lessons/J03/05-过关卡与代码地图.md",
+      "bytes": 5541,
+      "sha256": "04ff9c388bf7bd6ac96a67d6dc88063789e6e53b3ebdbf230460abd0f63456a4"
+    },
+    {
+      "path": "lessons/L00/00-example.py",
+      "bytes": 491,
+      "sha256": "07446f766688d181af598f0995ac0fbf309657a8346616e399412c73fad796ee"
+    },
+    {
+      "path": "lessons/L00/00-本课目的与文件导航.md",
+      "bytes": 6925,
+      "sha256": "b631fd13420bfd680e86f8e2daef6a4a0a9b52fc75923036873c54c80ecea106"
+    },
+    {
+      "path": "lessons/L00/01-教程.md",
+      "bytes": 17800,
+      "sha256": "5e886c90641a8fa480ffc67221aec03a10ca63bc595b35f6d95cf6906fc9b499"
+    },
+    {
+      "path": "lessons/L00/02-交给AI.md",
+      "bytes": 11333,
+      "sha256": "a23f3df94b5208db9b70fe08997e921fd34dceabba3bbdc3db54009103db0f22"
+    },
+    {
+      "path": "lessons/L00/03-实验与排错.md",
+      "bytes": 13850,
+      "sha256": "10c3e6e82b85b9a4d7b9a482862313b269da18e5f45051cfa37e31498d1f7377"
+    },
+    {
+      "path": "lessons/L00/04-复习与迁移答案.md",
+      "bytes": 5653,
+      "sha256": "0f1c0f22dc001b86df22486f40a5ee88b4e6e55043cac78ee34060edd32d818f"
+    },
+    {
+      "path": "lessons/L00/05-过关卡与代码地图.md",
+      "bytes": 6343,
+      "sha256": "d9175ddc375acaeefca1e53f519a182d2316d87e263e114b8bf900f4848fd717"
+    },
+    {
+      "path": "lessons/L01/00-example.py",
+      "bytes": 329,
+      "sha256": "4ab8070f23f4c5bca535ff79a39f8cb9d3aca941dd890da32c87c279f770816e"
+    },
+    {
+      "path": "lessons/L01/00-本课目的与文件导航.md",
+      "bytes": 6648,
+      "sha256": "ec1b7f5579c176be2ae28d05d3ce37bb44f15750892f6bf692b567e68315095f"
+    },
+    {
+      "path": "lessons/L01/01-教程.md",
+      "bytes": 16224,
+      "sha256": "786a1b3da7048b8a650c783c8b589a45888fb02de0a006ce9a5cdd3d0640a8b6"
+    },
+    {
+      "path": "lessons/L01/02-交给AI.md",
+      "bytes": 10906,
+      "sha256": "f14b3ed1ff5311112b3b7875c22299d662d3173a368bf114a8250553dadf052d"
+    },
+    {
+      "path": "lessons/L01/03-实验与排错.md",
+      "bytes": 12074,
+      "sha256": "41912324cc176852f30a3a03297478adda892e5f4b8e7697fc1f6af952f267e4"
+    },
+    {
+      "path": "lessons/L01/04-复习与迁移答案.md",
+      "bytes": 4652,
+      "sha256": "48facd7cea94555dabb43a206787cfff4f57fedd61d86aeba8906cc9edd68601"
+    },
+    {
+      "path": "lessons/L01/05-过关卡与代码地图.md",
+      "bytes": 5561,
+      "sha256": "e3a2ad643d51393be6b696b1ac993e97992c1951477f01ba286cf3e7aca88df4"
+    },
+    {
+      "path": "lessons/L02/00-example.py",
+      "bytes": 263,
+      "sha256": "780b620941142b4108f449068057f60c1e8700682b8ff531788b0e36111d372c"
+    },
+    {
+      "path": "lessons/L02/00-本课目的与文件导航.md",
+      "bytes": 6239,
+      "sha256": "a3e6cb36f42189c74c1f7390a9012f54be66aea47187f760c4b5526c69706c8a"
+    },
+    {
+      "path": "lessons/L02/01-教程.md",
+      "bytes": 14601,
+      "sha256": "0c052bcce8c4bc2de1702964874051d28a8acc288f8c535b7f15d0dd7c3b8b31"
+    },
+    {
+      "path": "lessons/L02/02-交给AI.md",
+      "bytes": 10455,
+      "sha256": "c603d75648fab22396daf17a66803b479ae261efa6f297504624f646eaf7a87a"
+    },
+    {
+      "path": "lessons/L02/03-实验与排错.md",
+      "bytes": 11365,
+      "sha256": "b09fb604e77143a41dfc1a48a72241c0148d49b9196ed42e2e72a389c905b55d"
+    },
+    {
+      "path": "lessons/L02/04-复习与迁移答案.md",
+      "bytes": 4617,
+      "sha256": "2a1118c2a0b5ddc9b1b744a8b481b94dc407ee52376bba545e43288af5727926"
+    },
+    {
+      "path": "lessons/L02/05-过关卡与代码地图.md",
+      "bytes": 5269,
+      "sha256": "2b0420ceffce5ab8b97c7078f50fc9a2e923ca92e728c71ff544d57fd2aa5e73"
+    },
+    {
+      "path": "lessons/L03/00-example.py",
+      "bytes": 560,
+      "sha256": "38f721883808f45f9a7a581e3897c1ee4364f06a7014fc5cc1e9b0205aed0ae2"
+    },
+    {
+      "path": "lessons/L03/00-本课目的与文件导航.md",
+      "bytes": 6542,
+      "sha256": "d030764c54995a0dc933bbaceccf5e8b98a3906221f54765116ec1525be5f4f6"
+    },
+    {
+      "path": "lessons/L03/01-教程.md",
+      "bytes": 15169,
+      "sha256": "3589a9e66ad5017a8ff89058391d36ec0e7e323cb33fc72b65c887819c3297d7"
+    },
+    {
+      "path": "lessons/L03/02-交给AI.md",
+      "bytes": 10550,
+      "sha256": "dc115830ad6a9bc725aa5e54a44db4a9de5a1fd025d75749ec687e3304e47ff9"
+    },
+    {
+      "path": "lessons/L03/03-实验与排错.md",
+      "bytes": 10687,
+      "sha256": "60f22d2ea27c6b2a6793ff59408cb788f0c5f78ccb177ffbc4f4f40d383450f6"
+    },
+    {
+      "path": "lessons/L03/04-复习与迁移答案.md",
+      "bytes": 4578,
+      "sha256": "38b580b9d469aa23bfaeeee475dfec8f4aa14fd759989075ea49efdc08ab139a"
+    },
+    {
+      "path": "lessons/L03/05-过关卡与代码地图.md",
+      "bytes": 5500,
+      "sha256": "9a47a28aec4b91d9eae2df0563ef041acab00d45d13a4e5ebc9981973d9fdce1"
+    },
+    {
+      "path": "lessons/L04/00-example.py",
+      "bytes": 383,
+      "sha256": "2acb429f27d1ee0e86649d382bbfe9f8726fa8516a024ac834e618145592115a"
+    },
+    {
+      "path": "lessons/L04/00-本课目的与文件导航.md",
+      "bytes": 6446,
+      "sha256": "6ff2db0dc1698b9310d4eb12e3dacdd350f5501317ee3ddd3bdbbb4a8b9b4fe5"
+    },
+    {
+      "path": "lessons/L04/01-教程.md",
+      "bytes": 15200,
+      "sha256": "c492f5fc6c2d6417099c3269f3bcb18d9bca73207d51b7f8a3f2eb4b3801ba7c"
+    },
+    {
+      "path": "lessons/L04/02-交给AI.md",
+      "bytes": 10499,
+      "sha256": "3078b1b0d9cda89474088f2f66888c769f8ad94f852184ab4b00744bcdf0672d"
+    },
+    {
+      "path": "lessons/L04/03-实验与排错.md",
+      "bytes": 10931,
+      "sha256": "22cc263fefeb2f306d4141b07d68b0e43fe2abc6c84e4bfe4e7f3a785a8ce51a"
+    },
+    {
+      "path": "lessons/L04/04-复习与迁移答案.md",
+      "bytes": 4639,
+      "sha256": "fa4da4bf96edc167ae773efabc13af0955742ca0da92103d00297c9af9dcc968"
+    },
+    {
+      "path": "lessons/L04/05-过关卡与代码地图.md",
+      "bytes": 5359,
+      "sha256": "4370d7d02e33dd265bb4e6ac7f55ee7ac76758b3876d7cc62a902f526503a054"
+    },
+    {
+      "path": "lessons/L05/00-example.py",
+      "bytes": 290,
+      "sha256": "f76494631171b26a66140e100c1b6d9455472798e721c07e3a88d49ca6432a03"
+    },
+    {
+      "path": "lessons/L05/00-本课目的与文件导航.md",
+      "bytes": 6464,
+      "sha256": "15c66a7f9f77edf8232635265b135f4ad2dcf38406a99debf18c7079d08b2d3e"
+    },
+    {
+      "path": "lessons/L05/01-教程.md",
+      "bytes": 13914,
+      "sha256": "525335dbcc5cbfa52f15915ba67abca1f1ecc56b376c12931535062bb6ea7535"
+    },
+    {
+      "path": "lessons/L05/02-交给AI.md",
+      "bytes": 10473,
+      "sha256": "b2b0c759b2ad0381d7f22eed64a73534db0d83d3820d7bb46fdabd35bfa821dc"
+    },
+    {
+      "path": "lessons/L05/03-实验与排错.md",
+      "bytes": 10738,
+      "sha256": "793b49cd10885754843d4d78b5b69c0003ba6a4766b06db68276012b7e900612"
+    },
+    {
+      "path": "lessons/L05/04-复习与迁移答案.md",
+      "bytes": 4561,
+      "sha256": "a7231b6cb3e0ac296120e8b18227db3f8447fee1df0991ff2bda08bc71bcef65"
+    },
+    {
+      "path": "lessons/L05/05-过关卡与代码地图.md",
+      "bytes": 5432,
+      "sha256": "68d320166ce7a2836813ee0c7e60a35eec4e079034862a87ffa35cfe01ee1aa4"
+    },
+    {
+      "path": "lessons/L06/00-example.py",
+      "bytes": 434,
+      "sha256": "941c7d3da549cec3ee4bc6c78b01330937304473d57f664dd2dea8993613020a"
+    },
+    {
+      "path": "lessons/L06/00-本课目的与文件导航.md",
+      "bytes": 6363,
+      "sha256": "d1479b28b419d7ad267bb5754a762289515b716a4904a47a6b8145539c646571"
+    },
+    {
+      "path": "lessons/L06/01-教程.md",
+      "bytes": 14401,
+      "sha256": "5194e88708f7d234cab9b9512f0e8229c6467b24cc5776ea0462071865ca3b28"
+    },
+    {
+      "path": "lessons/L06/02-交给AI.md",
+      "bytes": 10382,
+      "sha256": "e04abb36d5aa3d2d17ba8f15d54704685a8e96161919c6504d652b7bdf8007bc"
+    },
+    {
+      "path": "lessons/L06/03-实验与排错.md",
+      "bytes": 10692,
+      "sha256": "c806abffbea1c9d71d578c11bebbd9024b371f978ab09fca47f0eda9b45d7db7"
+    },
+    {
+      "path": "lessons/L06/04-复习与迁移答案.md",
+      "bytes": 4592,
+      "sha256": "537481d9f0a66e0d357ca12f46b2e7ea7a8af9f6886542e2fb39a39683436872"
+    },
+    {
+      "path": "lessons/L06/05-过关卡与代码地图.md",
+      "bytes": 5332,
+      "sha256": "fb376c5c64a7803a4cbede309d312297c98ebca296081832c33ff2bdda85e27b"
+    },
+    {
+      "path": "lessons/L07/00-example.py",
+      "bytes": 286,
+      "sha256": "1ce31fc6dc758ccb1e2e6b23fff51474e8b0abc39c12cf6f0d9a05ce9ccebe1a"
+    },
+    {
+      "path": "lessons/L07/00-本课目的与文件导航.md",
+      "bytes": 6322,
+      "sha256": "39ea71e52466a4da1f5836c8f7e07e6c3a17fd89fafa0281957ad1098bcd11a6"
+    },
+    {
+      "path": "lessons/L07/01-教程.md",
+      "bytes": 13549,
+      "sha256": "2b621b37946d09a20dec6f021cd273d3d17f0f419978ee43ac0f1d427b073009"
+    },
+    {
+      "path": "lessons/L07/02-交给AI.md",
+      "bytes": 10252,
+      "sha256": "872f152153203cff66b2d5a99d3dcd77f3bc45bea9a5e4ada26d7ef39c8fabd4"
+    },
+    {
+      "path": "lessons/L07/03-实验与排错.md",
+      "bytes": 11254,
+      "sha256": "8bed42e45e0e85e6e3499df03db57929dd07653bc4fd871dc30954c573f4854d"
+    },
+    {
+      "path": "lessons/L07/04-复习与迁移答案.md",
+      "bytes": 4561,
+      "sha256": "47ec30a13c3ab7f37ef3a6ae25c7d8cf60e77849a5ea5d8ba2e8205d98f6927c"
+    },
+    {
+      "path": "lessons/L07/05-过关卡与代码地图.md",
+      "bytes": 5331,
+      "sha256": "4c840b1ea8b33033de487be1a4a57c7a5f3d3d20d75bd6daac97aca5c5d798ba"
+    },
+    {
+      "path": "lessons/L08/00-example.py",
+      "bytes": 248,
+      "sha256": "8c38126ce150f04bdf28b6dcde982d5501a3c487fe3a49919319999628b94116"
+    },
+    {
+      "path": "lessons/L08/00-本课目的与文件导航.md",
+      "bytes": 6386,
+      "sha256": "a750cae1dbc8e9066b3f81b4b1c6e7df64c977e2239d1600ccf76bf60030900f"
+    },
+    {
+      "path": "lessons/L08/01-教程.md",
+      "bytes": 14244,
+      "sha256": "774ddefea941f71cc94a83e8c8e19807a12474d7965d8fe1d90a470cdbdcd45e"
+    },
+    {
+      "path": "lessons/L08/02-交给AI.md",
+      "bytes": 10394,
+      "sha256": "1bb8af3cab954905571008a4e8cc3c93840478908c7d0ff7001bb2a1dd2829c3"
+    },
+    {
+      "path": "lessons/L08/03-实验与排错.md",
+      "bytes": 10605,
+      "sha256": "b3a155718ab7c038cb773cfcf49104658fbba8a4b3915465fe890cef49e886be"
+    },
+    {
+      "path": "lessons/L08/04-复习与迁移答案.md",
+      "bytes": 4501,
+      "sha256": "d232961aa86d69ad0b9b76ff009e0f009efdcc480ef4ec89a2d9404671775655"
+    },
+    {
+      "path": "lessons/L08/05-过关卡与代码地图.md",
+      "bytes": 5258,
+      "sha256": "99bdbb7dc84c5b2ae58c1f0b5253bf45443d25654466133d4f614e5b919ad3ce"
+    },
+    {
+      "path": "lessons/L09/00-example.py",
+      "bytes": 368,
+      "sha256": "97d2dea43090ff3cc5235b175e1036d2a44322dd883c7d307b1b2b69362ec654"
+    },
+    {
+      "path": "lessons/L09/00-本课目的与文件导航.md",
+      "bytes": 6332,
+      "sha256": "b3e06642ae49b771b6f0599cf470cd975749aa6faab810d38a269861cb2137f6"
+    },
+    {
+      "path": "lessons/L09/01-教程.md",
+      "bytes": 14150,
+      "sha256": "15bcaaba32976e4c89ae31bacaa6d609f3c7553574e9b6b6e14505dc3aa6d174"
+    },
+    {
+      "path": "lessons/L09/02-交给AI.md",
+      "bytes": 10325,
+      "sha256": "f406365ea462f6b7ffcf5f72c54a2eaefe0ba181e6b20c3984cc69b28502e357"
+    },
+    {
+      "path": "lessons/L09/03-实验与排错.md",
+      "bytes": 10606,
+      "sha256": "271071d5bf67cef3309bbd7f091d1deb91c5c5e914f59b352d66bfa9dfc806c2"
+    },
+    {
+      "path": "lessons/L09/04-复习与迁移答案.md",
+      "bytes": 4550,
+      "sha256": "2a246f4eb063aeace2886b3979f059a1e6ca3617a38cbbe2fce4899e698f7258"
+    },
+    {
+      "path": "lessons/L09/05-过关卡与代码地图.md",
+      "bytes": 5271,
+      "sha256": "874b88448b27ecc99c9b608f40aebe56f0e91b16b64d2399eed1647c54275122"
+    },
+    {
+      "path": "lessons/L10/00-example.py",
+      "bytes": 310,
+      "sha256": "1878fc0a3bc9e26209171ef96c04259e32f0c08ee6c72175dc555bfcb691a686"
+    },
+    {
+      "path": "lessons/L10/00-本课目的与文件导航.md",
+      "bytes": 6368,
+      "sha256": "597c3c09663a1188c858265568c62e764095c664ae15a5d8c8cc6ca6741574e1"
+    },
+    {
+      "path": "lessons/L10/01-教程.md",
+      "bytes": 13896,
+      "sha256": "57e234e2d9fe823fd1c463f32cc3753e771b38572c222339ff8493b55dd025d3"
+    },
+    {
+      "path": "lessons/L10/02-交给AI.md",
+      "bytes": 10384,
+      "sha256": "7f36c57cb8b5ac5f3aee82057fbf81b7e3942efe6829848d04f78804c424fd11"
+    },
+    {
+      "path": "lessons/L10/03-实验与排错.md",
+      "bytes": 11374,
+      "sha256": "9a09eb444a39539f1e5af70546c59a3c95dd18e95bf23cf79a74365b1a0ff97f"
+    },
+    {
+      "path": "lessons/L10/04-复习与迁移答案.md",
+      "bytes": 4616,
+      "sha256": "0458ed41fa645f8ace22e8073677111930bafae1955b800f0fd49396a77cd754"
+    },
+    {
+      "path": "lessons/L10/05-过关卡与代码地图.md",
+      "bytes": 5304,
+      "sha256": "5560f19864ba5a891821493c8fcbb6bd48eb460d54362cb27f933a2004641ce9"
+    },
+    {
+      "path": "lessons/L11/00-example.py",
+      "bytes": 269,
+      "sha256": "0e64793e12b398be40280d51eb7f8a0f998c28637382e86f185bddadf0c4fa8b"
+    },
+    {
+      "path": "lessons/L11/00-本课目的与文件导航.md",
+      "bytes": 6152,
+      "sha256": "8d00fde73def669a3425ebc402e47151ce2e39f1111ef38621fc7b48ccce51d3"
+    },
+    {
+      "path": "lessons/L11/01-教程.md",
+      "bytes": 13297,
+      "sha256": "758c80f1116e6e925e0255f92209bd74909bfd1aec0f981d466ba65ee0a03d1b"
+    },
+    {
+      "path": "lessons/L11/02-交给AI.md",
+      "bytes": 10153,
+      "sha256": "beef587c2573dcf44164a6c03c549429ee9afb27d1c04d0ccd547481c9918181"
+    },
+    {
+      "path": "lessons/L11/03-实验与排错.md",
+      "bytes": 10492,
+      "sha256": "1e08229f043552f8aaf4c20786d61fcfa1bfe02b45aac3279b03f699b3ab63aa"
+    },
+    {
+      "path": "lessons/L11/04-复习与迁移答案.md",
+      "bytes": 4399,
+      "sha256": "44c00b87d29fc5a08fcfb98bc66f3b00fc1b933caa3ba40d74bf506b1d7d120e"
+    },
+    {
+      "path": "lessons/L11/05-过关卡与代码地图.md",
+      "bytes": 5195,
+      "sha256": "cf7a739e1f0a0d918b40dd9ac08422f961990947dde61a2a3ad0397166b9f56b"
+    },
+    {
+      "path": "lessons/L12/00-example.py",
+      "bytes": 297,
+      "sha256": "bb14caa85f2ee15f721ac0fb61396f93ce4150e1c5cdc56c7febf55cf5a23a73"
+    },
+    {
+      "path": "lessons/L12/00-本课目的与文件导航.md",
+      "bytes": 6378,
+      "sha256": "4419b6ff3765f2580107cd0c847ca706be739f7ded62766cbe653d3dae0b7464"
+    },
+    {
+      "path": "lessons/L12/01-教程.md",
+      "bytes": 13375,
+      "sha256": "e5d7641177726bb43718e5152b73e476f1fcc09b14a093965fb8e46e48ab2dfb"
+    },
+    {
+      "path": "lessons/L12/02-交给AI.md",
+      "bytes": 10319,
+      "sha256": "c60c6bada1967968cc64eda885e15a3ec5789dae7057185d1502093aca8da993"
+    },
+    {
+      "path": "lessons/L12/03-实验与排错.md",
+      "bytes": 11159,
+      "sha256": "fa8849928c09bc29b29dbc11f0b1b57bef28ef0375c302f0f1ccf967f34b88e5"
+    },
+    {
+      "path": "lessons/L12/04-复习与迁移答案.md",
+      "bytes": 4447,
+      "sha256": "2468058be41532e8295e6a39f1aa4f332010335966cbbee820013301d5286cee"
+    },
+    {
+      "path": "lessons/L12/05-过关卡与代码地图.md",
+      "bytes": 5364,
+      "sha256": "c05f59e1d15e443b9a656297f376706e9dc1e9bcde1d11a9fdef8ac301b6ea9f"
+    },
+    {
+      "path": "lessons/L13/00-example.py",
+      "bytes": 566,
+      "sha256": "bbe56ef73fee85141a526be4176299079c7c61577b2021a7833f84f3106cb7fa"
+    },
+    {
+      "path": "lessons/L13/00-本课目的与文件导航.md",
+      "bytes": 6580,
+      "sha256": "c5e60e6f315ab0d67a9e0b6e796dd82f583f864cd21d2497db820a70ee904cbe"
+    },
+    {
+      "path": "lessons/L13/01-教程.md",
+      "bytes": 18771,
+      "sha256": "9c87181fef0c039686a81ff2cbd59ccd6d9ced9a5b78ac5b45c88538b822e480"
+    },
+    {
+      "path": "lessons/L13/02-交给AI.md",
+      "bytes": 10685,
+      "sha256": "a436e523dbb93216d5cc8fa4665c2c1f3e27a4a6506a52ca7a05f15130357a06"
+    },
+    {
+      "path": "lessons/L13/03-实验与排错.md",
+      "bytes": 11771,
+      "sha256": "58e60519db8d663ed409874b10067b1d5bbd1610a3018257fbb49ce4803f768c"
+    },
+    {
+      "path": "lessons/L13/04-复习与迁移答案.md",
+      "bytes": 4953,
+      "sha256": "ee48e6b0586c9282ee0220a959f319d91bd176d24aa39d529b7c8b102aed1b4d"
+    },
+    {
+      "path": "lessons/L13/05-过关卡与代码地图.md",
+      "bytes": 5249,
+      "sha256": "352ff810e33d4fb1e3af60df8ecc66691fbf0c3b3c607a95fda368d3f95949f1"
+    },
+    {
+      "path": "lessons/L14/00-example.py",
+      "bytes": 251,
+      "sha256": "11af19fc06fed077f673e2ec852d4d083abf35b9ea51a0f413c21dd4af07b98d"
+    },
+    {
+      "path": "lessons/L14/00-本课目的与文件导航.md",
+      "bytes": 6333,
+      "sha256": "a4220f47e3ae62afe95b8e964066161b72e68737a464b0dd6527b8f223a3615d"
+    },
+    {
+      "path": "lessons/L14/01-教程.md",
+      "bytes": 13557,
+      "sha256": "a76ab4c64303c7bcdd6ab40fdc74c6b3df19905b26f92928bfa591ba8a097ffa"
+    },
+    {
+      "path": "lessons/L14/02-交给AI.md",
+      "bytes": 10207,
+      "sha256": "1a2081dbde5f1eff09fa4578da5b2a73bb682691209d4e5443770d82f5e98a09"
+    },
+    {
+      "path": "lessons/L14/03-实验与排错.md",
+      "bytes": 10501,
+      "sha256": "7cfa4af9c21fb261e7fcb327d34829258a07788d385256fa490a7a0c80c7a76b"
+    },
+    {
+      "path": "lessons/L14/04-复习与迁移答案.md",
+      "bytes": 4517,
+      "sha256": "311dabb308230d5eb294d3ed47718474fa52b29398d7a0f0a31b04a75b3e4930"
+    },
+    {
+      "path": "lessons/L14/05-过关卡与代码地图.md",
+      "bytes": 5247,
+      "sha256": "517fbd256fc9e5a413c80c943da345a25921ec79fa8c53377d3438cea17eb1d4"
+    },
+    {
+      "path": "lessons/L15/00-example.py",
+      "bytes": 259,
+      "sha256": "5dc9f68454830c27559da6eed536bf9110b8d0ef41909c6d016967c2aa10b354"
+    },
+    {
+      "path": "lessons/L15/00-本课目的与文件导航.md",
+      "bytes": 6225,
+      "sha256": "668ebe12fda997bec681f4c3d1a2540e00d32208bd29a6403877a0d2bf4f056f"
+    },
+    {
+      "path": "lessons/L15/01-教程.md",
+      "bytes": 13411,
+      "sha256": "238fdeacad3facb55dfb73c79ccb053fa75826b00bf7161c22f5b6623b3cfd72"
+    },
+    {
+      "path": "lessons/L15/02-交给AI.md",
+      "bytes": 10225,
+      "sha256": "922528ddcf18d655eea4c3739b007a78e6c80f3423754bf5f984ac5a900d8efa"
+    },
+    {
+      "path": "lessons/L15/03-实验与排错.md",
+      "bytes": 10461,
+      "sha256": "734e969a6d80d51d3b19b41b808814f73227b16ac871a8845642301516ba57d4"
+    },
+    {
+      "path": "lessons/L15/04-复习与迁移答案.md",
+      "bytes": 4424,
+      "sha256": "ffa141f75d25993ccf723d1e1bcb9f8a6b31df0dc6bc1efde041a6d081788ecb"
+    },
+    {
+      "path": "lessons/L15/05-过关卡与代码地图.md",
+      "bytes": 5175,
+      "sha256": "9e7970689783904ecdd2665eb6fa92eed1a4f76e5a0fb6e7600c81664f9b1898"
+    },
+    {
+      "path": "lessons/L16/00-example.py",
+      "bytes": 314,
+      "sha256": "e9bcb8375162b181f681498d2ee822452de38f61a452f5cd109ed158c13f60bd"
+    },
+    {
+      "path": "lessons/L16/00-本课目的与文件导航.md",
+      "bytes": 6575,
+      "sha256": "b2bbb8eef86a62fa76a819b7cd765a1908602e0da78e44af8a9345f80246e51a"
+    },
+    {
+      "path": "lessons/L16/01-教程.md",
+      "bytes": 14595,
+      "sha256": "98ce4a766bc51ca37ec795693cd6db130a5fe90b886bfcd4f698f97ddfca65bf"
+    },
+    {
+      "path": "lessons/L16/02-交给AI.md",
+      "bytes": 10520,
+      "sha256": "31fe5d3ad51a4a2ecf6d137b95bd60ebc4e981c6795328b858fd92746b263c3e"
+    },
+    {
+      "path": "lessons/L16/03-实验与排错.md",
+      "bytes": 10606,
+      "sha256": "a980c33f2be7f2ef791e66839d4d4960f0b8547dc67709d9345c5be0088c8e84"
+    },
+    {
+      "path": "lessons/L16/04-复习与迁移答案.md",
+      "bytes": 4515,
+      "sha256": "c389b43e04cf1d1a64effe0ea6478094419c028b5cf78f36293aff5854ab7fee"
+    },
+    {
+      "path": "lessons/L16/05-过关卡与代码地图.md",
+      "bytes": 5455,
+      "sha256": "a3cab2f899d99615526995e7ecc30e3683073274aaaa382f543c3635ce2953d9"
+    },
+    {
+      "path": "lessons/L17/00-example.py",
+      "bytes": 147,
+      "sha256": "b2a6986dbb6897d16ff07021a0c0efa57c032dfbd51df95fba03aa82fceb426a"
+    },
+    {
+      "path": "lessons/L17/00-本课目的与文件导航.md",
+      "bytes": 6338,
+      "sha256": "62b4a112cdac8deb7d3e0e4572329ee56f639277e8849566047eaebe2359b32f"
+    },
+    {
+      "path": "lessons/L17/01-教程.md",
+      "bytes": 13994,
+      "sha256": "31748cad12262466a43cc06bed4aa6ab45735b2f7b644ed48e34e6efd78ef9b7"
+    },
+    {
+      "path": "lessons/L17/02-交给AI.md",
+      "bytes": 10307,
+      "sha256": "481a97d21f7a0ba54f287a640e536370079b3e309bfd278d88888a1eb2155fcd"
+    },
+    {
+      "path": "lessons/L17/03-实验与排错.md",
+      "bytes": 10511,
+      "sha256": "115d4806e571d8877d9080905b89ff34ca21a42ad40ed109670812ad954ba050"
+    },
+    {
+      "path": "lessons/L17/04-复习与迁移答案.md",
+      "bytes": 4449,
+      "sha256": "9af8c1cf1b288f5ff4cb45a08973cf5169e11715d559f046c8df6482f1920b0d"
+    },
+    {
+      "path": "lessons/L17/05-过关卡与代码地图.md",
+      "bytes": 5190,
+      "sha256": "8b4ca9b724f05536dc22490b522b16f436582e0117a46b23b4fa014d65cdc2aa"
+    },
+    {
+      "path": "lessons/L18/00-example.py",
+      "bytes": 223,
+      "sha256": "980122cd47777e9d1c13f8e1d2007c5cee217f7eb7735cb976b8543676edcd58"
+    },
+    {
+      "path": "lessons/L18/00-本课目的与文件导航.md",
+      "bytes": 6432,
+      "sha256": "75d8088e4f479917eaabd9a29fc3aaeb3ffdbc8cd3a80aab58bd8d0df700fdd6"
+    },
+    {
+      "path": "lessons/L18/01-教程.md",
+      "bytes": 16933,
+      "sha256": "4842c8663079c858954e8c9b031d6bb77277acd128ba9383ca716c366a0ef2e8"
+    },
+    {
+      "path": "lessons/L18/02-交给AI.md",
+      "bytes": 10447,
+      "sha256": "a908780bd2bbae3b34d39ea77714819be80e3935976f8e36f7d9efb27e762443"
+    },
+    {
+      "path": "lessons/L18/03-实验与排错.md",
+      "bytes": 10537,
+      "sha256": "f32ae474ffe2900670fde8247c65f1437754f09d1b1148636420e265a1fcb655"
+    },
+    {
+      "path": "lessons/L18/04-复习与迁移答案.md",
+      "bytes": 4483,
+      "sha256": "64ef36ddf65ce4597c36dc418797f88949940329ad7a358631b018dd014600b9"
+    },
+    {
+      "path": "lessons/L18/05-过关卡与代码地图.md",
+      "bytes": 5348,
+      "sha256": "ebfe0b29bc0e8d892a0471928e9442eb613b4095035f57abfca978a49c339e95"
+    },
+    {
+      "path": "lessons/L19/00-example.py",
+      "bytes": 314,
+      "sha256": "24fa7a80c496d1cd4149c8932cb64018fb854f2b14e08139d03b528ebdd0aece"
+    },
+    {
+      "path": "lessons/L19/00-本课目的与文件导航.md",
+      "bytes": 6438,
+      "sha256": "119d5a5e723908438fed5f8c3b2a9079f7d3d25c84888299083c919e0c39a6ad"
+    },
+    {
+      "path": "lessons/L19/01-教程.md",
+      "bytes": 13727,
+      "sha256": "70c4d5cbe2838b5c748fd7b6dfbdd0096f09f85f232fea475b35d01a5aa62867"
+    },
+    {
+      "path": "lessons/L19/02-交给AI.md",
+      "bytes": 10543,
+      "sha256": "03c2e7078ffe36d2c37c8da24d1f6c9a78481f2dc310fc7148c5248cfcd09951"
+    },
+    {
+      "path": "lessons/L19/03-实验与排错.md",
+      "bytes": 10589,
+      "sha256": "595614de41c3680dce273a138307a5c4f9493223e9195f723c013429cad22f15"
+    },
+    {
+      "path": "lessons/L19/04-复习与迁移答案.md",
+      "bytes": 4499,
+      "sha256": "6dd8df9b933e20ca66145eee5ada45e71da3d8ef3f2fd00a59093446d869f723"
+    },
+    {
+      "path": "lessons/L19/05-过关卡与代码地图.md",
+      "bytes": 5463,
+      "sha256": "c55f2cd84b83b1ae66be03e0414dac58e7e2176ac8aea9c30939e1efd5e89a66"
+    },
+    {
+      "path": "lessons/L20/00-example.py",
+      "bytes": 380,
+      "sha256": "851432135d61d1347035ad2d1195f0bf0e86b32bb1895acf9ac2257e43d092f9"
+    },
+    {
+      "path": "lessons/L20/00-本课目的与文件导航.md",
+      "bytes": 6621,
+      "sha256": "c8bfdf4fd6c8def15b3d925bd006dc84a4d27a025ed33bd1f9d67846cc5e3d65"
+    },
+    {
+      "path": "lessons/L20/01-教程.md",
+      "bytes": 14319,
+      "sha256": "a379f9cde264dd8e2e22fc96e2d35297e7b75065ccfd7ce290708f7f3d441ad0"
+    },
+    {
+      "path": "lessons/L20/02-交给AI.md",
+      "bytes": 10651,
+      "sha256": "de6ec7ae73e0bd890165f67130798f05702564f2da913b31f41c3cd43c18f1ae"
+    },
+    {
+      "path": "lessons/L20/03-实验与排错.md",
+      "bytes": 10646,
+      "sha256": "475e83e6cb88333665399a48cb78b1c0a10d0068b26eb2f8e516b5b13154c8fe"
+    },
+    {
+      "path": "lessons/L20/04-复习与迁移答案.md",
+      "bytes": 4580,
+      "sha256": "a9c208b7e54e0666b0ebda8a48cb66021470e88d78c62f6141528cd53646662e"
+    },
+    {
+      "path": "lessons/L20/05-过关卡与代码地图.md",
+      "bytes": 5541,
+      "sha256": "e0ff45280223c353e6cf5dabdc232db6d77a60b3f422534158727b0c83c2d3e3"
+    },
+    {
+      "path": "lessons/L21/00-example.py",
+      "bytes": 247,
+      "sha256": "22accf52c3017173c86fc5cafada5b047c583511e67290c05af470ed752addb6"
+    },
+    {
+      "path": "lessons/L21/00-本课目的与文件导航.md",
+      "bytes": 6610,
+      "sha256": "74bd1a8efc9dc5b3f331fed68cfdf442b6776cf85d95dcb6a0767b9e1adfa833"
+    },
+    {
+      "path": "lessons/L21/01-教程.md",
+      "bytes": 14036,
+      "sha256": "af4734a29cfc15d62d7d7309951f0035db9191bd025085cba2fc3370ee67780c"
+    },
+    {
+      "path": "lessons/L21/02-交给AI.md",
+      "bytes": 10527,
+      "sha256": "1e2c6c9d5e12f144fdcce099f19b048577c4e092c5b20f712aa90798e8ae295e"
+    },
+    {
+      "path": "lessons/L21/03-实验与排错.md",
+      "bytes": 10539,
+      "sha256": "9c4d64145716c68f4f1104cbb352feccb38def3bcebcb37ffded0fd5e2e82b09"
+    },
+    {
+      "path": "lessons/L21/04-复习与迁移答案.md",
+      "bytes": 4504,
+      "sha256": "3af032fa444cdb5936e3fb2235fe44ed4b491ed3e4ca6f1976fb6d1e8a275896"
+    },
+    {
+      "path": "lessons/L21/05-过关卡与代码地图.md",
+      "bytes": 5511,
+      "sha256": "f2654ad432df8f491f48a475eb40da44f33e046bf3d657e4c0a4638f12839e97"
+    },
+    {
+      "path": "lessons/L22/00-example.py",
+      "bytes": 284,
+      "sha256": "ac882fbe10005950fd259d62d65aa9e80dfb9c0cf0e05c2bc3d9c7832db5356e"
+    },
+    {
+      "path": "lessons/L22/00-本课目的与文件导航.md",
+      "bytes": 6575,
+      "sha256": "93ddda35582ec52c8faba112d725712597bc2ada96740b0c3a9c3b6be43e594c"
+    },
+    {
+      "path": "lessons/L22/01-教程.md",
+      "bytes": 15178,
+      "sha256": "cb5201794ada60b1c19de0960e757d8b3149e9c73bd369be631392e6bf43816a"
+    },
+    {
+      "path": "lessons/L22/02-交给AI.md",
+      "bytes": 10622,
+      "sha256": "2837b15a547eaa7f090caff3f7498f4a950a2830d247091cce60545d11c29fd6"
+    },
+    {
+      "path": "lessons/L22/03-实验与排错.md",
+      "bytes": 10781,
+      "sha256": "f050478e1e2134c1d37514429ce9f27396b89d96ce73a9413a0299d5d7ee38c4"
+    },
+    {
+      "path": "lessons/L22/04-复习与迁移答案.md",
+      "bytes": 4729,
+      "sha256": "768e21b9c43a4ff8bbc77e02a920740b519648518924a10aaf896ed488d202be"
+    },
+    {
+      "path": "lessons/L22/05-过关卡与代码地图.md",
+      "bytes": 5415,
+      "sha256": "c1ba63d5756f2f632ea939dc0b258b8dac19464e0886e4352b1119f7834067d0"
+    },
+    {
+      "path": "lessons/R01/00-example.py",
+      "bytes": 1582,
+      "sha256": "495b69b006bdae93d32aa817403d00d3c9084e2c4590783d1d8dcbf4d7baf6e8"
+    },
+    {
+      "path": "lessons/R01/00-本课目的与文件导航.md",
+      "bytes": 6946,
+      "sha256": "7a5fcbcc572a7f0f509fee8afa690d6f0da7b0131162059f57362738082d6d8a"
+    },
+    {
+      "path": "lessons/R01/01-教程.md",
+      "bytes": 12364,
+      "sha256": "ca35d9aed56c92de020a984b4713ef6711fee751f9f1dc0298f55d97742cdeca"
+    },
+    {
+      "path": "lessons/R01/02-交给AI.md",
+      "bytes": 10987,
+      "sha256": "364b432eb2f507eba6268e60e825814f9e3c97e41713a63c958094af77a008bc"
+    },
+    {
+      "path": "lessons/R01/03-实验与排错.md",
+      "bytes": 6469,
+      "sha256": "281926b4c7096a059ae4553c484180df9a6a57f428f1ec15ee6f172f3fa4d9f9"
+    },
+    {
+      "path": "lessons/R01/04-复习与迁移答案.md",
+      "bytes": 1879,
+      "sha256": "39141b74c98f8693f47420ec5c9907f72e789ca7d676e3717f187c3826e74021"
+    },
+    {
+      "path": "lessons/R01/05-过关卡与代码地图.md",
+      "bytes": 5804,
+      "sha256": "55e6c20fa6eefda116cb957be2e2a194f49ab9f3ed21104e95a72c06001f2da4"
+    },
+    {
+      "path": "lessons/R01/vector-framework-example.py",
+      "bytes": 1440,
+      "sha256": "e2efb75ed9ebe8faee4f01f749ef754ffc723222f3e4d63e636ef4fb8692ebc8"
+    },
+    {
+      "path": "lessons/R02/00-example.py",
+      "bytes": 1384,
+      "sha256": "7adb39b229c3bbf8d3e9d063b3408102c3f3a95fbea1955badfb760c26f59abe"
+    },
+    {
+      "path": "lessons/R02/00-本课目的与文件导航.md",
+      "bytes": 6643,
+      "sha256": "bb37e63fe3e973bc0749d4e1ed17fe8631d1d9a037ff6da69fd2c9e3c23956ba"
+    },
+    {
+      "path": "lessons/R02/01-教程.md",
+      "bytes": 10503,
+      "sha256": "addbb35ed84e976941c2a384de7ff588acb303e1bfd98eca39ad9554973d880a"
+    },
+    {
+      "path": "lessons/R02/02-交给AI.md",
+      "bytes": 10635,
+      "sha256": "9c6a32923a9e622270f5fc5ca0e88df945554d12494bf4bc1e4a1e1c8d72033a"
+    },
+    {
+      "path": "lessons/R02/03-实验与排错.md",
+      "bytes": 6020,
+      "sha256": "244bd36d8d413578db2c3e1e67fcace229c47494836f74272a3d74f3d38eb1d4"
+    },
+    {
+      "path": "lessons/R02/04-复习与迁移答案.md",
+      "bytes": 1868,
+      "sha256": "9796b8602d1dbdd3c2d9af64d46fa5f2b0c05a9d1383017df46c5d5cb5e4eb44"
+    },
+    {
+      "path": "lessons/R02/05-过关卡与代码地图.md",
+      "bytes": 5502,
+      "sha256": "7e93e9e1c8457714d309830eb85d557148a84f147056d5b61d43e7b87f5e7e21"
+    },
+    {
+      "path": "requirements-framework.in",
+      "bytes": 364,
+      "sha256": "73d3aae4be23167890d96a96cb0561a540f1f8f13c327df7a44d9faa3d08579c"
+    },
+    {
+      "path": "revision-audit.json",
+      "bytes": 57722,
+      "sha256": "84791eebdc78a04a7792b3865433e902358fb7eb5de2903ecb437273efc631bf"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 935,
+      "sha256": "372e3fbaf6a3eed638c30d8e4757a0d521020c138984d192601b9e9344aa1faf"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 9825,
+      "sha256": "5dcecc6104773069c09ce1892c780d951ce5b1d351515a33e316d8bb03c5a06b"
+    },
+    {
+      "path": "starter/.gitignore",
+      "bytes": 121,
+      "sha256": "c4a654cc5343953f4762bc4515194748ecdc886fbecfc5bf19a8a0b7bfc72999"
+    },
+    {
+      "path": "starter/README.md",
+      "bytes": 494,
+      "sha256": "3a496d962708d0ea884bbc64707a2131015569e2b1573f4f91702fbf2d5a3a56"
+    },
+    {
+      "path": "starter/devagent/__init__.py",
+      "bytes": 62,
+      "sha256": "a3904ca1a83365511eff8753fa50b7deae49f16c5fa3cd2b86334cb0903cef9c"
+    },
+    {
+      "path": "starter/devagent/__main__.py",
+      "bytes": 170,
+      "sha256": "1d8bccc5ac047ff505d306c35cf3afb23c8c804395ec6a0fe0f734b22da1924a"
+    },
+    {
+      "path": "starter/devagent/app.py",
+      "bytes": 265,
+      "sha256": "8b0fb054f699c9907bd617efdb43bf6b96e8c7841918c0e9fa5d10889dbe5550"
+    },
+    {
+      "path": "starter/devagent/models.py",
+      "bytes": 314,
+      "sha256": "b53d2ff5562873d9236d20279c782288a5e3440645a2f44646cf4ddd4dc57757"
+    },
+    {
+      "path": "starter/pyproject.toml",
+      "bytes": 149,
+      "sha256": "0ec00c6d81e0925587d59416919135bb325e1024ea9ebf35d2f0cd0171daaf8e"
+    },
+    {
+      "path": "starter/tests/test_l00.py",
+      "bytes": 580,
+      "sha256": "606f61499acc524a1bc5d43c02e74a5b1ff2b2844294a88115627905c736605f"
+    },
+    {
+      "path": "templates/code-map.json",
+      "bytes": 1168,
+      "sha256": "c39616780085aa7a0ccfffcb8aae84846685aec3de2e35b044ee8e2788889c64"
+    },
+    {
+      "path": "templates/learning-record.md",
+      "bytes": 890,
+      "sha256": "74f93fb9fb55bb388030247d77d465012421a9bdef54d4f107ee29118a8b8cae"
+    },
+    {
+      "path": "templates/progress.json",
+      "bytes": 45,
+      "sha256": "a3841739ed5a30d5b307524d32b24b4920174143afca5f7e690f7b9ee92412e8"
+    },
+    {
+      "path": "templates/学习记录.md",
+      "bytes": 511,
+      "sha256": "4ae27e836ea76a6560a944dc7f8e716018e15fe8f6669d62b96720c15b6cbf16"
+    },
+    {
+      "path": "templates/对照实验.md",
+      "bytes": 538,
+      "sha256": "2d01c5877becc9dcb156e518dac6d3d1c50962539b2b6382ac08f7d727b47fa0"
+    },
+    {
+      "path": "templates/故障复盘.md",
+      "bytes": 338,
+      "sha256": "ef1341ae1ba777975a3c2aaa2207270011ea3c703366b27ee24034b4c40307f5"
+    },
+    {
+      "path": "templates/架构决策.md",
+      "bytes": 239,
+      "sha256": "e2bd7b8cbef121dc325b36c5444a608fe1254a2290abb98235c6acb05dbe6357"
+    },
+    {
+      "path": "tools/_fixture_tests.py",
+      "bytes": 1836,
+      "sha256": "7f8aac363ac615bc999d413c6827b7399ac895e5f96dac115e51eea8cbe35dae"
+    },
+    {
+      "path": "tools/build_reader.py",
+      "bytes": 21654,
+      "sha256": "b753b2cd9d9bee57ee2e9c51d7c4b81bc3ad33e46914e5e50937018e4b07f229"
+    },
+    {
+      "path": "tools/check_course.py",
+      "bytes": 4746,
+      "sha256": "11fc459adbca66700ed1b6d227b505cece29c2945cb622ec6466f4d679830d2e"
+    },
+    {
+      "path": "tools/code_map.py",
+      "bytes": 8194,
+      "sha256": "b0a37203fdea900a90f303cb8322ad3dde9a9f1b392d366516070fbeaa9b6231"
+    },
+    {
+      "path": "tools/course.py",
+      "bytes": 7392,
+      "sha256": "39016f7b238c6f6c2c246c7546e3337f640d4211e0936074552c86e605ed5e0a"
+    },
+    {
+      "path": "tools/grade_fixture.py",
+      "bytes": 2712,
+      "sha256": "3ef663fc6b8dc39765c2100a8a53e13fb595160b3feac199b1fa18e495abdc55"
+    },
+    {
+      "path": "tools/prepare_example.py",
+      "bytes": 3084,
+      "sha256": "48e39d807418eeb1aaf4c5d7b0396af636a55361c11b02dfbcafb0911516323b"
+    },
+    {
+      "path": "tools/probe_l00.py",
+      "bytes": 2814,
+      "sha256": "6c2a4ca26f73a2b7f94c94dd39488773b305600a8cd920eca2581c9934948886"
+    },
+    {
+      "path": "tools/test_navigation_tools.py",
+      "bytes": 8321,
+      "sha256": "aedf12f6c97b39bb12fdbcfa52581ec941bafbf3fad999a3f05ce8b0a02e3a1f"
+    },
+    {
+      "path": "tools/test_tools.py",
+      "bytes": 6603,
+      "sha256": "6d42ab591e4e63166a91e2f8c07e2556e963dee1c7c69345dd242622c35337b0"
+    },
+    {
+      "path": "validation/browser.json",
+      "bytes": 897,
+      "sha256": "aec2846376aab17db3a10d7e1f39b67d9aae86abfef060a62e8f9a35d7c950fc"
+    },
+    {
+      "path": "validation/first-day-commands.json",
+      "bytes": 12524,
+      "sha256": "ee6832172e69a90b07f611500f7c9b748a51cb5998922c6e7377c0a2d0819109"
+    },
+    {
+      "path": "validation/history-v4/browser.json",
+      "bytes": 1110,
+      "sha256": "71825f89cc60e28485188c222b27f24f5c2c3e5cdfc8e0186b61513ea697b910"
+    },
+    {
+      "path": "validation/history-v4/report.md",
+      "bytes": 11659,
+      "sha256": "116bcf6968a98d5042ec7bacafd76ff4c721d17b0d3ffafaa4b3a9b43b47125d"
+    },
+    {
+      "path": "validation/history-v4/results.json",
+      "bytes": 36479,
+      "sha256": "b96eab053542c124d56acad4368326bf7695c79a3236fd4e896f96e4d3fee6c3"
+    },
+    {
+      "path": "validation/history-v4/v4-pip-public.log",
+      "bytes": 423,
+      "sha256": "414260e340c9880613e9149dfae2490e2225f0c1f2b10739f051a84840fafdc0"
+    },
+    {
+      "path": "validation/history-v4/v4-pip.log",
+      "bytes": 423,
+      "sha256": "414260e340c9880613e9149dfae2490e2225f0c1f2b10739f051a84840fafdc0"
+    },
+    {
+      "path": "validation/navigation_tools.log",
+      "bytes": 2883,
+      "sha256": "7d83da9f633f57492f08d8cf55f9330c79246e7534949c97b7dff631d50d5d09"
+    },
+    {
+      "path": "validation/original_tools.log",
+      "bytes": 1814,
+      "sha256": "5856d1a1508cbbfe124b35b27a184a97067481ba51fdddbb9cb2aac03ab23be6"
+    },
+    {
+      "path": "validation/report.md",
+      "bytes": 5964,
+      "sha256": "fe8ec6017aeb05a7c1abaa5012126479c6826e9319ee16b9c9aa0afc2dbb5a88"
+    },
+    {
+      "path": "validation/results.json",
+      "bytes": 35433,
+      "sha256": "6ba0ab932da8563d3c6fdcc6ad18da42c0c1f4d86d589ea1c05e1d019e3e3fa6"
+    },
+    {
+      "path": "validation/static.json",
+      "bytes": 275,
+      "sha256": "3e811ac9017b4a441cde9993f6f9f61364ea31c3af5e90390871e637d32656e6"
+    },
+    {
+      "path": "validation/workshop_reference.log",
+      "bytes": 2333,
+      "sha256": "0dfa4c82a784ac1d55fe84a45c6ed3c5a7446d27cfd1c4dc6c748f45b27d38e3"
+    },
+    {
+      "path": "validation/workshop_student_initial.log",
+      "bytes": 13919,
+      "sha256": "7b9ada27b7f8fa129123dc6541dd3a012149d99d9790dd7de7c86fd8eb46d54e"
+    },
+    {
+      "path": "workshops/README.md",
+      "bytes": 4229,
+      "sha256": "fe08941bfc2be0177abd706659cad29b790ae39b5ea0fbf412e50ca556b30cc4"
+    },
+    {
+      "path": "workshops/answers/bug_lab_solution.py",
+      "bytes": 2061,
+      "sha256": "2f1e0a2740970d3b22ca75f3c43e460daa9c81cc18baa790bebc58e1bb8e8b18"
+    },
+    {
+      "path": "workshops/bug_lab/student.py",
+      "bytes": 1436,
+      "sha256": "acc5cd098edaa652737020bbba214ef05d6b4ed9b3c75c27df70408d55544af0"
+    },
+    {
+      "path": "workshops/bug_lab/test_bug_lab.py",
+      "bytes": 4229,
+      "sha256": "ab5a0d89b820a5392cd06abb85d90873d2e07aef3c898d90c235d57ac736e3d1"
+    }
+  ]
+}

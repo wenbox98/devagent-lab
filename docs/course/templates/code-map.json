@@ -1,0 +1,51 @@
+{
+  "lesson": "L00",
+  "source_head": null,
+  "entries": [
+    {
+      "role": "入口",
+      "status": "missing",
+      "path": null,
+      "symbol": null,
+      "anchor": null,
+      "sha256": null,
+      "reason": "尚未读取实际源码；不是已完成映射"
+    },
+    {
+      "role": "输入边界",
+      "status": "missing",
+      "path": null,
+      "symbol": null,
+      "anchor": null,
+      "sha256": null,
+      "reason": "尚未读取实际源码；不是已完成映射"
+    },
+    {
+      "role": "核心决策",
+      "status": "missing",
+      "path": null,
+      "symbol": null,
+      "anchor": null,
+      "sha256": null,
+      "reason": "尚未读取实际源码；不是已完成映射"
+    },
+    {
+      "role": "下游/状态",
+      "status": "missing",
+      "path": null,
+      "symbol": null,
+      "anchor": null,
+      "sha256": null,
+      "reason": "尚未读取实际源码；不是已完成映射"
+    },
+    {
+      "role": "测试",
+      "status": "missing",
+      "path": null,
+      "symbol": null,
+      "anchor": null,
+      "sha256": null,
+      "reason": "尚未读取实际源码；不是已完成映射"
+    }
+  ]
+}

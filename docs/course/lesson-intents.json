@@ -1,0 +1,1705 @@
+{
+  "version": "4.2.0",
+  "lessons": {
+    "L00": {
+      "before": "只有一次输入和一个可替换的模型客户端，尚未建立可靠的错误分类。",
+      "after": "把输入错误、客户端超时、响应无效分开；拒绝输入时证明客户端没有被调用。",
+      "not_this_lesson": "不接真实API，不建Agent循环，不把概念函数当完整run_task。",
+      "roles": [
+        [
+          "输入边界和业务结果",
+          "devagent/app.py"
+        ],
+        [
+          "请求与结果对象",
+          "devagent/models.py"
+        ],
+        [
+          "模拟客户端",
+          "devagent/fake_model.py"
+        ],
+        [
+          "事件记录",
+          "devagent/trace.py"
+        ]
+      ],
+      "focus": "handle(task, client) 的第一句 task.strip()，以及函数末尾 text.strip()；timeout_client 是受控超时替身。",
+      "change": "先保持 handle 函数不变，用本课探针把 task 设为整数42，再设为字符串\"42\"。然后在独立练习副本中补运行时类型判断。",
+      "evidence": "记录 exception_type、result、client_calls；不要把未进入客户端等同于已正确返回invalid_input。",
+      "purpose_question": "我怎样从一次失败区分“没资格调用”“调用没返回”“返回了但不能用”？",
+      "search_terms": "Python isinstance str strip exceptions unittest mock call_count",
+      "topic_questions": [
+        "输入、执行、响应各在哪个边界判断？",
+        "None、空串、真假值会让哪个分支走错？",
+        "结果对象和CLI入口为何分开？",
+        "为什么先模拟而不先接公网？",
+        "同一个“失败”能否来自三个不同层次？",
+        "异常、返回值、进程退出码分别给谁看？",
+        "哪条日志能排除“客户端已经调用”的猜测？"
+      ],
+      "example": "lessons/L00/00-example.py",
+      "topic_headings": [
+        "先建立三层判断",
+        "读懂本课Python",
+        "数据对象和程序入口",
+        "先模拟，是为了控制变量",
+        "把一次失败拆成输入、执行、表达三层",
+        "理解返回值、异常与退出码",
+        "把日志设计成可以反驳假设的证据"
+      ],
+      "flow": "task → 清洗/校验 → client → 响应校验 → RunResult；输入拒绝时client调用数必须是0。",
+      "question": "将输入改成整数42时应该在哪层拒绝？是否还调用client？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "handle",
+          "line": 1,
+          "end_line": 11
+        },
+        {
+          "name": "timeout_client",
+          "line": 13,
+          "end_line": 14
+        }
+      ]
+    },
+    "L01": {
+      "before": "L00已经把客户端隔离在应用边界后面；现在接入的供应商响应结构可能不同。",
+      "after": "让供应商字段、配置和异常停在适配器，上层继续使用同一领域结果。",
+      "not_this_lesson": "不自动重试，不把未知usage当0，不把模拟连接当真实API验证。",
+      "roles": [
+        [
+          "供应商响应归一化",
+          "devagent/providers/adapter.py"
+        ],
+        [
+          "本地配置读取",
+          "devagent/config.py"
+        ],
+        [
+          "业务接入",
+          "devagent/app.py"
+        ]
+      ],
+      "focus": "normalize(raw) 与文件底部两次 normalize(...) 调用。",
+      "change": "只把第二次调用的usage字段去掉，再设为None；先观察当前简化函数是否支持None，再讨论适配器如何明确处理。",
+      "evidence": "text、input_tokens、output_tokens及异常类型；网络调用次数在概念例子中为0。",
+      "purpose_question": "换供应商时，哪些变化应该被挡在业务代码之外？",
+      "search_terms": "model provider response usage schema API error adapter",
+      "topic_questions": [
+        "应用实际发送和接收的最小信息是什么？",
+        "为什么不把SDK对象传遍业务层？",
+        "缺配置和限流为何不能同样重试？",
+        "遇到旧SDK代码该核对什么？",
+        "为什么一次正常回应不能证明长期稳定？",
+        "字符长度、Token用量、计费为何不能混算？",
+        "哪个超时发生在连接前、响应中或整任务上？"
+      ],
+      "example": "lessons/L01/00-example.py",
+      "topic_headings": [
+        "LLM调用的最小模型",
+        "适配器该隔离什么",
+        "把配置错误与服务错误分开",
+        "如何学习SDK而不被版本困住",
+        "模型不是普通的确定性纯函数",
+        "Token、上下文与价格的关系",
+        "超时分层与能力探测"
+      ],
+      "flow": "ModelRequest → provider adapter → API → ModelResponse；供应商字段只在适配层出现。",
+      "question": "响应没有usage字段时，为什么不能填0？一个200响应但正文结构改变怎么办？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "normalize",
+          "line": 1,
+          "end_line": 6
+        }
+      ]
+    },
+    "L02": {
+      "before": "模型可以接受任务，但尚不能安全读取任意给定路径。",
+      "after": "建立工作区归属检查与有界读取；区分无权限、不存在和正常截断。",
+      "not_this_lesson": "不写文件；PurePosixPath仅演示路径关系，不完成真实符号链接防护。",
+      "roles": [
+        [
+          "工作区路径和文件读取",
+          "devagent/tools/files.py"
+        ],
+        [
+          "受控测试仓库",
+          "fixtures/tiny_repo"
+        ]
+      ],
+      "focus": "模块级变量root、good、bad；对比startswith和is_relative_to。",
+      "change": "将bad改为/work/repo/sub/a.py；再改回/work/repo2/main.py。只改路径值，不改判断表达式。",
+      "evidence": "三个布尔输出；真实符号链接另在生成的test_l02中验证。",
+      "purpose_question": "为什么看起来以repo开头的路径，仍可能不属于repo？",
+      "search_terms": "pathlib Path resolve is_relative_to symlink workspace",
+      "topic_questions": [
+        "路径字符串怎样变成真实目标？",
+        "有权限与文件存在为何是两项检查？",
+        "读取大文件时怎样告诉下游还没读完？",
+        "前缀判断为什么会放过repo2？",
+        "应用校验为什么不能代替运行环境隔离？",
+        "只读操作为什么也可能耗尽资源？"
+      ],
+      "example": "lessons/L02/00-example.py",
+      "topic_headings": [
+        "先理解路径解析",
+        "权限与可用性分开",
+        "控制返回量而不是盲读全部",
+        "路径授权必须看解析后的目标",
+        "边界检查与隔离是两层能力",
+        "读取也要有资源预算"
+      ],
+      "flow": "不可信path → canonical path → 工作区归属 → 文件类型/大小 → 有界内容。",
+      "question": "根为/tmp/repo，/tmp/repo2/a.py是否允许？软链接指向外部呢？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "L03": {
+      "before": "L02提供受控读文件函数，模型还不能把提议安全地变成实际调用。",
+      "after": "按注册表分派，校验参数，返回可关联的ToolResult；模型没有自行授予权限的权力。",
+      "not_this_lesson": "不eval工具名；教学double不是读取仓库的真实工具。",
+      "roles": [
+        [
+          "工具请求与响应协议",
+          "devagent/tools/protocol.py"
+        ],
+        [
+          "允许工具注册与执行",
+          "devagent/tools/registry.py"
+        ],
+        [
+          "既有文件授权",
+          "devagent/tools/files.py"
+        ]
+      ],
+      "focus": "execute(call)、registry和末尾x=True的调用。",
+      "change": "把第二个调用的x从True改为3；另增加name=missing的调用。不需要创建名为admin的真实租户。",
+      "evidence": "call_id、错误码、被执行的注册函数；布尔值是否被当成整数。",
+      "purpose_question": "怎样保证参数合法、具备权限、业务成功是三次不同判断？",
+      "search_terms": "JSON Schema tool calling bool int validation registry",
+      "topic_questions": [
+        "工具描述、调用提议和执行结果各由谁产生？",
+        "Schema通过后还要检查什么？",
+        "为什么注册表必须限制可执行函数？",
+        "并列工具结果怎么配回各自请求？",
+        "路径合法字符串就一定可读吗？",
+        "call_id重复或丢失会破坏什么证据？",
+        "工具描述不清会在哪个阶段导致误选？"
+      ],
+      "example": "lessons/L03/00-example.py",
+      "topic_headings": [
+        "三个对象分别是什么",
+        "两层校验不可省略",
+        "注册表限制实际能力",
+        "调用ID为什么重要",
+        "Schema约束形状，不约束世界事实",
+        "调用ID是协议关联键",
+        "工具描述是接口的一部分"
+      ],
+      "flow": "模型tool_call → tool_call_id关联 → schema校验 → 宿主授权 → executor → tool_result。",
+      "question": "模型传入tenant_id=admin，Schema完全合法，应该执行吗？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "execute",
+          "line": 3,
+          "end_line": 10
+        }
+      ]
+    },
+    "L04": {
+      "before": "L03能执行单个工具，但模型尚未根据工具结果继续下一步。",
+      "after": "把请求、实际结果、下一轮输入与停止条件串成有界循环。",
+      "not_this_lesson": "不把脚本列表当真实LLM；不要把脚本耗尽的IndexError当Agent预算停止。",
+      "roles": [
+        [
+          "原生模型工具循环",
+          "devagent/agent/loop.py"
+        ],
+        [
+          "消息与调用关联",
+          "devagent/agent/messages.py"
+        ]
+      ],
+      "focus": "模块级script、history、for循环与追加tool_result的语句。",
+      "change": "在副本中暂时注释追加tool_result的那一行，保持script不变，比较history。此脚本仍会final，所以只能证明反馈缺失，不能证明模型决策变化。",
+      "evidence": "history中是否包含同ID的tool_result；项目中再检查下一次真实传入消息。",
+      "purpose_question": "上一步发生的事实，究竟怎样进入下一次模型请求？",
+      "search_terms": "tool result messages state machine step budget",
+      "topic_questions": [
+        "模型、宿主、工具各自能决定什么？",
+        "不回传结果时下一轮少了什么事实？",
+        "哪种终止必须由程序强制执行？",
+        "不用随机模型怎样验证编排？",
+        "把循环写成状态机能看清哪条退出路径？",
+        "工具失败应怎样改变下一步输入？",
+        "为什么max_steps还不足以识别无进展？"
+      ],
+      "example": "lessons/L04/00-example.py",
+      "topic_headings": [
+        "一次循环里谁拥有什么权力",
+        "为什么必须回传结果",
+        "预算与终止不是附加功能",
+        "怎样测试概率组件",
+        "Agent循环是带退出条件的状态机",
+        "观察结果怎样改变下一步",
+        "限制步数只是最后保险"
+      ],
+      "flow": "messages → model → proposed action → real tool result → messages；直到final或预算/取消终止。",
+      "question": "工具失败后，第二次模型请求仍看不到失败结果，会发生什么？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "L05": {
+      "before": "L04能读文件并回答，但同名函数会让第一条搜索命中误导定位。",
+      "after": "分开候选搜索、精读和引用核对，结论能回到当前代码版本。",
+      "not_this_lesson": "本课只定位，不授权写入；purpose字段是人工教学标注。",
+      "roles": [
+        [
+          "文本候选搜索",
+          "devagent/tools/search.py"
+        ],
+        [
+          "引用与证据对象",
+          "devagent/evidence.py"
+        ],
+        [
+          "定位任务集",
+          "evaluation/location_tasks.py"
+        ]
+      ],
+      "focus": "模块级hits、candidates及purpose过滤；这里没有名为search_text的函数。",
+      "change": "交换hits两项顺序，保留purpose值；再增加一个同名但用途不同的条目。只改该副本列表。",
+      "evidence": "候选路径及空匹配返回；真实项目需读取函数和契约而不是依赖purpose标签。",
+      "purpose_question": "搜索第一名为何不是已经证明的修改位置？",
+      "search_terms": "code search retrieval precision recall source citation",
+      "topic_questions": [
+        "为何先搜到还必须再读上下文？",
+        "空匹配与工具异常怎样决定不同下一步？",
+        "引用最少要保留什么才能核查？",
+        "什么候选命中并不能支持当前结论？",
+        "正确文件没召回和选错文件分别怎么诊断？",
+        "文件改动以后旧行号还能证明什么？"
+      ],
+      "example": "lessons/L05/00-example.py",
+      "topic_headings": [
+        "搜索、阅读和回答是三个动作",
+        "没有匹配是正常事实",
+        "把证据作为结构化数据",
+        "检索结果是候选证据，不是结论",
+        "召回与精确度解决不同失败",
+        "引用必须可回到原始文件"
+      ],
+      "flow": "query → text/symbol matches → 精读范围 → path/lines/hash → 可核对引用。",
+      "question": "两个文件都有page函数，第一条搜索命中足够授权修改吗？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "L06": {
+      "before": "L05能够找到代码，但“优化分页”仍未说明要改变什么。",
+      "after": "把目标、约束、验收与关键缺失项分开，选择澄清、探查或固定流程。",
+      "not_this_lesson": "不要求每次缺信息都追问；不在此课建设Web澄清服务。",
+      "roles": [
+        [
+          "任务目标与澄清判断",
+          "devagent/tasks/clarification.py"
+        ],
+        [
+          "确定性只读流程",
+          "devagent/agent/workflow.py"
+        ]
+      ],
+      "focus": "choose_action(task)及operation/metric/test三个字段。",
+      "change": "将optimize调用补上metric=\"latency\"，与未提供metric的情况比较。",
+      "evidence": "workflow、ask_metric或agent分支；这只是规则路由，尚未执行真实任务。",
+      "purpose_question": "什么信息会改变验收目标，必须问；什么可以先从仓库查到？",
+      "search_terms": "task specification constraints clarification workflow reversible action",
+      "topic_questions": [
+        "优化目标怎样转成可判定的验收？",
+        "可逆探查与不可逆改动的澄清门槛为何不同？",
+        "为什么不是每个任务都需要自主Agent？",
+        "等待输入如何保存而不丢原任务？",
+        "哪次提问会真的改变错误决策的风险？",
+        "模糊需求中的哪一个字段必须明确？",
+        "计划能否自行扩大执行权限？"
+      ],
+      "example": "lessons/L06/00-example.py",
+      "topic_headings": [
+        "明确目标、约束与验收",
+        "用可逆性与损失判断要不要问",
+        "固定工作流也是一种合适方案",
+        "把澄清变成状态",
+        "澄清是降低决策风险的一次信息获取",
+        "把任务描述转成可执行约束",
+        "规划与执行的职责"
+      ],
+      "flow": "任务约束 → 是否存在关键歧义 → 可逆探查/澄清/执行；不是所有信息缺失都阻塞。",
+      "question": "“优化性能”没有目标指标，能直接修改吗？“查找page定义”呢？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "choose_action",
+          "line": 1,
+          "end_line": 6
+        }
+      ]
+    },
+    "L07": {
+      "before": "L05/L06能定位并确定改动目标，但读取后文件可能被人修改。",
+      "after": "按读取基线校验后写入，产生可审查diff，冲突不覆盖当前字节。",
+      "not_this_lesson": "不在学习主仓库实验破坏性写入；原子替换不等于多文件事务。",
+      "roles": [
+        [
+          "带基线的补丁写入",
+          "devagent/tools/edit.py"
+        ],
+        [
+          "受控工作区",
+          "devagent/runtime/workspace.py"
+        ]
+      ],
+      "focus": "digest(text)、read_version、current及最后两个比较。",
+      "change": "只把current改成与read_version对应的原始文本，再改成第三个版本；不要把expected_hash跟着错误结果一起改。",
+      "evidence": "基线是否匹配；主项目冲突还必须验证文件字节未变化。",
+      "purpose_question": "模型读过文件以后，凭什么确定现在仍可安全写回？",
+      "search_terms": "optimistic concurrency expected hash atomic replace file lock",
+      "topic_questions": [
+        "写入前必须拿哪两个版本比较？",
+        "整文件覆盖会隐藏哪些无关变化？",
+        "回滚为什么也可能覆盖别人工作？",
+        "补丁缺哪个前置条件就不该执行？",
+        "一个文件替换成功是否代表多个文件原子完成？",
+        "怎样从diff看出修复是否越界？"
+      ],
+      "example": "lessons/L07/00-example.py",
+      "topic_headings": [
+        "先读版本，再条件写",
+        "小补丁比整文件覆盖容易审查",
+        "回退也必须检查版本",
+        "补丁实际上是一个有前置条件的写请求",
+        "原子替换不等于多文件事务",
+        "最小修改与可审查性"
+      ],
+      "flow": "读取基线hash → 生成候选diff → 核对当前hash → 应用到受控副本 → 保存新hash。",
+      "question": "审批后文件被他人改动，即使补丁还能匹配，也应该照常写吗？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "digest",
+          "line": 3,
+          "end_line": 4
+        }
+      ]
+    },
+    "L08": {
+      "before": "L07允许写受控副本，下一步运行测试会跨入进程和资源边界。",
+      "after": "限制允许命令、执行时间、输出及清理范围，形成可靠运行事实。",
+      "not_this_lesson": "字节截断例子没有启动进程；通过它不代表已实现进程树终止或沙箱。",
+      "roles": [
+        [
+          "测试运行器",
+          "devagent/runtime/runner.py"
+        ],
+        [
+          "运行环境和平台配置",
+          "devagent/runtime/environment.py"
+        ]
+      ],
+      "focus": "模块级limit、saved、truncated以及每个chunk的room计算。",
+      "change": "把limit从10改为5，再改为0；保持输入chunks不变。",
+      "evidence": "保存的字节数不得超过limit，truncated要表达确实丢弃过输出。",
+      "purpose_question": "等待测试超时后，谁负责真正停止工作并防止输出撑爆内存？",
+      "search_terms": "subprocess timeout process group communicate bounded output",
+      "topic_questions": [
+        "合法命令模板和OS隔离分别防什么？",
+        "子进程超时为什么还要处理后代进程？",
+        "先收集全部输出再截断为什么太晚？",
+        "本地例子能证明哪些限制、不能证明哪些？",
+        "cwd、argv和env为何都是执行边界？",
+        "停止等待能否证明计算停止？",
+        "无限输出会影响哪个资源预算？"
+      ],
+      "example": "lessons/L08/00-example.py",
+      "topic_headings": [
+        "命令边界与隔离各管什么",
+        "超时后要处理整组进程",
+        "输出上限要在读取时执行",
+        "什么是本课可证明的范围",
+        "运行命令意味着跨入操作系统边界",
+        "限制等待不等于终止工作",
+        "输出也是受限资源"
+      ],
+      "flow": "固定argv/cwd/env → 启动受控测试 → 有界读输出 → deadline → 清理进程组 → 结果分类。",
+      "question": "communicate(timeout=1)超时后，只抛异常不清理，会留下什么？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "L09": {
+      "before": "读取、补丁和运行器已经具备，但红色测试结果有多种根因。",
+      "after": "用测试数量、收集错误和断言结果控制修复下一步，遇到环境问题停下排障。",
+      "not_this_lesson": "不修改裁判标准追求绿灯；分类函数不是完整测试运行器。",
+      "roles": [
+        [
+          "修复循环",
+          "devagent/agent/repair.py"
+        ],
+        [
+          "测试报告分类",
+          "devagent/runtime/test_report.py"
+        ]
+      ],
+      "focus": "classify(exit_code, tests_run, import_error, timed_out)。",
+      "change": "追加classify(1,3)、classify(5,0)和classify(1,0,import_error=True)三次调用；不改分类代码。",
+      "evidence": "assertion_failed、no_tests、collection_error是否可区分。",
+      "purpose_question": "怎样避免在依赖没装好时不停修改正确的业务代码？",
+      "search_terms": "pytest exit codes collection errors tests collected repair loop",
+      "topic_questions": [
+        "红灯是断言失败、零测试还是收集失败？",
+        "给模型什么事实才能指导下一轮修复？",
+        "依赖未安装时改业务代码为何无效？",
+        "哪种TestReport应继续、哪种必须blocked？",
+        "补丁被应用为什么还不叫任务成功？",
+        "为什么不能让Agent同时修改答案和评分标准？"
+      ],
+      "example": "lessons/L09/00-example.py",
+      "topic_headings": [
+        "先区分测试结果类型",
+        "修复反馈应该足够具体",
+        "环境问题不要自动变成代码修改",
+        "把测试结果转换成有限的下一步",
+        "修复尝试与任务成功分开记账",
+        "避免让评判标准跟着答案移动"
+      ],
+      "flow": "定位 → 补丁 → 测试 → 失败分类 → 下一步/停止；最终结论仍由独立验收给出。",
+      "question": "pytest退出5与退出1都非零，能否都解释成补丁没修好？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "classify",
+          "line": 1,
+          "end_line": 8
+        }
+      ]
+    },
+    "L10": {
+      "before": "L09能自动修复，但写入已完成、返回丢失时无法凭超时判断结果。",
+      "after": "稳定操作身份绑定请求内容；未知状态先核对，重试不产生第二次逻辑写入。",
+      "not_this_lesson": "内存records不是崩溃恢复；不宣称外部副作用恰好一次。",
+      "roles": [
+        [
+          "操作身份与重试协调",
+          "devagent/runtime/operations.py"
+        ],
+        [
+          "操作记录存储",
+          "devagent/runtime/operation_store.py"
+        ]
+      ],
+      "focus": "submit(op_id,payload)与模块级records。",
+      "change": "保留第一次op-1/patch-A；把第二次ID改成op-2，比较records。不要把这当推荐做法。",
+      "evidence": "是replayed还是applied，以及记录数；远端副作用还需单独核对。",
+      "purpose_question": "超时告诉我没收到什么，却不能告诉我没发生什么？",
+      "search_terms": "idempotency request hash timeout unknown outcome reconciliation",
+      "topic_questions": [
+        "没收到回应可以推出操作没执行吗？",
+        "同一个键为什么还要核对请求指纹？",
+        "文件已改但记录未写时怎么判断？",
+        "调用方的超时与服务方的执行事实如何并存？",
+        "幂等键的业务作用域应该是什么？",
+        "什么时候先核对而不是再发一次写请求？"
+      ],
+      "example": "lessons/L10/00-example.py",
+      "topic_headings": [
+        "超时只描述观察，不描述结果",
+        "幂等键需要绑定请求内容",
+        "修改文件与写操作记录不是天然原子",
+        "超时是观察失败，不一定是操作失败",
+        "幂等是同一业务操作重复提交的语义",
+        "重试必须有停止条件与对账路径"
+      ],
+      "flow": "稳定operation_id → 内容指纹 → 执行 → 回执；回执丢失时先核对再重试。",
+      "question": "写文件成功后回执丢失，客户端能确认失败吗？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "submit",
+          "line": 2,
+          "end_line": 8
+        }
+      ]
+    },
+    "L11": {
+      "before": "修复可重试，但无变化地重复同一操作会消耗预算。",
+      "after": "用执行事实与新证据判断进展，和硬预算共同决定停止。",
+      "not_this_lesson": "不根据模型换了措辞判定进展；停止不等于任务成功。",
+      "roles": [
+        [
+          "进展指纹",
+          "devagent/agent/progress.py"
+        ],
+        [
+          "预算管理",
+          "devagent/agent/budget.py"
+        ]
+      ],
+      "focus": "recent、events、repeated，重点看deque长度和set大小。",
+      "change": "将events最后一项改为(\"read\",\"new-evidence\")，只变观察值。",
+      "evidence": "最后一轮stop还是continue；主项目指纹来源必须是实际事实。",
+      "purpose_question": "什么变化是有用的进展，什么只是把同一次失败再说一遍？",
+      "search_terms": "no progress fingerprint bounded retry agent budget",
+      "topic_questions": [
+        "进展需要新增哪类可观察事实？",
+        "重复阈值和硬预算各补哪个漏洞？",
+        "过早停止会损失哪种正常探索？",
+        "模型改变描述但状态没变算不算进展？",
+        "步数、耗时、费用为什么要分开限额？",
+        "停止时怎样报告未完成而非伪装成功？"
+      ],
+      "example": "lessons/L11/00-example.py",
+      "topic_headings": [
+        "先定义什么叫进展",
+        "重复检测与硬预算配合",
+        "提前停止也有错误成本",
+        "进展应依据状态变化而不是文字变化",
+        "预算有多个维度",
+        "停止与降级同样需要质量标准"
+      ],
+      "flow": "状态指纹/新证据 → 比较前一轮 → 是否有进展 → 继续/改变策略/停止。",
+      "question": "两次错误文本不同，但修改文件和失败测试完全相同，算进展吗？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "L12": {
+      "before": "L09/L11会产出修复结论，但实现者也可能通过改测试来制造成功。",
+      "after": "由独立标准联合检查目标、回归、实际测试数、当前快照和修改范围。",
+      "not_this_lesson": "公开裁判不是安全沙箱或隐藏考试；概念grade没有快照校验，项目需要补齐。",
+      "roles": [
+        [
+          "独立任务评分",
+          "evaluation/grader.py"
+        ],
+        [
+          "验收任务和受保护测试",
+          "evaluation/task_schema.py"
+        ]
+      ],
+      "focus": "grade(target_passed,regression_passed,tests_run,scope_ok)。",
+      "change": "保持target_passed=True，分别将scope_ok设False、tests_run设0；不要编辑公共参考测试。",
+      "evidence": "模型自报成功与grade布尔结果是否分开；公共裁判还需检查当前文件。",
+      "purpose_question": "谁有资格宣布修复完成，为什么不能由待评Agent自己决定？",
+      "search_terms": "independent grader regression tests snapshot verification",
+      "topic_questions": [
+        "为什么先定义成功再运行待评方案？",
+        "怎样让写死样例答案的实现失败？",
+        "最终结果和执行轨迹各能证明什么？",
+        "为什么评分器不能相信模型自报成功？",
+        "报告来自旧代码为什么不算本次证据？",
+        "目标通过、回归通过和范围合法如何共同决定结论？"
+      ],
+      "example": "lessons/L12/00-example.py",
+      "topic_headings": [
+        "先写成功条件，再看答案",
+        "用边界覆盖打破硬编码",
+        "结果与轨迹分别有什么用",
+        "验证器要独立于执行者的说法",
+        "证据要匹配同一快照",
+        "正确性、约束与回归组成联合条件"
+      ],
+      "flow": "当前快照 → 受保护参考测试 → 实际收集数/结果 → 修改范围 → 独立结论。",
+      "question": "模型说成功、公共测试通过，但它修改了验收文件，能毕业吗？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "grade",
+          "line": 1,
+          "end_line": 3
+        }
+      ]
+    },
+    "F01": {
+      "before": "原生修复与独立验收已具备，现在只引入框架模型接口。",
+      "after": "把消息、模型响应和Runnable边界对应到原有领域接口。",
+      "not_this_lesson": "不替换Agent循环，不重写工具，不把标准库组合误记为框架运行。",
+      "roles": [
+        [
+          "LangChain模型适配",
+          "devagent/frameworks/langchain_model.py"
+        ],
+        [
+          "已有业务结果",
+          "devagent/models.py"
+        ]
+      ],
+      "focus": "normalize、scripted_model、Reply和main中的调用顺序。",
+      "change": "在副本中把main的任务改为纯空格；看normalize何时拒绝。已有normalize(42)分支是独立的边界案例。",
+      "evidence": "message的角色、content、Reply类型，以及异常产生的相邻步骤。",
+      "purpose_question": "框架帮我连接了哪几个输入输出，哪些业务判断仍要自己负责？",
+      "search_terms": "LangChain messages AIMessage Runnable invoke PromptValue",
+      "topic_questions": [
+        "已经有原生实现，框架迁移究竟要比较什么？",
+        "角色、工具调用和正文为什么不能压成字符串？",
+        "管道中相邻步骤的输入输出类型由谁保证？",
+        "标准库演示能证明与不能证明什么？",
+        "迁移后哪些回归和原路径必须继续保留？",
+        "从哪几个值能解释一条框架调用链？"
+      ],
+      "example": "lessons/F01/00-example.py",
+      "topic_headings": [
+        "一、为什么学完原生Agent才引入框架",
+        "二、消息对象与普通字符串有什么不同",
+        "三、Runnable与LCEL究竟在组合什么",
+        "四、用本课离线例子手推数据流",
+        "五、迁移时怎样保护项目",
+        "六、读代码时必须回答"
+      ],
+      "flow": "PromptTemplate → PromptValue/messages → model adapter → AIMessage → parser；Runnable是组合接口。",
+      "question": "把几个Runnable用竖线连接为什么还不自动成为Agent？",
+      "framework_files": [
+        "lessons/F01/framework-example.py"
+      ],
+      "example_symbols": [
+        {
+          "name": "Reply",
+          "line": 5,
+          "end_line": 7
+        },
+        {
+          "name": "normalize",
+          "line": 9,
+          "end_line": 12
+        },
+        {
+          "name": "scripted_model",
+          "line": 14,
+          "end_line": 15
+        },
+        {
+          "name": "main",
+          "line": 17,
+          "end_line": 29
+        }
+      ]
+    },
+    "F02": {
+      "before": "F01已接框架模型对象，原生工具和验收仍然可用。",
+      "after": "用create_agent承接循环，薄封装调用原有受控工具，不复制安全实现。",
+      "not_this_lesson": "先只读；内存FIXTURE不是你仓库里真实存在的src/page.py。",
+      "roles": [
+        [
+          "框架Agent循环接入",
+          "devagent/frameworks/langchain_agent.py"
+        ],
+        [
+          "复用原生文件工具",
+          "devagent/tools/files.py"
+        ]
+      ],
+      "focus": "execute(call,allowed)、FIXTURE，以及main构造的call。",
+      "change": "把call.args.path改成missing.py，保持工具名在allowed里；这是路径拒绝，不是工具候选拒绝。",
+      "evidence": "同一个tool_call_id、unauthorized和path_denied的区别。",
+      "purpose_question": "换了编排框架，为什么仍必须保留原来的路径和权限检查？",
+      "search_terms": "LangChain create_agent tool ToolMessage tool_call_id",
+      "topic_questions": [
+        "原生循环的哪项职责交给create_agent？",
+        "工具Schema与函数权限检查为什么都需要？",
+        "怎样将一次工具请求和结果配成一对？",
+        "为什么同任务对照比另做一个演示更有用？",
+        "框架没调工具时先检查哪类轨迹？"
+      ],
+      "example": "lessons/F02/00-example.py",
+      "topic_headings": [
+        "一、从手写while循环映射到框架职责",
+        "二、工具声明包含模型接口与真实实现",
+        "三、一次工具轮次的具体轨迹",
+        "四、对照迁移比重写更能说明能力",
+        "五、故障如何定位"
+      ],
+      "flow": "原生domain tools → LangChain wrapper → create_agent model/tool循环 → 原有独立grader。",
+      "question": "换成create_agent后路径检查应该删掉吗？schema为何不能替代它？",
+      "framework_files": [
+        "lessons/F02/framework-example.py"
+      ],
+      "example_symbols": [
+        {
+          "name": "execute",
+          "line": 6,
+          "end_line": 12
+        },
+        {
+          "name": "main",
+          "line": 14,
+          "end_line": 21
+        }
+      ]
+    },
+    "L13": {
+      "before": "已有文本搜索与原生/框架编排，准备比较文本与符号工具。",
+      "after": "先检查工具资格与索引新鲜度，再选择和验证，而不是按工具名高级与否选。",
+      "not_this_lesson": "AST符号索引不是向量检索；便宜不能抵消不支持或无权限。",
+      "roles": [
+        [
+          "符号索引",
+          "devagent/tools/symbol_index.py"
+        ],
+        [
+          "工具路由",
+          "devagent/tools/routing.py"
+        ]
+      ],
+      "focus": "route(query_kind,index_ready,index_fresh,allowed)。",
+      "change": "让index_fresh=False且allowed={\"symbol\"}；对比允许text时能否回退。",
+      "evidence": "eligible候选、最终选择与unavailable；没有合格工具就不能凭空回退。",
+      "purpose_question": "一次工具选择中，哪些是不可违反的条件，哪些只是偏好？",
+      "search_terms": "AST symbol index tool routing eligibility fallback cohort evaluation",
+      "topic_questions": [
+        "所谓某类用户偏好能否还原成任务条件？",
+        "权限不足的便宜工具可以先试吗？",
+        "合并工具会隐藏哪种外部语义差异？",
+        "对照实验中什么必须保持相同？",
+        "失败后回退是否可能重复副作用？",
+        "可接受工具集合如何避免武断判错？",
+        "资格、选择、执行、验证为什么分成四步？",
+        "只看成功样本会怎样改变分母？",
+        "统一入口什么时候有益、什么时候掩盖约束？"
+      ],
+      "example": "lessons/L13/00-example.py",
+      "topic_headings": [
+        "把人群标签还原成任务条件",
+        "硬条件先过滤，偏好后排序",
+        "工具合并还是保留两个",
+        "如何做有意义的优化实验",
+        "失败时能不能切备用工具",
+        "先定义任务分组与可接受答案集合",
+        "将选择过程拆成资格、排序、执行、验证",
+        "优化前先明确损失和分母",
+        "工具合并的判断依据是外部语义"
+      ],
+      "flow": "能力/权限/预算过滤 → 候选工具 → 选择 → 观察结果 → 受控回退。",
+      "question": "便宜工具不支持某文件类型，是否应先试一下以节约成本？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "route",
+          "line": 1,
+          "end_line": 8
+        }
+      ]
+    },
+    "L14": {
+      "before": "工具选择正确后，大结果仍可能因为截断和格式被误读。",
+      "after": "给结果明确的状态、版本和继续读取入口，保留下一步需要的证据。",
+      "not_this_lesson": "不把空列表统一解释成无匹配；小例子没有实现真实游标版本校验。",
+      "roles": [
+        [
+          "结果格式和分页",
+          "devagent/tools/result_format.py"
+        ],
+        [
+          "搜索结果接入",
+          "devagent/tools/search.py"
+        ]
+      ],
+      "focus": "result_page(items,limit)与items/truncated/next_offset。",
+      "change": "把limit从2改为3，再用空列表；比较“刚好一页”和“无结果”。",
+      "evidence": "条目数、truncated及next_offset必须一致。",
+      "purpose_question": "模型没读到关键字段，是没搜到，还是工具返回方式让它看不到？",
+      "search_terms": "tool output pagination cursor truncation source version",
+      "topic_questions": [
+        "压缩结果时什么信息是下一步不可缺的？",
+        "空、错误、截断为什么不能共用一个返回？",
+        "关键证据没被使用要先查哪个层次？",
+        "哪些字段给程序判断，哪些给模型理解？",
+        "只返回前一页之后如何继续调查？",
+        "工具正文里的命令为什么不能变成系统权限？"
+      ],
+      "example": "lessons/L14/00-example.py",
+      "topic_headings": [
+        "有用信息取决于下一步任务",
+        "明确空、截断、错误三种状态",
+        "按失败层定位，而不是盲改提示词",
+        "工具结果同时面向机器判断和模型理解",
+        "截断策略必须保留继续调查的能力",
+        "结果中出现命令不等于获得权限"
+      ],
+      "flow": "工具事实 → 有界结构化结果 → truncation/next_cursor → 模型按需继续读。",
+      "question": "工具返回空列表时，究竟是没有结果，还是被截断/无权限？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "result_page",
+          "line": 1,
+          "end_line": 6
+        }
+      ]
+    },
+    "L15": {
+      "before": "工具目录变大，全部暴露成本高；筛太少又会漏能力。",
+      "after": "将候选召回与最终选择分开，并记录必要工具是否进入候选。",
+      "not_this_lesson": "元数据工具不是可执行能力；不把词标签匹配当真实语义模型。",
+      "roles": [
+        [
+          "工具目录",
+          "devagent/tools/catalog.py"
+        ],
+        [
+          "候选筛选",
+          "devagent/tools/selector.py"
+        ]
+      ],
+      "focus": "catalog、query_tags、ranked和最后的ranked[:2]。",
+      "change": "把query_tags改为{\"test\",\"execute\"}，再把输出切片缩为[:1]。",
+      "evidence": "正确工具是否在候选；候选阶段不能用最终模型成功率代替。",
+      "purpose_question": "真正需要的工具根本没给模型，后续再强的推理还能选到吗？",
+      "search_terms": "tool selection candidate recall top_k capability catalog",
+      "topic_questions": [
+        "候选阶段遗漏正确工具会怎样限制后续？",
+        "top_k缩小为何可能降低最终成功？",
+        "筛选多花的调用怎样算入成本？",
+        "候选召回与最终工具决策怎么分开评测？",
+        "语义相关为什么不能绕过权限过滤？",
+        "新增工具后哪些旧任务要重新回归？"
+      ],
+      "example": "lessons/L15/00-example.py",
+      "topic_headings": [
+        "把筛选看作召回阶段",
+        "候选数不是越少越好",
+        "比较净收益",
+        "工具选择可分为候选召回和最终选择",
+        "权限筛选与语义筛选不可交换职责",
+        "工具目录变化需要版本与回归"
+      ],
+      "flow": "任务 → 候选子集 → 执行时约束 → 选工具；筛选器先决定模型有没有机会选对。",
+      "question": "候选里没有正确工具，换更强模型能解决吗？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "L16": {
+      "before": "长任务已有多轮工具结果，硬约束可能在压缩时被丢掉。",
+      "after": "把稳定约束、工作状态、摘要和证据分开装配；核对丢弃与过期。",
+      "not_this_lesson": "不默认摘要无损；这里的字典修改不是检索器或长期记忆数据库。",
+      "roles": [
+        [
+          "上下文状态",
+          "devagent/context/state.py"
+        ],
+        [
+          "上下文装配",
+          "devagent/context/builder.py"
+        ],
+        [
+          "摘要压缩",
+          "devagent/context/compression.py"
+        ]
+      ],
+      "focus": "state中的constraints、summary、evidence与new_summary赋值。",
+      "change": "只替换new_summary文本，确认constraints仍保留；另在副本故意删除constraints，观察消费者缺什么。",
+      "evidence": "硬约束字段和证据引用，而不是摘要看起来是否流畅。",
+      "purpose_question": "为什么“模型忘了”可能其实是我在组装输入时删掉了约束？",
+      "search_terms": "context engineering summarization invariant retrieval budget",
+      "topic_questions": [
+        "没召回、被丢弃、被误读和已过期怎么区分？",
+        "为什么硬约束不能混在可改写摘要里？",
+        "当前需要的原文证据从哪里取？",
+        "上下文预算耗尽时谁决定丢什么？",
+        "模型看到的窗口和持久事实存储有什么区别？",
+        "约束与低价值历史的保留优先级如何确定？",
+        "如何发现一次流畅摘要丢了关键限定？"
+      ],
+      "example": "lessons/L16/00-example.py",
+      "topic_headings": [
+        "拆开四种失败",
+        "约束、状态、证据分开存",
+        "按需取证的最小策略",
+        "预算是工程控制",
+        "上下文窗口不是记忆数据库",
+        "用预算分配解释保留顺序",
+        "摘要是一种有损转换，需要不变量"
+      ],
+      "flow": "稳定约束/用户目标 → 短期证据 → 摘要/按需检索 → 当前模型上下文。",
+      "question": "上下文压缩后丢掉“禁止改公开签名”，但工具结果都在，会怎样？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "L17": {
+      "before": "已有可比较任务与上下文策略，准备在质量不退化前提下优化成本。",
+      "after": "把每轮调用汇总到整次任务，分解关键耗时，再选择一种优化。",
+      "not_this_lesson": "例子价格是教学数值，不是实时供应商报价；不把未知用量记零。",
+      "roles": [
+        [
+          "任务指标",
+          "devagent/observability/metrics.py"
+        ],
+        [
+          "对照报告",
+          "evaluation/compare.py"
+        ]
+      ],
+      "focus": "strategies字典、sum(calls)和len(calls)。",
+      "change": "把small的调用次数从5改为2；保持单次教学成本0.02，比较整任务合计。",
+      "evidence": "总额、次数和成功条件；单次便宜不保证整任务更便宜。",
+      "purpose_question": "我究竟在优化一条请求，还是用户真正要完成的整个任务？",
+      "search_terms": "task cost token usage latency critical path cohort metrics",
+      "topic_questions": [
+        "整任务耗时和成本分别怎样拆账？",
+        "为什么一次只改一个主要瓶颈？",
+        "缓存键漏掉权限或代码版本会错在哪里？",
+        "质量红线能否被低成本抵消？",
+        "每次便宜却重试很多次，合计如何变化？",
+        "并发步骤的耗时为什么不能盲目相加？",
+        "小模型或缓存启用前先验证什么正确性？"
+      ],
+      "example": "lessons/L17/00-example.py",
+      "topic_headings": [
+        "先拆耗时与费用",
+        "选择一个瓶颈再改",
+        "缓存需要失效边界",
+        "质量约束不能被成本抵消",
+        "优化对象是完整任务的资源消耗",
+        "延迟要沿关键路径分析",
+        "缓存和小模型路由都需正确性前提"
+      ],
+      "flow": "每轮模型/工具用量 → 重试/回退 → 成功/失败 → 每任务与每成功任务成本。",
+      "question": "A每次0.01但平均重试8次，B每次0.04且一次成功，哪个更省？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "L18": {
+      "before": "L17可以比较策略，但反复对熟悉题调参会污染改进证据。",
+      "after": "按任务快照划分调优/保留集，保留所有尝试并报告分组退化。",
+      "not_this_lesson": "合成runs不是模型实测；看过的留出题不再提供同等独立证据。",
+      "roles": [
+        [
+          "评测任务定义",
+          "evaluation/task_schema.py"
+        ],
+        [
+          "试验运行器",
+          "evaluation/runner.py"
+        ],
+        [
+          "分组报告",
+          "evaluation/report.py"
+        ]
+      ],
+      "focus": "runs中old/new的text/symbol分组及分母len(v)。",
+      "change": "让new.symbol多一个失败样本，保持text不变；比较分组分母和总体。",
+      "evidence": "成功数/尝试数、分组变化和任务来源；不能只展示提升的一组。",
+      "purpose_question": "升级的收益是真改善、偶然波动，还是只对看过的题有效？",
+      "search_terms": "agent evaluation heldout repeated trials dataset leakage",
+      "topic_questions": [
+        "任务、一次尝试和评分器分别负责什么？",
+        "看过的保留集还能提供怎样的证据？",
+        "新能力提升时怎样发现旧能力退化？",
+        "仓库不重置会怎样污染下一次尝试？",
+        "总分上升为什么可能掩盖某组下降？",
+        "反复用评测题调参会改变什么结论？"
+      ],
+      "example": "lessons/L18/00-example.py",
+      "topic_headings": [
+        "任务、尝试、评分器各是什么",
+        "分开调优与保留样本",
+        "升级也要保护旧能力",
+        "实验的最小单位是任务快照与一次尝试",
+        "分组结果比总体数字更接近工程决策",
+        "评测集本身会被污染"
+      ],
+      "flow": "任务划分 → 固定版本/预算 → 重复运行 → 独立grader → 分组差异 → 升级/回滚决定。",
+      "question": "调参看过的20道题还能证明泛化提升吗？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "F03": {
+      "before": "框架循环可用且已有独立grader，现在增加调用控制和结构化声明。",
+      "after": "区分可信context、调用中间件、输出Schema和事实验证。",
+      "not_this_lesson": "结构合法不等于任务成功；不让模型填写自己的权限。",
+      "roles": [
+        [
+          "中间件调用控制",
+          "devagent/frameworks/middleware.py"
+        ],
+        [
+          "声明到证据验证",
+          "devagent/frameworks/result_mapping.py"
+        ],
+        [
+          "继续复用独立grader",
+          "evaluation/grader.py"
+        ]
+      ],
+      "focus": "validate(payload,evidence,task_id)与main的cases。",
+      "change": "保持payload.status=succeeded，把evidence[\"e1\"][\"task_id\"]改为t2，再改passed=False；对应更新你自己的预期，不篡改项目裁判。",
+      "evidence": "schema_error、missing_evidence、wrong_task、not_verified之间的区别。",
+      "purpose_question": "为什么格式正确的“成功报告”，还需要独立证明它说的事情发生过？",
+      "search_terms": "LangChain middleware runtime context structured output Pydantic validation",
+      "topic_questions": [
+        "哪些约束必须控制真实调用而非只写入提示词？",
+        "handler未调用和调用失败怎样区分？",
+        "结构化输出最多保证哪一层契约？",
+        "合法成功结构但证据不存在时由谁拒绝？",
+        "身份、业务验收和观测为什么不应混成一个中间件？"
+      ],
+      "example": "lessons/F03/00-example.py",
+      "topic_headings": [
+        "一、为什么不能把所有控制都写进提示词",
+        "二、包围型中间件是在控制真正的调用",
+        "三、结构化输出解决的是形式契约",
+        "四、用一个反例暴露两类校验",
+        "五、把权限、业务状态与观测分层"
+      ],
+      "flow": "宿主context → model/tool middleware → schema结果 → verifier事实校验；四者责任不同。",
+      "question": "status=succeeded符合Pydantic模型，但evidence_ids不存在，结论是什么？",
+      "framework_files": [
+        "lessons/F03/context-framework-example.py",
+        "lessons/F03/framework-example.py"
+      ],
+      "example_symbols": [
+        {
+          "name": "validate",
+          "line": 2,
+          "end_line": 14
+        },
+        {
+          "name": "main",
+          "line": 16,
+          "end_line": 24
+        }
+      ]
+    },
+    "F04": {
+      "before": "F03能控制调用，但复杂等待、验证和分支需要显式状态。",
+      "after": "让节点返回状态增量，由明确reducer合并，再用条件边选择下一步。",
+      "not_this_lesson": "本课不开放未经审批写入；列表追加不能代替其他字段冲突规则。",
+      "roles": [
+        [
+          "图节点状态和边",
+          "devagent/frameworks/graph_engine.py"
+        ]
+      ],
+      "focus": "merge(state,update)与main的initial/good/bad三个变量。",
+      "change": "给initial.evidence再加一项；比较只返回新证据的good与返回旧历史的bad。若原断言假设固定长度，解释并单独调整副本断言。",
+      "evidence": "old_state/update/new_state及重复次数；不要只看最终字符串。",
+      "purpose_question": "节点交回的是整份历史还是新变化，为什么会影响重复合并？",
+      "search_terms": "LangGraph StateGraph reducer Annotated state update delta",
+      "topic_questions": [
+        "何时需要显式图状态而不仅是默认循环？",
+        "状态中哪些是持久事实、哪些不应序列化？",
+        "返回旧历史为何造成重复追加？",
+        "条件边怎样利用刚更新的状态决定停止？",
+        "业务失败与节点抛异常为什么走不同路径？",
+        "TypedDict和Annotated怎样表达状态与合并合同？"
+      ],
+      "example": "lessons/F04/00-example.py",
+      "topic_headings": [
+        "一、为什么已经有create_agent还要学图",
+        "二、状态应该存什么，不该存什么",
+        "三、Reducer为什么容易产生重复",
+        "四、手推一个有限修复图",
+        "五、异常与正常失败要分开",
+        "六、本课需要读懂的Python"
+      ],
+      "flow": "node返回delta → reducer合并 → 条件边读取新状态 → 下一节点或END。",
+      "question": "state.evidence=[a]，节点返回[a,b]，append reducer后是什么？正确delta是什么？",
+      "framework_files": [
+        "lessons/F04/framework-example.py"
+      ],
+      "example_symbols": [
+        {
+          "name": "merge",
+          "line": 2,
+          "end_line": 6
+        },
+        {
+          "name": "main",
+          "line": 8,
+          "end_line": 16
+        }
+      ]
+    },
+    "F05": {
+      "before": "F04状态图只证明当前执行；重启与外部写入的故障窗口仍未解决。",
+      "after": "用持久检查点恢复图，并用操作记录核对可能已经完成的副作用。",
+      "not_this_lesson": "新数据库连接不是新进程；SQLite行幂等不是任意外部系统恰好一次。",
+      "roles": [
+        [
+          "图检查点接入",
+          "devagent/frameworks/checkpoint.py"
+        ],
+        [
+          "既有操作记录",
+          "devagent/runtime/operations.py"
+        ],
+        [
+          "图执行器",
+          "devagent/frameworks/graph_engine.py"
+        ]
+      ],
+      "focus": "submit(db,operation_id,body)中SELECT/INSERT和main中的三次提交。",
+      "change": "把第二次提交改成op-2/body-A，观察记录数断言为何失败；不要借此声称测过跨进程恢复。",
+      "evidence": "created/reused/conflict与effects行数；真正的重启证据来自framework-example两进程实验。",
+      "purpose_question": "图状态已经保存，为什么恢复时仍可能再执行一次写操作？",
+      "search_terms": "LangGraph checkpointer durable execution thread_id idempotent side effects",
+      "topic_questions": [
+        "对话历史、上下文、检查点和业务事实为何不是同一个存储？",
+        "同进程恢复和重启恢复分别需要什么证据？",
+        "已写入但检查点未确认时会怎样重复？",
+        "哪些操作拆成独立幂等步骤才易于恢复？",
+        "各个崩溃窗口要观察哪些不同事实？",
+        "本地事务为什么不能回滚另一个系统的操作？"
+      ],
+      "example": "lessons/F05/00-example.py",
+      "topic_headings": [
+        "一、先区分四种经常被混叫“记忆”的东西",
+        "二、内存持久与跨进程持久是两件事",
+        "三、最危险的崩溃窗口在哪里",
+        "四、怎样划分节点才能更容易恢复",
+        "五、按故障窗口逐一做实验",
+        "六、与你已有Java经验的连接"
+      ],
+      "flow": "checkpoint保存图状态 → 新进程读取相同thread_id → 恢复节点 → 幂等核对外部效果。",
+      "question": "InMemorySaver同进程resume成功，能证明重启后恢复吗？",
+      "framework_files": [
+        "lessons/F05/framework-example.py"
+      ],
+      "example_symbols": [
+        {
+          "name": "submit",
+          "line": 7,
+          "end_line": 18
+        },
+        {
+          "name": "main",
+          "line": 20,
+          "end_line": 35
+        }
+      ]
+    },
+    "F06": {
+      "before": "F05可以恢复，但人批准后提议、身份或文件基线仍可能改变。",
+      "after": "批准绑定具体操作、内容、版本、主体和有效期，恢复后重新核对。",
+      "not_this_lesson": "不把approved布尔值当无限许可；教学身份不是生产认证。",
+      "roles": [
+        [
+          "审批合同与校验",
+          "devagent/frameworks/approval.py"
+        ],
+        [
+          "图中断和恢复接入",
+          "devagent/frameworks/graph_engine.py"
+        ]
+      ],
+      "focus": "Approval、check(...)和main中的outcomes。",
+      "change": "把expires_at改为100而now仍为100，或保持批准对象不变仅改expected_hash；分别观察过期和陈旧提议。",
+      "evidence": "批准对象字段、当前条件和check返回状态；既有写入不能被取消声明抹掉。",
+      "purpose_question": "人批准的是哪一份具体改动，恢复执行时还要重查什么？",
+      "search_terms": "LangGraph interrupt Command resume approval expiry hash",
+      "topic_questions": [
+        "人审弥补的是哪个决策或授权缺口？",
+        "interrupt暂停后resume会从哪里再进入？",
+        "审批后内容变化为什么使旧批准失效？",
+        "展示的提议与可信身份分别从哪来？",
+        "取消后到达的批准怎样避免重新执行？",
+        "如何用重放与过期案例证明不只是一个确认按钮？"
+      ],
+      "example": "lessons/F06/00-example.py",
+      "topic_headings": [
+        "一、先明确审批解决什么问题",
+        "二、interrupt与Command分别做什么",
+        "三、手推陈旧审批为什么危险",
+        "四、哪些数据可信，哪些只是展示",
+        "五、取消、等待和失败之间的关系",
+        "六、面试时怎样证明你做的是工程而非演示"
+      ],
+      "flow": "proposal/hash/base_version/actor → interrupt → 人工决定 → 重新鉴权核对 → apply/拒绝。",
+      "question": "批准p1后内容换成p2，仍用原approved=true可以吗？",
+      "framework_files": [
+        "lessons/F06/framework-example.py"
+      ],
+      "example_symbols": [
+        {
+          "name": "Approval",
+          "line": 5,
+          "end_line": 9
+        },
+        {
+          "name": "check",
+          "line": 11,
+          "end_line": 22
+        },
+        {
+          "name": "main",
+          "line": 24,
+          "end_line": 31
+        }
+      ]
+    },
+    "R01": {
+      "before": "Code Agent会读仓库，但大文档、同义描述和更新中的资料不能全塞进上下文。",
+      "after": "把文档切成可回溯证据，检索合法当前版本，再把原文装入上下文并核对引用。",
+      "not_this_lesson": "不要求先部署向量数据库；BM25例子不是embedding；这里的tokens不支持通用中文分词。",
+      "roles": [
+        [
+          "证据与文档结构",
+          "devagent/retrieval/documents.py"
+        ],
+        [
+          "索引构建和更新",
+          "devagent/retrieval/index.py"
+        ],
+        [
+          "词法检索",
+          "devagent/retrieval/lexical.py"
+        ],
+        [
+          "真实嵌入适配",
+          "devagent/retrieval/embeddings.py"
+        ]
+      ],
+      "focus": "tokens(text)、bm25(query,docs)与main中的docs和ranking。",
+      "change": "把查询换成quantum，再给docs加入包含该词的文档；先比较空召回与新增索引内容带来的命中。",
+      "evidence": "文档ID、原文、来源版本和召回；真实向量排名须另行记录。",
+      "purpose_question": "外挂知识库的内容怎样进入回答，为什么有相似分数还不足以证明答案？",
+      "search_terms": "RAG chunk Document metadata embedding retriever BM25 index",
+      "topic_questions": [
+        "为什么先问缺少哪段证据，而不是先选向量库？",
+        "分块边界会不会切掉否定或适用条件？",
+        "词法匹配为何对错误码和精确标识符有用？",
+        "向量相似为什么不代表文档正确且可用？",
+        "授权、当前版本和召回质量分别在哪里判断？",
+        "检索出的原文如何回到回答与验收？"
+      ],
+      "example": "lessons/R01/00-example.py",
+      "topic_headings": [
+        "一、RAG不是“先上向量数据库”",
+        "二、分块其实是在选择证据单位",
+        "三、词法检索与BM25在做什么",
+        "四、向量表示与语义相似不等于事实正确",
+        "五、把权限、新鲜度和检索效果分别检查",
+        "六、从检索回到你的工程目标"
+      ],
+      "flow": "文档版本 → 切块/索引 → 查询检索 → 权限/版本过滤 → 原文进入上下文 → 生成 → 引用核验。",
+      "question": "向量检索返回相似段落，知识是否已经写入模型参数？为什么还需要把原文给模型？",
+      "framework_files": [
+        "lessons/R01/vector-framework-example.py"
+      ],
+      "example_symbols": [
+        {
+          "name": "tokens",
+          "line": 6,
+          "end_line": 8
+        },
+        {
+          "name": "bm25",
+          "line": 10,
+          "end_line": 27
+        },
+        {
+          "name": "main",
+          "line": 29,
+          "end_line": 36
+        }
+      ]
+    },
+    "R02": {
+      "before": "R01有多条检索路径，但单路会漏召回，多路又增加成本和噪声。",
+      "after": "分清路由、融合和重排，按合法候选名次融合并做任务分组对照。",
+      "not_this_lesson": "预设semantic_fixture不是语义模型测量；融合第一名不等于有答案。",
+      "roles": [
+        [
+          "检索路径路由",
+          "devagent/retrieval/routing.py"
+        ],
+        [
+          "RRF融合",
+          "devagent/retrieval/fusion.py"
+        ],
+        [
+          "可关闭重排",
+          "devagent/retrieval/rerank.py"
+        ]
+      ],
+      "focus": "rrf(rankings,allowed,rank_constant)及main的两路fixture。",
+      "change": "给lexical_fixture追加重复d1，再把d3从allowed移除；不要改RRF公式迎合排序。",
+      "evidence": "每路去重后的名次、权限过滤和最终得分；检查同一路重复不重复计票。",
+      "purpose_question": "这次应该选一路，还是合并多路，怎样证明多出的复杂度值得？",
+      "search_terms": "hybrid search RRF reciprocal rank fusion rerank ablation",
+      "topic_questions": [
+        "路由和融合分别解决哪一个决策？",
+        "两个不同尺度的原始分数为什么不能直接混算？",
+        "何时过滤才能保证未授权内容不被暴露？",
+        "L13的工具资格思想怎样迁移到检索器？",
+        "哪几组任务能暴露融合增加的噪声或成本？",
+        "实验报告需要哪些原始记录才能复查？"
+      ],
+      "example": "lessons/R02/00-example.py",
+      "topic_headings": [
+        "一、先给“策略检索”一个本课程的明确含义",
+        "二、联合检索不是把两个原始分数相加",
+        "三、过滤、融合和重排的顺序有安全含义",
+        "四、与L13的A/B工具选择做同构迁移",
+        "五、一份足以指导工程决策的对照实验",
+        "六、本课产出要能拿去复盘和面试"
+      ],
+      "flow": "route或多路召回 → 各路去重 → RRF按名次融合 → 可选reranker → 截断上下文。",
+      "question": "BM25分数18和余弦0.8能直接相加吗？同一路重复文档该多算几次？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "rrf",
+          "line": 4,
+          "end_line": 13
+        },
+        {
+          "name": "main",
+          "line": 15,
+          "end_line": 26
+        }
+      ]
+    },
+    "L19": {
+      "before": "单次Agent可能运行较久，但HTTP连接不能承担任务的完整生命周期。",
+      "after": "先持久化任务身份再响应，worker领取与状态迁移可并发校验。",
+      "not_this_lesson": "不把202当已完成；状态字典例子不验证数据库或HTTP服务。",
+      "roles": [
+        [
+          "任务API",
+          "devagent/service/api.py"
+        ],
+        [
+          "持久状态和版本",
+          "devagent/service/store.py"
+        ],
+        [
+          "领取任务worker",
+          "devagent/service/worker.py"
+        ]
+      ],
+      "focus": "allowed状态迁移表、can_move(old,new)及两个调用。",
+      "change": "追加can_move(\"running\",\"succeeded\")和can_move(\"succeeded\",\"running\")，只改输入，不放宽终态规则。",
+      "evidence": "状态迁移是否允许；完整项目需查询持久记录和领取竞争。",
+      "purpose_question": "浏览器连接断开以后，任务还在哪里，谁拥有它的真实状态？",
+      "search_terms": "HTTP 202 asynchronous task worker conditional update idempotency",
+      "topic_questions": [
+        "返回task_id以前必须先存下什么？",
+        "两个worker怎样避免同时领取？",
+        "重发同一execution_id为何还需检查请求内容？",
+        "HTTP连接断开为什么不等于任务失败？",
+        "终态和条件更新要保护什么不变量？",
+        "保存成功但派发失败时任务如何找回来？"
+      ],
+      "example": "lessons/L19/00-example.py",
+      "topic_headings": [
+        "先持久化任务，再返回ID",
+        "状态迁移需要条件",
+        "创建幂等从Python接口开始",
+        "HTTP生命周期与任务生命周期解耦",
+        "状态转换要保护不变量",
+        "处理数据库与派发之间的缝隙"
+      ],
+      "flow": "POST先落库 → 202+execution_id → worker条件领取 → GET状态/事件。",
+      "question": "HTTP超时后Java把Python任务写成failed，为什么可能产生双重事实？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "can_move",
+          "line": 6,
+          "end_line": 7
+        }
+      ]
+    },
+    "L20": {
+      "before": "L19把任务独立出来，但取消信号与恢复执行可能交叉。",
+      "after": "取消请求和实际停止分开，恢复先核对操作与工作区，避免双执行。",
+      "not_this_lesson": "next_action只决定下一步，不证明正在运行的进程已经停止。",
+      "roles": [
+        [
+          "取消协调",
+          "devagent/service/cancellation.py"
+        ],
+        [
+          "恢复与旧执行核对",
+          "devagent/service/recovery.py"
+        ],
+        [
+          "任务工作区",
+          "devagent/runtime/workspace.py"
+        ]
+      ],
+      "focus": "next_action(cancel_requested,operation_state)及pair列表。",
+      "change": "加入(True,\"applied\")；观察停止下一步是否等同于撤销已经完成的操作。",
+      "evidence": "返回动作、既有操作事实和实际进程；不能用布尔标志代替确认。",
+      "purpose_question": "用户点了取消，哪些工作已经发生，哪些还必须真实停止？",
+      "search_terms": "cooperative cancellation fencing lease recovery external effect",
+      "topic_questions": [
+        "收到cancel请求与确认cancelled为何分开？",
+        "检查点为何不足以说明外部副作用？",
+        "独立目录与独立计算资源分别保证什么？",
+        "恢复之后如何解释哪些事已发生？",
+        "取消信号如何传到真正执行工作的地方？",
+        "租约到期为什么还需要阻止旧worker写入？",
+        "恢复前怎样核对工作区、待确认操作与执行身份？"
+      ],
+      "example": "lessons/L20/00-example.py",
+      "topic_headings": [
+        "取消是请求，确认是另一个事实",
+        "检查点不包含所有外部事实",
+        "工作区隔离与资源隔离不同",
+        "恢复也要保留可解释结果",
+        "取消是一种协作协议",
+        "租约与围栏解决不同问题",
+        "恢复必须重建可验证状态"
+      ],
+      "flow": "cancel_requested → worker检查安全点 → 停止新动作 → 清理当前动作 → 核对副作用 → 终态。",
+      "question": "收到取消请求后仍有一个已提交的外部写入，最终报告能说“从未执行”吗？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "next_action",
+          "line": 1,
+          "end_line": 8
+        }
+      ]
+    },
+    "J01": {
+      "before": "Python有稳定execution_id与任务接口，Java现在接受用户提交。",
+      "after": "把本地提交意图、远程派发和去重分开；响应丢失时沿同一执行身份核对。",
+      "not_this_lesson": "ConcurrentHashMap示例不是PostgreSQL唯一约束或分布式事务实验。",
+      "roles": [
+        [
+          "Java提交业务",
+          "java-task-service/src/main/java"
+        ],
+        [
+          "数据库迁移",
+          "java-task-service/src/main/resources/db/migration"
+        ],
+        [
+          "J01验收",
+          "java-task-service/src/test/java"
+        ]
+      ],
+      "focus": "Demo.main中的requests及三次putIfAbsent调用。",
+      "change": "只把第三次提交的key改为user2:key1，对比跨用户命名空间；不要把返回旧值直接当同请求成功。",
+      "evidence": "映射中保存的body与冲突判断所需信息；真实服务需另核对request_hash。",
+      "purpose_question": "为什么Java事务回滚了，也不能推断Python任务被撤销？",
+      "search_terms": "Java local transaction outbox unique constraint idempotency",
+      "topic_questions": [
+        "用户重试身份与远端执行身份怎样关联？",
+        "为什么不能把远程等待包进长事务？",
+        "并发更新时怎样避免覆盖新状态？",
+        "本地rollback为什么无法撤销Python任务？",
+        "唯一约束怎样裁决两个并发同键提交？",
+        "派发记录能保证重试，但为何不能消灭所有重复？"
+      ],
+      "example": "lessons/J01/Demo.java",
+      "topic_headings": [
+        "把提交身份和执行身份分开",
+        "事务边界要小且明确",
+        "状态并发用条件更新",
+        "本地事务无法回滚远程已完成操作",
+        "唯一约束是并发幂等的最后裁判",
+        "Outbox是可靠派发记录，不是恰好一次魔法"
+      ],
+      "flow": "可信主体+幂等键 → request_hash唯一约束 → 稳定execution_id → Python提交 → 查询核对。",
+      "question": "Java事务回滚了，但Python已开始运行，任务是否随之撤销？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "J02": {
+      "before": "Java提交可去重，但Python变慢会放大线程、队列和多层重试。",
+      "after": "通过受控慢服务观察接纳上限、拒绝、各层超时和实际尝试数。",
+      "not_this_lesson": "不压测公网服务；本地线程池例子不证明远端取消成功。",
+      "roles": [
+        [
+          "Java线程池和请求客户端",
+          "java-task-service/src/main/java"
+        ],
+        [
+          "资源配置",
+          "java-task-service/src/main/resources"
+        ],
+        [
+          "J02验收",
+          "java-task-service/src/test/java"
+        ]
+      ],
+      "focus": "Demo.main中的ThreadPoolExecutor构造参数、提交循环和RejectedExecutionException分支。",
+      "change": "先读Demo.java实际构造参数；只修改提交任务数量，不随意扩大线程与队列。预测哪些任务会被拒绝。",
+      "evidence": "接纳和拒绝数、active与queue；没有测量时不写性能提升。",
+      "purpose_question": "下游变慢时，为什么多开线程或叠加重试可能让问题更严重？",
+      "search_terms": "ThreadPoolExecutor bounded queue rejection retry deadline",
+      "topic_questions": [
+        "线程池先建线程、入队还是拒绝？",
+        "连接、HTTP响应、后台任务超时各说明什么？",
+        "重试次数怎样放大真实下游请求？",
+        "哪些指标能区分等待、运行和被拒绝？",
+        "有界与无界队列改变了什么过载表现？",
+        "总deadline怎样限制多次等待？",
+        "多层重试的“3次”包含不包含首次，如何核对？"
+      ],
+      "example": "lessons/J02/Demo.java",
+      "topic_headings": [
+        "先理解线程池的接纳顺序",
+        "三种超时不能混用",
+        "把重试算进负载",
+        "怎样观察实验",
+        "线程池的队列策略决定过载形态",
+        "请求超时、任务超时与总deadline",
+        "多层重试会乘法放大"
+      ],
+      "flow": "入站速率 → 有界队列/线程 → 下游连接/超时 → 拒绝或退避；统一总预算。",
+      "question": "上游重试3次、下游SDK再重试3次，为什么可能远多于3次请求？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "J03": {
+      "before": "Java任务列表或提交链路慢，但耗时可能不在SQL执行本身。",
+      "after": "拆分连接等待、SQL、线程和远程调用，用真实计划和数据验证单项改动。",
+      "not_this_lesson": "SQL会真正执行；只在专用教学数据库操作，不对生产库直接ANALYZE或建索引。",
+      "roles": [
+        [
+          "查询与连接使用",
+          "java-task-service/src/main/java"
+        ],
+        [
+          "索引迁移",
+          "java-task-service/src/main/resources/db/migration"
+        ],
+        [
+          "诊断记录",
+          "evaluation/java_diagnostics"
+        ]
+      ],
+      "focus": "00-example.sql里的task_submission查询、owner_id/dispatch_state过滤和CREATE INDEX。",
+      "change": "先确认J01迁移已建task_submission与所需列；在隔离数据库记录同一查询建索引前后计划，不先改WHERE语义。",
+      "evidence": "环境、数据量、执行计划与连接等待；没有数据库只能阅读SQL并标blocked。",
+      "purpose_question": "请求变慢到底花在哪一层，为什么不能一看到数据库就先加索引？",
+      "search_terms": "PostgreSQL EXPLAIN ANALYZE BUFFERS connection pool thread dump",
+      "topic_questions": [
+        "响应时间应怎样拆成可定位的阶段？",
+        "过滤和排序字段怎样决定候选索引？",
+        "连接一直被持有可能是长事务还是泄漏？",
+        "什么样的报告能让别人复现诊断？",
+        "SQL很短时为什么还可能请求很慢？",
+        "执行计划的估计和实际差异告诉什么？",
+        "索引为什么不能只按字段有没有来判断？"
+      ],
+      "example": "lessons/J03/00-example.sql",
+      "topic_headings": [
+        "先画一条请求耗时账",
+        "索引要与过滤排序对应",
+        "长事务和连接泄露的区别",
+        "形成可复现诊断报告",
+        "慢请求要先拆耗时再改SQL",
+        "读执行计划需要看估计与实际",
+        "索引由查询条件和排序需求决定"
+      ],
+      "flow": "慢trace → SQL/连接等待/锁等待分类 → 执行计划 → 最小改动 → 同分布复测。",
+      "question": "SQL慢一定是缺索引吗？EXPLAIN ANALYZE能随便用于写语句吗？",
+      "framework_files": [],
+      "example_symbols": []
+    },
+    "L21": {
+      "before": "Python和Java分别可用，组合后还要统一身份、ID与状态来源。",
+      "after": "让提交、查询、取消、恢复和产物访问沿可信身份授权，并保留两端证据。",
+      "not_this_lesson": "知道ID不等于有权限；教学authorize不是完整认证系统。",
+      "roles": [
+        [
+          "Python资源授权",
+          "devagent/service/auth.py"
+        ],
+        [
+          "Java可信身份入口",
+          "java-task-service/src/main/java"
+        ],
+        [
+          "跨服务集成验收",
+          "tests/test_l21.py"
+        ]
+      ],
+      "focus": "submission.owner、execution_id与authorize(current_user)。",
+      "change": "保持execution_id不变，把current_user从alice换成bob；再换成不存在的用户。",
+      "evidence": "返回执行ID还是forbidden；完整项目检查日志、取消和产物下载也受授权。",
+      "purpose_question": "同一个任务跨两个服务以后，谁判断“是谁”，谁判断“做完没有”？",
+      "search_terms": "service authentication resource authorization task identity tracing",
+      "topic_questions": [
+        "Java和Python各拥有哪一种状态事实？",
+        "知道execution_id为什么仍要校验资源归属？",
+        "为什么要从干净环境验证一次启动？",
+        "协议、身份、状态和运行环境怎样分层排障？",
+        "哪个入口能可信地产生用户身份？",
+        "业务ID、执行ID、追踪ID各回答什么问题？",
+        "正常单服务测试会漏掉哪些组合故障？"
+      ],
+      "example": "lessons/L21/00-example.py",
+      "topic_headings": [
+        "确定状态所有权",
+        "ID不是权限",
+        "从干净环境复现",
+        "联调失败的排查顺序",
+        "身份由可信入口产生并贯穿整个任务",
+        "业务ID、执行ID和追踪ID分工",
+        "联调验证最容易漏掉组合故障"
+      ],
+      "flow": "Java可信用户 → 内部提交 → Python执行/事件 → Java查询 → 前端展示；ID仅用于关联。",
+      "question": "用户B知道用户A的execution_id，是否可以查看日志或恢复任务？",
+      "framework_files": [],
+      "example_symbols": [
+        {
+          "name": "authorize",
+          "line": 2,
+          "end_line": 5
+        }
+      ]
+    },
+    "L22": {
+      "before": "功能链路已经完成，准备证明独立解决问题的能力，而不是再堆功能。",
+      "after": "用未见任务、失败复盘和可复现报告支撑能力表述，明确AI协助范围。",
+      "not_this_lesson": "不让Codex提前代做陌生题；证据文件存在不等于内容可信或已掌握。",
+      "roles": [
+        [
+          "证据完整性辅助检查",
+          "evaluation/readiness.py"
+        ],
+        [
+          "未见任务资料",
+          "evaluation/readiness_tasks"
+        ],
+        [
+          "个人证据索引",
+          "docs/learning-records"
+        ]
+      ],
+      "focus": "skills中evidence和independent两个字段，以及status判断。",
+      "change": "把tool_routing.independent改为False，保持evidence字符串；观察是否仍能标supported。",
+      "evidence": "是否有真实证据以及是否独立完成；此简化例子不检查引用文件真实性。",
+      "purpose_question": "哪些项目结论能拿出证据，哪些只是AI替我做过或我读过？",
+      "search_terms": "engineering portfolio reproducible evidence independent debugging",
+      "topic_questions": [
+        "怎样围绕真实问题而非技术名词讲项目？",
+        "AI做了哪部分，自己独立做了哪部分？",
+        "如何把实际岗位要求转成证据与缺口？",
+        "陌生输入怎样检验方法而非背熟函数？",
+        "什么表述超出了已有证据？",
+        "换业务时哪些方法不变、哪些假设必须重查？",
+        "课程通过与招聘结果为什么要分开？"
+      ],
+      "example": "lessons/L22/00-example.py",
+      "topic_headings": [
+        "项目讲解围绕一个具体问题",
+        "区分AI帮助与个人能力",
+        "从岗位要求反推缺口",
+        "迁移题检验方法",
+        "能解释自己做过什么，比背答案更重要",
+        "举一反三意味着保留方法、改变条件",
+        "转型验收与求职结果不能画等号"
+      ],
+      "flow": "真实仓库/运行记录 → 项目演示 → 故障复盘 → 未见任务 → 岗位缺口矩阵。",
+      "question": "读完教材但陌生任务仍全靠AI写，简历可以说独立负责吗？",
+      "framework_files": [],
+      "example_symbols": []
+    }
+  }
+}

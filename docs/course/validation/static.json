@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "lessons": 34,
+  "lesson_documents": 204,
+  "total_hours": 320,
+  "purpose_bridges_checked": 218,
+  "local_links_checked": 2228,
+  "python_files_syntax_checked": 59,
+  "errors": [],
+  "scope": "static only; not framework runtime or completed app"
+}

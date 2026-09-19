@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "date": "2026-09-17",
+  "browser": "Chromium via Playwright; set_content of self-contained HTML; Linux (file:// blocked by environment administrator)",
+  "viewports": [
+    "1440x1050",
+    "390x844"
+  ],
+  "checks": {
+    "homepage_visible": true,
+    "first_lesson_navigation": true,
+    "ai_tab_navigation": true,
+    "copy_mechanism": "fallback_selected_text",
+    "copied_l00_exactly_matches_file": true,
+    "answers_hidden_until_attempt": true,
+    "answer_unlock_works": true,
+    "lesson_tabs": {
+      "checked": 170,
+      "bad": []
+    },
+    "all_34_ai_instructions_match_files": true,
+    "embedded_internal_links": {
+      "checked": 795,
+      "bad": []
+    },
+    "fulltext_search_has_results": true,
+    "mobile_no_horizontal_page_overflow": true,
+    "mobile_menu_visible": true,
+    "mobile_menu_opens": true,
+    "mobile_lesson_no_horizontal_page_overflow": true
+  },
+  "javascript_errors": [],
+  "scope": "离线导航、170个课程页签、34份AI指令、答案门、搜索、复制与移动布局；不是Windows浏览器全面兼容或完整应用测试"
+}

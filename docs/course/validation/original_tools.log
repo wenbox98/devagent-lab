@@ -1,0 +1,24 @@
+test_doctor_no_api (__main__.TestCourseTools.test_doctor_no_api) ... ok
+test_init_existing_refused (__main__.TestCourseTools.test_init_existing_refused) ... ok
+test_init_inside_course_refused (__main__.TestCourseTools.test_init_inside_course_refused) ... ok
+test_init_new_project (__main__.TestCourseTools.test_init_new_project) ... ok
+test_lab_copy_no_answer (__main__.TestCourseTools.test_lab_copy_no_answer) ... ok
+test_pack_detects_obvious_key (__main__.TestCourseTools.test_pack_detects_obvious_key) ... ok
+test_pack_does_not_include_environment (__main__.TestCourseTools.test_pack_does_not_include_environment) ... ok
+test_pack_excludes_symlink (__main__.TestCourseTools.test_pack_excludes_symlink) ... ok
+test_pack_never_overwrites (__main__.TestCourseTools.test_pack_never_overwrites) ... ok
+test_pack_one_instruction_and_hashes (__main__.TestCourseTools.test_pack_one_instruction_and_hashes) ... ok
+test_review_dates (__main__.TestCourseTools.test_review_dates) ... ok
+test_review_invalid_date (__main__.TestCourseTools.test_review_invalid_date) ... ok
+test_starter_expected_red (__main__.TestCourseTools.test_starter_expected_red) ... ok
+test_unknown_lesson_refused (__main__.TestCourseTools.test_unknown_lesson_refused) ... ok
+test_extra_file_rejected (__main__.TestFixtureGrader.test_extra_file_rejected) ... ok
+test_missing_workspace_blocked (__main__.TestFixtureGrader.test_missing_workspace_blocked) ... ok
+test_original_bug_is_rejected (__main__.TestFixtureGrader.test_original_bug_is_rejected) ... ok
+test_real_fix_is_accepted (__main__.TestFixtureGrader.test_real_fix_is_accepted) ... ok
+test_unrelated_file_change_rejected (__main__.TestFixtureGrader.test_unrelated_file_change_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 13.650s
+
+OK

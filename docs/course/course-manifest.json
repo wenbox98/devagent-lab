@@ -1,0 +1,1260 @@
+{
+  "version": "4.2.0",
+  "date": "2026-09-18",
+  "lesson_count": 34,
+  "weeks": 32,
+  "hours_per_week_assumption": 10,
+  "lesson_hours": 244,
+  "gate_hours": 12,
+  "review_hours": 64,
+  "total_hours": 320,
+  "order": [
+    "L00",
+    "L01",
+    "L02",
+    "L03",
+    "L04",
+    "L05",
+    "L06",
+    "L07",
+    "L08",
+    "L09",
+    "L10",
+    "L11",
+    "L12",
+    "F01",
+    "F02",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "R01",
+    "R02",
+    "L19",
+    "L20",
+    "J01",
+    "J02",
+    "J03",
+    "L21",
+    "L22"
+  ],
+  "lessons": {
+    "L00": {
+      "title": "一次请求为何失败：从能运行到能解释",
+      "hours": 6,
+      "weeks": [
+        1
+      ],
+      "prerequisite": null,
+      "demo_cases": [
+        "success",
+        "timeout",
+        "empty-response",
+        "empty-task",
+        "trace-append"
+      ],
+      "language": "python",
+      "stage_goal": "输入分类与调用边界",
+      "intent_file": "lessons/L00/00-本课目的与文件导航.md",
+      "example_file": "lessons/L00/00-example.py"
+    },
+    "L01": {
+      "title": "连接真实模型：隔离供应商差异",
+      "hours": 6,
+      "weeks": [
+        1,
+        2
+      ],
+      "prerequisite": "L00",
+      "demo_cases": [
+        "fake-regression",
+        "missing-config",
+        "provider-errors",
+        "usage-unknown",
+        "real-once"
+      ],
+      "language": "python",
+      "stage_goal": "供应商适配与真实请求",
+      "intent_file": "lessons/L01/00-本课目的与文件导航.md",
+      "example_file": "lessons/L01/00-example.py"
+    },
+    "L02": {
+      "title": "读取代码：路径不是普通字符串",
+      "hours": 4,
+      "weeks": [
+        2
+      ],
+      "prerequisite": "L01",
+      "demo_cases": [
+        "read-lines",
+        "escape",
+        "symlink",
+        "large-file"
+      ],
+      "language": "python",
+      "stage_goal": "受控工作区与路径归属",
+      "intent_file": "lessons/L02/00-本课目的与文件导航.md",
+      "example_file": "lessons/L02/00-example.py"
+    },
+    "L03": {
+      "title": "工具协议：模型提议，程序执行",
+      "hours": 6,
+      "weeks": [
+        3
+      ],
+      "prerequisite": "L02",
+      "demo_cases": [
+        "valid-call",
+        "unknown-tool",
+        "invalid-args",
+        "business-error"
+      ],
+      "language": "python",
+      "stage_goal": "模型提议与执行权限",
+      "intent_file": "lessons/L03/00-本课目的与文件导航.md",
+      "example_file": "lessons/L03/00-example.py"
+    },
+    "L04": {
+      "title": "Agent循环：用环境反馈决定下一步",
+      "hours": 6,
+      "weeks": [
+        3,
+        4
+      ],
+      "prerequisite": "L03",
+      "demo_cases": [
+        "read-then-answer",
+        "repair-tool-error",
+        "step-limit",
+        "real-read"
+      ],
+      "language": "python",
+      "stage_goal": "有界反馈循环",
+      "intent_file": "lessons/L04/00-本课目的与文件导航.md",
+      "example_file": "lessons/L04/00-example.py"
+    },
+    "L05": {
+      "title": "代码定位：从搜索命中到可核对的证据",
+      "hours": 6,
+      "weeks": [
+        4,
+        5
+      ],
+      "prerequisite": "L04",
+      "demo_cases": [
+        "same-name",
+        "no-match",
+        "citation-check",
+        "real-locate"
+      ],
+      "language": "python",
+      "stage_goal": "从命中到证据",
+      "intent_file": "lessons/L05/00-本课目的与文件导航.md",
+      "example_file": "lessons/L05/00-example.py"
+    },
+    "L06": {
+      "title": "何时澄清、何时直接执行",
+      "hours": 6,
+      "weeks": [
+        5
+      ],
+      "prerequisite": "L05",
+      "demo_cases": [
+        "clear-task",
+        "ambiguous-task",
+        "resume-answer",
+        "workflow-compare"
+      ],
+      "language": "python",
+      "stage_goal": "澄清与确定性流程",
+      "intent_file": "lessons/L06/00-本课目的与文件导航.md",
+      "example_file": "lessons/L06/00-example.py"
+    },
+    "L07": {
+      "title": "修改文件：防止覆盖别人的新代码",
+      "hours": 6,
+      "weeks": [
+        6
+      ],
+      "prerequisite": "L06",
+      "demo_cases": [
+        "apply",
+        "stale-hash",
+        "ambiguous-match",
+        "rollback-conflict"
+      ],
+      "language": "python",
+      "stage_goal": "补丁的比较后写入",
+      "intent_file": "lessons/L07/00-本课目的与文件导航.md",
+      "example_file": "lessons/L07/00-example.py"
+    },
+    "L08": {
+      "title": "执行测试：限制进程、时间与输出",
+      "hours": 8,
+      "weeks": [
+        7
+      ],
+      "prerequisite": "L07",
+      "demo_cases": [
+        "normal",
+        "timeout",
+        "output-limit",
+        "boundary"
+      ],
+      "language": "python",
+      "stage_goal": "进程生命周期与资源边界",
+      "intent_file": "lessons/L08/00-本课目的与文件导航.md",
+      "example_file": "lessons/L08/00-example.py"
+    },
+    "L09": {
+      "title": "修复闭环：根据测试证据行动",
+      "hours": 10,
+      "weeks": [
+        8,
+        9
+      ],
+      "prerequisite": "L08",
+      "demo_cases": [
+        "repair-pagination",
+        "no-tests",
+        "import-error",
+        "repair-budget"
+      ],
+      "language": "python",
+      "stage_goal": "修复必须闭环",
+      "intent_file": "lessons/L09/00-本课目的与文件导航.md",
+      "example_file": "lessons/L09/00-example.py"
+    },
+    "L10": {
+      "title": "超时以后：失败、未知与幂等",
+      "hours": 6,
+      "weeks": [
+        9
+      ],
+      "prerequisite": "L09",
+      "demo_cases": [
+        "lost-response",
+        "same-id-different-body",
+        "crash-window",
+        "unrecognized-state"
+      ],
+      "language": "python",
+      "stage_goal": "超时与未知副作用",
+      "intent_file": "lessons/L10/00-本课目的与文件导航.md",
+      "example_file": "lessons/L10/00-example.py"
+    },
+    "L11": {
+      "title": "无进展检测：什么时候该停止",
+      "hours": 4,
+      "weeks": [
+        10
+      ],
+      "prerequisite": "L10",
+      "demo_cases": [
+        "repeat",
+        "new-evidence",
+        "budget",
+        "strategy-switch"
+      ],
+      "language": "python",
+      "stage_goal": "无进展与预算消耗",
+      "intent_file": "lessons/L11/00-本课目的与文件导航.md",
+      "example_file": "lessons/L11/00-example.py"
+    },
+    "L12": {
+      "title": "验收修复：结论必须来自真实状态",
+      "hours": 8,
+      "weeks": [
+        10,
+        11
+      ],
+      "prerequisite": "L11",
+      "demo_cases": [
+        "valid-fix",
+        "regression",
+        "test-tamper",
+        "claim-only"
+      ],
+      "language": "python",
+      "stage_goal": "独立验收与证据可信度",
+      "intent_file": "lessons/L12/00-本课目的与文件导航.md",
+      "example_file": "lessons/L12/00-example.py"
+    },
+    "F01": {
+      "title": "LangChain基础：消息、模型接口与Runnable不是Agent",
+      "hours": 6,
+      "weeks": [
+        11,
+        12
+      ],
+      "prerequisite": "L12",
+      "demo_cases": [
+        "normal",
+        "type_error",
+        "missing_usage"
+      ],
+      "language": "python",
+      "stage_goal": "LangChain接口与组合",
+      "intent_file": "lessons/F01/00-本课目的与文件导航.md",
+      "example_file": "lessons/F01/00-example.py"
+    },
+    "F02": {
+      "title": "LangChain Agent：用create_agent复用原有工具闭环",
+      "hours": 6,
+      "weeks": [
+        12,
+        13
+      ],
+      "prerequisite": "F01",
+      "demo_cases": [
+        "normal",
+        "unauthorized",
+        "no_tool"
+      ],
+      "language": "python",
+      "stage_goal": "create_agent迁移与共享工具",
+      "intent_file": "lessons/F02/00-本课目的与文件导航.md",
+      "example_file": "lessons/F02/00-example.py"
+    },
+    "L13": {
+      "title": "A/B工具选择：先约束，再选择，再验证",
+      "hours": 8,
+      "weeks": [
+        13,
+        14
+      ],
+      "prerequisite": "F02",
+      "demo_cases": [
+        "text-query",
+        "symbol-query",
+        "stale-index",
+        "no-permission",
+        "cohort-compare"
+      ],
+      "language": "python",
+      "stage_goal": "路由硬约束与可比较实验",
+      "intent_file": "lessons/L13/00-本课目的与文件导航.md",
+      "example_file": "lessons/L13/00-example.py"
+    },
+    "L14": {
+      "title": "工具结果设计：返回了不等于读懂了",
+      "hours": 4,
+      "weeks": [
+        14
+      ],
+      "prerequisite": "L13",
+      "demo_cases": [
+        "truncated",
+        "empty",
+        "changed-page",
+        "format-compare"
+      ],
+      "language": "python",
+      "stage_goal": "工具返回契约",
+      "intent_file": "lessons/L14/00-本课目的与文件导航.md",
+      "example_file": "lessons/L14/00-example.py"
+    },
+    "L15": {
+      "title": "工具变多：候选筛选不能漏掉真正需要的能力",
+      "hours": 4,
+      "weeks": [
+        14,
+        15
+      ],
+      "prerequisite": "L14",
+      "demo_cases": [
+        "relevant",
+        "missed-tool",
+        "empty-candidates",
+        "topk-compare"
+      ],
+      "language": "python",
+      "stage_goal": "工具候选召回",
+      "intent_file": "lessons/L15/00-本课目的与文件导航.md",
+      "example_file": "lessons/L15/00-example.py"
+    },
+    "L16": {
+      "title": "上下文工程：保留约束，按需取证",
+      "hours": 8,
+      "weeks": [
+        15,
+        16
+      ],
+      "prerequisite": "L15",
+      "demo_cases": [
+        "constraint-retain",
+        "retrieval-miss",
+        "stale-evidence",
+        "budget"
+      ],
+      "language": "python",
+      "stage_goal": "上下文预算与长期事实",
+      "intent_file": "lessons/L16/00-本课目的与文件导航.md",
+      "example_file": "lessons/L16/00-example.py"
+    },
+    "L17": {
+      "title": "成本与延迟：优化整次任务",
+      "hours": 8,
+      "weeks": [
+        16,
+        17
+      ],
+      "prerequisite": "L16",
+      "demo_cases": [
+        "cost-sum",
+        "unknown-usage",
+        "bottleneck",
+        "strategy-compare"
+      ],
+      "language": "python",
+      "stage_goal": "整次任务成本",
+      "intent_file": "lessons/L17/00-本课目的与文件导航.md",
+      "example_file": "lessons/L17/00-example.py"
+    },
+    "L18": {
+      "title": "评测与升级：避免对已知题目过拟合",
+      "hours": 8,
+      "weeks": [
+        17,
+        18
+      ],
+      "prerequisite": "L17",
+      "demo_cases": [
+        "clean-start",
+        "repeated-trials",
+        "cohort-regression",
+        "heldout-separation"
+      ],
+      "language": "python",
+      "stage_goal": "评测集与可信升级",
+      "intent_file": "lessons/L18/00-本课目的与文件导航.md",
+      "example_file": "lessons/L18/00-example.py"
+    },
+    "F03": {
+      "title": "中间件与结构化输出：形式正确不等于任务成功",
+      "hours": 6,
+      "weeks": [
+        18,
+        19
+      ],
+      "prerequisite": "L18",
+      "demo_cases": [
+        "normal",
+        "schema_error",
+        "fake_evidence"
+      ],
+      "language": "python",
+      "stage_goal": "上下文、中间件与结构化声明",
+      "intent_file": "lessons/F03/00-本课目的与文件导航.md",
+      "example_file": "lessons/F03/00-example.py"
+    },
+    "F04": {
+      "title": "LangGraph状态图：节点、边、Reducer与有界循环",
+      "hours": 6,
+      "weeks": [
+        19
+      ],
+      "prerequisite": "F03",
+      "demo_cases": [
+        "normal",
+        "budget_stop",
+        "duplicate_update"
+      ],
+      "language": "python",
+      "stage_goal": "图状态与Reducer",
+      "intent_file": "lessons/F04/00-本课目的与文件导航.md",
+      "example_file": "lessons/F04/00-example.py"
+    },
+    "F05": {
+      "title": "检查点与恢复：持久状态不保证副作用只执行一次",
+      "hours": 10,
+      "weeks": [
+        20,
+        21
+      ],
+      "prerequisite": "F04",
+      "demo_cases": [
+        "normal",
+        "crash_after_effect",
+        "resume"
+      ],
+      "language": "python",
+      "stage_goal": "持久恢复与副作用窗口",
+      "intent_file": "lessons/F05/00-本课目的与文件导航.md",
+      "example_file": "lessons/F05/00-example.py"
+    },
+    "F06": {
+      "title": "人工审批与interrupt：批准的是具体操作而不是无限权限",
+      "hours": 8,
+      "weeks": [
+        21,
+        22
+      ],
+      "prerequisite": "F05",
+      "demo_cases": [
+        "normal",
+        "reject",
+        "stale_approval"
+      ],
+      "language": "python",
+      "stage_goal": "审批绑定和重放",
+      "intent_file": "lessons/F06/00-本课目的与文件导航.md",
+      "example_file": "lessons/F06/00-example.py"
+    },
+    "R01": {
+      "title": "代码与文档检索：分块、BM25、向量与证据质量",
+      "hours": 8,
+      "weeks": [
+        22,
+        23
+      ],
+      "prerequisite": "F06",
+      "demo_cases": [
+        "normal",
+        "stale_index",
+        "no_answer"
+      ],
+      "language": "python",
+      "stage_goal": "RAG完整证据链",
+      "intent_file": "lessons/R01/00-本课目的与文件导航.md",
+      "example_file": "lessons/R01/00-example.py"
+    },
+    "R02": {
+      "title": "策略路由与联合检索：何时选择、何时融合、怎样证明收益",
+      "hours": 8,
+      "weeks": [
+        23,
+        24
+      ],
+      "prerequisite": "R01",
+      "demo_cases": [
+        "normal",
+        "unavailable_backend",
+        "no_answer"
+      ],
+      "language": "python",
+      "stage_goal": "路由、融合与重排",
+      "intent_file": "lessons/R02/00-本课目的与文件导航.md",
+      "example_file": "lessons/R02/00-example.py"
+    },
+    "L19": {
+      "title": "长任务服务：HTTP请求不是任务本身",
+      "hours": 10,
+      "weeks": [
+        24,
+        25
+      ],
+      "prerequisite": "R02",
+      "demo_cases": [
+        "submit-query",
+        "duplicate",
+        "disconnect",
+        "claim-race"
+      ],
+      "language": "python",
+      "stage_goal": "提交接口与持久任务",
+      "intent_file": "lessons/L19/00-本课目的与文件导航.md",
+      "example_file": "lessons/L19/00-example.py"
+    },
+    "L20": {
+      "title": "取消与恢复：停止请求不等于停止执行",
+      "hours": 10,
+      "weeks": [
+        26,
+        27
+      ],
+      "prerequisite": "L19",
+      "demo_cases": [
+        "cancel-before-step",
+        "cancel-running-test",
+        "restart-unknown",
+        "parallel-workspaces"
+      ],
+      "language": "python",
+      "stage_goal": "取消是协议不是按钮",
+      "intent_file": "lessons/L20/00-本课目的与文件导航.md",
+      "example_file": "lessons/L20/00-example.py"
+    },
+    "J01": {
+      "title": "Java幂等：数据库事务管不到远程执行",
+      "hours": 10,
+      "weeks": [
+        27,
+        28
+      ],
+      "prerequisite": "L20",
+      "demo_cases": [
+        "same-key",
+        "body-conflict",
+        "concurrent",
+        "lost-response"
+      ],
+      "language": "java",
+      "stage_goal": "跨服务提交幂等",
+      "intent_file": "lessons/J01/00-本课目的与文件导航.md",
+      "example_file": "lessons/J01/Demo.java"
+    },
+    "J02": {
+      "title": "Java慢调用：线程、队列与重试放大",
+      "hours": 8,
+      "weeks": [
+        28,
+        29
+      ],
+      "prerequisite": "J01",
+      "demo_cases": [
+        "queue-full",
+        "http-timeout",
+        "retry-amplification",
+        "cancel-propagation"
+      ],
+      "language": "java",
+      "stage_goal": "线程池与重试放大",
+      "intent_file": "lessons/J02/00-本课目的与文件导航.md",
+      "example_file": "lessons/J02/Demo.java"
+    },
+    "J03": {
+      "title": "Java排障：从慢请求找到SQL与资源瓶颈",
+      "hours": 8,
+      "weeks": [
+        29,
+        30
+      ],
+      "prerequisite": "J02",
+      "demo_cases": [
+        "slow-query",
+        "index-compare",
+        "pool-exhaustion",
+        "fix-and-regress"
+      ],
+      "language": "java",
+      "stage_goal": "证据驱动的数据库排障",
+      "intent_file": "lessons/J03/00-本课目的与文件导航.md",
+      "example_file": "lessons/J03/00-example.sql"
+    },
+    "L21": {
+      "title": "完整联调：身份、状态与故障证据对齐",
+      "hours": 8,
+      "weeks": [
+        30,
+        31
+      ],
+      "prerequisite": "J03",
+      "demo_cases": [
+        "end-to-end",
+        "cross-user",
+        "restart-and-query",
+        "clean-start"
+      ],
+      "language": "python",
+      "stage_goal": "端到端身份与状态对齐",
+      "intent_file": "lessons/L21/00-本课目的与文件导航.md",
+      "example_file": "lessons/L21/00-example.py"
+    },
+    "L22": {
+      "title": "求职验收：把项目转成可证明的能力",
+      "hours": 10,
+      "weeks": [
+        31,
+        32
+      ],
+      "prerequisite": "L21",
+      "demo_cases": [
+        "evidence-check",
+        "independent-change",
+        "unseen-failure",
+        "interview-rehearsal"
+      ],
+      "language": "python",
+      "stage_goal": "岗位能力与可证明作品",
+      "intent_file": "lessons/L22/00-本课目的与文件导航.md",
+      "example_file": "lessons/L22/00-example.py"
+    }
+  },
+  "gates": {
+    "G1": {
+      "after": "L06",
+      "hours": 2,
+      "week": 6
+    },
+    "G2": {
+      "after": "L12",
+      "hours": 2,
+      "week": 11
+    },
+    "G3": {
+      "after": "L18",
+      "hours": 2,
+      "week": 18
+    },
+    "GF": {
+      "after": "F06",
+      "hours": 2,
+      "week": 22
+    },
+    "GR": {
+      "after": "R02",
+      "hours": 2,
+      "week": 24
+    },
+    "G4": {
+      "after": "L21",
+      "hours": 2,
+      "week": 31
+    }
+  },
+  "weeks_plan": [
+    {
+      "week": 1,
+      "content": [
+        {
+          "id": "L00",
+          "hours": 6,
+          "kind": "lesson"
+        },
+        {
+          "id": "L01",
+          "hours": 2,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 2,
+      "content": [
+        {
+          "id": "L01",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "L02",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 3,
+      "content": [
+        {
+          "id": "L03",
+          "hours": 6,
+          "kind": "lesson"
+        },
+        {
+          "id": "L04",
+          "hours": 2,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 4,
+      "content": [
+        {
+          "id": "L04",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "L05",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 5,
+      "content": [
+        {
+          "id": "L05",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "L06",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 6,
+      "content": [
+        {
+          "id": "G1",
+          "hours": 2,
+          "kind": "gate"
+        },
+        {
+          "id": "L07",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 7,
+      "content": [
+        {
+          "id": "L08",
+          "hours": 8,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 8,
+      "content": [
+        {
+          "id": "L09",
+          "hours": 8,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 9,
+      "content": [
+        {
+          "id": "L09",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "L10",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 10,
+      "content": [
+        {
+          "id": "L11",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "L12",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 11,
+      "content": [
+        {
+          "id": "L12",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "G2",
+          "hours": 2,
+          "kind": "gate"
+        },
+        {
+          "id": "F01",
+          "hours": 2,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 12,
+      "content": [
+        {
+          "id": "F01",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "F02",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 13,
+      "content": [
+        {
+          "id": "F02",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "L13",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 14,
+      "content": [
+        {
+          "id": "L13",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "L14",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "L15",
+          "hours": 2,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 15,
+      "content": [
+        {
+          "id": "L15",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "L16",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 16,
+      "content": [
+        {
+          "id": "L16",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "L17",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 17,
+      "content": [
+        {
+          "id": "L17",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "L18",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 18,
+      "content": [
+        {
+          "id": "L18",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "G3",
+          "hours": 2,
+          "kind": "gate"
+        },
+        {
+          "id": "F03",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 19,
+      "content": [
+        {
+          "id": "F03",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "F04",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 20,
+      "content": [
+        {
+          "id": "F05",
+          "hours": 8,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 21,
+      "content": [
+        {
+          "id": "F05",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "F06",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 22,
+      "content": [
+        {
+          "id": "F06",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "GF",
+          "hours": 2,
+          "kind": "gate"
+        },
+        {
+          "id": "R01",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 23,
+      "content": [
+        {
+          "id": "R01",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "R02",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 24,
+      "content": [
+        {
+          "id": "R02",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "GR",
+          "hours": 2,
+          "kind": "gate"
+        },
+        {
+          "id": "L19",
+          "hours": 2,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 25,
+      "content": [
+        {
+          "id": "L19",
+          "hours": 8,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 26,
+      "content": [
+        {
+          "id": "L20",
+          "hours": 8,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 27,
+      "content": [
+        {
+          "id": "L20",
+          "hours": 2,
+          "kind": "lesson"
+        },
+        {
+          "id": "J01",
+          "hours": 6,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 28,
+      "content": [
+        {
+          "id": "J01",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "J02",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 29,
+      "content": [
+        {
+          "id": "J02",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "J03",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 30,
+      "content": [
+        {
+          "id": "J03",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "L21",
+          "hours": 4,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 31,
+      "content": [
+        {
+          "id": "L21",
+          "hours": 4,
+          "kind": "lesson"
+        },
+        {
+          "id": "G4",
+          "hours": 2,
+          "kind": "gate"
+        },
+        {
+          "id": "L22",
+          "hours": 2,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    },
+    {
+      "week": 32,
+      "content": [
+        {
+          "id": "L22",
+          "hours": 8,
+          "kind": "lesson"
+        }
+      ],
+      "review_hours": 2,
+      "total_hours": 10
+    }
+  ],
+  "edition": "目的与文件定位完整修订版",
+  "core_documents_per_lesson": 6
+}
