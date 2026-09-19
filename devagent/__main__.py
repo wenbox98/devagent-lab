@@ -4,16 +4,19 @@ from dataclasses import asdict
 import json
 from .app import run_task
 from .fake_model import FakeModelClient
+from .providers import OpenAICompatibleAdapter
 from .trace import DEFAULT_TRACE_PATH
 
 
 def main():
-    parser = argparse.ArgumentParser(description='L00 simulated model request')
+    parser = argparse.ArgumentParser(description='DevAgent model request')
     parser.add_argument('--task', required=True)
+    parser.add_argument('--client', choices=['fake', 'real'], default='fake')
     parser.add_argument('--mode', choices=['success', 'timeout', 'bad_response'], default='success')
     parser.add_argument('--trace-path', default=str(DEFAULT_TRACE_PATH))
     args = parser.parse_args()
-    result = run_task(args.task, FakeModelClient(args.mode), trace_path=args.trace_path)
+    client = FakeModelClient(args.mode) if args.client == 'fake' else OpenAICompatibleAdapter()
+    result = run_task(args.task, client, trace_path=args.trace_path)
     print(json.dumps(asdict(result), ensure_ascii=False))
     return result.exit_code
 

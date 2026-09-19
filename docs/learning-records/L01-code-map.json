@@ -1,0 +1,46 @@
+{
+  "lesson": "L01",
+  "source_head": "0b9078aca29823e48cf31032678e3c28ecb4e492",
+  "entries": [
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/__main__.py",
+      "symbol": "main",
+      "anchor": "client = FakeModelClient(args.mode) if args.client == 'fake' else OpenAICompatibleAdapter()",
+      "sha256": "928832fffc0cc3b09d09077a2fc000521f58244d6978eba9478f9819c80afee5"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/app.py",
+      "symbol": "run_task",
+      "anchor": "if not isinstance(task, str) or not task.strip():",
+      "sha256": "380782fd1f137743ce0587c311e25805ce2739c5c24249732fcfa8594470915f"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/config.py",
+      "symbol": "load_provider_config",
+      "anchor": "def load_provider_config(environ: Mapping[str, str] | None = None) -> ProviderConfig:",
+      "sha256": "c72d0492d2b4da2881f41cd22e275cbf624ef47c49abd01740672bee08dae57e"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/providers/adapter.py",
+      "symbol": "OpenAICompatibleAdapter.complete",
+      "anchor": "def complete(self, model_request: ModelRequest) -> ModelResponse:",
+      "sha256": "f88113b8d973e73e25e152dd02de70dbc59c04d4a87691851151bb1725a16068"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l01.py",
+      "symbol": "TestL01ProviderBoundary",
+      "anchor": "class TestL01ProviderBoundary(unittest.TestCase):",
+      "sha256": "d3cd75a728f3073c95a3abf7c6ce498966fc7ec9d0410dd587db47f9e31fb041"
+    }
+  ]
+}

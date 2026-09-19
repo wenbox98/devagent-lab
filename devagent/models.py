@@ -8,6 +8,9 @@ class ModelRequest:
 class ModelResponse:
     text: str
     provider: str
+    model: str | None = None
+    input_tokens: int | None = None
+    output_tokens: int | None = None
 
 @dataclass(frozen=True)
 class RunResult:
@@ -16,3 +19,7 @@ class RunResult:
     output: str | None
     error_code: str | None
     exit_code: int
+    provider: str | None = None
+    model: str | None = None
+    input_tokens: int | None = None
+    output_tokens: int | None = None

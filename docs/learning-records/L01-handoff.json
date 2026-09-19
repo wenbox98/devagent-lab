@@ -1,0 +1,70 @@
+{
+  "lesson": "L01",
+  "source_head": "0b9078aca29823e48cf31032678e3c28ecb4e492",
+  "changed_files": [
+    "README.md",
+    "devagent/__main__.py",
+    "devagent/app.py",
+    "devagent/models.py",
+    "devagent/config.py",
+    "devagent/providers/__init__.py",
+    "devagent/providers/adapter.py",
+    "devagent/demos/l01.py",
+    "tests/test_l01.py",
+    "docs/learning-records/L01-code-map.json",
+    "docs/learning-records/L01-handoff.json",
+    "docs/learning-records/L01.md"
+  ],
+  "interface_changes": [
+    "ModelResponse and RunResult add optional provider, model, input_tokens, and output_tokens fields; existing positional construction remains compatible",
+    "CLI adds --client fake|real and keeps fake as the default",
+    "run_task maps normalized provider configuration, authentication, rate-limit, timeout, response, and service errors without retry",
+    "OpenAICompatibleAdapter isolates environment configuration, HTTP request schema, provider response fields, and transport exceptions"
+  ],
+  "commands": [
+    {
+      "command": "python -B -m unittest discover -s tests -p test_l01.py -v",
+      "exit_code": 0,
+      "test_count": 10,
+      "result": "passed"
+    },
+    {
+      "command": "python -B -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "test_count": 23,
+      "result": "passed; includes all 13 L00 tests"
+    },
+    {
+      "command": "python -B -m devagent.demos.l01 --case fake-regression|missing-config|provider-errors|usage-unknown",
+      "exit_code": 0,
+      "test_count": null,
+      "result": "four separate commands; every report verified=true"
+    },
+    {
+      "command": "python -B -m devagent.demos.l01 --case real-once",
+      "exit_code": 2,
+      "test_count": null,
+      "result": "blocked before network access because real-provider configuration is absent"
+    },
+    {
+      "command": "python docs/course/tools/code_map.py validate --project . --map docs/learning-records/L01-code-map.json",
+      "exit_code": 0,
+      "test_count": null,
+      "result": "references_valid"
+    }
+  ],
+  "environment": "Windows 11; Python 3.14.7; standard library HTTP client; no provider SDK installed",
+  "blocked": [
+    {
+      "scope": "real-once",
+      "reason": "DEVAGENT_PROVIDER, DEVAGENT_MODEL, DEVAGENT_API_KEY, and DEVAGENT_API_BASE_URL are absent",
+      "paid_api_called": false
+    }
+  ],
+  "next_prerequisites": [
+    "Learner inspects the L01 code map and explains why missing usage remains None",
+    "A real-once check remains separate until the learner explicitly configures a provider, model, endpoint, and credential",
+    "L02 must preserve the provider adapter and all L00/L01 regression behavior"
+  ],
+  "learning_status": "Implementation evidence recorded; personal understanding and independent migration are not assessed"
+}

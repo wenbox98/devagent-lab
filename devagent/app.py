@@ -3,6 +3,10 @@ from pathlib import Path
 from uuid import uuid4
 
 from .models import ModelRequest, RunResult
+from .config import ConfigMissingError
+from .providers.adapter import (ProviderAuthenticationError, ProviderRateLimitError,
+                                ProviderResponseError, ProviderServiceError,
+                                ProviderTimeoutError)
 from .trace import DEFAULT_TRACE_PATH, TraceWriter
 
 
@@ -24,11 +28,15 @@ def run_task(task: str, client, *, trace_path: str | Path = DEFAULT_TRACE_PATH,
     def trace_failure():
         return RunResult(run_id, 'failed', None, 'trace_io', 5)
 
-    def finish(output=None, error_code=None, exit_code=0):
+    def finish(output=None, error_code=None, exit_code=0, response=None):
         status = 'succeeded' if error_code is None else 'failed'
         if not emit('run_finished', status=status, error_code=error_code, exit_code=exit_code):
             return trace_failure()
-        return RunResult(run_id, status, output, error_code, exit_code)
+        metadata = {} if response is None else {
+            'provider': response.provider, 'model': response.model,
+            'input_tokens': response.input_tokens, 'output_tokens': response.output_tokens,
+        }
+        return RunResult(run_id, status, output, error_code, exit_code, **metadata)
 
     if not emit('run_started', status='started'):
         return trace_failure()
@@ -41,13 +49,39 @@ def run_task(task: str, client, *, trace_path: str | Path = DEFAULT_TRACE_PATH,
         return trace_failure()
     try:
         response = client.complete(request)
+    except ConfigMissingError:
+        if not emit('model_finished', status='failed', error_code='config_missing'):
+            return trace_failure()
+        return finish(error_code='config_missing', exit_code=6)
+    except ProviderAuthenticationError:
+        if not emit('model_finished', status='failed', error_code='provider_authentication'):
+            return trace_failure()
+        return finish(error_code='provider_authentication', exit_code=7)
+    except ProviderRateLimitError:
+        if not emit('model_finished', status='failed', error_code='provider_rate_limit'):
+            return trace_failure()
+        return finish(error_code='provider_rate_limit', exit_code=8)
+    except ProviderTimeoutError:
+        if not emit('model_finished', status='failed', error_code='provider_timeout'):
+            return trace_failure()
+        return finish(error_code='provider_timeout', exit_code=3)
+    except ProviderResponseError:
+        if not emit('model_finished', status='failed', error_code='provider_parse_error'):
+            return trace_failure()
+        return finish(error_code='provider_parse_error', exit_code=4)
+    except ProviderServiceError:
+        if not emit('model_finished', status='failed', error_code='provider_service_error'):
+            return trace_failure()
+        return finish(error_code='provider_service_error', exit_code=9)
     except TimeoutError:
         if not emit('model_finished', status='failed', error_code='model_timeout'):
             return trace_failure()
         return finish(error_code='model_timeout', exit_code=3)
-    if not emit('model_finished', status='succeeded'):
+    if not emit('model_finished', status='succeeded', provider=response.provider,
+                model=response.model, input_tokens=response.input_tokens,
+                output_tokens=response.output_tokens):
         return trace_failure()
     # ModelResponse is the current client contract; other types are a learner exercise.
     if not response.text.strip():
         return finish(error_code='invalid_response', exit_code=4)
-    return finish(output=response.text)
+    return finish(output=response.text, response=response)

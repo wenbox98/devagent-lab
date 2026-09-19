@@ -19,12 +19,25 @@ python -m devagent.demos.l00 --case trace-append
 
 输入先清洗首尾空白，最多接受 5000 个字符（不是 token 数）；超过限制返回 `input_too_long`、退出 2，不调用模型。Python 调用者可用 `run_task(..., max_chars=...)` 配置正整数上限。
 
-L00 基线提交后，下次改动可用 `git diff HEAD -- devagent tests` 对比；查看最近提交用 `git show --stat HEAD`，查看其具体修改用 `git show HEAD -- devagent tests`。`docs/course` 是已有的独立 Git 仓库，其示例修改用 `git -C docs/course log --oneline` 和 `git -C docs/course show HEAD` 查看。
+L00 基线提交后，下次改动可用 `git diff HEAD -- devagent tests` 对比；查看最近提交用 `git show --stat HEAD`，查看其具体修改用 `git show HEAD -- devagent tests`。应用、测试、学习记录和 `docs/course` 教材均由当前仓库统一管理。
 
 演示会创建并清理独立临时目录，观测结果与事件包含在输出 JSON 中；`verified` 来自实际检查。演示退出 0 表示案例预期满足，因此正确处理超时的演示也退出 0。退出 1 表示断言失败，2 表示环境阻塞。CLI 参数用法错误也由 argparse 返回 2。
 
 受限环境若禁止系统临时目录写入，需要使用获准的执行环境；不能把 `trace_io` 当作业务测试通过。PowerShell 若中文显示异常，可先执行 `$env:PYTHONIOENCODING = "utf-8"`；JSONL 文件始终使用 UTF-8。
 
 实际验证与待填写学习记录：docs/learning-records/L00.md。当前基础测试通过不代表独立练习或学习验收完成。
+
+L01 增加可切换的真实供应商边界，默认仍使用 fake。真实模式只读取本地环境变量，不读取或提交 `.env`：
+
+```powershell
+$env:DEVAGENT_PROVIDER = "供应商标识"
+$env:DEVAGENT_MODEL = "实际可用模型名"
+$env:DEVAGENT_API_KEY = "本地密钥"
+$env:DEVAGENT_API_BASE_URL = "OpenAI兼容API根地址"
+$env:DEVAGENT_TIMEOUT_SECONDS = "30"
+python -m devagent --client real --task "Reply with OK."
+```
+
+真实适配器仅执行一次请求，不自动重试。配置缺失、认证、限流、超时、响应解析和其他服务错误使用不同错误码；供应商未返回 usage 时，输入和输出 token 均为 `None`。
 
 全程保留同一个Git仓库。密钥只在本地环境，运行产物在.local，不把真实业务数据提交。每课学习证据写docs/learning-records/课号.md，不由代码AI代写个人成绩。
