@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "scope": "Temporary original-course project and app/progress sentinels; not user worktree.",
+  "dry_run": {
+    "replace": 231,
+    "create": 35,
+    "unchanged": 88
+  },
+  "apply": {
+    "replace": 231,
+    "create": 35,
+    "unchanged": 88
+  },
+  "second_apply": "unchanged",
+  "rollback_files": 266,
+  "restored_snapshot_exact": true,
+  "application_and_personal_record_unchanged": true,
+  "importer_regression_tests": 21
+}

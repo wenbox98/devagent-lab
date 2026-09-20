@@ -1,6 +1,6 @@
 {
-  "version": "4.2.0",
-  "date": "2026-09-18",
+  "version": "5.0.0",
+  "date": "2026-09-20",
   "lesson_count": 34,
   "weeks": 32,
   "hours_per_week_assumption": 10,
@@ -1256,5 +1256,8 @@
     }
   ],
   "edition": "目的与文件定位完整修订版",
-  "core_documents_per_lesson": 6
+  "core_documents_per_lesson": 6,
+  "source_repository": "https://github.com/wenbox98/devagent-lab",
+  "source_commit": "4e3e538963bcf35a193178bd6f2927886a6486fe",
+  "schedule_status": "Historical v4.2 time budget retained; not re-estimated or guaranteed for v5 expanded reading."
 }

@@ -1,4 +1,4 @@
-"""Regression tests for v4.2 helpers. Temporary projects only; no network or paid API."""
+"""Regression tests for versioned course helpers. Temporary projects only; no network or paid API."""
 import hashlib
 import importlib.util
 import json
@@ -35,7 +35,7 @@ class TestPrepare(Base):
                 source=ROOT/out['source'];copy=self.project/out['copy']
                 self.assertEqual(source.read_bytes(),copy.read_bytes())
                 self.assertEqual(hashlib.sha256(copy.read_bytes()).hexdigest(),out['source_sha256'])
-                self.assertEqual(out['course_version'],'4.2.0')
+                self.assertEqual(out['course_version'],m['version'])
     def test_no_overwrite_preserves_student_edits(self):
         out=prepare.prepare('L00',self.project);p=self.project/out['copy'];p.write_text('# my work')
         with self.assertRaises(ValueError):prepare.prepare('L00',self.project)

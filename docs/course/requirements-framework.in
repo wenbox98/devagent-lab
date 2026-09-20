@@ -1,3 +1,5 @@
+# v5: preserved historical candidate pins, NOT a verified installation or lockfile.
+# Do not install blindly; follow 27-版本与来源.md and record actual compatible versions.
 # v4 candidate direct dependencies, NOT a tested lockfile.
 # Verified release/documentation anchors; current build environment could not install.
 # Install in an isolated venv, pip check, run framework examples, THEN record your environment.

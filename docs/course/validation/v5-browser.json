@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "browser": "Chromium, self-contained HTML loaded with set_content",
+  "limitation": "file:// navigation blocked by browser administrator policy; direct double-click loading not runtime-verified in this environment",
+  "lessons": 34,
+  "tabs": 204,
+  "rendered_documents": 346,
+  "checks": [
+    "desktop rendering",
+    "mobile no horizontal page overflow",
+    "all documents render or gated",
+    "6 tabs per lesson",
+    "old path-derived document hash remains valid",
+    "unopened answers excluded from search",
+    "explicit answer unlock",
+    "search",
+    "mobile menu",
+    "copy fallback/clipboard feedback"
+  ],
+  "js_errors": [],
+  "scope": "Offline reader behavior, not textbook semantic proof or learner assessment."
+}

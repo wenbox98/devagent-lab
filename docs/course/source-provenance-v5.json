@@ -1,0 +1,10 @@
+{
+  "repo": "https://github.com/wenbox98/devagent-lab",
+  "commit": "4e3e538963bcf35a193178bd6f2927886a6486fe",
+  "course_tree_sha": "e17ec13ea3cb503d3f5bf33955e7dc1823153a6b",
+  "baseline_archive": "devagent-course-v4.2.zip",
+  "obtained_from": "User Library; exact Git tree match to current repository course subtree",
+  "checked_on": "2026-09-20",
+  "new_content": "Authored per-lesson explanations, decisions, worked paths, study protocol and safe import tooling",
+  "runtime_boundary": "No changes to user application; current code claims pinned to source commit."
+}

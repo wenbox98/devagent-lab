@@ -1,0 +1,440 @@
+{
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41"
+  },
+  "results": [
+    {
+      "file": "lessons/F01/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "{'role': 'user', 'content': 'explain pagination'}\nfixture: explain pagination\ntype_error: rejected before model\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/F02/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "{\"content\": \"def page(items): return items\", \"tool_call_id\": \"call-1\"}\nunauthorized\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/F03/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "schema_error\nmissing_evidence\nverified_fixture\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/F04/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "delta: {'budget': 1, 'evidence': ['read:v1', 'test:failed']}\nfull-history mistake: {'budget': 2, 'evidence': ['read:v1', 'read:v1', 'test:failed']}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/F05/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "created\nreused\nidempotency_conflict\neffect_count: 1\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/F06/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "approved\nstale_approval\ncancelled\nunauthorized\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L00/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "invalid_input\nmodel_timeout\ninvalid_response\nsucceeded\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L01/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "{'text': 'hello', 'input_tokens': None, 'output_tokens': None}\n{'text': 'hello', 'input_tokens': 12, 'output_tokens': 3}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L02/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "True\nTrue\nFalse\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L03/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "{'call_id': 'c1', 'ok': True, 'data': 6}\n{'call_id': 'c2', 'ok': False, 'code': 'invalid_args'}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L04/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "done 2\n['tool', 'tool_result', 'final']\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L05/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "pagination.py\n{'ok': True, 'matches': []}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L06/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "workflow\nask_metric\nagent\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L07/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "False\nconflict\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L08/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "b'abcdefghij'\nTrue\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L09/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "no_tests\ncollection_error\npassed\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L10/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "applied\nreplayed\nconflict\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L11/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "continue\ncontinue\nstop\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L12/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "True\nFalse\nFalse\nFalse\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L13/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "symbol\ntext\nunavailable\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L14/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "{'items': ['a', 'b'], 'truncated': True, 'next_offset': 2}\n{'items': [], 'truncated': False, 'next_offset': None}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L15/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "['search_text', 'read_file']\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L16/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "['keep public signature']\npagination.py\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L17/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "large 0.08 2\nsmall 0.1 5\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L18/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "old {'text': (3, 4), 'symbol': (1, 2)}\nnew {'text': (2, 4), 'symbol': (2, 2)}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L19/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "True\nFalse\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L20/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "stop_before_next_step\nreconcile\nskip_duplicate_write\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L21/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "exec-7\nforbidden\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L22/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "tool_routing supported\ndistributed_ha gap\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/R01/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "[('d1', 1.3938), ('d3', 0.5119)]\nno_answer: []\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/R02/00-example.py",
+      "kind": "original_python",
+      "exit_code": 0,
+      "stdout": "[('d2', 0.032522), ('d1', 0.016393), ('d3', 0.016129)]\ndedupe_and_acl: passed\nsemantic_rankings: synthetic_fixture_not_model_measurement\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/F05/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"sqlite-cross-process-not-langgraph\", \"recovered\": \"waiting\", \"process_count\": 2, \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L00/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"teaching-only\", \"invalid_input_calls\": 0, \"empty_response_calls\": 1, \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L01/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"mocked-network\", \"mapped_error\": \"AuthenticationError\", \"call_count\": 1, \"restored\": true, \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L02/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"controlled-temp-files\", \"exact_limit\": \"accepted\", \"outside\": \"denied-before-open\", \"over_limit\": \"rejected\", \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L03/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"controlled-tool-protocol\", \"results\": [{\"call_id\": \"c1\", \"status\": \"succeeded\", \"content\": \"answer = 42\\n\", \"error_code\": null}, {\"call_id\": \"c2\", \"status\": \"failed\", \"content\": null, \"error_code\": \"permission_denied\"}, {\"call_id\": \"c3\", \"status\": \"failed\", \"content\": null, \"error_code\": \"unknown_tool\"}], \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L04/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"scripted-model-real-temp-read\", \"model_calls\": 2, \"events\": [{\"turn\": 1, \"model_kind\": \"tool\"}, {\"tool\": \"read_file\", \"call_id\": \"read-1\", \"observed\": \"start = page_no * size\\n\"}, {\"turn\": 2, \"model_kind\": \"final\"}], \"answer\": \"Observed source: start = page_no * size\", \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L07/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"single-writer-temp-file\", \"stale\": \"rejected_without_write\", \"fresh\": \"applied\", \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L08/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"controlled-direct-child-only\", \"timed_out\": true, \"exit_confirmed\": true, \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L10/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"hash-reconciliation-only\", \"applied_detected\": true, \"foreign_version\": \"needs_review\", \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L14/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"in-memory-versioned-pagination\", \"pages\": [[\"A\", \"B\"], [\"C\"]], \"stale_cursor_rejected\": true, \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L16/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"character-budget-not-tokens\", \"required_preserved\": true, \"optional_kept\": [\"short\"], \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/L19/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"sqlite-conditional-claim\", \"attempts\": 12, \"successful_claims\": 1, \"state\": \"running\", \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/R02/01-mechanism.py",
+      "kind": "new_mechanism",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"rank-fixtures-only\", \"order\": [\"B\", \"A\", \"C\"], \"duplicates_counted_once\": true, \"verified\": true}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/J01/Demo.java",
+      "kind": "java_compile",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/J01/Demo.java",
+      "kind": "java_run",
+      "exit_code": 0,
+      "stdout": "null\nbodyA\nbodyA\nbodyA\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/J02/Demo.java",
+      "kind": "java_compile",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "file": "lessons/J02/Demo.java",
+      "kind": "java_run",
+      "exit_code": 0,
+      "stdout": "rejected=1\n",
+      "stderr": "",
+      "status": "passed"
+    }
+  ],
+  "framework": [
+    {
+      "file": "lessons/F01/framework-example.py",
+      "status": "blocked",
+      "reason": "missing dependencies: langchain_core"
+    },
+    {
+      "file": "lessons/F02/framework-example.py",
+      "status": "blocked",
+      "reason": "missing dependencies: langchain"
+    },
+    {
+      "file": "lessons/F03/context-framework-example.py",
+      "status": "blocked",
+      "reason": "missing dependencies: langchain"
+    },
+    {
+      "file": "lessons/F03/framework-example.py",
+      "status": "blocked",
+      "reason": "missing dependencies: langchain"
+    },
+    {
+      "file": "lessons/F04/framework-example.py",
+      "status": "blocked",
+      "reason": "missing dependencies: langgraph"
+    },
+    {
+      "file": "lessons/F05/framework-example.py",
+      "status": "blocked",
+      "reason": "missing dependencies: langgraph"
+    },
+    {
+      "file": "lessons/F06/framework-example.py",
+      "status": "blocked",
+      "reason": "missing dependencies: langgraph"
+    },
+    {
+      "file": "lessons/R01/vector-framework-example.py",
+      "status": "blocked",
+      "reason": "missing dependencies: langchain_core"
+    }
+  ],
+  "database": {
+    "file": "lessons/J03/00-example.sql",
+    "status": "not_run",
+    "reason": "No controlled PostgreSQL instance provisioned; SQL dialect not substituted by SQLite."
+  },
+  "scope": "Course example execution only. No user project application suite or paid API."
+}
