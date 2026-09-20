@@ -1,0 +1,88 @@
+{
+  "lesson": "L02",
+  "source_head": "ebe195f3e2e5468f22838cf8b37d956f3d55e364",
+  "changed_files": [
+    "devagent/tools/__init__.py",
+    "devagent/tools/files.py",
+    "devagent/demos/l02.py",
+    "tests/test_l02.py",
+    "docs/learning-records/L02-code-map.json",
+    "docs/learning-records/L02-handoff.json",
+    "docs/learning-records/L02.md"
+  ],
+  "reused_files": [
+    "fixtures/tiny_repo/pagination.py",
+    "fixtures/tiny_repo/reporting.py"
+  ],
+  "interface_changes": [
+    "New list_files(root) and read_file(root, path, start_line=1, end_line=None, max_bytes=65536)",
+    "Host supplies trusted root and byte budget; no model tool dispatcher or root argument exposed in demo CLI",
+    "Canonical containment, visible-path policy, allowlisted regular UTF-8 text, bounded read and inclusive line selection",
+    "FileAccessError codes: permission_denied, not_found, unsupported_content, io_error; invalid ranges/budgets raise ValueError",
+    "FileReadResult: path, start_line, end_line, content, truncated, next_start_line; no max-lines independent exercise implemented"
+  ],
+  "budget_strategy": "Reject files above max_bytes; stat precheck then at most max_bytes+1 bytes read to detect growth. Line ranges apply only to files within whole-file budget.",
+  "commands": [
+    {
+      "command": "python -m unittest discover -s tests -p test_l02.py -v",
+      "exit_code": 0,
+      "test_count": 17,
+      "passed": 16,
+      "skipped": 1,
+      "failures": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "test_count": 42,
+      "passed": 41,
+      "skipped": 1,
+      "failures": 0
+    },
+    {
+      "command": "python -m devagent.demos.l02 --case read-lines",
+      "exit_code": 0,
+      "verified": true,
+      "result": "verified"
+    },
+    {
+      "command": "python -m devagent.demos.l02 --case escape",
+      "exit_code": 0,
+      "verified": true,
+      "result": "verified"
+    },
+    {
+      "command": "python -m devagent.demos.l02 --case symlink",
+      "exit_code": 2,
+      "verified": false,
+      "result": "blocked"
+    },
+    {
+      "command": "python -m devagent.demos.l02 --case large-file",
+      "exit_code": 0,
+      "verified": true,
+      "result": "verified"
+    }
+  ],
+  "environment": "Windows-11-10.0.26200-SP0; Python 3.14.7",
+  "blocked": [
+    {
+      "scope": "real symlink verification",
+      "reason": "Windows WinError 1314: process lacks symlink creation privilege",
+      "test_result": "skipped",
+      "demo_result": "blocked",
+      "demo_exit_code": 2
+    }
+  ],
+  "next_prerequisites": [
+    "Rerun symlink test and demo in an environment that supports symlink creation",
+    "Learner independently adds a maximum-line-count policy"
+  ],
+  "unresolved_risks": [
+    "Canonical path checks do not prevent concurrent path replacement (TOCTOU) or hard-link aliases; not an OS sandbox",
+    "Listing has per-file byte limits but no total directory/time/result-count budget",
+    "Suffix and UTF-8 checks do not detect secrets inside allowed source files"
+  ],
+  "learning_status": "Implementation and test evidence only; no assertion of learner mastery",
+  "validation_note": "Initial L02 run failed due to Windows newline translation in test data; fixture now writes explicit LF bytes and a separate test verifies CRLF preservation. Final runs above include all original L00/L01 tests."
+}

@@ -1,0 +1,46 @@
+{
+  "lesson": "L02",
+  "source_head": "ebe195f3e2e5468f22838cf8b37d956f3d55e364",
+  "entries": [
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/demos/l02.py",
+      "symbol": "main",
+      "anchor": "def main() -> int:",
+      "sha256": "57a5d49958cc6a390f3e52b9ea8df0214dde5c9cbce186fa6858c37d9ba6ec4d"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/tools/files.py",
+      "symbol": "_canonical_root",
+      "anchor": "def _canonical_root(root: str | Path) -> Path:",
+      "sha256": "79a17748a58553aa863fee19d810e414952eb35af3f47d1c9489da57e92e6e29"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/tools/files.py",
+      "symbol": "_authorize",
+      "anchor": "if not target.is_relative_to(root):",
+      "sha256": "79a17748a58553aa863fee19d810e414952eb35af3f47d1c9489da57e92e6e29"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tools/files.py",
+      "symbol": "read_file",
+      "anchor": "raw = stream.read(max_bytes + 1)",
+      "sha256": "79a17748a58553aa863fee19d810e414952eb35af3f47d1c9489da57e92e6e29"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l02.py",
+      "symbol": "TestL02WorkspaceFiles",
+      "anchor": "class TestL02WorkspaceFiles(unittest.TestCase):",
+      "sha256": "04320c54a25dd148e37f2f36883e2c43e302f3b50711ca484834d3b3b15a7fab"
+    }
+  ]
+}
