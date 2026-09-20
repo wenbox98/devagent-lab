@@ -49,7 +49,17 @@ def _optional_usage(raw: Mapping[str, Any], name: str) -> int | None:
     return value
 
 
+def unwrap_response(raw: Mapping[str, Any]) -> Mapping[str, Any]:
+    if "response" in raw:
+        response = raw["response"]
+        if not isinstance(response, Mapping):
+            raise ProviderResponseError("provider response wrapper must contain an object")
+        return response
+    return raw
+
+
 def normalize_response(raw: Mapping[str, Any], config: ProviderConfig) -> ModelResponse:
+    raw = unwrap_response(raw)
     try:
         choices = raw["choices"]
         text = choices[0]["message"]["content"]

@@ -66,5 +66,35 @@
     "A real-once check remains separate until the learner explicitly configures a provider, model, endpoint, and credential",
     "L02 must preserve the provider adapter and all L00/L01 regression behavior"
   ],
-  "learning_status": "Implementation evidence recorded; personal understanding and independent migration are not assessed"
+  "learning_status": "Implementation evidence recorded; personal understanding and independent migration are not assessed",
+  "wrapped_response_exercise": {
+    "date": "2026-09-20",
+    "source_head": "13610ecaa1bfcbc7397a194f1f64e41741dc055f",
+    "starting_state": "Clean worktree; learner-described changes were not present on disk. Completed from the learner-provided intent.",
+    "changes": [
+      "Typed single-level response unwrap with explicit Mapping validation",
+      "Offline adapter assertions for text, model and usage; invalid wrapper rejection",
+      "Explicit UTF-8 subprocess output and decoding for L00/L01 CLI tests"
+    ],
+    "app_changed": false,
+    "commands": [
+      {
+        "command": "python -m unittest discover -s tests -p test_l01.py -k test_adapter_handles_wrapped_provider_response -v",
+        "exit_code": 0,
+        "test_count": 1
+      },
+      {
+        "command": "python -m unittest discover -s tests -p test_l01.py -v",
+        "exit_code": 0,
+        "test_count": 12
+      },
+      {
+        "command": "python -m unittest discover -s tests -v",
+        "exit_code": 0,
+        "test_count": 25
+      }
+    ],
+    "environment_note": "Initial single-test sandbox run failed during temporary-directory cleanup; rerun outside sandbox passed. No tests skipped.",
+    "real_once": "blocked: all four required provider configuration variables remain absent; no real API request sent"
+  }
 }

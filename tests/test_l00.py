@@ -1,6 +1,7 @@
 """L00的第一条红色验收；不要删除测试或把NotImplementedError算通过。"""
 import unittest
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -147,7 +148,8 @@ class TestL00StartingContract(unittest.TestCase):
             with self.subTest(mode=mode, task=task):
                 proc = subprocess.run([sys.executable, '-B', '-m', 'devagent', '--task', task,
                                        '--mode', mode, '--trace-path', str(self.path)],
-                                      capture_output=True, text=True, timeout=10)
+                                      capture_output=True, text=True, encoding='utf-8', timeout=10,
+                                      env={**os.environ, 'PYTHONIOENCODING': 'utf-8'})
                 self.assertEqual(proc.returncode, expected)
                 self.assertEqual(json.loads(proc.stdout)['exit_code'], expected)
                 self.assertEqual(proc.stderr, '')

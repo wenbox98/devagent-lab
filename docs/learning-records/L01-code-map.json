@@ -1,6 +1,6 @@
 {
   "lesson": "L01",
-  "source_head": "0b9078aca29823e48cf31032678e3c28ecb4e492",
+  "source_head": "13610ecaa1bfcbc7397a194f1f64e41741dc055f",
   "entries": [
     {
       "role": "入口",
@@ -32,7 +32,7 @@
       "path": "devagent/providers/adapter.py",
       "symbol": "OpenAICompatibleAdapter.complete",
       "anchor": "def complete(self, model_request: ModelRequest) -> ModelResponse:",
-      "sha256": "f88113b8d973e73e25e152dd02de70dbc59c04d4a87691851151bb1725a16068"
+      "sha256": "4ee1c9e9385cb906ab7e4c7870574a10536042c980da3d0d533a7b6235593fd8"
     },
     {
       "role": "测试",
@@ -40,7 +40,7 @@
       "path": "tests/test_l01.py",
       "symbol": "TestL01ProviderBoundary",
       "anchor": "class TestL01ProviderBoundary(unittest.TestCase):",
-      "sha256": "d3cd75a728f3073c95a3abf7c6ce498966fc7ec9d0410dd587db47f9e31fb041"
+      "sha256": "036b1665ea03a17dafc8191235390c3eaae9ecac5e569828cd25bfe44b04a017"
     }
   ]
 }

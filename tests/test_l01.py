@@ -111,6 +111,29 @@ class TestL01ProviderBoundary(unittest.TestCase):
         self.assertEqual((response.input_tokens, response.output_tokens), (4, 1))
         self.assertEqual(transport.call_count, 1)
 
+    def test_adapter_handles_wrapped_provider_response(self):
+        transport = ScriptedTransport(response={
+            'status': 'ok', 'code': '200',
+            'response': {'model': 'returned',
+                         'choices': [{'message': {'content': 'answer'}}],
+                         'usage': {'prompt_tokens': 4, 'completion_tokens': 1}}})
+        client = OpenAICompatibleAdapter(config=fixture_config(), transport=transport)
+        response = client.complete(ModelRequest('question'))
+        self.assertEqual(response.text, 'answer')
+        self.assertEqual(response.model, 'returned')
+        self.assertEqual(response.input_tokens, 4)
+        self.assertEqual(response.output_tokens, 1)
+        self.assertEqual(transport.call_count, 1)
+
+    def test_adapter_rejects_non_mapping_response_wrapper(self):
+        for wrapped in (None, [], 'answer', 200, False):
+            with self.subTest(wrapped=wrapped):
+                transport = ScriptedTransport(response={'response': wrapped})
+                client = OpenAICompatibleAdapter(config=fixture_config(), transport=transport)
+                with self.assertRaisesRegex(ProviderResponseError, 'wrapper must contain an object'):
+                    client.complete(ModelRequest('question'))
+                self.assertEqual(transport.call_count, 1)
+
     def test_offline_demos_derive_verdict_and_real_once_is_blocked_without_config(self):
         for case in ('fake-regression', 'missing-config', 'provider-errors', 'usage-unknown'):
             with self.subTest(case=case), TemporaryDirectory() as directory:
@@ -127,7 +150,8 @@ class TestL01ProviderBoundary(unittest.TestCase):
         clean_env = {key: value for key, value in os.environ.items() if not key.startswith('DEVAGENT_')}
         proc = subprocess.run([sys.executable, '-B', '-m', 'devagent', '--client', 'real',
                                '--task', 'short question', '--trace-path', str(self.root / 'cli.jsonl')],
-                              capture_output=True, text=True, timeout=10, env=clean_env)
+                              capture_output=True, text=True, encoding='utf-8', timeout=10,
+                              env={**clean_env, 'PYTHONIOENCODING': 'utf-8'})
         self.assertEqual(proc.returncode, 6)
         self.assertEqual(json.loads(proc.stdout)['error_code'], 'config_missing')
         self.assertEqual(proc.stderr, '')
