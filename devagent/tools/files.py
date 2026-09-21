@@ -11,6 +11,7 @@ from pathlib import Path
 import stat
 
 DEFAULT_MAX_BYTES = 64 * 1024
+DEFAULT_MAX_LINES = 50
 TEXT_SUFFIXES = frozenset({'.py', '.md', '.txt', '.json', '.toml', '.yaml', '.yml',
                            '.java', '.js', '.ts', '.css', '.html', '.csv'})
 
@@ -67,14 +68,18 @@ class FileReadResult:
 
 
 def read_file(root: str | Path, path: str | Path, start_line: int = 1,
-              end_line: int | None = None, max_bytes: int = DEFAULT_MAX_BYTES) -> FileReadResult:
-    """Reject whole files above the byte budget; line endpoints are inclusive.
+              end_line: int | None = None, max_bytes: int = DEFAULT_MAX_BYTES, max_lines: int = DEFAULT_MAX_LINES) -> FileReadResult:
+    """Reject whole files above max_bytes; return at most max_lines lines.
 
-    Empty/after-EOF selections have end_line=start_line-1. A range ending before
-    EOF has truncated=True and next_start_line=end_line+1. No max-lines policy.
+    Line endpoints are inclusive. Empty/after-EOF selections have
+    end_line=start_line-1. If file lines remain after the returned window,
+    truncated=True and next_start_line points to the next line, regardless
+    of whether end_line or max_lines limited the window.
     """
     if type(max_bytes) is not int or max_bytes < 1:
         raise ValueError('max_bytes must be a positive integer')
+    if type(max_lines) is not int or max_lines < 1:
+        raise ValueError('max_lines must be a positive integer')
     if type(start_line) is not int or start_line < 1 or (
         end_line is not None and (type(end_line) is not int or end_line < start_line)
     ):
@@ -102,6 +107,8 @@ def read_file(root: str | Path, path: str | Path, start_line: int = 1,
         raise FileAccessError('unsupported_content', 'file contains binary control characters')
     lines = text.splitlines(keepends=True)
     selected = lines[start_line - 1:end_line]
+    if len(selected) > max_lines:
+        selected = selected[:max_lines]
     last = start_line + len(selected) - 1
     more = bool(selected) and last < len(lines)
     return FileReadResult(target.relative_to(workspace).as_posix(), start_line, last,
@@ -133,5 +140,5 @@ def list_files(root: str | Path) -> list[dict]:
                     if exc.code in {'permission_denied', 'not_found', 'unsupported_content'}:
                         continue
                     raise
-                result.append({'path': read.path, 'size_bytes': len(read.content.encode('utf-8'))})
+                result.append({'path': read.path, 'size_bytes': (workspace / read.path).stat().st_size})
     return sorted({item['path']: item for item in result}.values(), key=lambda item: item['path'])

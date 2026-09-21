@@ -84,5 +84,36 @@
     "Suffix and UTF-8 checks do not detect secrets inside allowed source files"
   ],
   "learning_status": "Implementation and test evidence only; no assertion of learner mastery",
-  "validation_note": "Initial L02 run failed due to Windows newline translation in test data; fixture now writes explicit LF bytes and a separate test verifies CRLF preservation. Final runs above include all original L00/L01 tests."
+  "validation_note": "Initial L02 run failed due to Windows newline translation in test data; fixture now writes explicit LF bytes and a separate test verifies CRLF preservation. Final runs above include all original L00/L01 tests.",
+  "line_window_exercise": {
+    "date": "2026-09-21",
+    "source_head": "bfe236f2fb80ad8b5c5af21cad8a4a07cdedb137",
+    "authorship": "Learner designed and modified files.py before this review; existing max_lines validation, slicing and stat size logic preserved.",
+    "assistant_changes": [
+      "Correct obsolete docstring",
+      "Add four behavior tests",
+      "Refresh learning records and code map"
+    ],
+    "semantics": "Default max_lines=50 limits returned lines, not requested range. truncated indicates remaining file lines; next_start_line follows the actual last returned line. list_files reports whole-file stat size.",
+    "commands": [
+      {
+        "command": "python -m unittest discover -s tests -p test_l02.py -v",
+        "exit_code": 0,
+        "test_count": 21,
+        "passed": 20,
+        "failures": 0,
+        "skipped": 1
+      },
+      {
+        "command": "python -m unittest discover -s tests -v",
+        "exit_code": 0,
+        "test_count": 46,
+        "passed": 45,
+        "failures": 0,
+        "skipped": 1
+      }
+    ],
+    "blocked": "Real symlink test skipped: Windows WinError 1314. Not counted as passed.",
+    "review": "No logic issue found within the existing non-concurrent workspace contract; TOCTOU limitation remains."
+  }
 }

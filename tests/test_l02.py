@@ -39,6 +39,50 @@ class TestL02WorkspaceFiles(unittest.TestCase):
         self.source.write_bytes(b'changed\n')
         self.assertEqual(read_file(self.root, 'sample.py').content, 'changed\n')
 
+    def test_max_lines_windows_preserve_file_continuation_semantics(self):
+        lines = [f'line {number}\n' for number in range(1, 101)]
+        self.source.write_bytes(''.join(lines).encode('utf-8'))
+        for start, end, expected_end, count, truncated, next_line in (
+            (1, 100, 50, 50, True, 51),
+            (1, 50, 50, 50, True, 51),
+            (80, 150, 100, 21, False, None),
+        ):
+            with self.subTest(start=start, end=end):
+                result = read_file(self.root, 'sample.py', start, end, max_lines=50)
+                self.assertEqual((result.start_line, result.end_line), (start, expected_end))
+                self.assertEqual(result.content, ''.join(lines[start - 1:expected_end]))
+                self.assertEqual(len(result.content.splitlines()), count)
+                self.assertEqual(result.truncated, truncated)
+                self.assertEqual(result.next_start_line, next_line)
+
+    def test_invalid_max_lines_rejected_before_open(self):
+        with patch.object(Path, 'open', side_effect=AssertionError('invalid budget must not open')):
+            for budget in (0, -1, True, 2.5):
+                with self.subTest(budget=budget), self.assertRaises(ValueError):
+                    read_file(self.root, 'sample.py', max_lines=budget)
+
+    def test_default_and_custom_max_lines_with_continuation(self):
+        lines = [f'{number}\n' for number in range(1, 101)]
+        self.source.write_bytes(''.join(lines).encode('utf-8'))
+        first = read_file(self.root, 'sample.py')
+        self.assertEqual(first.content, ''.join(lines[:50]))
+        self.assertEqual(first.next_start_line, 51)
+        rest = read_file(self.root, 'sample.py', first.next_start_line)
+        self.assertEqual(rest.content, ''.join(lines[50:]))
+        self.assertFalse(rest.truncated)
+        self.assertIsNone(rest.next_start_line)
+        short = read_file(self.root, 'sample.py', max_lines=3)
+        self.assertEqual(short.content, ''.join(lines[:3]))
+        self.assertEqual(short.next_start_line, 4)
+
+    def test_list_size_is_whole_file_bytes_after_line_limit(self):
+        raw = ''.join(f'第{number}行\r\n' for number in range(1, 101)).encode('utf-8')
+        self.source.write_bytes(raw)
+        returned = read_file(self.root, 'sample.py')
+        self.assertEqual(len(returned.content.splitlines()), 50)
+        self.assertGreater(len(raw), len(returned.content.encode('utf-8')))
+        self.assertEqual(list_files(self.root), [{'path': 'sample.py', 'size_bytes': len(raw)}])
+
     def test_crlf_content_is_preserved(self):
         self.source.write_bytes(b'first\r\nsecond\r\n')
         result = read_file(self.root, 'sample.py', 2, 2)
