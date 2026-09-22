@@ -1,6 +1,6 @@
 {
   "lesson": "L03",
-  "source_head": "a9ff709336a8268d821298a97de24d54af95a71f",
+  "source_head": "4d34417ab98447163795ef128cfe3c47c70445aa",
   "entries": [
     {
       "role": "入口",
@@ -16,7 +16,7 @@
       "path": "devagent/tools/registry.py",
       "symbol": "validate_arguments",
       "anchor": "def validate_arguments(spec: ToolSpec, arguments) -> dict:",
-      "sha256": "d607801b56ed6ce0070d1e56bfaa2201db21ff930264a57cbf72c8e5dd642a4d"
+      "sha256": "a2e7276625736db2c50b8d6a5bf087203c5c487107b1470ed6e587f6c8895fef"
     },
     {
       "role": "核心决策",
@@ -24,7 +24,7 @@
       "path": "devagent/tools/registry.py",
       "symbol": "ToolRegistry.execute",
       "anchor": "spec, handler = self._entries[call.name]",
-      "sha256": "d607801b56ed6ce0070d1e56bfaa2201db21ff930264a57cbf72c8e5dd642a4d"
+      "sha256": "a2e7276625736db2c50b8d6a5bf087203c5c487107b1470ed6e587f6c8895fef"
     },
     {
       "role": "下游/状态",
@@ -32,7 +32,7 @@
       "path": "devagent/tools/registry.py",
       "symbol": "ToolRegistry._read",
       "anchor": "return asdict(files.read_file(self._workspace, **arguments))",
-      "sha256": "d607801b56ed6ce0070d1e56bfaa2201db21ff930264a57cbf72c8e5dd642a4d"
+      "sha256": "a2e7276625736db2c50b8d6a5bf087203c5c487107b1470ed6e587f6c8895fef"
     },
     {
       "role": "测试",
@@ -40,7 +40,7 @@
       "path": "tests/test_l03.py",
       "symbol": "TestL03ToolProtocol",
       "anchor": "class TestL03ToolProtocol(unittest.TestCase):",
-      "sha256": "61eac84c9512a937ec84e1641ef21a06ab66d5a6370be483b5f9a5a2fa2d025d"
+      "sha256": "c27d59f5089e4df768f027ceec597cfde2050921641dee3c3a7e1f0151455f3c"
     }
   ]
 }

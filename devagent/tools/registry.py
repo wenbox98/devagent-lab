@@ -7,21 +7,30 @@ from pathlib import Path
 from . import files
 from .protocol import ToolCall, ToolError, ToolResult, ToolSpec
 
+COMPAT_METADATA_FIELDS = frozenset({
+    'client_note',
+    'client_tags',
+})
+
 
 def validate_arguments(spec: ToolSpec, arguments) -> dict:
     """Validate the small schema subset used by our two tools, not full JSON Schema.
 
     This checks structure/ranges only; filesystem authorization remains in L02.
+    Allowlisted client metadata is ignored and never forwarded to handlers.
     """
     if not isinstance(arguments, dict):
         raise ValueError('arguments must be an object')
     schema = spec.input_schema
     properties = schema['properties']
-    if set(arguments) - set(properties):
+    unknown = set(arguments) - set(properties) - COMPAT_METADATA_FIELDS
+    if unknown:
         raise ValueError('unknown arguments are not allowed')
     if set(schema['required']) - set(arguments):
         raise ValueError('missing required arguments')
     for name, value in arguments.items():
+        if name not in properties:
+            continue
         rule = properties[name]
         expected = rule['type']
         if expected == 'string' and not isinstance(value, str):
@@ -30,7 +39,11 @@ def validate_arguments(spec: ToolSpec, arguments) -> dict:
             raise ValueError(f'{name} must be a positive integer')
     if 'end_line' in arguments and arguments['end_line'] < arguments.get('start_line', 1):
         raise ValueError('end_line must not precede start_line')
-    return dict(arguments)
+    return {
+        key: value
+        for key, value in arguments.items()
+        if key in properties
+    }
 
 
 class ToolRegistry:

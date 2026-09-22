@@ -13,7 +13,7 @@ from devagent.models import ModelRequest, ModelResponse
 from devagent.providers.adapter import OpenAICompatibleAdapter
 from devagent.tools import files
 from devagent.tools.protocol import ToolCall, ToolError, ToolResult, ToolSpec
-from devagent.tools.registry import ToolRegistry
+from devagent.tools.registry import ToolRegistry, validate_arguments
 
 
 class TestL03ToolProtocol(unittest.TestCase):
@@ -65,6 +65,83 @@ class TestL03ToolProtocol(unittest.TestCase):
         self.assertEqual((result.call_id, result.ok), ('list-1', True))
         self.assertEqual(result.data, [{'path': 'a.py', 'size_bytes': 19}])
         handler.assert_called_once_with(self.root.resolve())
+
+    def test_metadata_is_allowed_but_not_forwarded_to_real_read(self):
+        for metadata in ({'client_note': 'debug'}, {'client_tags': ['lesson', 'debug']},
+                         {'client_note': 'debug', 'client_tags': ['lesson']}):
+            with self.subTest(metadata=metadata), \
+                    patch('devagent.tools.registry.files.read_file', wraps=files.read_file) as reader:
+                args = {'path': 'a.py', 'start_line': 2, 'end_line': 2, **metadata}
+                original = dict(args)
+                result = self.registry.execute(ToolCall('metadata', 'read_file', args))
+                self.assertEqual((result.call_id, result.ok, result.error), ('metadata', True, None))
+                self.assertEqual(result.data['content'], 'second\n')
+                reader.assert_called_once_with(self.root.resolve(), path='a.py', start_line=2, end_line=2)
+                self.assertEqual(args, original)
+
+    def test_metadata_is_not_schema_or_list_execution_arguments(self):
+        args = {'client_note': 'debug', 'client_tags': ['lesson', 'debug']}
+        for spec in self.registry.specs:
+            self.assertTrue(set(args).isdisjoint(spec.input_schema['properties']))
+            supplied = {**args, 'path': 'a.py'} if spec.name == 'read_file' else args
+            expected = {'path': 'a.py'} if spec.name == 'read_file' else {}
+            self.assertEqual(validate_arguments(spec, supplied), expected)
+        with patch('devagent.tools.registry.files.list_files', wraps=files.list_files) as listing:
+            result = self.registry.execute(ToolCall('metadata-list', 'list_files', args))
+        self.assertEqual((result.call_id, result.ok), ('metadata-list', True))
+        self.assertEqual(result.data, [{'path': 'a.py', 'size_bytes': 19}])
+        listing.assert_called_once_with(self.root.resolve())
+
+    def test_metadata_does_not_bypass_required_type_or_range_validation(self):
+        with patch('devagent.tools.registry.files.read_file') as reader:
+            for args in ({}, {'path': 12}, {'path': 'a.py', 'start_line': True},
+                         {'path': 'a.py', 'start_line': 3, 'end_line': 2}):
+                with self.subTest(args=args):
+                    result = self.registry.execute(ToolCall('bad-meta', 'read_file',
+                                                           {**args, 'client_note': 'debug'}))
+                    self.assertEqual((result.call_id, result.ok, result.error.code),
+                                     ('bad-meta', False, 'invalid_args'))
+            reader.assert_not_called()
+        self.assertEqual(self.registry.handler_calls, 0)
+
+    def test_metadata_does_not_allow_authority_budget_or_identity_fields(self):
+        with patch('devagent.tools.registry.files.read_file') as reader, \
+                patch('devagent.tools.registry.files.list_files') as listing:
+            for field in ('root', 'workspace', 'allow_all', 'max_bytes', 'max_lines',
+                          'credentials', 'principal'):
+                for tool, base in (('read_file', {'path': 'a.py'}), ('list_files', {})):
+                    with self.subTest(field=field, tool=tool):
+                        args = {**base, 'client_note': 'debug', 'client_tags': [], field: True}
+                        result = self.registry.execute(ToolCall('denied-meta', tool, args))
+                        self.assertEqual((result.call_id, result.ok, result.error.code),
+                                         ('denied-meta', False, 'invalid_args'))
+            reader.assert_not_called()
+            listing.assert_not_called()
+        self.assertEqual(self.registry.handler_calls, 0)
+
+    def test_metadata_does_not_hide_misspelled_execution_parameters(self):
+        with patch('devagent.tools.registry.files.read_file') as reader:
+            for field in ('paht', 'star_line', 'endline'):
+                with self.subTest(field=field):
+                    # Supply a valid path so missing-required validation cannot mask this bug.
+                    args = {'path': 'a.py', 'client_note': 'debug', field: 2}
+                    result = self.registry.execute(ToolCall('typo', 'read_file', args))
+                    self.assertEqual(result.error.code, 'invalid_args')
+            reader.assert_not_called()
+        self.assertEqual(self.registry.handler_calls, 0)
+
+    def test_other_unknown_fields_still_rejected_with_metadata(self):
+        with patch('devagent.tools.registry.files.read_file') as reader, \
+                patch('devagent.tools.registry.files.list_files') as listing:
+            for field in ('foo', 'debug_mode'):
+                for tool, base in (('read_file', {'path': 'a.py'}), ('list_files', {})):
+                    with self.subTest(field=field, tool=tool):
+                        args = {**base, 'client_tags': ['debug'], field: True}
+                        result = self.registry.execute(ToolCall('unknown-arg', tool, args))
+                        self.assertEqual(result.error.code, 'invalid_args')
+            reader.assert_not_called()
+            listing.assert_not_called()
+        self.assertEqual(self.registry.handler_calls, 0)
 
     def test_unknown_tool_never_calls_any_handler(self):
         with patch('devagent.tools.registry.files.read_file') as reader, \

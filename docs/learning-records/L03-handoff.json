@@ -82,8 +82,7 @@
     }
   ],
   "next_prerequisites": [
-    "Learner reads actual L03 diff",
-    "Independent unknown-argument compatibility variant remains unimplemented",
+    "Learner reviews the completed metadata compatibility diff and test evidence",
     "L04 loop requires a separate explicit task"
   ],
   "unresolved_risks": [
@@ -94,5 +93,57 @@
   "warnings": [
     "Full regression emitted ResourceWarning for existing HTTPError fixtures; no failing assertions"
   ],
-  "learning_status": "Implementation and runtime evidence only, not a mastery assessment"
+  "learning_status": "Implementation and runtime evidence only, not a mastery assessment",
+  "independent_exercise": {
+    "date": "2026-09-23",
+    "source_head": "4d34417ab98447163795ef128cfe3c47c70445aa",
+    "design_author": "learner",
+    "existing_changes_preserved": "Learner added metadata allowlist, unknown-key filtering and execution-argument projection",
+    "codex_work": "Skip allowlisted metadata during execution-parameter type checks to prevent KeyError; add tests and review evidence",
+    "allowed_metadata": [
+      "client_note",
+      "client_tags"
+    ],
+    "metadata_policy": "Ignored values, no extra type schema; not registered in ToolSpec properties and never forwarded to handlers",
+    "rejected_security_fields": [
+      "root",
+      "workspace",
+      "allow_all",
+      "max_bytes",
+      "max_lines",
+      "credentials",
+      "principal"
+    ],
+    "other_unknown_fields": "Rejected, including paht/star_line/endline/foo/debug_mode",
+    "changed_files": [
+      "devagent/tools/registry.py",
+      "tests/test_l03.py",
+      "docs/learning-records/L03.md",
+      "docs/learning-records/L03-code-map.json",
+      "docs/learning-records/L03-handoff.json"
+    ],
+    "new_tests": 6,
+    "commands": [
+      {
+        "command": "python -m unittest discover -s tests -p \"test_l03.py\" -v",
+        "exit_code": 0,
+        "test_count": 24,
+        "passed": 24,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "command": "python -m unittest discover -s tests -v",
+        "exit_code": 0,
+        "test_count": 70,
+        "passed": 69,
+        "failed": 0,
+        "skipped": 1
+      }
+    ],
+    "symlink": "Skipped: Windows WinError 1314; not counted as passed",
+    "l04_status": "Not implemented; separate explicit task required",
+    "real_provider_tool_calling": "Still unsupported; no paid API call",
+    "mastery_assessment": "Not made"
+  }
 }
