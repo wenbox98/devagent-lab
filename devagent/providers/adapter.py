@@ -120,6 +120,8 @@ class OpenAICompatibleAdapter:
         self.call_count = 0
 
     def complete(self, model_request: ModelRequest) -> ModelResponse:
+        if model_request.tools:
+            raise NotImplementedError('this provider adapter supports text requests only')
         config = self._config or load_provider_config(self._environ)
         endpoint = config.base_url.rstrip("/") + "/chat/completions"
         headers = {"Authorization": "Bearer " + config.api_key, "Content-Type": "application/json"}

@@ -1,8 +1,10 @@
 from dataclasses import dataclass
+from .tools.protocol import ToolCall, ToolSpec
 
 @dataclass(frozen=True)
 class ModelRequest:
     task: str
+    tools: tuple[ToolSpec, ...] = ()
 
 @dataclass(frozen=True)
 class ModelResponse:
@@ -11,6 +13,7 @@ class ModelResponse:
     model: str | None = None
     input_tokens: int | None = None
     output_tokens: int | None = None
+    tool_calls: tuple[ToolCall, ...] = ()
 
 @dataclass(frozen=True)
 class RunResult:
@@ -23,3 +26,4 @@ class RunResult:
     model: str | None = None
     input_tokens: int | None = None
     output_tokens: int | None = None
+    tool_calls: tuple[ToolCall, ...] = ()

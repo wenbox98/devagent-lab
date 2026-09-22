@@ -1,0 +1,98 @@
+{
+  "lesson": "L03",
+  "source_head": "a9ff709336a8268d821298a97de24d54af95a71f",
+  "changed_files": [
+    "devagent/models.py",
+    "devagent/fake_model.py",
+    "devagent/app.py",
+    "devagent/providers/adapter.py",
+    "devagent/tools/protocol.py",
+    "devagent/tools/registry.py",
+    "devagent/demos/l03.py",
+    "tests/test_l03.py",
+    "docs/learning-records/L03.md",
+    "docs/learning-records/L03-code-map.json",
+    "docs/learning-records/L03-handoff.json"
+  ],
+  "interface_changes": [
+    "ToolSpec/ToolCall/ToolError/ToolResult domain contracts",
+    "ToolRegistry binds host workspace and dispatches only read_file/list_files after structural validation",
+    "ModelRequest.tools; ModelResponse.tool_calls; RunResult.tool_calls",
+    "run_task returns requires_tools for proposals without executing or looping",
+    "FakeModelClient tool_call mode; real adapter explicitly rejects advertised tools before network"
+  ],
+  "duplicate_id_policy": "Preflight rejects the entire batch with protocol_error, preserving input positions and IDs; zero handlers execute; no durable idempotency.",
+  "commands": [
+    {
+      "command": "python -m unittest discover -s tests -p test_l03.py -v",
+      "exit_code": 0,
+      "test_count": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "test_count": 64,
+      "passed": 63,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "command": "python -m devagent.demos.l03 --case valid-call",
+      "exit_code": 0,
+      "verified": true,
+      "handler_calls": 1
+    },
+    {
+      "command": "python -m devagent.demos.l03 --case unknown-tool",
+      "exit_code": 0,
+      "verified": true,
+      "handler_calls": 0
+    },
+    {
+      "command": "python -m devagent.demos.l03 --case invalid-args",
+      "exit_code": 0,
+      "verified": true,
+      "handler_calls": 0
+    },
+    {
+      "command": "python -m devagent.demos.l03 --case business-error",
+      "exit_code": 0,
+      "verified": true,
+      "handler_calls": 1
+    }
+  ],
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\Python314\\python.exe"
+  },
+  "blocked": [
+    {
+      "scope": "real provider tool calling",
+      "status": "not implemented/not verified",
+      "paid_api_called": false
+    },
+    {
+      "scope": "L02 real symlink regression",
+      "status": "skipped",
+      "reason": "Windows WinError 1314, no creation privilege"
+    }
+  ],
+  "next_prerequisites": [
+    "Learner reads actual L03 diff",
+    "Independent unknown-argument compatibility variant remains unimplemented",
+    "L04 loop requires a separate explicit task"
+  ],
+  "unresolved_risks": [
+    "Inherited L02 TOCTOU, hard links and directory traversal budgets",
+    "No durable deduplication, cross-process recovery or concurrent scheduling",
+    "Validator supports only the fixed schemas in this registry; not general JSON Schema"
+  ],
+  "warnings": [
+    "Full regression emitted ResourceWarning for existing HTTPError fixtures; no failing assertions"
+  ],
+  "learning_status": "Implementation and runtime evidence only, not a mastery assessment"
+}

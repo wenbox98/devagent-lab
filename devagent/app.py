@@ -3,6 +3,7 @@ from pathlib import Path
 from uuid import uuid4
 
 from .models import ModelRequest, RunResult
+from .tools.protocol import ToolSpec
 from .config import ConfigMissingError
 from .providers.adapter import (ProviderAuthenticationError, ProviderRateLimitError,
                                 ProviderResponseError, ProviderServiceError,
@@ -11,7 +12,7 @@ from .trace import DEFAULT_TRACE_PATH, TraceWriter
 
 
 def run_task(task: str, client, *, trace_path: str | Path = DEFAULT_TRACE_PATH,
-             max_chars: int = 5000) -> RunResult:
+             max_chars: int = 5000, tools: tuple[ToolSpec, ...] = ()) -> RunResult:
     if type(max_chars) is not int or max_chars < 1:
         raise ValueError('max_chars must be a positive integer')
     run_id = str(uuid4())
@@ -28,13 +29,14 @@ def run_task(task: str, client, *, trace_path: str | Path = DEFAULT_TRACE_PATH,
     def trace_failure():
         return RunResult(run_id, 'failed', None, 'trace_io', 5)
 
-    def finish(output=None, error_code=None, exit_code=0, response=None):
-        status = 'succeeded' if error_code is None else 'failed'
+    def finish(output=None, error_code=None, exit_code=0, response=None, status=None):
+        status = status or ('succeeded' if error_code is None else 'failed')
         if not emit('run_finished', status=status, error_code=error_code, exit_code=exit_code):
             return trace_failure()
         metadata = {} if response is None else {
             'provider': response.provider, 'model': response.model,
             'input_tokens': response.input_tokens, 'output_tokens': response.output_tokens,
+            'tool_calls': response.tool_calls,
         }
         return RunResult(run_id, status, output, error_code, exit_code, **metadata)
 
@@ -42,7 +44,7 @@ def run_task(task: str, client, *, trace_path: str | Path = DEFAULT_TRACE_PATH,
         return trace_failure()
     if not isinstance(task, str) or not task.strip():
         return finish(error_code='invalid_input', exit_code=2)
-    request = ModelRequest(task=task.strip())
+    request = ModelRequest(task=task.strip(), tools=tools)
     if len(request.task) > max_chars:
         return finish(error_code='input_too_long', exit_code=2)
     if not emit('model_started', status='started', task_chars=len(request.task)):
@@ -82,6 +84,9 @@ def run_task(task: str, client, *, trace_path: str | Path = DEFAULT_TRACE_PATH,
                 output_tokens=response.output_tokens):
         return trace_failure()
     # ModelResponse is the current client contract; other types are a learner exercise.
+    if response.tool_calls:
+        # A proposal is pending work, not proof of execution or task completion.
+        return finish(output=response.text or None, response=response, status='requires_tools')
     if not response.text.strip():
         return finish(error_code='invalid_response', exit_code=4)
     return finish(output=response.text, response=response)
