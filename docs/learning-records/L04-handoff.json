@@ -1,0 +1,150 @@
+{
+  "lesson": "L04",
+  "source_head": "6ab67f71ba5ad1cc11dacc000ff689986d7f7dc7",
+  "branch": "master",
+  "initial_worktree": "clean",
+  "changed_files": [
+    "devagent/agent/__init__.py",
+    "devagent/agent/messages.py",
+    "devagent/agent/loop.py",
+    "devagent/models.py",
+    "devagent/fake_model.py",
+    "devagent/providers/adapter.py",
+    "devagent/demos/l04.py",
+    "tests/test_l04.py",
+    "docs/learning-records/L04.md",
+    "docs/learning-records/L04-code-map.json",
+    "docs/learning-records/L04-handoff.json"
+  ],
+  "interface_changes": [
+    "ModelRequest.messages defaults to empty tuple",
+    "Structured UserMessage/AssistantMessage/ToolMessage",
+    "run_agent returns AgentState; existing run_task stays single-call",
+    "ScriptedModelClient captures actual request snapshots",
+    "Provider rejects tools or history before network"
+  ],
+  "budget_policy": {
+    "defaults": {
+      "max_rounds": 5,
+      "max_tool_calls": 10
+    },
+    "model_count": "complete attempts including unsupported mode",
+    "tool_count": "dispatched proposals including rejected calls, not handler count",
+    "oversized_batch": "no partial dispatch",
+    "exhaustion": "no more model calls or handlers; final answer does not get a grace round"
+  },
+  "commands": [
+    {
+      "command": "python -m unittest discover -s tests -p \"test_l04.py\" -v",
+      "exit_code": 0,
+      "test_count": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "test_count": 92,
+      "passed": 91,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "command": "python -m devagent.demos.l04 --case read-then-answer",
+      "exit_code": 0,
+      "verified": true,
+      "model_attempts": 2,
+      "dispatched_tool_calls": 1,
+      "handler_calls": 1,
+      "termination_reason": "final_answer"
+    },
+    {
+      "command": "python -m devagent.demos.l04 --case tool-error-recovery",
+      "exit_code": 0,
+      "verified": true,
+      "model_attempts": 3,
+      "dispatched_tool_calls": 2,
+      "handler_calls": 2,
+      "termination_reason": "final_answer"
+    },
+    {
+      "command": "python -m devagent.demos.l04 --case round-budget",
+      "exit_code": 0,
+      "verified": true,
+      "model_attempts": 3,
+      "dispatched_tool_calls": 3,
+      "handler_calls": 3,
+      "termination_reason": "step_limit"
+    },
+    {
+      "command": "python -m devagent.demos.l04 --case tool-budget",
+      "exit_code": 0,
+      "verified": true,
+      "model_attempts": 2,
+      "dispatched_tool_calls": 2,
+      "handler_calls": 2,
+      "termination_reason": "tool_limit"
+    },
+    {
+      "command": "python -m devagent.demos.l04 --case repair-tool-error",
+      "exit_code": 0,
+      "verified": true,
+      "model_attempts": 3,
+      "dispatched_tool_calls": 2,
+      "handler_calls": 1,
+      "termination_reason": "final_answer"
+    },
+    {
+      "command": "python -m devagent.demos.l04 --case step-limit",
+      "exit_code": 0,
+      "verified": true,
+      "model_attempts": 3,
+      "dispatched_tool_calls": 3,
+      "handler_calls": 3,
+      "termination_reason": "step_limit"
+    },
+    {
+      "command": "python -m devagent.demos.l04 --case real-read",
+      "exit_code": 2,
+      "verified": false,
+      "model_attempts": 1,
+      "dispatched_tool_calls": 0,
+      "handler_calls": 0,
+      "termination_reason": "unsupported_model_mode"
+    },
+    {
+      "command": "python -m devagent.demos.l04 --list-cases",
+      "exit_code": 0
+    },
+    {
+      "command": "python docs/course/tools/code_map.py validate --project . --map docs/learning-records/L04-code-map.json",
+      "exit_code": 0,
+      "status": "references_valid"
+    }
+  ],
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\Python314\\python.exe"
+  },
+  "blocked": [
+    "Real provider Agent Loop/tool calling unsupported; zero paid/API requests",
+    "Real symlink test skipped: Windows WinError 1314"
+  ],
+  "warnings": [
+    "Existing HTTPError fixture ResourceWarning in full regression"
+  ],
+  "next_prerequisites": [
+    "Read actual tool feedback path and second-request assertions",
+    "waiting_user independent exercise remains unimplemented",
+    "L05 requires a separate task"
+  ],
+  "unresolved_risks": [
+    "Inherited L02 TOCTOU/hardlinks/directory budgets",
+    "No aggregate history byte/token budget, persistence, concurrency or progress detection",
+    "RuntimeError inside registry batch stops loop; earlier partial batch results are not returned by registry",
+    "No real provider protocol translation of messages validated"
+  ],
+  "learning_status": "Runtime evidence only; no mastery assessment"
+}

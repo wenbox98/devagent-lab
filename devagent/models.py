@@ -1,10 +1,12 @@
 from dataclasses import dataclass
+from .agent.messages import Message
 from .tools.protocol import ToolCall, ToolSpec
 
 @dataclass(frozen=True)
 class ModelRequest:
     task: str
     tools: tuple[ToolSpec, ...] = ()
+    messages: tuple[Message, ...] = ()
 
 @dataclass(frozen=True)
 class ModelResponse:

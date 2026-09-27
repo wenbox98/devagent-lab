@@ -1,6 +1,7 @@
 """可重复的教学客户端，不调用网络或付费 API。"""
 from .models import ModelRequest, ModelResponse
 from .tools.protocol import ToolCall
+from copy import deepcopy
 
 
 class FakeModelClient:
@@ -19,3 +20,26 @@ class FakeModelClient:
                 ToolCall('c1', 'read_file', {'path': 'pagination.py', 'end_line': 3}),))
         text = "" if self.mode == "bad_response" else "【模拟输出】" + request.task
         return ModelResponse(text=text, provider="fake")
+
+
+class ScriptedModelClient:
+    """Offline responses or request callbacks; retain snapshots of actual inputs."""
+
+    def __init__(self, responses, *, repeat_last: bool = False):
+        self.responses = tuple(responses)
+        if not self.responses:
+            raise ValueError('script must not be empty')
+        self.repeat_last = repeat_last
+        self.requests: list[ModelRequest] = []
+
+    @property
+    def call_count(self):
+        return len(self.requests)
+
+    def complete(self, request: ModelRequest) -> ModelResponse:
+        index = self.call_count
+        self.requests.append(deepcopy(request))
+        if index >= len(self.responses) and not self.repeat_last:
+            raise RuntimeError('script exhausted')
+        step = self.responses[min(index, len(self.responses) - 1)]
+        return step(request) if callable(step) else deepcopy(step)

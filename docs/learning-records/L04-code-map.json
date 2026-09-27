@@ -1,0 +1,94 @@
+{
+  "lesson": "L04",
+  "source_head": "6ab67f71ba5ad1cc11dacc000ff689986d7f7dc7",
+  "entries": [
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "run_agent",
+      "anchor": "def run_agent(task: str, client, registry: ToolRegistry, *,",
+      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "run_agent",
+      "anchor": "if type(value) is not int or value < 1:",
+      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/agent/messages.py",
+      "symbol": "ToolMessage",
+      "anchor": "class ToolMessage:",
+      "sha256": "1b08ddfb9a9123ba0fc30cf22d0324f85338a36f93a1790e8947112d52ea9efd"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "AgentState",
+      "anchor": "class AgentState:",
+      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "run_agent",
+      "anchor": "response = client.complete(request)",
+      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "run_agent",
+      "anchor": "results = registry.execute_batch(calls)",
+      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "run_agent",
+      "anchor": "state.messages.extend(ToolMessage(result) for result in results)",
+      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "run_agent",
+      "anchor": "for _ in range(max_rounds):",
+      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "run_agent",
+      "anchor": "if len(calls) > max_tool_calls - state.tool_call_count:",
+      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "run_agent.finish",
+      "anchor": "state.termination_reason = reason",
+      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l04.py",
+      "symbol": "TestL04AgentLoop.test_two_rounds_use_real_feedback_in_actual_second_request",
+      "anchor": "def test_two_rounds_use_real_feedback_in_actual_second_request(self):",
+      "sha256": "8fde1f4dafb4b441313cb6434fdc4a48c29934feffa32f7660291cf2b176fc3c"
+    }
+  ]
+}
