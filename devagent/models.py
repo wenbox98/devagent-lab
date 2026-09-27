@@ -16,6 +16,7 @@ class ModelResponse:
     input_tokens: int | None = None
     output_tokens: int | None = None
     tool_calls: tuple[ToolCall, ...] = ()
+    requires_user_input: bool = False
 
 @dataclass(frozen=True)
 class RunResult:

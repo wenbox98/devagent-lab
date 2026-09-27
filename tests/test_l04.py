@@ -4,7 +4,7 @@ from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
-from devagent.agent.loop import run_agent
+from devagent.agent.loop import AgentState, resume_agent, run_agent
 from devagent.agent.messages import AssistantMessage, ToolMessage, UserMessage
 from devagent.app import run_task
 from devagent.demos.l01 import ScriptedTransport, fixture_config
@@ -30,6 +30,155 @@ class TestL04AgentLoop(unittest.TestCase):
 
     def final(self, text='done'):
         return ModelResponse(text, 'scripted')
+
+    def test_waiting_user_returns_and_resume_preserves_history(self):
+        question = 'Please provide the project path'
+
+        def answer(request):
+            self.assertEqual(request.task, 'Explain the startup failure')
+            self.assertEqual(request.messages, (
+                UserMessage('Explain the startup failure'),
+                AssistantMessage(question), UserMessage('E:/workSpace/demo')))
+            return self.final()
+
+        client = ScriptedModelClient([
+            ModelResponse(question, 'scripted', requires_user_input=True), answer])
+        with patch.object(self.registry, 'execute_batch', wraps=self.registry.execute_batch) as batch:
+            waiting = run_agent('Explain the startup failure', client, self.registry)
+            self.assertEqual(client.call_count, 1)
+            self.assertEqual((waiting.status, waiting.termination_reason, waiting.output),
+                             ('waiting_user', 'user_input_required', question))
+            self.assertEqual((waiting.step_count, waiting.tool_call_count), (1, 0))
+            self.assertEqual(waiting.messages, [UserMessage('Explain the startup failure'),
+                                              AssistantMessage(question)])
+            snapshot = asdict(waiting)
+            result = resume_agent(waiting, 'E:/workSpace/demo', client, self.registry)
+            batch.assert_not_called()
+        self.assertEqual((result.status, result.output, client.call_count), ('answered', 'done', 2))
+        self.assertEqual((result.step_count, result.tool_call_count), (1, 0))
+        self.assertEqual(asdict(waiting), snapshot)
+        self.assertIsNot(result.messages, waiting.messages)
+
+    def test_resume_can_read_file_and_feed_result_to_next_model_call(self):
+        def read_supplied_path(request):
+            self.assertEqual(request.messages[-1], UserMessage('a.py'))
+            return proposal('resumed-read', 'read_file', {'path': request.messages[-1].content})
+
+        def answer(request):
+            self.assertEqual(request.task, 'read a file')
+            feedback = observations(request)[-1]
+            self.assertEqual(feedback.call_id, 'resumed-read')
+            self.assertEqual(feedback.data['content'], 'actual source\nsecond\n')
+            return self.final(feedback.data['content'])
+
+        client = ScriptedModelClient([
+            ModelResponse('Which file?', 'scripted', requires_user_input=True), read_supplied_path, answer])
+        waiting = run_agent('read a file', client, self.registry)
+        with patch('devagent.tools.registry.files.read_file', wraps=files.read_file) as reader:
+            result = resume_agent(waiting, 'a.py', client, self.registry)
+        reader.assert_called_once_with(self.root.resolve(), path='a.py')
+        self.assertEqual((result.status, result.step_count, result.tool_call_count), ('answered', 2, 1))
+        self.assertEqual(result.messages[:2], waiting.messages)
+
+    def test_resume_resets_both_window_counts_and_preserves_tool_evidence(self):
+        first = tuple(ToolCall(f'old-{i}', 'list_files', {}) for i in range(3))
+        second = tuple(ToolCall(f'new-{i}', 'list_files', {}) for i in range(2))
+        client = ScriptedModelClient([
+            ModelResponse('', 'scripted', tool_calls=first),
+            ModelResponse('What next?', 'scripted', requires_user_input=True),
+            ModelResponse('', 'scripted', tool_calls=second), self.final()])
+        waiting = run_agent('task', client, self.registry, max_rounds=2, max_tool_calls=4)
+        self.assertEqual((waiting.status, waiting.step_count, waiting.tool_call_count), ('waiting_user', 2, 3))
+        result = resume_agent(waiting, 'list again', client, self.registry)
+        self.assertEqual((result.status, result.step_count, result.tool_call_count), ('answered', 2, 2))
+        self.assertEqual((result.max_rounds, result.max_tool_calls), (2, 4))
+        self.assertEqual((client.call_count, self.registry.handler_calls), (4, 5))
+        self.assertEqual(client.requests[2].messages, tuple(waiting.messages) + (UserMessage('list again'),))
+        self.assertEqual([r.call_id for r in observations(client.requests[3])],
+                         ['old-0', 'old-1', 'old-2', 'new-0', 'new-1'])
+        result.messages[2].result.data[0]['path'] = 'changed in new state'
+        self.assertEqual(waiting.messages[2].result.data[0]['path'], 'a.py')
+
+    def test_resumed_window_still_enforces_each_budget(self):
+        for rounds, tools, reason, expected_calls in ((2, 5, 'step_limit', 2), (5, 2, 'tool_limit', 2)):
+            with self.subTest(reason=reason):
+                registry = ToolRegistry(self.root)
+                client = ScriptedModelClient([
+                    ModelResponse('Continue?', 'scripted', requires_user_input=True), self.read()], repeat_last=True)
+                waiting = run_agent('task', client, registry, max_rounds=rounds, max_tool_calls=tools)
+                result = resume_agent(waiting, 'yes', client, registry)
+                self.assertEqual((result.status, result.termination_reason), ('budget_exhausted', reason))
+                self.assertEqual(result.step_count, expected_calls)
+                self.assertEqual(client.call_count, 1 + expected_calls)
+                self.assertEqual(registry.handler_calls, expected_calls)
+
+    def test_resume_rejects_wrong_state_and_nonwaiting_status_without_calls(self):
+        client = ScriptedModelClient([self.final()])
+        for state in (None, {}, 'waiting_user'):
+            with self.subTest(state=state), self.assertRaises(TypeError):
+                resume_agent(state, 'reply', client, self.registry)
+        for status in ('answered', 'failed', 'running', 'requires_tools', 'budget_exhausted'):
+            state = AgentState(5, 10, status=status, messages=[UserMessage('task')])
+            snapshot = asdict(state)
+            with self.subTest(status=status), self.assertRaises(ValueError):
+                resume_agent(state, 'reply', client, self.registry)
+            self.assertEqual(asdict(state), snapshot)
+        self.assertEqual((client.call_count, self.registry.handler_calls), (0, 0))
+
+    def test_resume_rejects_invalid_input_without_changing_snapshot(self):
+        client = ScriptedModelClient([ModelResponse('Which file?', 'scripted', requires_user_input=True)])
+        waiting = run_agent('task', client, self.registry)
+        snapshot = asdict(waiting)
+        for text in ('', '  ', None, 1, True, 'x' * 5001):
+            with self.subTest(text=text), self.assertRaises(ValueError):
+                resume_agent(waiting, text, client, self.registry)
+            self.assertEqual(asdict(waiting), snapshot)
+        self.assertEqual((client.call_count, self.registry.handler_calls), (1, 0))
+
+    def test_waiting_flag_requires_bool_and_nonempty_question(self):
+        self.assertFalse(self.final().requires_user_input)
+        responses = [ModelResponse(text, 'scripted', requires_user_input=True) for text in ('', ' ', None)]
+        responses += [ModelResponse('question', 'scripted', requires_user_input=value) for value in (1, 'true', None)]
+        responses.append(ModelResponse('', 'scripted', tool_calls=self.read().tool_calls, requires_user_input=True))
+        for response in responses:
+            with self.subTest(response=response):
+                client = ScriptedModelClient([response, self.final()])
+                result = run_agent('task', client, self.registry)
+                self.assertEqual((result.status, result.termination_reason), ('failed', 'protocol_error'))
+                self.assertEqual(client.call_count, 1)
+        self.assertEqual(self.registry.handler_calls, 0)
+
+    def test_tool_calls_take_priority_over_waiting_flag(self):
+        client = ScriptedModelClient([
+            ModelResponse('Read this first', 'scripted', tool_calls=self.read().tool_calls, requires_user_input=True),
+            self.final()])
+        result = run_agent('task', client, self.registry)
+        self.assertEqual((result.status, client.call_count, self.registry.handler_calls), ('answered', 2, 1))
+        self.assertEqual(observations(client.requests[1])[0].call_id, 'c1')
+
+    def test_resume_can_pause_again_without_polling(self):
+        client = ScriptedModelClient([
+            ModelResponse('Which file?', 'scripted', requires_user_input=True),
+            ModelResponse('Which lines?', 'scripted', requires_user_input=True), self.final()])
+        first = run_agent('task', client, self.registry, max_rounds=1)
+        second = resume_agent(first, 'a.py', client, self.registry)
+        self.assertEqual((second.status, second.step_count, client.call_count), ('waiting_user', 1, 2))
+        result = resume_agent(second, 'first line', client, self.registry)
+        self.assertEqual(client.requests[2].messages, (
+            UserMessage('task'), AssistantMessage('Which file?'), UserMessage('a.py'),
+            AssistantMessage('Which lines?'), UserMessage('first line')))
+        self.assertEqual((result.status, result.termination_reason, result.step_count), ('answered', 'final_answer', 1))
+        self.assertEqual(self.registry.handler_calls, 0)
+
+    def test_resume_rejects_invalid_snapshot_budget_or_missing_original_task(self):
+        client = ScriptedModelClient([self.final()])
+        bad_states = [AgentState(5, 10, status='waiting_user'),
+                      AgentState(True, 10, status='waiting_user', messages=[UserMessage('task')]),
+                      AgentState(5, 0, status='waiting_user', messages=[UserMessage('task')])]
+        for state in bad_states:
+            with self.subTest(state=state), self.assertRaises(ValueError):
+                resume_agent(state, 'reply', client, self.registry)
+        self.assertEqual(client.call_count, 0)
 
     def test_two_rounds_use_real_feedback_in_actual_second_request(self):
         def answer(request):

@@ -1,6 +1,6 @@
 {
   "lesson": "L04",
-  "source_head": "6ab67f71ba5ad1cc11dacc000ff689986d7f7dc7",
+  "source_head": "690aeea9811d92185cc1c617fb15b3847f53c532",
   "entries": [
     {
       "role": "入口",
@@ -8,15 +8,15 @@
       "path": "devagent/agent/loop.py",
       "symbol": "run_agent",
       "anchor": "def run_agent(task: str, client, registry: ToolRegistry, *,",
-      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
     },
     {
       "role": "输入边界",
       "status": "observed",
       "path": "devagent/agent/loop.py",
-      "symbol": "run_agent",
+      "symbol": "_validate_budgets",
       "anchor": "if type(value) is not int or value < 1:",
-      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
     },
     {
       "role": "下游/状态",
@@ -32,55 +32,55 @@
       "path": "devagent/agent/loop.py",
       "symbol": "AgentState",
       "anchor": "class AgentState:",
-      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
     },
     {
       "role": "核心决策",
       "status": "observed",
       "path": "devagent/agent/loop.py",
-      "symbol": "run_agent",
+      "symbol": "_run_loop",
       "anchor": "response = client.complete(request)",
-      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
     },
     {
       "role": "下游/状态",
       "status": "observed",
       "path": "devagent/agent/loop.py",
-      "symbol": "run_agent",
+      "symbol": "_run_loop",
       "anchor": "results = registry.execute_batch(calls)",
-      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
     },
     {
       "role": "下游/状态",
       "status": "observed",
       "path": "devagent/agent/loop.py",
-      "symbol": "run_agent",
+      "symbol": "_run_loop",
       "anchor": "state.messages.extend(ToolMessage(result) for result in results)",
-      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
     },
     {
       "role": "核心决策",
       "status": "observed",
       "path": "devagent/agent/loop.py",
-      "symbol": "run_agent",
-      "anchor": "for _ in range(max_rounds):",
-      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+      "symbol": "_run_loop",
+      "anchor": "for _ in range(state.max_rounds):",
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
     },
     {
       "role": "核心决策",
       "status": "observed",
       "path": "devagent/agent/loop.py",
-      "symbol": "run_agent",
-      "anchor": "if len(calls) > max_tool_calls - state.tool_call_count:",
-      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+      "symbol": "_run_loop",
+      "anchor": "if len(calls) > state.max_tool_calls - state.tool_call_count:",
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
     },
     {
       "role": "核心决策",
       "status": "observed",
       "path": "devagent/agent/loop.py",
-      "symbol": "run_agent.finish",
+      "symbol": "_run_loop.finish",
       "anchor": "state.termination_reason = reason",
-      "sha256": "9c11c891fc52661ae4783b8044e92a6afe957ab42c16ef410d6b49bedbcf4adc"
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
     },
     {
       "role": "测试",
@@ -88,7 +88,55 @@
       "path": "tests/test_l04.py",
       "symbol": "TestL04AgentLoop.test_two_rounds_use_real_feedback_in_actual_second_request",
       "anchor": "def test_two_rounds_use_real_feedback_in_actual_second_request(self):",
-      "sha256": "8fde1f4dafb4b441313cb6434fdc4a48c29934feffa32f7660291cf2b176fc3c"
+      "sha256": "ae77e4e09036b7c4399b779832b1b9eef445cc6b96cbcc39a09c357f328dbd86"
+    },
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "resume_agent",
+      "anchor": "def resume_agent(state: AgentState, user_input: str, client, registry: ToolRegistry) -> AgentState:",
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/models.py",
+      "symbol": "ModelResponse",
+      "anchor": "requires_user_input: bool = False",
+      "sha256": "ee9b8afa1fac0b46759a2f0768283e07b68275470b582be0a2bfd1049eaec12b"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "_run_loop",
+      "anchor": "return finish('waiting_user', 'user_input_required', response.text)",
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "resume_agent",
+      "anchor": "resumed.messages.append(UserMessage(user_input))",
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "resume_agent",
+      "anchor": "resumed.step_count = 0",
+      "sha256": "990cdeb4c4a94c41c2695f8bb32e163a92b3add3c7c41c872fba3badb8953c83"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l04.py",
+      "symbol": "TestL04AgentLoop.test_waiting_user_returns_and_resume_preserves_history",
+      "anchor": "def test_waiting_user_returns_and_resume_preserves_history(self):",
+      "sha256": "ae77e4e09036b7c4399b779832b1b9eef445cc6b96cbcc39a09c357f328dbd86"
     }
   ]
 }

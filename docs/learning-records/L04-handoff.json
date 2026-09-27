@@ -136,8 +136,7 @@
     "Existing HTTPError fixture ResourceWarning in full regression"
   ],
   "next_prerequisites": [
-    "Read actual tool feedback path and second-request assertions",
-    "waiting_user independent exercise remains unimplemented",
+    "Review actual waiting/resume history and budget reset evidence",
     "L05 requires a separate task"
   ],
   "unresolved_risks": [
@@ -146,5 +145,62 @@
     "RuntimeError inside registry batch stops loop; earlier partial batch results are not returned by registry",
     "No real provider protocol translation of messages validated"
   ],
-  "learning_status": "Runtime evidence only; no mastery assessment"
+  "learning_status": "Runtime evidence only; no mastery assessment",
+  "independent_exercise": {
+    "source_head": "690aeea9811d92185cc1c617fb15b3847f53c532",
+    "design": "Learner-specified waiting_user and per-resume budget-window rules",
+    "changed_files": [
+      "devagent/agent/loop.py",
+      "devagent/models.py",
+      "tests/test_l04.py",
+      "docs/learning-records/L04.md",
+      "docs/learning-records/L04-code-map.json",
+      "docs/learning-records/L04-handoff.json"
+    ],
+    "interface": "ModelResponse.requires_user_input=False; resume_agent; shared private _run_loop",
+    "waiting": "Nonempty question saved as AssistantMessage/output; waiting_user + user_input_required returns immediately. Valid tool proposals take priority.",
+    "resume": "Deep-copy trusted waiting snapshot; append UserMessage; preserve original task and all history; reset both window counts and clear prior output/reason; retain host limits",
+    "validation": "Reject wrong state type/status or blank/nontext/overlong input before any execution; budget validation retained",
+    "core_evidence": {
+      "waiting_model_calls": 1,
+      "waiting_handler_calls": 0,
+      "actual_resume_messages": [
+        "original UserMessage",
+        "AssistantMessage question",
+        "new UserMessage"
+      ],
+      "resumed_tool_feedback": "actual read_file result observed in next complete request; answered"
+    },
+    "new_test_count": 10,
+    "commands": [
+      {
+        "command": "python -m unittest discover -s tests -p \"test_l04.py\" -v",
+        "exit_code": 0,
+        "test_count": 32,
+        "passed": 32,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "command": "python -m unittest discover -s tests -v",
+        "exit_code": 0,
+        "test_count": 102,
+        "passed": 101,
+        "failed": 0,
+        "skipped": 1
+      },
+      {
+        "command": "python docs/course/tools/code_map.py validate --project . --map docs/learning-records/L04-code-map.json",
+        "exit_code": 0,
+        "status": "references_valid"
+      }
+    ],
+    "limitations": [
+      "In-memory only; no persistence, cumulative budget or single-use resume token",
+      "Host supplies registry again; no multi-user session binding",
+      "Existing real provider unsupported and symlink skip unchanged",
+      "No L05+"
+    ],
+    "mastery_assessment": "Not made"
+  }
 }
