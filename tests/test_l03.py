@@ -37,7 +37,7 @@ class TestL03ToolProtocol(unittest.TestCase):
 
     def test_specs_are_explicit_and_cannot_mutate_registry(self):
         specs = self.registry.specs
-        self.assertEqual({s.name for s in specs}, {'read_file', 'list_files'})
+        self.assertEqual({s.name for s in specs}, {'read_file', 'list_files', 'search_text'})
         for spec in specs:
             self.assertIsInstance(spec, ToolSpec)
             self.assertFalse(spec.input_schema['additionalProperties'])
@@ -83,8 +83,9 @@ class TestL03ToolProtocol(unittest.TestCase):
         args = {'client_note': 'debug', 'client_tags': ['lesson', 'debug']}
         for spec in self.registry.specs:
             self.assertTrue(set(args).isdisjoint(spec.input_schema['properties']))
-            supplied = {**args, 'path': 'a.py'} if spec.name == 'read_file' else args
-            expected = {'path': 'a.py'} if spec.name == 'read_file' else {}
+            expected = {'read_file': {'path': 'a.py'}, 'list_files': {},
+                        'search_text': {'query': 'first'}}[spec.name]
+            supplied = {**args, **expected}
             self.assertEqual(validate_arguments(spec, supplied), expected)
         with patch('devagent.tools.registry.files.list_files', wraps=files.list_files) as listing:
             result = self.registry.execute(ToolCall('metadata-list', 'list_files', args))

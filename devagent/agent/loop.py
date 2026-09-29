@@ -3,10 +3,12 @@ from copy import deepcopy
 from dataclasses import dataclass, field
 
 from .messages import AssistantMessage, Message, ToolMessage, UserMessage
+from .citations import Citation, CitationError, citation_from_read
 from ..config import ConfigMissingError
 from ..models import ModelRequest, ModelResponse
 from ..providers.adapter import ProviderError
 from ..tools.protocol import ToolCall
+from ..tools.files import FileReadResult
 from ..tools.registry import ToolRegistry
 
 
@@ -20,6 +22,8 @@ class AgentState:
     tool_call_count: int = 0
     termination_reason: str | None = None
     output: str | None = None
+    evidence: list[Citation] = field(default_factory=list)
+    citations: tuple[Citation, ...] = ()
 
 
 def _validate_budgets(max_rounds, max_tool_calls):
@@ -61,6 +65,7 @@ def resume_agent(state: AgentState, user_input: str, client, registry: ToolRegis
     resumed.status = 'running'
     resumed.termination_reason = None
     resumed.output = None
+    resumed.citations = ()
     resumed.step_count = 0
     resumed.tool_call_count = 0
     return _run_loop(resumed, client, registry)
@@ -97,6 +102,8 @@ def _run_loop(state: AgentState, client, registry: ToolRegistry) -> AgentState:
             return finish('failed', 'internal_error')
         if (not isinstance(response, ModelResponse) or not isinstance(response.text, str)
                 or type(response.requires_user_input) is not bool
+                or not isinstance(response.citations, (tuple, list))
+                or any(not isinstance(citation, Citation) for citation in response.citations)
                 or not isinstance(response.tool_calls, (tuple, list))
                 or any(not isinstance(call, ToolCall) for call in response.tool_calls)):
             return finish('failed', 'protocol_error')
@@ -109,6 +116,14 @@ def _run_loop(state: AgentState, client, registry: ToolRegistry) -> AgentState:
             state.messages.append(AssistantMessage(response.text))
             if response.requires_user_input:
                 return finish('waiting_user', 'user_input_required', response.text)
+            for citation in response.citations:
+                if citation not in state.evidence:
+                    return finish('failed', 'invalid_citation')
+                try:
+                    registry.validate_citation(citation)
+                except CitationError as exc:
+                    return finish('failed', exc.code)
+            state.citations = tuple(response.citations)
             return finish('answered', 'final_answer', response.text)
         # Text accompanying proposals is not a final answer.
         state.messages.append(AssistantMessage(response.text, calls))
@@ -121,6 +136,12 @@ def _run_loop(state: AgentState, client, registry: ToolRegistry) -> AgentState:
         except RuntimeError:
             return finish('failed', 'internal_error')
         state.messages.extend(ToolMessage(result) for result in results)
+        for call, result in zip(calls, results):
+            if (call.name == 'read_file' and result.ok and result.data.get('source_hash')
+                    and result.data['end_line'] >= result.data['start_line']):
+                citation = citation_from_read(FileReadResult(**result.data))
+                if citation not in state.evidence:
+                    state.evidence.append(citation)
         if any(result.error and result.error.code == 'protocol_error' for result in results):
             return finish('failed', 'protocol_error')
     return finish('budget_exhausted', 'step_limit')

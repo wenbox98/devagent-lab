@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from .agent.messages import Message
+from .agent.citations import Citation
 from .tools.protocol import ToolCall, ToolSpec
 
 @dataclass(frozen=True)
@@ -17,6 +18,7 @@ class ModelResponse:
     output_tokens: int | None = None
     tool_calls: tuple[ToolCall, ...] = ()
     requires_user_input: bool = False
+    citations: tuple[Citation, ...] = ()
 
 @dataclass(frozen=True)
 class RunResult:

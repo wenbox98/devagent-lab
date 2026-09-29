@@ -1,0 +1,94 @@
+{
+  "lesson": "L05",
+  "source_head": "b2bec396caf57814c5808ceb3e0205314449e132",
+  "entries": [
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/demos/l05.py",
+      "symbol": "run_case",
+      "anchor": "def run_case(case):",
+      "sha256": "c171e38a573d74b5433ddb11787555f71401252929b322d6d3a3ef9bed2c6e70"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/tools/search.py",
+      "symbol": "validate_search_arguments",
+      "anchor": "def validate_search_arguments(query, include_globs=None, max_results=20):",
+      "sha256": "f8c9b1518ed1ecf6a1cb5ad34c9b0db0f26fe3a0ef8d80dc54f3246043eac832"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/tools/search.py",
+      "symbol": "search_text",
+      "anchor": "if query in text:",
+      "sha256": "f8c9b1518ed1ecf6a1cb5ad34c9b0db0f26fe3a0ef8d80dc54f3246043eac832"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/tools/search.py",
+      "symbol": "search_text.visit",
+      "anchor": "if entries >= MAX_ENTRIES:",
+      "sha256": "f8c9b1518ed1ecf6a1cb5ad34c9b0db0f26fe3a0ef8d80dc54f3246043eac832"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tools/files.py",
+      "symbol": "_read_snapshot",
+      "anchor": "text, sha256(raw).hexdigest()",
+      "sha256": "ae0cb242f614d8823970802d713995b51fbc07047f6111116430c31849a0bdb1"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tools/files.py",
+      "symbol": "read_file",
+      "anchor": "snapshot = _read_snapshot(root, path, max_bytes)",
+      "sha256": "ae0cb242f614d8823970802d713995b51fbc07047f6111116430c31849a0bdb1"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/agent/citations.py",
+      "symbol": "Citation",
+      "anchor": "class Citation:",
+      "sha256": "28e816bee93ea04f2f7961647f5344803467c7340f7f98448f5a266b00361e47"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/agent/citations.py",
+      "symbol": "validate_citation",
+      "anchor": "if current.source_hash != citation.source_hash:",
+      "sha256": "28e816bee93ea04f2f7961647f5344803467c7340f7f98448f5a266b00361e47"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "_run_loop",
+      "anchor": "state.evidence.append(citation)",
+      "sha256": "7f26909f45d16766420ab0ce1b57f9eee11a2ee9a216bbf706437fe87db74b8f"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/agent/loop.py",
+      "symbol": "_run_loop",
+      "anchor": "if citation not in state.evidence:",
+      "sha256": "7f26909f45d16766420ab0ce1b57f9eee11a2ee9a216bbf706437fe87db74b8f"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l05.py",
+      "symbol": "TestL05SearchEvidence",
+      "anchor": "class TestL05SearchEvidence(unittest.TestCase):",
+      "sha256": "f685e3e4d512d88c2dae2f84069286d566ad119bde40f89edfd7a1323806ec1f"
+    }
+  ]
+}

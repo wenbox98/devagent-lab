@@ -6,6 +6,7 @@ Only visible regular files with the suffixes below are exposed.
 """
 from contextlib import contextmanager
 from dataclasses import dataclass
+from hashlib import sha256
 import os
 from pathlib import Path
 import stat
@@ -65,25 +66,20 @@ class FileReadResult:
     content: str
     truncated: bool
     next_start_line: int | None
+    source_hash: str | None = None
 
 
-def read_file(root: str | Path, path: str | Path, start_line: int = 1,
-              end_line: int | None = None, max_bytes: int = DEFAULT_MAX_BYTES, max_lines: int = DEFAULT_MAX_LINES) -> FileReadResult:
-    """Reject whole files above max_bytes; return at most max_lines lines.
+@dataclass(frozen=True)
+class _TextSnapshot:
+    path: str
+    text: str
+    source_hash: str
 
-    Line endpoints are inclusive. Empty/after-EOF selections have
-    end_line=start_line-1. If file lines remain after the returned window,
-    truncated=True and next_start_line points to the next line, regardless
-    of whether end_line or max_lines limited the window.
-    """
+
+def _read_snapshot(root: str | Path, path: str | Path, max_bytes: int = DEFAULT_MAX_BYTES) -> _TextSnapshot:
+    """Authorize once and derive text and full-file hash from one bounded read."""
     if type(max_bytes) is not int or max_bytes < 1:
         raise ValueError('max_bytes must be a positive integer')
-    if type(max_lines) is not int or max_lines < 1:
-        raise ValueError('max_lines must be a positive integer')
-    if type(start_line) is not int or start_line < 1 or (
-        end_line is not None and (type(end_line) is not int or end_line < start_line)
-    ):
-        raise ValueError('line range must be 1-based and ordered')
     with _filesystem_errors():
         workspace = _canonical_root(root)
         target = _authorize(workspace, path)
@@ -105,14 +101,34 @@ def read_file(root: str | Path, path: str | Path, start_line: int = 1,
         raise FileAccessError('unsupported_content', 'file is not UTF-8 text') from exc
     if any(ord(char) < 32 and char not in '\t\n\r' for char in text):
         raise FileAccessError('unsupported_content', 'file contains binary control characters')
-    lines = text.splitlines(keepends=True)
+    return _TextSnapshot(target.relative_to(workspace).as_posix(), text, sha256(raw).hexdigest())
+
+
+def read_file(root: str | Path, path: str | Path, start_line: int = 1,
+              end_line: int | None = None, max_bytes: int = DEFAULT_MAX_BYTES, max_lines: int = DEFAULT_MAX_LINES) -> FileReadResult:
+    """Reject whole files above max_bytes; return at most max_lines lines.
+
+    Line endpoints are inclusive. Empty/after-EOF selections have
+    end_line=start_line-1. If file lines remain after the returned window,
+    truncated=True and next_start_line points to the next line, regardless
+    of whether end_line or max_lines limited the window. source_hash is the
+    SHA-256 of the entire accepted raw snapshot, including original newlines.
+    """
+    if type(max_lines) is not int or max_lines < 1:
+        raise ValueError('max_lines must be a positive integer')
+    if type(start_line) is not int or start_line < 1 or (
+        end_line is not None and (type(end_line) is not int or end_line < start_line)
+    ):
+        raise ValueError('line range must be 1-based and ordered')
+    snapshot = _read_snapshot(root, path, max_bytes)
+    lines = snapshot.text.splitlines(keepends=True)
     selected = lines[start_line - 1:end_line]
     if len(selected) > max_lines:
         selected = selected[:max_lines]
     last = start_line + len(selected) - 1
     more = bool(selected) and last < len(lines)
-    return FileReadResult(target.relative_to(workspace).as_posix(), start_line, last,
-                          ''.join(selected), more, last + 1 if more else None)
+    return FileReadResult(snapshot.path, start_line, last,
+                          ''.join(selected), more, last + 1 if more else None, snapshot.source_hash)
 
 
 def list_files(root: str | Path) -> list[dict]:

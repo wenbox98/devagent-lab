@@ -1,0 +1,150 @@
+{
+  "lesson": "L05",
+  "source_head": "b2bec396caf57814c5808ceb3e0205314449e132",
+  "branch": "master",
+  "initial_worktree": "clean",
+  "changed_files": [
+    "devagent/tools/files.py",
+    "devagent/tools/search.py",
+    "devagent/tools/registry.py",
+    "devagent/agent/citations.py",
+    "devagent/agent/loop.py",
+    "devagent/models.py",
+    "devagent/demos/l05.py",
+    "tests/test_l03.py",
+    "tests/test_l05.py",
+    "docs/learning-records/L05.md",
+    "docs/learning-records/L05-code-map.json",
+    "docs/learning-records/L05-handoff.json"
+  ],
+  "interface_changes": [
+    "FileReadResult.source_hash defaults to None for old constructors; real reads hash entire accepted raw snapshot",
+    "search_text query/include_globs/max_results registered in fixed whitelist",
+    "Citation contains source_path/start_line/end_line/content/source_hash",
+    "ModelResponse.citations proposals; AgentState.evidence and validated citations",
+    "Existing RunResult/single-call app unchanged"
+  ],
+  "budgets": {
+    "file_bytes": 65536,
+    "max_files": 128,
+    "max_entries": 2048,
+    "max_depth": 32,
+    "max_results": 100,
+    "default_results": 20,
+    "max_read_bytes": 8388736,
+    "query_chars": 256,
+    "glob_count": 16,
+    "glob_chars": 256
+  },
+  "semantics": [
+    "Case-sensitive literal per-line search",
+    "Basename glob at any depth; ** supports zero or more directory segments",
+    "Cap reached means truncated even at exact result count; filesystem enumeration order has no ranking",
+    "Unsupported content skipped; filesystem errors remain failed ToolResult",
+    "Citation must exactly match an actual read window from this conversation and pass current path/line/content/hash validation",
+    "Hash and text derive from one raw read; not an OS transaction or answer correctness proof"
+  ],
+  "commands": [
+    {
+      "command": "python -m unittest discover -s tests -p \"test_l05.py\" -v",
+      "exit_code": 0,
+      "test_count": 31,
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "test_count": 133,
+      "passed": 132,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "command": "python -m devagent.demos.l05 --case same-name",
+      "exit_code": 0,
+      "verified": true
+    },
+    {
+      "command": "python -m devagent.demos.l05 --case no-match",
+      "exit_code": 0,
+      "verified": true
+    },
+    {
+      "command": "python -m devagent.demos.l05 --case citation-check",
+      "exit_code": 0,
+      "verified": true
+    },
+    {
+      "command": "python -m devagent.demos.l05 --case real-locate",
+      "exit_code": 2,
+      "verified": false
+    },
+    {
+      "command": "python -m devagent.demos.l05 --case exact-symbol",
+      "exit_code": 0,
+      "verified": true
+    },
+    {
+      "command": "python -m devagent.demos.l05 --case feature-description",
+      "exit_code": 0,
+      "verified": true
+    },
+    {
+      "command": "python -m devagent.demos.l05 --list-cases",
+      "exit_code": 0
+    },
+    {
+      "command": "python docs/course/tools/code_map.py validate --project . --map docs/learning-records/L05-code-map.json",
+      "exit_code": 0,
+      "status": "references_valid"
+    }
+  ],
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\Python314\\python.exe"
+  },
+  "observations": {
+    "same_name_candidates": [
+      "pagination.py",
+      "reporting.py"
+    ],
+    "same_name_read_order": [
+      "reporting.py",
+      "pagination.py"
+    ],
+    "final_citation": {
+      "path": "pagination.py",
+      "start_line": 1,
+      "end_line": 6
+    },
+    "line_55_found": true,
+    "snapshot_test_opens": 1
+  },
+  "blocked": [
+    "Real Provider tools/history unsupported; real-locate exits 2 with HTTP count 0",
+    "L02 real symlink test skipped: Windows WinError 1314"
+  ],
+  "warnings": [
+    "Existing HTTPError fixture ResourceWarning"
+  ],
+  "known_limits": [
+    "Inherited TOCTOU/hardlinks and list_files directory budget",
+    "Filesystem can change again after citation validation",
+    "No aggregate conversation budget or persistence",
+    "Scripted lexical decisions do not measure real model disambiguation"
+  ],
+  "protected": [
+    "docs/course unchanged",
+    "fixtures unchanged; no third same-name function",
+    "L03 metadata and L04 waiting/resume semantics retained",
+    "No L06+ or new dependency"
+  ],
+  "next_prerequisites": [
+    "Read real search->read->citation feedback evidence",
+    "Third same-name distractor independent exercise remains for learner"
+  ],
+  "learning_status": "Implementation evidence only; no mastery assessment"
+}

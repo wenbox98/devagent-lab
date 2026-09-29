@@ -5,6 +5,8 @@ from dataclasses import asdict
 from pathlib import Path
 
 from . import files
+from .search import MAX_RESULTS, search_text, validate_search_arguments
+from ..agent.citations import validate_citation
 from .protocol import ToolCall, ToolError, ToolResult, ToolSpec
 
 COMPAT_METADATA_FIELDS = frozenset({
@@ -14,7 +16,7 @@ COMPAT_METADATA_FIELDS = frozenset({
 
 
 def validate_arguments(spec: ToolSpec, arguments) -> dict:
-    """Validate the small schema subset used by our two tools, not full JSON Schema.
+    """Validate the small schema subset used by our tools, not full JSON Schema.
 
     This checks structure/ranges only; filesystem authorization remains in L02.
     Allowlisted client metadata is ignored and never forwarded to handlers.
@@ -37,13 +39,21 @@ def validate_arguments(spec: ToolSpec, arguments) -> dict:
             raise ValueError(f'{name} must be a string')
         if expected == 'integer' and (type(value) is not int or value < rule['minimum']):
             raise ValueError(f'{name} must be a positive integer')
+        if expected == 'integer' and value > rule.get('maximum', value):
+            raise ValueError(f'{name} exceeds the host limit')
+        if expected == 'array' and (not isinstance(value, (list, tuple))
+                                    or any(not isinstance(item, str) for item in value)):
+            raise ValueError(f'{name} must be an array of strings')
     if 'end_line' in arguments and arguments['end_line'] < arguments.get('start_line', 1):
         raise ValueError('end_line must not precede start_line')
-    return {
+    validated = {
         key: value
         for key, value in arguments.items()
         if key in properties
     }
+    if spec.name == 'search_text':
+        validate_search_arguments(**validated)
+    return validated
 
 
 class ToolRegistry:
@@ -58,6 +68,7 @@ class ToolRegistry:
                 'start_line is 1-based and end_line is inclusive (omit it for EOF). '
                 'Whole-file max_bytes and returned max_lines are fixed by the host/L02 defaults. '
                 'The result may contain next_start_line when file lines remain. '
+                'source_hash identifies the complete raw file snapshot for citations. '
                 'Not for arbitrary OS paths, binary or oversized files.',
                 {'type': 'object', 'properties': {
                     'path': {'type': 'string'},
@@ -70,6 +81,15 @@ class ToolRegistry:
                 'workspace, using L02 filtering. This does not grant access to arbitrary OS paths.',
                 {'type': 'object', 'properties': {}, 'required': [],
                  'additionalProperties': False}), self._list),
+            'search_text': (ToolSpec(
+                'search_text',
+                'Find literal text candidates in the host workspace. include_globs only narrows scope; '
+                'truncated means incomplete coverage. Read candidates before citing them.',
+                {'type': 'object', 'properties': {
+                    'query': {'type': 'string'},
+                    'include_globs': {'type': 'array', 'items': {'type': 'string'}},
+                    'max_results': {'type': 'integer', 'minimum': 1, 'maximum': MAX_RESULTS}},
+                 'required': ['query'], 'additionalProperties': False}), self._search),
         }
         self.handler_calls = 0
 
@@ -83,6 +103,13 @@ class ToolRegistry:
 
     def _list(self, arguments: dict):
         return files.list_files(self._workspace)
+
+    def _search(self, arguments: dict):
+        return search_text(self._workspace, **arguments)
+
+    def validate_citation(self, citation):
+        # Host-side final-answer check, not an extra model-callable capability.
+        validate_citation(self._workspace, citation)
 
     @staticmethod
     def _failure(call: ToolCall, code: str, message: str) -> ToolResult:
