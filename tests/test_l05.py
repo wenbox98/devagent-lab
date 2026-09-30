@@ -314,20 +314,53 @@ class TestL05SearchEvidence(unittest.TestCase):
         state = resume_agent(waiting, 'yes', ScriptedModelClient([self.answer]), self.registry)
         self.assertEqual(state.termination_reason, 'stale_evidence')
 
-    def test_same_name_reads_both_candidates_before_selecting(self):
+    def test_three_same_name_candidates_are_all_read_before_selecting(self):
         client = scripted_locator('page')
         state = run_agent('find list pagination', client, ToolRegistry(FIXTURE_ROOT))
+        self.assertEqual((state.status, client.call_count), ('answered', 3))
+        expected = {'pagination.py', 'reporting.py', 'export.py'}
         paths = {m['path'] for m in observations(client.requests[1])[0].data['matches']}
-        self.assertEqual(paths, {'pagination.py', 'reporting.py'})
-        self.assertEqual(len(state.evidence), 2)
+        self.assertEqual(paths, expected)
+        reads = [r for r in observations(client.requests[2])
+                 if r.ok and isinstance(r.data, dict) and r.data.get('source_hash')]
+        self.assertEqual(len(reads), 3)
+        self.assertEqual({r.data['path'] for r in reads}, expected)
+        self.assertEqual(len(state.evidence), 3)
+        self.assertEqual({c.source_path for c in state.evidence}, expected)
+        for citation in state.evidence:
+            self.assertEqual(citation.content, (FIXTURE_ROOT / citation.source_path).read_bytes().decode('utf-8'))
+            validate_citation(FIXTURE_ROOT, citation)
         self.assertEqual([c.source_path for c in state.citations], ['pagination.py'])
         self.assertIn('page_no * size', state.citations[0].content)
+        self.assertIn('items[', state.citations[0].content)
+        distractor = next(c for c in state.evidence if c.source_path == 'export.py')
+        self.assertIn('def page(export_name):', distractor.content)
+        self.assertNotIn('page_no * size', distractor.content)
+        self.assertNotIn('items[', distractor.content)
 
     def test_scripted_selection_depends_on_content_not_filename_or_first_hit(self):
         (self.root / 'reporting.py').write_bytes(b'def page(items, page_no, size):\n start = page_no * size\n return items[start:]\n')
         (self.root / 'pagination.py').write_bytes(b'def page(report_name):\n return report_name\n')
-        state = run_agent('find offset', scripted_locator('page'), self.registry)
+        (self.root / 'export.py').write_bytes((FIXTURE_ROOT / 'export.py').read_bytes())
+
+        def distractor_first(*args, **kwargs):
+            result = search.search_text(*args, **kwargs)
+            # Reorder real matches only; do not fabricate candidates or read results.
+            result['matches'].sort(key=lambda match: match['path'])
+            return result
+
+        client = scripted_locator('page')
+        with patch('devagent.tools.registry.search_text', side_effect=distractor_first):
+            state = run_agent('find offset', client, self.registry)
+        matches = observations(client.requests[1])[0].data['matches']
+        self.assertEqual(matches[0]['path'], 'export.py')
+        self.assertEqual({m['path'] for m in matches}, {'pagination.py', 'reporting.py', 'export.py'})
+        self.assertEqual(state.status, 'answered')
+        self.assertEqual(len(state.evidence), 3)
+        self.assertEqual({c.source_path for c in state.evidence}, {'pagination.py', 'reporting.py', 'export.py'})
         self.assertEqual([c.source_path for c in state.citations], ['reporting.py'])
+        self.assertIn('page_no * size', state.citations[0].content)
+        self.assertIn('items[', state.citations[0].content)
 
     def test_demos_derive_verdict_and_real_is_blocked(self):
         for case in CASES:

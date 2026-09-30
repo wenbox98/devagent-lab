@@ -1,28 +1,15 @@
 {
   "lesson": "L05",
-  "source_head": "b2bec396caf57814c5808ceb3e0205314449e132",
+  "source_head": "17718720e9794ef43a2a5a547f41d92dacb3b90b",
   "branch": "master",
   "initial_worktree": "clean",
   "changed_files": [
-    "devagent/tools/files.py",
-    "devagent/tools/search.py",
-    "devagent/tools/registry.py",
-    "devagent/agent/citations.py",
-    "devagent/agent/loop.py",
-    "devagent/models.py",
+    "fixtures/tiny_repo/export.py",
     "devagent/demos/l05.py",
-    "tests/test_l03.py",
     "tests/test_l05.py",
     "docs/learning-records/L05.md",
     "docs/learning-records/L05-code-map.json",
     "docs/learning-records/L05-handoff.json"
-  ],
-  "interface_changes": [
-    "FileReadResult.source_hash defaults to None for old constructors; real reads hash entire accepted raw snapshot",
-    "search_text query/include_globs/max_results registered in fixed whitelist",
-    "Citation contains source_path/start_line/end_line/content/source_hash",
-    "ModelResponse.citations proposals; AgentState.evidence and validated citations",
-    "Existing RunResult/single-call app unchanged"
   ],
   "budgets": {
     "file_bytes": 65536,
@@ -108,12 +95,14 @@
   },
   "observations": {
     "same_name_candidates": [
+      "export.py",
       "pagination.py",
       "reporting.py"
     ],
     "same_name_read_order": [
       "reporting.py",
-      "pagination.py"
+      "pagination.py",
+      "export.py"
     ],
     "final_citation": {
       "path": "pagination.py",
@@ -121,7 +110,15 @@
       "end_line": 6
     },
     "line_55_found": true,
-    "snapshot_test_opens": 1
+    "snapshot_test_opens": 1,
+    "same_name_evidence_sources": [
+      "export.py",
+      "pagination.py",
+      "reporting.py"
+    ],
+    "same_name_evidence_count": 3,
+    "same_name_citation_count": 1,
+    "same_name_match_count": 7
   },
   "blocked": [
     "Real Provider tools/history unsupported; real-locate exits 2 with HTTP count 0",
@@ -138,13 +135,51 @@
   ],
   "protected": [
     "docs/course unchanged",
-    "fixtures unchanged; no third same-name function",
-    "L03 metadata and L04 waiting/resume semantics retained",
+    "Existing pagination.py/reporting.py unchanged; only export.py added",
+    "search_text/Citation/Evidence/Agent Loop unchanged",
+    "scripted_locator content selection unchanged",
     "No L06+ or new dependency"
   ],
   "next_prerequisites": [
-    "Read real search->read->citation feedback evidence",
-    "Third same-name distractor independent exercise remains for learner"
+    "No next lesson started; stop after exercise commit and push"
   ],
-  "learning_status": "Implementation evidence only; no mastery assessment"
+  "learning_status": "Implementation evidence only; no mastery assessment",
+  "foundation_source_head": "b2bec396caf57814c5808ceb3e0205314449e132",
+  "verified_date": "2026-09-30",
+  "foundation_interface_changes": [
+    "FileReadResult.source_hash defaults to None for old constructors; real reads hash entire accepted raw snapshot",
+    "search_text query/include_globs/max_results registered in fixed whitelist",
+    "Citation contains source_path/start_line/end_line/content/source_hash",
+    "ModelResponse.citations proposals; AgentState.evidence and validated citations",
+    "Existing RunResult/single-call app unchanged"
+  ],
+  "interface_changes": [
+    "No core interface changes; demo exposes evidence_paths and verifies three candidates/reads/evidence sources"
+  ],
+  "independent_exercise": {
+    "learner_prediction": {
+      "search_file_count": 3,
+      "real_read_file_count": 3,
+      "distinct_evidence_sources": 3,
+      "final_citations": [
+        "pagination.py"
+      ]
+    },
+    "matches_prediction": true,
+    "distractor": {
+      "path": "fixtures/tiny_repo/export.py",
+      "responsibility": "Export task name/kind; no pagination logic"
+    },
+    "scripted_locator_unchanged": true,
+    "content_swap_test": {
+      "file_count": 3,
+      "first_match": "export.py",
+      "pagination_content_in": "reporting.py",
+      "final_citations": [
+        "reporting.py"
+      ]
+    },
+    "test_count_note": "Renamed and strengthened the existing two-candidate test; no tests removed",
+    "scope": "Scripted feedback/evidence validation, not real LLM disambiguation"
+  }
 }

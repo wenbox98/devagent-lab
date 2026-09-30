@@ -95,6 +95,7 @@ def run_case(case):
                         and m.result.ok and isinstance(m.result.data, dict) and 'source_hash' in m.result.data]
         observed = {'status': state.status, 'search': asdict(search),
                     'read_paths': [r.data['path'] for r in read_results],
+                    'evidence_paths': [c.source_path for c in state.evidence],
                     'citations': [asdict(c) for c in state.citations], 'model_calls': client.call_count,
                     'scope': 'scripted feedback and evidence assembly only; not real LLM accuracy'}
         checks = {'answered': state.status == 'answered', 'search_succeeded': search.ok}
@@ -107,8 +108,13 @@ def run_case(case):
                           read_provenance=bool(state.citations) and all(c in state.evidence for c in state.citations))
             if case == 'same-name':
                 candidates = {m['path'] for m in search.data['matches']}
-                checks.update(both_candidates=candidates == {'pagination.py', 'reporting.py'},
-                              both_read=set(observed['read_paths']) == candidates)
+                expected = {'pagination.py', 'reporting.py', 'export.py'}
+                checks.update(three_candidates=candidates == expected,
+                              three_read=len(read_results) == 3 and set(observed['read_paths']) == expected,
+                              three_evidence=len(state.evidence) == 3 and set(observed['evidence_paths']) == expected,
+                              pagination_content=len(state.citations) == 1
+                              and 'page_no * size' in state.citations[0].content
+                              and 'items[' in state.citations[0].content)
     return {'lesson': 'L05', 'case': case, 'observed': observed, 'checks': checks, 'verified': all(checks.values())}
 
 

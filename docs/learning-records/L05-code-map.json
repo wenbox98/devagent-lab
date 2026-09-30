@@ -1,6 +1,6 @@
 {
   "lesson": "L05",
-  "source_head": "b2bec396caf57814c5808ceb3e0205314449e132",
+  "source_head": "17718720e9794ef43a2a5a547f41d92dacb3b90b",
   "entries": [
     {
       "role": "入口",
@@ -8,7 +8,7 @@
       "path": "devagent/demos/l05.py",
       "symbol": "run_case",
       "anchor": "def run_case(case):",
-      "sha256": "c171e38a573d74b5433ddb11787555f71401252929b322d6d3a3ef9bed2c6e70"
+      "sha256": "d4f875c35e76582de10947a8716608a59e17f0e14fd74b1736e11d45e0cdc98c"
     },
     {
       "role": "输入边界",
@@ -88,7 +88,31 @@
       "path": "tests/test_l05.py",
       "symbol": "TestL05SearchEvidence",
       "anchor": "class TestL05SearchEvidence(unittest.TestCase):",
-      "sha256": "f685e3e4d512d88c2dae2f84069286d566ad119bde40f89edfd7a1323806ec1f"
+      "sha256": "56ff33027bdfbc3e4bbb40ec821d1d1229281c1cf475068ee29025381fd81aaa"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "fixtures/tiny_repo/export.py",
+      "symbol": "page",
+      "anchor": "def page(export_name):",
+      "sha256": "df5880dab4cb854ea31dc64b730531f46914bc0658bf0ddc73ce7ee75ac29c0f"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l05.py",
+      "symbol": "TestL05SearchEvidence.test_three_same_name_candidates_are_all_read_before_selecting",
+      "anchor": "def test_three_same_name_candidates_are_all_read_before_selecting(self):",
+      "sha256": "56ff33027bdfbc3e4bbb40ec821d1d1229281c1cf475068ee29025381fd81aaa"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l05.py",
+      "symbol": "TestL05SearchEvidence.test_scripted_selection_depends_on_content_not_filename_or_first_hit",
+      "anchor": "def test_scripted_selection_depends_on_content_not_filename_or_first_hit(self):",
+      "sha256": "56ff33027bdfbc3e4bbb40ec821d1d1229281c1cf475068ee29025381fd81aaa"
     }
   ]
 }
