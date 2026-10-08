@@ -1,0 +1,398 @@
+{
+  "lesson": "L06",
+  "mode": "IMPLEMENT",
+  "date": "2026-10-08",
+  "branch": "master",
+  "source_head": "56c2ec386d3d09e2cf995081288d78519736066d",
+  "initial_worktree": "clean",
+  "changed_files": [
+    "devagent/tasks/__init__.py",
+    "devagent/tasks/clarification.py",
+    "devagent/tasks/session.py",
+    "devagent/agent/workflow.py",
+    "devagent/demos/l06.py",
+    "tests/test_l06.py",
+    "docs/learning-records/L06.md",
+    "docs/learning-records/L06-code-map.json",
+    "docs/learning-records/L06-handoff.json"
+  ],
+  "git_delivery": "User subsequently authorized committing the L06 implementation and a normal push to the current branch; no force push or history rewrite.",
+  "environment": {
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "C:\\Python314\\python.exe",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": "stdlib only; no installation"
+  },
+  "commands": [
+    {
+      "command": "python -m unittest discover -s tests -p \"test_l06.py\" -v",
+      "exit_code": 0,
+      "total": 25,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "total": 158,
+      "passed": 157,
+      "failed": 0,
+      "skipped": 1
+    },
+    {
+      "command": "python -m devagent.demos.l06 --case clear-task",
+      "exit_code": 0,
+      "verified": true,
+      "checks": {
+        "real_read": true,
+        "evidence": true,
+        "no_question": true,
+        "conditions_ready": true,
+        "only_reads": true
+      },
+      "observed": {
+        "result": {
+          "task_id": "5805d8f1d0ff432886b9d28a81a90d09",
+          "original_task": "修正分页边界：第一页编号为 1，不改函数签名",
+          "status": "ready_for_policy_check",
+          "reason": "Conditions collected; NO write permission or execution is granted.",
+          "goal": {
+            "goal": "修正分页边界：第一页编号为 1，不改函数签名",
+            "constraints": {
+              "allowed_scope": [
+                "pagination.py"
+              ],
+              "preserve_signature": true,
+              "preserve_return_structure": null,
+              "preferences": []
+            },
+            "acceptance": [
+              "第一页返回前 size 项，第二页返回接下来的 size 项"
+            ],
+            "assumptions": [
+              "暂假定没有外部调用方依赖当前错误偏移，尚未验证"
+            ],
+            "optimization_dimension": null
+          },
+          "pending": null,
+          "question_id": null,
+          "plan": {
+            "path": "pagination.py",
+            "start_line": 1,
+            "end_line": 6
+          },
+          "model_calls": 0,
+          "tool_calls": 2,
+          "handler_calls": 2,
+          "evidence_sources": [
+            "pagination.py"
+          ],
+          "output_matches_source": true
+        }
+      }
+    },
+    {
+      "command": "python -m devagent.demos.l06 --case ambiguous-task",
+      "exit_code": 0,
+      "verified": true,
+      "checks": {
+        "real_read": true,
+        "evidence": true,
+        "waiting": true,
+        "specific": true,
+        "stable_question": true,
+        "stopped": true
+      },
+      "observed": {
+        "waiting": {
+          "task_id": "d2334007bfe9463aa0dcc9a69d1ddf73",
+          "original_task": "优化接口",
+          "status": "waiting_input",
+          "reason": "optimization_dimension changes the proposed modification; ask before proceeding.",
+          "goal": {
+            "goal": "优化接口",
+            "constraints": {
+              "allowed_scope": [
+                "pagination.py"
+              ],
+              "preserve_signature": true,
+              "preserve_return_structure": null,
+              "preferences": []
+            },
+            "acceptance": [],
+            "assumptions": [
+              "可能是性能问题，尚未确认"
+            ],
+            "optimization_dimension": null
+          },
+          "pending": {
+            "question": "优先优化哪个维度：首屏耗时、吞吐量，还是正确性？",
+            "missing_fields": [
+              "optimization_dimension"
+            ]
+          },
+          "question_id": "e7a79de192a948c69cab1411c3795183",
+          "plan": {
+            "path": "pagination.py",
+            "start_line": 1,
+            "end_line": 6
+          },
+          "model_calls": 0,
+          "tool_calls": 2,
+          "handler_calls": 2,
+          "evidence_sources": [
+            "pagination.py"
+          ],
+          "output_matches_source": true
+        }
+      }
+    },
+    {
+      "command": "python -m devagent.demos.l06 --case resume-answer",
+      "exit_code": 0,
+      "verified": true,
+      "checks": {
+        "real_read": true,
+        "evidence": true,
+        "waiting": true,
+        "specific": true,
+        "stable_question": true,
+        "stopped": true,
+        "same_task": true,
+        "evidence_preserved": true,
+        "no_repeat": true,
+        "merged": true,
+        "ready_not_authorized": true
+      },
+      "observed": {
+        "waiting": {
+          "task_id": "ae11be50ecb340f2b66a9c7e23c47873",
+          "original_task": "优化接口",
+          "status": "waiting_input",
+          "reason": "optimization_dimension changes the proposed modification; ask before proceeding.",
+          "goal": {
+            "goal": "优化接口",
+            "constraints": {
+              "allowed_scope": [
+                "pagination.py"
+              ],
+              "preserve_signature": true,
+              "preserve_return_structure": null,
+              "preferences": []
+            },
+            "acceptance": [],
+            "assumptions": [
+              "可能是性能问题，尚未确认"
+            ],
+            "optimization_dimension": null
+          },
+          "pending": {
+            "question": "优先优化哪个维度：首屏耗时、吞吐量，还是正确性？",
+            "missing_fields": [
+              "optimization_dimension"
+            ]
+          },
+          "question_id": "0a03a3403bbd4ab080ac3caa6b29ba78",
+          "plan": {
+            "path": "pagination.py",
+            "start_line": 1,
+            "end_line": 6
+          },
+          "model_calls": 0,
+          "tool_calls": 2,
+          "handler_calls": 2,
+          "evidence_sources": [
+            "pagination.py"
+          ],
+          "output_matches_source": true
+        },
+        "resumed": {
+          "task_id": "ae11be50ecb340f2b66a9c7e23c47873",
+          "original_task": "优化接口",
+          "status": "ready_for_policy_check",
+          "reason": "Conditions collected; NO write permission or execution is granted.",
+          "goal": {
+            "goal": "优化接口",
+            "constraints": {
+              "allowed_scope": [
+                "pagination.py"
+              ],
+              "preserve_signature": true,
+              "preserve_return_structure": true,
+              "preferences": []
+            },
+            "acceptance": [
+              "相同输入下首屏耗时低于当前基线，返回结构保持不变"
+            ],
+            "assumptions": [
+              "可能是性能问题，尚未确认"
+            ],
+            "optimization_dimension": "首屏耗时"
+          },
+          "pending": null,
+          "question_id": null,
+          "plan": {
+            "path": "pagination.py",
+            "start_line": 1,
+            "end_line": 6
+          },
+          "model_calls": 0,
+          "tool_calls": 2,
+          "handler_calls": 2,
+          "evidence_sources": [
+            "pagination.py"
+          ],
+          "output_matches_source": true
+        }
+      }
+    },
+    {
+      "command": "python -m devagent.demos.l06 --case workflow-compare",
+      "exit_code": 0,
+      "verified": true,
+      "checks": {
+        "both_answer_from_real_content": true,
+        "same_evidence": true,
+        "actual_counts": true
+      },
+      "observed": {
+        "workflow": {
+          "task_id": "ef1269b06ea44bbbbae123f77dfb6cd3",
+          "original_task": "List allowed files, then read pagination.py lines 1..6; return the actual text and citation.",
+          "status": "evidence_collected",
+          "reason": null,
+          "goal": {
+            "goal": "List allowed files, then read pagination.py lines 1..6; return the actual text and citation.",
+            "constraints": {
+              "allowed_scope": [],
+              "preserve_signature": null,
+              "preserve_return_structure": null,
+              "preferences": []
+            },
+            "acceptance": [],
+            "assumptions": [],
+            "optimization_dimension": null
+          },
+          "pending": null,
+          "question_id": null,
+          "plan": {
+            "path": "pagination.py",
+            "start_line": 1,
+            "end_line": 6
+          },
+          "model_calls": 0,
+          "tool_calls": 2,
+          "handler_calls": 2,
+          "elapsed_seconds": 0.0018137000006390736,
+          "evidence_sources": [
+            "pagination.py"
+          ],
+          "output_matches_source": true
+        },
+        "agent": {
+          "task_id": "b254d6bb0b9e4a24b368cbcb085fb258",
+          "original_task": "List allowed files, then read pagination.py lines 1..6; return the actual text and citation.",
+          "status": "evidence_collected",
+          "reason": null,
+          "goal": {
+            "goal": "List allowed files, then read pagination.py lines 1..6; return the actual text and citation.",
+            "constraints": {
+              "allowed_scope": [],
+              "preserve_signature": null,
+              "preserve_return_structure": null,
+              "preferences": []
+            },
+            "acceptance": [],
+            "assumptions": [],
+            "optimization_dimension": null
+          },
+          "pending": null,
+          "question_id": null,
+          "plan": {
+            "path": "pagination.py",
+            "start_line": 1,
+            "end_line": 6
+          },
+          "model_calls": 3,
+          "tool_calls": 2,
+          "handler_calls": 2,
+          "elapsed_seconds": 0.002072899995255284,
+          "evidence_sources": [
+            "pagination.py"
+          ],
+          "output_matches_source": true
+        }
+      }
+    },
+    {
+      "command": "python -m devagent.demos.l06 --list-cases",
+      "exit_code": 0,
+      "cases": [
+        "clear-task",
+        "ambiguous-task",
+        "resume-answer",
+        "workflow-compare"
+      ]
+    },
+    {
+      "command": "python docs/course/tools/code_map.py validate --project . --map docs/learning-records/L06-code-map.json",
+      "exit_code": 0,
+      "status": "references_valid",
+      "observed_entries": 13
+    }
+  ],
+  "interfaces": [
+    "TaskGoal(goal, constraints, acceptance, assumptions, optimization_dimension)",
+    "Constraints separates hard scope/signature/return requirements from preferences",
+    "Clarification(question, missing_fields), Decision(status, reason, clarification)",
+    "decide -> can_gather_evidence / waiting_input / ready_for_policy_check / rejected",
+    "TaskSession.investigate/assess/resume; copy-only TaskState snapshots",
+    "ReadPlan -> run_readonly_workflow -> WorkflowResult; Agent strategy reuses run_agent"
+  ],
+  "trust_boundary": [
+    "Structured goal/answer fields are explicit user/form/host inputs; no automatic NLP authorization extraction",
+    "Model proposals and repository text cannot set root, credentials, budgets, registry or write authority",
+    "ready_for_policy_check grants no execution permission; no write dispatcher implemented",
+    "Existing acceptance cannot be removed and declared scope only narrows on answer; this is not semantic conflict solving"
+  ],
+  "resume": [
+    "Same task_id/original task, current question_id check, atomic merge, preserve actual investigation/history/evidence",
+    "Repeated inspect/investigate calls while waiting do not call tools/models",
+    "Revalidate saved Citation on resume; stale_evidence terminates instead of silently refreshing",
+    "No source provenance confirmed_by/confirmed_at fields or independent exercise implementation"
+  ],
+  "reuse": [
+    "L02 files and L03 ToolRegistry unchanged",
+    "L04 run_agent/resume_agent unchanged; L06 waiting_input is a host decision separate from model waiting_user",
+    "L05 Citation/read hashes reused unchanged",
+    "Existing fixture and all old tests unchanged"
+  ],
+  "blocked": [
+    {
+      "item": "Real LLM Agent path",
+      "reason": "Provider tools/history unsupported; no paid model authorization; mocked transport count zero verified"
+    },
+    {
+      "item": "Existing real symlink test",
+      "reason": "Windows WinError 1314; one skip not counted as passed"
+    }
+  ],
+  "not_covered": [
+    "Cross-process persistence, concurrent resume, identity/authentication service",
+    "General natural-language extraction or semantic constraint reconciliation",
+    "Write policy evaluation or execution (L07+ excluded)",
+    "Production filesystem isolation and inherited TOCTOU/list_files aggregate traversal budget",
+    "Frameworks, Java and database integrations: not used or tested"
+  ],
+  "warnings": [
+    "Existing HTTPError fixture ResourceWarning in full regression"
+  ],
+  "learning_next": [
+    "Read run_case clear-task -> TaskGoal/Constraints -> decide -> TaskSession.investigate/assess -> registry/workflow -> tests",
+    "Compare explaining pagination versus modifying pagination; then read resume/merge_answer",
+    "Learner retains confirmed_by/confirmed_at provenance extension and independent variant design"
+  ],
+  "learning_status": "Implementation/test evidence only; no mastery claim",
+  "git_preference": "For subsequent project code changes, commit and update the remote branch unless the user explicitly requests otherwise."
+}

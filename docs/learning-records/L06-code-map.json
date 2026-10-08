@@ -1,0 +1,110 @@
+{
+  "lesson": "L06",
+  "source_head": "56c2ec386d3d09e2cf995081288d78519736066d",
+  "entries": [
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/demos/l06.py",
+      "symbol": "run_case",
+      "anchor": "def run_case(case):",
+      "sha256": "b28f8cc4794c288fa2bd4054ee51f1c6d46e86ae1cc216aa70d62dd86856352e"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/tasks/clarification.py",
+      "symbol": "TaskGoal",
+      "anchor": "class TaskGoal:",
+      "sha256": "7952def46ac7220ee7600a0b352b0784d4ff45b9a8990cfe3125fcec0bbb838d"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/tasks/clarification.py",
+      "symbol": "Constraints",
+      "anchor": "class Constraints:",
+      "sha256": "7952def46ac7220ee7600a0b352b0784d4ff45b9a8990cfe3125fcec0bbb838d"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/tasks/clarification.py",
+      "symbol": "decide",
+      "anchor": "if next_action in READ_ACTIONS:",
+      "sha256": "7952def46ac7220ee7600a0b352b0784d4ff45b9a8990cfe3125fcec0bbb838d"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/tasks/clarification.py",
+      "symbol": "merge_answer",
+      "anchor": "answer conflicts with a hard preservation requirement",
+      "sha256": "7952def46ac7220ee7600a0b352b0784d4ff45b9a8990cfe3125fcec0bbb838d"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tasks/session.py",
+      "symbol": "TaskState",
+      "anchor": "class TaskState:",
+      "sha256": "c52503801bad6e9964add1cb3e2e47671e3d9175b6b470d08358cbfc2ff03beb"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tasks/session.py",
+      "symbol": "TaskSession.investigate",
+      "anchor": "result = run_agent(",
+      "sha256": "c52503801bad6e9964add1cb3e2e47671e3d9175b6b470d08358cbfc2ff03beb"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tasks/session.py",
+      "symbol": "TaskSession.assess",
+      "anchor": "state.question_id = uuid4().hex if state.pending else None",
+      "sha256": "c52503801bad6e9964add1cb3e2e47671e3d9175b6b470d08358cbfc2ff03beb"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/tasks/session.py",
+      "symbol": "TaskSession.resume",
+      "anchor": "answer must address this task and its current pending question",
+      "sha256": "c52503801bad6e9964add1cb3e2e47671e3d9175b6b470d08358cbfc2ff03beb"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/agent/workflow.py",
+      "symbol": "run_readonly_workflow",
+      "anchor": "result = registry.execute(call)",
+      "sha256": "9c37258c1ca60d30ddbe1786d4fb75456279b60e041dcdb7ad81030fcfee0456"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l06.py",
+      "symbol": "TestL06Clarification.test_resume_retains_task_goal_history_and_evidence_without_replaying_tools",
+      "anchor": "def test_resume_retains_task_goal_history_and_evidence_without_replaying_tools(self):",
+      "sha256": "0d62febecef55cb5eaa88b0b178af1f32314955276575fadc62df2caf1785265"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l06.py",
+      "symbol": "TestL06Clarification.test_conflicting_or_injected_answer_is_atomic_and_preserves_hard_conditions",
+      "anchor": "def test_conflicting_or_injected_answer_is_atomic_and_preserves_hard_conditions(self):",
+      "sha256": "0d62febecef55cb5eaa88b0b178af1f32314955276575fadc62df2caf1785265"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l06.py",
+      "symbol": "TestL06Clarification.test_workflow_and_existing_agent_compare_real_results_and_counts",
+      "anchor": "def test_workflow_and_existing_agent_compare_real_results_and_counts(self):",
+      "sha256": "0d62febecef55cb5eaa88b0b178af1f32314955276575fadc62df2caf1785265"
+    }
+  ]
+}
