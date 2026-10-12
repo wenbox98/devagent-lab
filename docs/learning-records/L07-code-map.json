@@ -1,0 +1,126 @@
+{
+  "lesson": "L07",
+  "source_head": "0784ac95ae8d0d08ad26b2c60afd18265fc8bea0",
+  "entries": [
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/demos/l07.py",
+      "symbol": "run_case",
+      "anchor": "def run_case(case: str) -> dict:",
+      "sha256": "7d48f7081c1072c0adf34ac891ac4685a37d35373c1b7275a3d58360cdf1ae3c"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/tools/edit.py",
+      "symbol": "WorkspaceEditor.__init__",
+      "anchor": "self._root = files._canonical_root(root)",
+      "sha256": "ff92e742a02d809ef5da75479b41cea45c1442130052ddad58b8126758f591e0"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/tools/edit.py",
+      "symbol": "_validate_edit",
+      "anchor": "def _validate_edit(expected_hash, old_text, new_text):",
+      "sha256": "ff92e742a02d809ef5da75479b41cea45c1442130052ddad58b8126758f591e0"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/tools/files.py",
+      "symbol": "_authorize",
+      "anchor": "if not target.is_relative_to(root):",
+      "sha256": "ae0cb242f614d8823970802d713995b51fbc07047f6111116430c31849a0bdb1"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tools/files.py",
+      "symbol": "_read_snapshot",
+      "anchor": "raw = stream.read(max_bytes + 1)",
+      "sha256": "ae0cb242f614d8823970802d713995b51fbc07047f6111116430c31849a0bdb1"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tools/edit.py",
+      "symbol": "EditResult",
+      "anchor": "class EditResult:",
+      "sha256": "ff92e742a02d809ef5da75479b41cea45c1442130052ddad58b8126758f591e0"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tools/edit.py",
+      "symbol": "_UndoRecord",
+      "anchor": "class _UndoRecord:",
+      "sha256": "ff92e742a02d809ef5da75479b41cea45c1442130052ddad58b8126758f591e0"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/tools/edit.py",
+      "symbol": "WorkspaceEditor.apply_edit",
+      "anchor": "if current_hash != expected_hash:",
+      "sha256": "ff92e742a02d809ef5da75479b41cea45c1442130052ddad58b8126758f591e0"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/tools/edit.py",
+      "symbol": "WorkspaceEditor.apply_edit",
+      "anchor": "if snapshot.text.find(old_text, first + 1) >= 0:",
+      "sha256": "ff92e742a02d809ef5da75479b41cea45c1442130052ddad58b8126758f591e0"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/tools/edit.py",
+      "symbol": "_atomic_replace",
+      "anchor": "os.replace(temporary, target)",
+      "sha256": "ff92e742a02d809ef5da75479b41cea45c1442130052ddad58b8126758f591e0"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/tools/edit.py",
+      "symbol": "WorkspaceEditor.rollback",
+      "anchor": "if current_hash != record.after_hash:",
+      "sha256": "ff92e742a02d809ef5da75479b41cea45c1442130052ddad58b8126758f591e0"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l07.py",
+      "symbol": "TestL07SafeEdits.test_apply_returns_actual_hashes_diff_and_only_expected_change",
+      "anchor": "def test_apply_returns_actual_hashes_diff_and_only_expected_change(self):",
+      "sha256": "315aec6a2f95adec70b377f82b003a0e38fa5a29d0b482ca95b276987450feaa"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l07.py",
+      "symbol": "TestL07SafeEdits.test_stale_version_keeps_new_developer_bytes",
+      "anchor": "def test_stale_version_keeps_new_developer_bytes(self):",
+      "sha256": "315aec6a2f95adec70b377f82b003a0e38fa5a29d0b482ca95b276987450feaa"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l07.py",
+      "symbol": "TestL07SafeEdits.test_rollback_conflict_keeps_latest_bytes",
+      "anchor": "def test_rollback_conflict_keeps_latest_bytes(self):",
+      "sha256": "315aec6a2f95adec70b377f82b003a0e38fa5a29d0b482ca95b276987450feaa"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l07.py",
+      "symbol": "TestL07SafeEdits.test_cooperating_editors_share_lock_and_cannot_both_commit_same_version",
+      "anchor": "def test_cooperating_editors_share_lock_and_cannot_both_commit_same_version(self):",
+      "sha256": "315aec6a2f95adec70b377f82b003a0e38fa5a29d0b482ca95b276987450feaa"
+    }
+  ]
+}

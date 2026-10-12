@@ -1,0 +1,277 @@
+{
+  "lesson": "L07",
+  "date": "2026-10-12",
+  "mode": "IMPLEMENT",
+  "assistance": "Codex辅助实施；不代表学习者独立编码或已掌握",
+  "source_head": "0784ac95ae8d0d08ad26b2c60afd18265fc8bea0",
+  "branch": "master",
+  "initial_worktree": "clean",
+  "changed_files": [
+    "devagent/tools/edit.py",
+    "devagent/demos/l07.py",
+    "tests/test_l07.py",
+    "docs/learning-records/L07-code-map.json",
+    "docs/learning-records/L07-handoff.json",
+    "docs/learning-records/L07.md"
+  ],
+  "interfaces": [
+    "WorkspaceEditor(root, *, max_bytes=65536): 可信宿主固定工作区和单文件预算。",
+    "apply_edit(path, expected_hash, old_text, new_text, operation_id) -> EditResult；校验失败返回 ok=False，参数无效抛 ValueError，内部编程异常继续抛出。",
+    "rollback(operation_id) -> EditResult；仅使用该实例成功写入后的私有内存记录，并重新授权/读取/比较 after_hash。",
+    "EditResult: operation_id/path/ok/before_hash/after_hash/diff/error(ToolError)。拒绝结果没有 after_hash 或成功 diff。",
+    "_UndoRecord: path/before(bytes)/before_hash/after_hash；不接受模型提供的回滚字节。"
+  ],
+  "reuse": [
+    "L02 _canonical_root/_authorize/_read_snapshot/_filesystem_errors；UTF-8完整快照默认65536字节上限。",
+    "L05 read_file.source_hash 与完整 raw snapshot SHA-256保持同一合同。",
+    "L03 ToolError作为结构化错误对象复用；Registry工具集合仍为read_file/list_files/search_text。",
+    "L06 TaskSession/ready_for_policy_check 保持现状，没有自动取得写权限或接入新写入能力。"
+  ],
+  "reading_order": [
+    "devagent/demos/l07.py:run_case",
+    "devagent/tools/edit.py:EditResult/_UndoRecord",
+    "devagent/tools/edit.py:WorkspaceEditor.__init__/_validate_edit/apply_edit",
+    "devagent/tools/files.py:_read_snapshot/_authorize（旧实现未修改）",
+    "devagent/tools/edit.py:apply_edit 的版本比较与两次find",
+    "devagent/tools/edit.py:_atomic_replace",
+    "devagent/tools/edit.py:WorkspaceEditor.rollback",
+    "tests/test_l07.py:TestL07SafeEdits"
+  ],
+  "validation": {
+    "interpreter": "C:\\Python314\\python.exe",
+    "python_version": "3.14.7",
+    "platform": "Windows",
+    "tests": [
+      {
+        "command": "python -m unittest discover -s tests -p \"test_l07.py\" -v",
+        "discovered": 25,
+        "passed": 25,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      {
+        "command": "python -m unittest discover -s tests -v",
+        "discovered": 189,
+        "passed": 188,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 1,
+        "exit_code": 0
+      }
+    ],
+    "commands": [
+      {
+        "command": "python -m devagent.demos.l07 --list-cases",
+        "exit_code": 0,
+        "observed": {
+          "lesson": "L07",
+          "cases": [
+            "apply",
+            "stale-hash",
+            "ambiguous-match",
+            "rollback-conflict"
+          ]
+        }
+      },
+      {
+        "command": "python -m devagent.demos.l07 --case apply",
+        "exit_code": 0,
+        "observed": {
+          "lesson": "L07",
+          "case": "apply",
+          "observed": {
+            "request": {
+              "path": "pagination.py",
+              "expected_hash": "2ea72369153e8bfd2c675aa534f87297a295544fb1efd66d8f96ff49d6cd9bd3",
+              "old_text": "start = page_no * size",
+              "new_text": "start = (page_no - 1) * size",
+              "operation_id": "demo-L07"
+            },
+            "apply": {
+              "operation_id": "demo-L07",
+              "path": "pagination.py",
+              "ok": true,
+              "before_hash": "2ea72369153e8bfd2c675aa534f87297a295544fb1efd66d8f96ff49d6cd9bd3",
+              "after_hash": "5cee08e00f33ada158d4193c64b5291d90109126431efd201d0e4acc4d03b4ea",
+              "diff": "--- a/pagination.py\n+++ b/pagination.py\n@@ -2,5 +2,5 @@\n def page(items, page_no, size):\n     if type(page_no) is not int or type(size) is not int or page_no < 1 or size < 1:\n         raise ValueError('page_no and size must be positive integers')\n-    start = page_no * size  # 故意错误；第一页编号为1。\n+    start = (page_no - 1) * size  # 故意错误；第一页编号为1。\n     return items[start:start + size]\n",
+              "error": null
+            },
+            "final_hash": "5cee08e00f33ada158d4193c64b5291d90109126431efd201d0e4acc4d03b4ea"
+          },
+          "checks": {
+            "applied": true,
+            "only_expected_change": true,
+            "before_hash": true,
+            "after_hash": true,
+            "real_diff": true,
+            "no_temp_left": true
+          },
+          "verified": true
+        }
+      },
+      {
+        "command": "python -m devagent.demos.l07 --case stale-hash",
+        "exit_code": 0,
+        "observed": {
+          "lesson": "L07",
+          "case": "stale-hash",
+          "observed": {
+            "request": {
+              "path": "pagination.py",
+              "expected_hash": "2ea72369153e8bfd2c675aa534f87297a295544fb1efd66d8f96ff49d6cd9bd3",
+              "old_text": "start = page_no * size",
+              "new_text": "start = (page_no - 1) * size",
+              "operation_id": "demo-L07"
+            },
+            "apply": {
+              "operation_id": "demo-L07",
+              "path": "pagination.py",
+              "ok": false,
+              "before_hash": "8ec3d45a9aa2c314ce318e14f3b5c24803926b87f35653ad353cac71757a4856",
+              "after_hash": null,
+              "diff": "",
+              "error": {
+                "code": "stale_version",
+                "message": "file version changed; read again",
+                "retryable": false
+              }
+            },
+            "final_hash": "8ec3d45a9aa2c314ce318e14f3b5c24803926b87f35653ad353cac71757a4856"
+          },
+          "checks": {
+            "write_rejected": true,
+            "bytes_preserved": true,
+            "current_version": true,
+            "no_success_evidence": true,
+            "no_temp_left": true
+          },
+          "verified": true
+        }
+      },
+      {
+        "command": "python -m devagent.demos.l07 --case ambiguous-match",
+        "exit_code": 0,
+        "observed": {
+          "lesson": "L07",
+          "case": "ambiguous-match",
+          "observed": {
+            "request": {
+              "path": "pagination.py",
+              "expected_hash": "4b6cab476fff2c387ec990d5c934f9e7bd8a7826ced63281b2b6213f4b86c6ee",
+              "old_text": "start = page_no * size",
+              "new_text": "start = (page_no - 1) * size",
+              "operation_id": "demo-L07"
+            },
+            "apply": {
+              "operation_id": "demo-L07",
+              "path": "pagination.py",
+              "ok": false,
+              "before_hash": "4b6cab476fff2c387ec990d5c934f9e7bd8a7826ced63281b2b6213f4b86c6ee",
+              "after_hash": null,
+              "diff": "",
+              "error": {
+                "code": "ambiguous_match",
+                "message": "old_text must match exactly once",
+                "retryable": false
+              }
+            },
+            "final_hash": "4b6cab476fff2c387ec990d5c934f9e7bd8a7826ced63281b2b6213f4b86c6ee"
+          },
+          "checks": {
+            "write_rejected": true,
+            "bytes_preserved": true,
+            "current_version": true,
+            "no_success_evidence": true,
+            "no_temp_left": true
+          },
+          "verified": true
+        }
+      },
+      {
+        "command": "python -m devagent.demos.l07 --case rollback-conflict",
+        "exit_code": 0,
+        "observed": {
+          "lesson": "L07",
+          "case": "rollback-conflict",
+          "observed": {
+            "request": {
+              "path": "pagination.py",
+              "expected_hash": "2ea72369153e8bfd2c675aa534f87297a295544fb1efd66d8f96ff49d6cd9bd3",
+              "old_text": "start = page_no * size",
+              "new_text": "start = (page_no - 1) * size",
+              "operation_id": "demo-L07"
+            },
+            "apply": {
+              "operation_id": "demo-L07",
+              "path": "pagination.py",
+              "ok": true,
+              "before_hash": "2ea72369153e8bfd2c675aa534f87297a295544fb1efd66d8f96ff49d6cd9bd3",
+              "after_hash": "5cee08e00f33ada158d4193c64b5291d90109126431efd201d0e4acc4d03b4ea",
+              "diff": "--- a/pagination.py\n+++ b/pagination.py\n@@ -2,5 +2,5 @@\n def page(items, page_no, size):\n     if type(page_no) is not int or type(size) is not int or page_no < 1 or size < 1:\n         raise ValueError('page_no and size must be positive integers')\n-    start = page_no * size  # 故意错误；第一页编号为1。\n+    start = (page_no - 1) * size  # 故意错误；第一页编号为1。\n     return items[start:start + size]\n",
+              "error": null
+            },
+            "rollback": {
+              "operation_id": "demo-L07",
+              "path": "pagination.py",
+              "ok": false,
+              "before_hash": "f8f75c927fc3492a30aee602ef27660b5da02a3fd2302d730e8b81fe7ff31fb9",
+              "after_hash": null,
+              "diff": "",
+              "error": {
+                "code": "rollback_conflict",
+                "message": "file changed after edit; rollback refused",
+                "retryable": false
+              }
+            },
+            "final_hash": "f8f75c927fc3492a30aee602ef27660b5da02a3fd2302d730e8b81fe7ff31fb9"
+          },
+          "checks": {
+            "applied_first": true,
+            "rollback_rejected": true,
+            "latest_bytes_preserved": true,
+            "current_version": true
+          },
+          "verified": true
+        }
+      },
+      {
+        "command": "python docs/course/lessons/L07/01-mechanism.py",
+        "exit_code": 0,
+        "observed": {
+          "scope": "single-writer-temp-file",
+          "stale": "rejected_without_write",
+          "fresh": "applied",
+          "verified": true
+        }
+      }
+    ],
+    "code_map_command": "python docs/course/tools/code_map.py validate --project . --map docs/learning-records/L07-code-map.json",
+    "code_map_result": "references_valid; exit_code=0; 15 observed entries, no errors or missing roles",
+    "real_llm_calls": 0,
+    "external_business_service_calls": 0,
+    "scope": "本课离线实际文件IO；演示写入临时fixture副本，未使用脚本模型代替IO。Git远端同步单独执行。",
+    "warnings": [
+      "既有HTTPError测试对象清理产生ResourceWarning，测试未失败。"
+    ],
+    "skipped": [
+      {
+        "test": "test_l02.TestL02WorkspaceFiles.test_external_symlink_file_and_directory_are_denied",
+        "reason": "Windows WinError 1314：缺少创建符号链接权限；不计为通过。"
+      }
+    ],
+    "blocked": []
+  },
+  "boundaries": {
+    "workspace": "所有演示与测试的写入均在TemporaryDirectory练习副本；原始fixtures和教材未修改。",
+    "concurrency": "同进程同canonical root共享合作锁，覆盖读取/比较/替换；非合作外部进程、跨进程和恶意路径交换不受保护。",
+    "atomicity": "单文件同目录temp完整写入/flush/fsync/关闭后os.replace。不是多文件事务，不承诺断电或崩溃后必然持久化。",
+    "cleanup": "正常IO失败清理临时文件；操作系统拒绝清理时仍是明确IO错误，不能承诺强制清理。",
+    "metadata": "保留普通文件mode位，不保证所有权、ACL或所有元数据。",
+    "rollback": "before字节保存在实例内存，进程重启后不可恢复；operation_id不是持久幂等键。总撤销记录内存未设跨操作预算。",
+    "semantics": "唯一字符串匹配与版本一致不证明修复的业务逻辑正确。"
+  },
+  "independent_exercise": "只读文件/真实权限失败的独立变体未代写；基础测试只覆盖必要临时IO故障安全。",
+  "next_learning_step": "先阅读apply案例的before/current/after，再跟进版本分支、唯一匹配、_atomic_replace与rollback；本次不实现L08/L09。"
+}
