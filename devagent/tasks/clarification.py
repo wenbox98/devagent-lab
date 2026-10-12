@@ -1,5 +1,6 @@
 """Deterministic conditions, not natural-language authorization or model scoring."""
 from dataclasses import dataclass, replace
+from datetime import datetime
 
 READ_ACTIONS = frozenset({'list_files', 'read_file', 'search_text'})
 CHANGE_ACTIONS = frozenset({'modify_code', 'optimize_code'})
@@ -33,6 +34,50 @@ class Constraints:
                 raise ValueError('preservation requirements must be bool or None')
 
 
+def _confirmation(confirmed_by, confirmed_at):
+    _text(confirmed_by, 'confirmed_by')
+    if not isinstance(confirmed_at, datetime) or confirmed_at.utcoffset() is None:
+        raise ValueError('confirmed_at must be a timezone-aware datetime')
+
+
+@dataclass(frozen=True)
+class AssumptionRecord:
+    """A caller-supplied confirmation, not independent verification of a fact."""
+    assumption_id: str
+    content: str
+    confirmed_by: str | None = None
+    confirmed_at: datetime | None = None
+
+    def __post_init__(self):
+        _text(self.assumption_id, 'assumption_id')
+        _text(self.content, 'content')
+        if self.confirmed_by is not None or self.confirmed_at is not None:
+            _confirmation(self.confirmed_by, self.confirmed_at)
+
+
+def _assumption_records(records):
+    if not isinstance(records, tuple) or any(not isinstance(r, AssumptionRecord) for r in records):
+        raise ValueError('assumption_records must be a tuple of AssumptionRecord')
+    if len({r.assumption_id for r in records}) != len(records):
+        raise ValueError('assumption_id must be unique within the records')
+
+
+def confirm_assumption(records: tuple[AssumptionRecord, ...], assumption_id: str,
+                       confirmed_by: str, confirmed_at: datetime) -> tuple[AssumptionRecord, ...]:
+    """Replace one record immutably. Identity/time come from the trusted caller.
+
+    This helper is not connected to merge_answer or TaskSession.resume.
+    """
+    _assumption_records(records)
+    _text(assumption_id, 'assumption_id')
+    _confirmation(confirmed_by, confirmed_at)
+    for index, record in enumerate(records):
+        if record.assumption_id == assumption_id:
+            updated = replace(record, confirmed_by=confirmed_by, confirmed_at=confirmed_at)
+            return records[:index] + (updated,) + records[index + 1:]
+    raise ValueError('unknown assumption_id')
+
+
 @dataclass(frozen=True)
 class TaskGoal:
     goal: str
@@ -40,6 +85,8 @@ class TaskGoal:
     acceptance: tuple[str, ...] = ()
     assumptions: tuple[str, ...] = ()
     optimization_dimension: str | None = None
+    # Compatibility extension: legacy strings remain; no unified assumption store.
+    assumption_records: tuple[AssumptionRecord, ...] = ()
 
     def __post_init__(self):
         _text(self.goal, 'goal')
@@ -49,6 +96,7 @@ class TaskGoal:
         _texts(self.assumptions, 'assumptions')
         if self.optimization_dimension is not None:
             _text(self.optimization_dimension, 'optimization_dimension')
+        _assumption_records(self.assumption_records)
 
 
 @dataclass(frozen=True)
