@@ -1,0 +1,510 @@
+{
+  "lesson": "L08",
+  "date": "2026-10-13",
+  "mode": "IMPLEMENT",
+  "source_head": "321507ea4f44099317fc75bcb6c3b2ab36e4a0ff",
+  "branch": "master",
+  "assistance": "Codex辅助实施；不代表学习者独立完成、理解验收或已掌握",
+  "initial_worktree": "clean",
+  "changed_files": [
+    "devagent/runtime/__init__.py",
+    "devagent/runtime/environment.py",
+    "devagent/runtime/probes.py",
+    "devagent/runtime/runner.py",
+    "devagent/runtime/windows_job.py",
+    "devagent/demos/l08.py",
+    "scripts/l08/setup_windows.ps1",
+    "tests/test_l08.py",
+    "docs/learning-records/L08-code-map.json",
+    "docs/learning-records/L08-handoff.json",
+    "docs/learning-records/L08.md"
+  ],
+  "implementation_status": "四阶段运行器和Windows可信固定探针已实施；真实仓库执行/文件系统与网络隔离验收仍blocked。",
+  "interfaces": [
+    "ControlledTestRunner(root, limits=RunnerLimits()): 宿主固定canonical cwd、绝对Python可执行文件和预算。",
+    "run_tests(template=\"unittest\") -> RunCommandResult: 只允许固定argv模板；目前没有sandbox后端，因此在Popen前blocked。",
+    "run_probe(name) -> RunCommandResult: 独立可信宿主诊断，只执行probes.py固定源码，-I -S不导入仓库代码；不是run_tests降级分支。",
+    "RunCommandResult: exit_code/timed_out/truncated/stdout/stderr/duration_ms/status/started/termination_confirmed/cleanup_confirmed/captured_bytes/active_processes_after/scope/error。",
+    "RunnerLimits: timeout_ms=1000,max_output_bytes=4096,cleanup_ms=1500，均拒绝bool、非整数、越过宿主上限。",
+    "inspect_environment(): 实际Create/Set/Query Job限制；始终如实标记filesystem_isolation/network_isolation/repository_execution=false。",
+    "environment --trusted-probes: 验证入口，报告固定宿主探针观测并保留isolation blocked/exit2；setup_windows.ps1仅预检，不安装/提权/更改系统配置。"
+  ],
+  "dataflow": [
+    "prepare: 固定root及Python权限预检；固定模板/探针名；env仅SYSTEMROOT/WINDIR、任务TEMP/TMP、UTF8设置；检查Job与资源配置。仓库scope缺少隔离直接拒绝。",
+    "start: 创建带配额和kill-on-close的Job，Popen argv数组+shell=False+close_fds；固定bootstrap等待GO，成功AssignProcessToJobObject后才释放闸门。",
+    "observe: stdout/stderr双读取线程，单次最多1024字节，共享原始字节预算；丢弃过预算输出后标truncated，主线程终止任务；monotonic deadline；Job记账收敛窗口50ms在deadline内。",
+    "finish: 终止前保留Job成员进程句柄；TerminateJobObject、根进程wait、Job成员计数归零、成员WaitForSingleObject、关闭Job和join读线程；缺少证据返回cleanup_unconfirmed并阻止下一次派发。"
+  ],
+  "integration": {
+    "reused": "L02 _canonical_root/_filesystem_errors、L03 ToolError；旧源码职责未变。",
+    "current": "仅可信demo/环境核验/测试调用运行器；L04 Registry仍为read_file/list_files/search_text。",
+    "future": "可信宿主在合格隔离环境的受控副本上衔接L07补丁结果与L08测试结果；本次没有自动修复、自动回滚或L09编排。",
+    "l06": "ready_for_policy_check只表明条件足够进入策略检查，不授予OS进程执行权限。"
+  },
+  "validation": {
+    "interpreter": "C:\\Python314\\python.exe",
+    "python_version": "3.14.7",
+    "platform": "Windows 11 10.0.26200",
+    "tests": [
+      {
+        "command": "python -m unittest discover -s tests -p \"test_l08.py\" -v",
+        "discovered": 29,
+        "passed": 29,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      {
+        "command": "python -m unittest discover -s tests -v",
+        "discovered": 218,
+        "passed": 217,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 1,
+        "exit_code": 0
+      }
+    ],
+    "commands": [
+      {
+        "command": "python -m devagent.demos.l08 --list-cases",
+        "exit_code": 0,
+        "observed": {
+          "lesson": "L08",
+          "cases": [
+            "normal",
+            "timeout",
+            "output-limit",
+            "boundary"
+          ]
+        }
+      },
+      {
+        "command": "python -m devagent.demos.l08 --case normal",
+        "exit_code": 2,
+        "observed": {
+          "lesson": "L08",
+          "case": "normal",
+          "observed": {
+            "result": {
+              "exit_code": null,
+              "timed_out": false,
+              "truncated": false,
+              "stdout": "",
+              "stderr": "",
+              "duration_ms": 0,
+              "status": "blocked",
+              "started": false,
+              "termination_confirmed": null,
+              "cleanup_confirmed": null,
+              "captured_bytes": 0,
+              "active_processes_after": null,
+              "scope": "repository",
+              "error": {
+                "code": "isolation_unavailable",
+                "message": "no verified filesystem/network sandbox backend is configured",
+                "retryable": false
+              }
+            },
+            "capabilities": {
+              "platform": "Windows",
+              "job_objects": true,
+              "resource_limits": {
+                "flags": 8972,
+                "max_processes": 4,
+                "process_memory_bytes": 134217728,
+                "job_memory_bytes": 268435456,
+                "job_cpu_100ns": 100000000
+              },
+              "filesystem_isolation": false,
+              "network_isolation": false,
+              "repository_execution": false,
+              "reason": "no verified filesystem/network sandbox backend is configured"
+            },
+            "command_template": [
+              "C:\\Python314\\python.exe",
+              "-I",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "tests",
+              "-v"
+            ],
+            "scope": "repository isolation required; trusted probes are separate"
+          },
+          "checks": {
+            "isolation_verified": false,
+            "execution_started": false,
+            "case_executed": false
+          },
+          "verified": false,
+          "blocked": {
+            "code": "isolation_unavailable",
+            "message": "no verified filesystem/network sandbox backend is configured",
+            "retryable": false
+          }
+        }
+      },
+      {
+        "command": "python -m devagent.demos.l08 --case timeout",
+        "exit_code": 2,
+        "observed": {
+          "lesson": "L08",
+          "case": "timeout",
+          "observed": {
+            "result": {
+              "exit_code": null,
+              "timed_out": false,
+              "truncated": false,
+              "stdout": "",
+              "stderr": "",
+              "duration_ms": 0,
+              "status": "blocked",
+              "started": false,
+              "termination_confirmed": null,
+              "cleanup_confirmed": null,
+              "captured_bytes": 0,
+              "active_processes_after": null,
+              "scope": "repository",
+              "error": {
+                "code": "isolation_unavailable",
+                "message": "no verified filesystem/network sandbox backend is configured",
+                "retryable": false
+              }
+            },
+            "capabilities": {
+              "platform": "Windows",
+              "job_objects": true,
+              "resource_limits": {
+                "flags": 8972,
+                "max_processes": 4,
+                "process_memory_bytes": 134217728,
+                "job_memory_bytes": 268435456,
+                "job_cpu_100ns": 100000000
+              },
+              "filesystem_isolation": false,
+              "network_isolation": false,
+              "repository_execution": false,
+              "reason": "no verified filesystem/network sandbox backend is configured"
+            },
+            "command_template": [
+              "C:\\Python314\\python.exe",
+              "-I",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "tests",
+              "-v"
+            ],
+            "scope": "repository isolation required; trusted probes are separate"
+          },
+          "checks": {
+            "isolation_verified": false,
+            "execution_started": false,
+            "case_executed": false
+          },
+          "verified": false,
+          "blocked": {
+            "code": "isolation_unavailable",
+            "message": "no verified filesystem/network sandbox backend is configured",
+            "retryable": false
+          }
+        }
+      },
+      {
+        "command": "python -m devagent.demos.l08 --case output-limit",
+        "exit_code": 2,
+        "observed": {
+          "lesson": "L08",
+          "case": "output-limit",
+          "observed": {
+            "result": {
+              "exit_code": null,
+              "timed_out": false,
+              "truncated": false,
+              "stdout": "",
+              "stderr": "",
+              "duration_ms": 0,
+              "status": "blocked",
+              "started": false,
+              "termination_confirmed": null,
+              "cleanup_confirmed": null,
+              "captured_bytes": 0,
+              "active_processes_after": null,
+              "scope": "repository",
+              "error": {
+                "code": "isolation_unavailable",
+                "message": "no verified filesystem/network sandbox backend is configured",
+                "retryable": false
+              }
+            },
+            "capabilities": {
+              "platform": "Windows",
+              "job_objects": true,
+              "resource_limits": {
+                "flags": 8972,
+                "max_processes": 4,
+                "process_memory_bytes": 134217728,
+                "job_memory_bytes": 268435456,
+                "job_cpu_100ns": 100000000
+              },
+              "filesystem_isolation": false,
+              "network_isolation": false,
+              "repository_execution": false,
+              "reason": "no verified filesystem/network sandbox backend is configured"
+            },
+            "command_template": [
+              "C:\\Python314\\python.exe",
+              "-I",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "tests",
+              "-v"
+            ],
+            "scope": "repository isolation required; trusted probes are separate"
+          },
+          "checks": {
+            "isolation_verified": false,
+            "execution_started": false,
+            "case_executed": false
+          },
+          "verified": false,
+          "blocked": {
+            "code": "isolation_unavailable",
+            "message": "no verified filesystem/network sandbox backend is configured",
+            "retryable": false
+          }
+        }
+      },
+      {
+        "command": "python -m devagent.demos.l08 --case boundary",
+        "exit_code": 2,
+        "observed": {
+          "lesson": "L08",
+          "case": "boundary",
+          "observed": {
+            "result": {
+              "exit_code": null,
+              "timed_out": false,
+              "truncated": false,
+              "stdout": "",
+              "stderr": "",
+              "duration_ms": 0,
+              "status": "blocked",
+              "started": false,
+              "termination_confirmed": null,
+              "cleanup_confirmed": null,
+              "captured_bytes": 0,
+              "active_processes_after": null,
+              "scope": "repository",
+              "error": {
+                "code": "isolation_unavailable",
+                "message": "no verified filesystem/network sandbox backend is configured",
+                "retryable": false
+              }
+            },
+            "capabilities": {
+              "platform": "Windows",
+              "job_objects": true,
+              "resource_limits": {
+                "flags": 8972,
+                "max_processes": 4,
+                "process_memory_bytes": 134217728,
+                "job_memory_bytes": 268435456,
+                "job_cpu_100ns": 100000000
+              },
+              "filesystem_isolation": false,
+              "network_isolation": false,
+              "repository_execution": false,
+              "reason": "no verified filesystem/network sandbox backend is configured"
+            },
+            "command_template": [
+              "C:\\Python314\\python.exe",
+              "-I",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "tests",
+              "-v"
+            ],
+            "scope": "repository isolation required; trusted probes are separate"
+          },
+          "checks": {
+            "isolation_verified": false,
+            "execution_started": false,
+            "case_executed": false
+          },
+          "verified": false,
+          "blocked": {
+            "code": "isolation_unavailable",
+            "message": "no verified filesystem/network sandbox backend is configured",
+            "retryable": false
+          }
+        }
+      },
+      {
+        "command": "python -m devagent.runtime.environment --trusted-probes",
+        "exit_code": 2,
+        "observed": {
+          "capabilities": {
+            "platform": "Windows",
+            "job_objects": true,
+            "resource_limits": {
+              "flags": 8972,
+              "max_processes": 4,
+              "process_memory_bytes": 134217728,
+              "job_memory_bytes": 268435456,
+              "job_cpu_100ns": 100000000
+            },
+            "filesystem_isolation": false,
+            "network_isolation": false,
+            "repository_execution": false,
+            "reason": "no verified filesystem/network sandbox backend is configured"
+          },
+          "discovered_commands": {
+            "docker": false,
+            "podman": false,
+            "wsl": true,
+            "WindowsSandbox.exe": false
+          },
+          "blocked": {
+            "code": "isolation_unavailable",
+            "reason": "no verified filesystem/network sandbox backend is configured"
+          },
+          "repository_execution_verified": false,
+          "trusted_probe_results": {
+            "normal": {
+              "exit_code": 0,
+              "timed_out": false,
+              "truncated": false,
+              "duration_ms": 85,
+              "status": "completed",
+              "started": true,
+              "termination_confirmed": true,
+              "cleanup_confirmed": true,
+              "captured_bytes": 224,
+              "active_processes_after": 0,
+              "scope": "trusted_fixed_probe",
+              "error": null,
+              "stdout_preview": "{\"tests_run\": 1, \"passed\": true, \"env_keys\": [\"PYTHONIOENCODING\", \"PYTHONUTF8\", \"SYSTEMROOT\", \"TEMP\", \"TMP\", \"WINDIR\"]}\r\n",
+              "stderr_preview": ".\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n",
+              "output_storage": "previews only; captured_bytes is the measured combined raw byte count"
+            },
+            "timeout": {
+              "exit_code": 1,
+              "timed_out": true,
+              "truncated": false,
+              "duration_ms": 1008,
+              "status": "timed_out",
+              "started": true,
+              "termination_confirmed": true,
+              "cleanup_confirmed": true,
+              "captured_bytes": 43,
+              "active_processes_after": 0,
+              "scope": "trusted_fixed_probe",
+              "error": {
+                "code": "timed_out",
+                "message": "controlled execution stopped: timed_out",
+                "retryable": false
+              },
+              "stdout_preview": "{\"parent_pid\": 42024, \"child_pid\": 14996}\r\n",
+              "stderr_preview": "",
+              "output_storage": "previews only; captured_bytes is the measured combined raw byte count"
+            },
+            "output-limit": {
+              "exit_code": 1,
+              "timed_out": false,
+              "truncated": true,
+              "duration_ms": 27,
+              "status": "output_limit",
+              "started": true,
+              "termination_confirmed": true,
+              "cleanup_confirmed": true,
+              "captured_bytes": 4096,
+              "active_processes_after": 0,
+              "scope": "trusted_fixed_probe",
+              "error": {
+                "code": "output_limit",
+                "message": "controlled execution stopped: output_limit",
+                "retryable": false
+              },
+              "stdout_preview": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+              "stderr_preview": "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
+              "output_storage": "previews only; captured_bytes is the measured combined raw byte count"
+            }
+          },
+          "probe_scope": "fixed trusted host programs; not repository/sandbox verification"
+        }
+      },
+      {
+        "command": "python docs/course/lessons/L08/01-mechanism.py",
+        "exit_code": 0,
+        "observed": {
+          "scope": "controlled-direct-child-only",
+          "timed_out": true,
+          "exit_confirmed": true,
+          "verified": true
+        }
+      }
+    ],
+    "setup": {
+      "command": "powershell -NoProfile -File scripts/l08/setup_windows.ps1",
+      "exit_code": 2,
+      "status": "blocked",
+      "reason": "no verified filesystem/network sandbox backend"
+    },
+    "map_command": "python docs/course/tools/code_map.py validate --project . --map docs/learning-records/L08-code-map.json",
+    "map_result": "references_valid; exit_code=0; 20 observed entries; no missing roles or errors",
+    "blocked_cases": [
+      "normal",
+      "timeout",
+      "output-limit",
+      "boundary"
+    ],
+    "blocked_reason": "无已实现且验证合格的文件系统/网络隔离后端；没有在宿主偷偷执行仓库测试。",
+    "skipped": [
+      {
+        "test": "test_l02.TestL02WorkspaceFiles.test_external_symlink_file_and_directory_are_denied",
+        "reason": "Windows WinError 1314；缺少symlink创建权限，不计通过。"
+      }
+    ],
+    "scope": "29个单测通过包括真实可信固定探针与正确拒绝/故障注入；四个正式隔离demo全部blocked，不计通过。",
+    "implementation_findings": "实施时测试曾发现Job计数更新时序及异步退出句柄清理问题，修正实现并补回归，保留原退出码和清理期望。",
+    "real_llm_calls": 0,
+    "external_execution_service_calls": 0,
+    "network_scope": "固定探针没有网络调用；工具侧只查阅Microsoft官方文档及授权Git同步。",
+    "warnings": [
+      "全量回归中的既有HTTPError模拟对象清理有ResourceWarning，未造成测试失败。"
+    ]
+  },
+  "windows_verified": {
+    "job_objects": true,
+    "max_active_processes": 4,
+    "process_memory_bytes": 134217728,
+    "job_memory_bytes": 268435456,
+    "job_user_cpu_100ns": 100000000,
+    "resource_evidence": "实际SetInformationJobObject成功且Query读取一致；没有做所有资源耗尽攻击实验。",
+    "process_tree_evidence": "受控子进程PID/心跳、Job active=0、根和成员句柄wait；timeout后心跳不再增长。",
+    "limitations": [
+      "Job Object不是文件系统、网络或身份权限沙箱；没有实际验证禁止区域访问。",
+      "仅Windows Job平台实现；非Windows可信探针会blocked，Windows集成测试在非Windows明确skip。",
+      "不覆盖WMI/服务创建进程、恶意系统利用或Job外部进程；只验证固定普通Popen子树。",
+      "Python bootstrap开始到分配Job之间只有固定等待代码；不是任意不可信可执行文件的通用启动策略。",
+      "普通进程创建和OS调用不是硬实时可取消；duration可能含启动和清理，cleanup也可能无法确认。",
+      "UTF8无效/预算边界不完整字节丢弃；返回片段不是完整日志，captured_bytes记录原始保存量。",
+      "未实现合格sandbox后端，安装docker/wsl或设置环境开关不会自动放行run_tests。"
+    ]
+  },
+  "independent_exercise": "cwd改变/指向另一工作区的独立变体未代写；只保留必要的基础cwd/参数边界。",
+  "sources": [
+    "https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects",
+    "https://learn.microsoft.com/en-us/windows/win32/api/jobapi2/nf-jobapi2-assignprocesstojobobject",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_extended_limit_information"
+  ],
+  "next_step": "学习者先阅读run_tests与run_probe范围差异，再按结果对象/prepare/start/observe/finish/测试阅读；隔离blocked解决前不把本实现用于不可信仓库，不进入L09。"
+}

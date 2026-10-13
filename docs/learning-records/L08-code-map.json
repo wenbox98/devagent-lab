@@ -1,0 +1,166 @@
+{
+  "lesson": "L08",
+  "source_head": "321507ea4f44099317fc75bcb6c3b2ab36e4a0ff",
+  "entries": [
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/demos/l08.py",
+      "symbol": "run_case",
+      "anchor": "def run_case(case: str) -> dict:",
+      "sha256": "1e3746a7e0454b910b5b6e33465e094842e706838e4dfe615015931a675be07d"
+    },
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/runtime/runner.py",
+      "symbol": "ControlledTestRunner.run_tests",
+      "anchor": "return self._run(template, 'repository')",
+      "sha256": "794d65ed9dc14938fd46ce53e99b5442a69b5bd0cea3697efb66e3172e07c909"
+    },
+    {
+      "role": "入口",
+      "status": "observed",
+      "path": "devagent/runtime/runner.py",
+      "symbol": "ControlledTestRunner.run_probe",
+      "anchor": "return self._run(name, 'trusted_fixed_probe')",
+      "sha256": "794d65ed9dc14938fd46ce53e99b5442a69b5bd0cea3697efb66e3172e07c909"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/runtime/runner.py",
+      "symbol": "RunCommandResult",
+      "anchor": "class RunCommandResult:",
+      "sha256": "794d65ed9dc14938fd46ce53e99b5442a69b5bd0cea3697efb66e3172e07c909"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/runtime/runner.py",
+      "symbol": "RunnerLimits",
+      "anchor": "class RunnerLimits:",
+      "sha256": "794d65ed9dc14938fd46ce53e99b5442a69b5bd0cea3697efb66e3172e07c909"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/runtime/runner.py",
+      "symbol": "ControlledTestRunner._prepare",
+      "anchor": "raise _Blocked('isolation_unavailable'",
+      "sha256": "794d65ed9dc14938fd46ce53e99b5442a69b5bd0cea3697efb66e3172e07c909"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/runtime/environment.py",
+      "symbol": "inspect_environment",
+      "anchor": "def inspect_environment() -> ExecutionCapabilities:",
+      "sha256": "eafb2e72b0659c3ecd00a5641c8f8c74dfbaffa1c5f22c22cda5ea172aaf637a"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/runtime/environment.py",
+      "symbol": "child_environment",
+      "anchor": "('SYSTEMROOT', 'WINDIR')",
+      "sha256": "eafb2e72b0659c3ecd00a5641c8f8c74dfbaffa1c5f22c22cda5ea172aaf637a"
+    },
+    {
+      "role": "输入边界",
+      "status": "observed",
+      "path": "devagent/tools/files.py",
+      "symbol": "_canonical_root",
+      "anchor": "canonical = Path(root).resolve(strict=True)",
+      "sha256": "ae0cb242f614d8823970802d713995b51fbc07047f6111116430c31849a0bdb1"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/runtime/runner.py",
+      "symbol": "ControlledTestRunner._start",
+      "anchor": "job.assign(process.pid)",
+      "sha256": "794d65ed9dc14938fd46ce53e99b5442a69b5bd0cea3697efb66e3172e07c909"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/runtime/probes.py",
+      "symbol": "probe_argv",
+      "anchor": "def probe_argv(python: str, name: str)",
+      "sha256": "085af5d64b71ed106df0728b57feac8a18145028cf436dc13cfcc474721461de"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/runtime/runner.py",
+      "symbol": "ControlledTestRunner._observe",
+      "anchor": "if capture.truncated.is_set():",
+      "sha256": "794d65ed9dc14938fd46ce53e99b5442a69b5bd0cea3697efb66e3172e07c909"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/runtime/runner.py",
+      "symbol": "_OutputCapture._read",
+      "anchor": "room = self.limit - self.saved",
+      "sha256": "794d65ed9dc14938fd46ce53e99b5442a69b5bd0cea3697efb66e3172e07c909"
+    },
+    {
+      "role": "核心决策",
+      "status": "observed",
+      "path": "devagent/runtime/runner.py",
+      "symbol": "ControlledTestRunner._finish",
+      "anchor": "members_stopped = job.wait_members(",
+      "sha256": "794d65ed9dc14938fd46ce53e99b5442a69b5bd0cea3697efb66e3172e07c909"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/runtime/windows_job.py",
+      "symbol": "WindowsJob.member_handles",
+      "anchor": "def member_handles(self) -> list:",
+      "sha256": "328fd4f6220c595c396658b5100b839687b4a6e81a2e801c00eccdd911979c8f"
+    },
+    {
+      "role": "下游/状态",
+      "status": "observed",
+      "path": "devagent/runtime/windows_job.py",
+      "symbol": "WindowsJob.wait_members",
+      "anchor": "self.api.WaitForSingleObject(handle, remaining)",
+      "sha256": "328fd4f6220c595c396658b5100b839687b4a6e81a2e801c00eccdd911979c8f"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l08.py",
+      "symbol": "TestL08Boundaries.test_repository_execution_blocked_before_popen",
+      "anchor": "def test_repository_execution_blocked_before_popen(self):",
+      "sha256": "5f1483924c072706c45923de4f402ecf71e5f9435bbd167504f8fea00d03d19a"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l08.py",
+      "symbol": "TestL08WindowsLifecycle.test_timeout_terminates_child_tree_and_heartbeat_stops",
+      "anchor": "def test_timeout_terminates_child_tree_and_heartbeat_stops(self):",
+      "sha256": "5f1483924c072706c45923de4f402ecf71e5f9435bbd167504f8fea00d03d19a"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l08.py",
+      "symbol": "TestL08WindowsLifecycle.test_large_stdout_and_stderr_are_drained_concurrently",
+      "anchor": "def test_large_stdout_and_stderr_are_drained_concurrently(self):",
+      "sha256": "5f1483924c072706c45923de4f402ecf71e5f9435bbd167504f8fea00d03d19a"
+    },
+    {
+      "role": "测试",
+      "status": "observed",
+      "path": "tests/test_l08.py",
+      "symbol": "TestL08WindowsLifecycle.test_unconfirmed_job_termination_is_reported_and_blocks_reuse",
+      "anchor": "def test_unconfirmed_job_termination_is_reported_and_blocks_reuse(self):",
+      "sha256": "5f1483924c072706c45923de4f402ecf71e5f9435bbd167504f8fea00d03d19a"
+    }
+  ]
+}
